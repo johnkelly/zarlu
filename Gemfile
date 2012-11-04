@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'pg'
-gem 'thin'
+gem 'unicorn'
 gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'devise'
