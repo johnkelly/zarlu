@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
 </head>
-<body class="devise">
+<body class="<%= controller.controller_path %>_<%= controller.action_name %>">
   <div class="container">
     <div class="navbar pt25">
       <div class="navbar-inner nav-collapse collapse">

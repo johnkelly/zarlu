@@ -13,21 +13,26 @@
       <div class="navbar-inner nav-collapse collapse">
         <%= link_to "Zarlu", root_path, id: "logo" %>
         <ul class="nav pull-right">
-          <li>
-            <strong><%= link_to "Affordable Pricing", pricing_path %></strong>
-            <br/>
-            <small>Starting at Free</small>
-          </li>
-          <li>
-            <strong><%= link_to "Free Trial", pricing_path %></strong>
-            <br/>
-            <small>Try it now!</small>
-          </li>
-          <li>
-            <strong><%= link_to "Log In →", new_user_session_path %></strong>
-            <br/>
-            <small>Access your account</small>
-          </li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Settings", edit_user_registration_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li>
+              <strong><%= link_to "Affordable Pricing", pricing_path %></strong>
+              <br/>
+              <small>Starting at Free</small>
+            </li>
+            <li>
+              <strong><%= link_to "Free Trial", pricing_path %></strong>
+              <br/>
+              <small>Try it now!</small>
+            </li>
+            <li>
+              <strong><%= link_to "Log In →", new_user_session_path %></strong>
+              <br/>
+              <small>Access your account</small>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
