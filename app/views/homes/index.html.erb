@@ -1,2 +1,110 @@
-<h1>Homes#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<header class="center">
+  <h1>
+    Say Goodbye to time consuming business scheduling
+    <small>Manage your company's employee schedules with our easy to use web application.</small>
+  </h1>
+  <div class="row">
+    <div class="span6">
+      <ul>
+        <li>
+          <strong>Manage employee schedules with ease.</strong>
+          <p>Check employee schedules. Allow employees to submit time off requests, and approve employee time off requests with our intuitive application.</p>
+        </li>
+        <li>
+          <strong>Improve Morale</strong>
+          <p>Scheduling is a pain point for many businesses. We want to fix that! Scheduling should be quick, intuitive, and pain free.</p>
+        </li>
+        <li>
+          <strong>Improve Productivity</strong>
+          <p>Employees can submit a time off request and manage their schedules, and be back at work in seconds.</p>
+        </li>
+      </ul>
+      <%= link_to pricing_path, class: "btn btn-primary btn-huge" do %>
+        Free to try. No time limit.<br/>
+        <small>Get results with no risk or obligation.</small>
+      <% end %>
+    </div>
+    <div class="span6 left">
+      <%= image_tag "http://placehold.it/460x370", width: 460, height: 370 %>
+    </div>
+  </div>
+  <h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam urna diam, accumsan sit amet eleifend at, suscipit ac sapien. Ut cursus tincidunt tellus quis egestas. Integer malesuada vulputate odio et accumsan. Praesent sed lacus purus. Vestibulum ac nibh a nunc placerat interdum eu in sapien. Quisque sit amet mi eu est congue elementum ac nec felis. Duis eu urna sit amet enim sodales tempor tempus sit amet purus.
+  </h2>
+</header>
+<hr/>
+<section class="feature_in_depth">
+  <h3>
+    Now everyone can schedule and manage vacations, sick days, and more.
+    <small>Start using Zarlu today and see how easy scheduling can be.</small>
+  </h3>
+  <div class="feature row">
+    <div class="span6 offset1">
+      <h4>Feature 1</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam urna diam, accumsan sit amet eleifend at, suscipit ac sapien. Ut cursus tincidunt tellus quis egestas. Integer malesuada vulputate odio et accumsan. Praesent sed lacus purus. Vestibulum ac nibh a nunc placerat interdum eu in sapien. Quisque sit amet mi eu est congue elementum ac nec felis. Duis eu urna sit amet enim sodales tempor tempus sit amet purus.
+      </p>
+    </div>
+    <div class="span4">
+      <%= image_tag "login.png", width: 370, height: 150 %>
+    </div>
+  </div>
+
+  <div class="feature row">
+    <div class="span4 offset1">
+      <%= image_tag "login.png", width: 370, height: 150 %>
+    </div>
+    <div class="span6">
+      <h4>Feature 2</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam urna diam, accumsan sit amet eleifend at, suscipit ac sapien. Ut cursus tincidunt tellus quis egestas. Integer malesuada vulputate odio et accumsan. Praesent sed lacus purus. Vestibulum ac nibh a nunc placerat interdum eu in sapien. Quisque sit amet mi eu est congue elementum ac nec felis. Duis eu urna sit amet enim sodales tempor tempus sit amet purus.
+      </p>
+    </div>
+  </div>
+
+  <div class="feature row">
+    <div class="span6 offset1">
+      <h4>Feature 3</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam urna diam, accumsan sit amet eleifend at, suscipit ac sapien. Ut cursus tincidunt tellus quis egestas. Integer malesuada vulputate odio et accumsan. Praesent sed lacus purus. Vestibulum ac nibh a nunc placerat interdum eu in sapien. Quisque sit amet mi eu est congue elementum ac nec felis. Duis eu urna sit amet enim sodales tempor tempus sit amet purus.
+      </p>
+    </div>
+    <div class="span4">
+      <%= image_tag "login.png", width: 370, height: 150 %>
+    </div>
+  </div>
+
+  <div class="feature row">
+    <div class="span4 offset1">
+      <%= image_tag "login.png", width: 370, height: 150 %>
+    </div>
+    <div class="span6">
+      <h4>Feature 4</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam urna diam, accumsan sit amet eleifend at, suscipit ac sapien. Ut cursus tincidunt tellus quis egestas. Integer malesuada vulputate odio et accumsan. Praesent sed lacus purus. Vestibulum ac nibh a nunc placerat interdum eu in sapien. Quisque sit amet mi eu est congue elementum ac nec felis. Duis eu urna sit amet enim sodales tempor tempus sit amet purus.
+      </p>
+    </div>
+  </div>
+
+  <div class="feature row">
+    <div class="span6 offset1">
+      <h4>Choose the plan that is right for YOU.</h4>
+      <p>
+        We offer a variety of plans, so that there is plan that will meet your needs. Whether you are an individual, start up, small business, or large corporation. We have the plan for you. Choose from plans that start at $0/month.
+      </p>
+    </div>
+    <div class="span4">
+      <%= image_tag "pricing_zoom.png", width: 374, height: 232 %>
+    </div>
+  </div>
+  <h3>
+    Get started with our Free Plan.
+    <small>See how Zarlu can improve your business' scheduling with no risk or obligation.</small>
+  </h3>
+  <div class="center">
+  <%= link_to pricing_path, class: "btn btn-success btn-huge" do %>
+    See Plans &amp; Pricing →<br/>
+    <small>Starting at Free</small>
+  <% end %>
+  </div>
+</section>

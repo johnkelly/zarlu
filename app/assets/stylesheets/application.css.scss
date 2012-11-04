@@ -2,74 +2,39 @@
 
 // Responsive styles go here in case you want them
 @import "bootstrap-responsive";
+@import "global";
+@import "devise";
+@import "home";
 
-.mb20 {
-  margin-bottom: 20px;
-}
+.navbar, .navbar-inner {
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
 
-.height_225 {
-  height: 225px;
-}
+  li {
+    margin-right: 60px;
+    text-align: center;
 
-.height_340 {
-  height: 340px;
-}
-
-.height_290 {
-  height: 290px;
-}
-
-.login-center {
-  width: 260px;
-  padding: 0;
-  padding-top: 20px;
-  vertical-align: middle;
-  display: inline-block;
-  text-align: center;
-  background: -webkit-radial-gradient(circle, #8FBCDB, #1E8CBE);
-  border-radius: 3px;
-  -webkit-box-shadow: 0px 1px 30px rgba(85, 231, 255, 1);
-  -moz-box-shadow:    0px 1px 30px rgba(85, 231, 255, 1);
-  box-shadow:         0px 1px 30px rgba(85, 231, 255, 1);
-
-  img {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  input.btn {
-    border-radius: 20px;
+    a {
+      font-size: 18px;
+    }
   }
 }
 
-.float_left {
+#logo {
   float: left;
+  margin-right: 10px;
+  font-size: 2em;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
 }
 
-.float_right {
-  float: right;
+#logo:hover {
+  color: #333;
+  text-decoration: none;
 }
 
-.centered_page {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  background: -webkit-radial-gradient(circle, #F4D6BC, #F8E4CC);
-}
-
-span {
-    height: 100%;
-    vertical-align: middle;
-    display: inline-block;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.pt5{
-  padding-top: 5px;
-}

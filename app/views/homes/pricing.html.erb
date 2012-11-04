@@ -1,0 +1,50 @@
+<header class="center">
+  <h1 class="blue">
+    Easy to use, no surprises.
+    <small>Pay month to month. Change plans with ease. Cancel at any time.</small>
+  </h1>
+</header>
+<section>
+  <div class="row plans center">
+    <div class="span3">
+      <div class="plan_name coach">Coach</div>
+      <h3>Free</h3>
+      <h5>Full Access to all features</h5>
+      <h5>Account is public</h5>
+      <h5>Weekly data backups</h5>
+      <h5>Up to 2 employees</h5>
+      <h5>Email Support</h5>
+      <%= link_to "Start", new_user_registration_path, class: "mt25 btn btn-warning btn-large" %>
+    </div>
+    <div class="span3">
+      <div class="plan_name business">Business</div>
+      <h3>$20 / month</h3>
+      <h5>Full Access to all features</h5>
+      <h5>Account is private</h5>
+      <h5>Daily data backups</h5>
+      <h5>Up to 20 employees</h5>
+      <h5>Email Support</h5>
+      <%= link_to "Purchase", new_user_registration_path, class: "mt25 btn btn-success btn-large" %>
+    </div>
+    <div class="span3">
+     <div class="plan_name business_select">Business Select</div>
+      <h3>$50 / month</h3>
+      <h5>Full Access to all features</h5>
+      <h5>Account is private</h5>
+      <h5>Daily data backups</h5>
+      <h5>Up to 100 employees</h5>
+      <h5>Email Support</h5>
+      <%= link_to "Purchase", new_user_registration_path, class: "mt25 btn btn-primary btn-large" %>
+    </div>
+    <div class="span3">
+      <div class="plan_name first_class">1st Class</div>
+      <h3>$100 / month</h3>
+      <h5>Full Access to all features</h5>
+      <h5>Account is private</h5>
+      <h5>Daily data backups</h5>
+      <h5>Up to 500 employees</h5>
+      <h5>Priority Support</h5>
+      <%= link_to "Purchase", new_user_registration_path, class: "mt25 btn btn-info btn-large" %>
+    </div>
+  </div>
+</section>

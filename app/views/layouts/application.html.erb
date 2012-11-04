@@ -2,11 +2,36 @@
 <html>
 <head>
   <title>Zarlu</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
 </head>
-<body>
-  <%= yield %>
+<body class="<%= controller.controller_path %>_<%= controller.action_name %>">
+  <div class="container">
+    <div class="navbar pt25">
+      <div class="navbar-inner nav-collapse collapse">
+        <%= link_to "Zarlu", root_path, id: "logo" %>
+        <ul class="nav pull-right">
+          <li>
+            <strong><%= link_to "Affordable Pricing", pricing_path %></strong>
+            <br/>
+            <small>Starting at Free</small>
+          </li>
+          <li>
+            <strong><%= link_to "Free Trial", pricing_path %></strong>
+            <br/>
+            <small>Try it now!</small>
+          </li>
+          <li>
+            <strong><%= link_to "Log In →", new_user_session_path %></strong>
+            <br/>
+            <small>Access your account</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
 </body>
 </html>
