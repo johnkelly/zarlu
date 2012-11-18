@@ -21,6 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
+      @plan = params[:plan]
       respond_with resource
     end
   end
