@@ -9,7 +9,8 @@
 </head>
 <body class="<%= controller.controller_path %>_<%= controller.action_name %>">
   <div class="container">
-    <div class="navbar pt25">
+    <%= render partial: "layouts/flash_messages" %>
+    <div class="navbar pt15">
       <div class="navbar-inner nav-collapse collapse">
         <%= link_to "Zarlu", root_path, id: "logo" %>
         <ul class="nav pull-right">

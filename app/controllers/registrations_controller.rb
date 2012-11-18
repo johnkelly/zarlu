@@ -22,6 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       @plan = params[:plan]
+      flash.now[:alert] = resource.errors.full_messages.first
       respond_with resource
     end
   end
