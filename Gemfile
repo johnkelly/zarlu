@@ -24,4 +24,5 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'fixture_builder'
 end

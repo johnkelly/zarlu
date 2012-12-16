@@ -26,4 +26,8 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
+
+  def after_sign_up_path_for(resource)
+    subscribers_path
+  end
 end

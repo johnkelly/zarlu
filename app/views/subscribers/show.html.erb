@@ -1,0 +1,17 @@
+<div class="paper"> 
+  <h2>Subscription: <%= @subscriber.plan.titleize %> Plan</h2>
+  <div class="row">
+    <div class="span6">
+    <h4>Employees (<%= @users.count %> / <%= @subscriber.plan_users %>)</h4>
+      <%= form_for @user, url: "", html: { class: "mt25 form-inline" } do |form| %>
+        <%= form.text_field :email, class: "input-medium", placeholder: "Email" %>
+        <%= form.password_field :password, class: "input-medium", placeholder: "Password" %>
+        <%= form.submit "Add", class: "btn btn-primary" %>
+      <% end %>
+
+      <% @users.each do |user| %>
+        <%= user.email %>
+      <% end %>
+    </div>
+  </div>
+</div>
