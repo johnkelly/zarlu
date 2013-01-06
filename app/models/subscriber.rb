@@ -16,4 +16,8 @@ class Subscriber < ActiveRecord::Base
       200
     end
   end
+
+  def under_user_limit_for_plan
+    users.count < plan_users
+  end
 end

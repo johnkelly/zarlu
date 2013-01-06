@@ -29,4 +29,27 @@ describe Subscriber do
       first_class_subscriber.plan_users.should == 200
     end
   end
+
+  describe "under_user_limit_for_plan" do
+    context "over plan limit" do
+      it "returns false" do
+        Subscriber.any_instance.stub(:users).and_return([1,2,3])
+        coach_subscriber.under_user_limit_for_plan.should be_false
+      end
+    end
+
+    context "at plan limit" do
+      it "returns false" do
+        Subscriber.any_instance.stub(:users).and_return([1,2])
+        coach_subscriber.under_user_limit_for_plan.should be_false
+      end
+    end
+
+    context "under plan limit" do
+      it "returns true" do
+        Subscriber.any_instance.stub(:users).and_return([1])
+        coach_subscriber.under_user_limit_for_plan.should be_true
+      end
+    end
+  end
 end
