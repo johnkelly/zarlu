@@ -12,7 +12,7 @@
     <%= render partial: "layouts/flash_messages" %>
     <div class="navbar pt15">
       <div class="navbar-inner nav-collapse collapse">
-        <%= link_to "Zarlu", banner_link_in_nav, id: "logo" %>
+        <%= display_banner %>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <li><%= link_to "Account", subscribers_path %></li>

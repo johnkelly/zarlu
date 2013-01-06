@@ -7,6 +7,7 @@ gem 'unicorn'
 gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'devise'
+gem 'fullcalendar-rails'
 
 # Rails 4 Features
 gem 'turbolinks'
