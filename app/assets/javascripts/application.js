@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery-ui
 //= require jquery.md5
 //= require fullcalendar
 //= require_tree .

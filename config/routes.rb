@@ -3,7 +3,8 @@ Zarlu::Application.routes.draw do
   match '/pricing', to: 'homes#pricing'
   match '/home', to: 'homes#show'
   devise_for :users, controllers: { registrations: 'registrations' }
-  resource 'subscribers', only: %w[show] do
+  resource :subscribers, only: %w[show] do
     collection { post :add_user }
   end
+  resources :events, only: %w[index update]
 end

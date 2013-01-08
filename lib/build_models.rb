@@ -7,6 +7,8 @@ module BuildModels
       first_class_subscriber = Subscriber.create!(plan: "first_class")
 
       user = coach_subscriber.users.create!(email: "test@example.com", password: "password", password_confirmation: "password")
+
+      event = Event.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
     end
   end
 end
