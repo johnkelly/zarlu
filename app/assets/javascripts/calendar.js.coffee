@@ -5,6 +5,7 @@ display_calendar = ->
       center: 'title'
     height: 700
     editable: true
+    selectable: true
     eventSources:
       [
         url: '/events'
@@ -14,9 +15,18 @@ display_calendar = ->
       ]
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
       update_event(event)
+    select: (startDate, endDate, allDay, jsEvent, view) ->
+      show_add_event_dialog()
+
 jQuery ->
   if $('body.homes_show').length
     display_calendar()
+
+show_add_event_dialog = ->
+  $('#event_dialog').dialog(
+    modal: true
+    title: "New Event"
+  )
 
 update_event = (event) ->
   jQuery.ajax(
