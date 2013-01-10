@@ -7,6 +7,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def create
+    @event = Event.create!(params[:event])
+
+    respond_to do |format|
+      format.json { render json: @event }
+    end
+  end
+
   def update
     @event = Event.find(params[:id])
     @event.update_attributes!(params[:event])
