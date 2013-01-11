@@ -24,6 +24,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    head :ok
+  end
+
   private
 
   def contains_date_params?

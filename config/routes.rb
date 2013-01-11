@@ -6,5 +6,5 @@ Zarlu::Application.routes.draw do
   resource :subscribers, only: %w[show] do
     collection { post :add_user }
   end
-  resources :events, only: %w[index create update]
+  resources :events, only: %w[index create update destroy]
 end

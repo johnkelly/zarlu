@@ -5,6 +5,10 @@ describe Event do
 
   describe "self.date_range" do
     it "returns dates after start date and before end_date" do
+      event.starts_at = 30.minutes.ago
+      event.ends_at = 90.minutes.ago
+      event.save!
+
       Event.date_range(2.hours.ago, 2.hours.from_now).should == [event]
     end
   end
@@ -15,8 +19,8 @@ describe Event do
         id: event.id,
         title: event.title,
         description: event.description,
-        start: event.starts_at.rfc822,
-        end: event.ends_at.rfc822,
+        start: event.starts_at,
+        end: event.ends_at,
         allDay: event.all_day,
         recurring: false
       }

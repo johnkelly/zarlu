@@ -58,4 +58,18 @@ describe EventsController do
       its(:ends_at) { should == @ends_at }
     end
   end
+
+  describe "#destroy" do
+    context "http" do
+      before { delete :destroy, id: event.to_param, format: :json}
+      it { should respond_with(:success) }
+      it { should assign_to(:event).with(event) }
+    end
+
+    context "database" do
+      it "deletes the record" do
+        -> { delete :destroy, id: event.to_param, format: :json }.should change(Event, :count).by(-1)
+      end
+    end
+  end
 end

@@ -15,8 +15,8 @@ class Event < ActiveRecord::Base
       id: id,
       title: title,
       description: description,
-      start: starts_at.rfc822,
-      end: ends_at.rfc822,
+      start: starts_at,
+      end: ends_at,
       allDay: all_day,
       recurring: false,
     }
