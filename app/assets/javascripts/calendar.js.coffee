@@ -12,7 +12,7 @@ display_calendar = ->
         url: '/events'
         color: '#0668C0'
         textColor: '#FFF'
-        ignoreTimezone: false
+        ignoreTimezone: true
       ]
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
       update_event(event)

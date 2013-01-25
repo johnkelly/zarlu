@@ -53,9 +53,13 @@ describe EventsController do
         put :update, id: event.to_param, event: { starts_at: @starts_at, ends_at: @ends_at }, format: :json
       end
 
-      subject { event.reload }
-      its(:starts_at) { should == @starts_at }
-      its(:ends_at) { should == @ends_at }
+      it "saves the start time in utc" do
+        event.reload.starts_at.to_i.should == @starts_at.to_i - 8.hours.to_i
+      end
+
+      it "saves the end time in utc" do
+        event.reload.ends_at.to_i.should == @ends_at.to_i - 8.hours.to_i
+      end
     end
   end
 
