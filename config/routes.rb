@@ -7,4 +7,5 @@ Zarlu::Application.routes.draw do
     collection { post :add_user }
   end
   resources :events, only: %w[index create update destroy]
+  resources :incoming_mails, only: %w[create]
 end
