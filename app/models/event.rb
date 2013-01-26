@@ -1,6 +1,10 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description, :starts_at, :ends_at, :all_day
 
+  belongs_to :user
+
+  validates_presence_of :user_id
+
   scope :before, ->(end_time) { where("ends_at < ?", Event.format_date(end_time)) }
   scope :after, ->(start_time) { where("starts_at > ?", Event.format_date(start_time)) }
 

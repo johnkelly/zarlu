@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
-    @events = contains_date_params? ? Event.date_range(params[:start], params[:end]) : []
+    @events = contains_date_params? ? current_user.events.date_range(params[:start], params[:end]) : []
 
     respond_to do |format|
       format.json { render json: @events }
@@ -8,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create!(params[:event])
+    @event = current_user.events.create!(params[:event])
 
     respond_to do |format|
       format.json { render json: @event }
@@ -16,7 +18,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
     @event.update_attributes!(params[:event])
 
     respond_to do |format|
@@ -25,7 +27,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
     @event.destroy
     head :ok
   end

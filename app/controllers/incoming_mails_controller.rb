@@ -4,7 +4,8 @@ class IncomingMailsController < ApplicationController
   def create
     message = params[:plain]
     date = format_date(date_from_subject(params[:headers][:Subject]))
-    @event = Event.create!(title: "Time off", description: message, starts_at: date, ends_at: date, all_day: true)
+    user = User.where(email: params[:headers][:From]).first
+    @event = user.events.create!(title: "Time off", description: message, starts_at: date, ends_at: date, all_day: true)
 
     render text: 'success', status: 200
   end

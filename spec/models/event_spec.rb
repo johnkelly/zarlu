@@ -3,6 +3,14 @@ require 'spec_helper'
 describe Event do
   let(:event) { events(:build_model) }
 
+  describe "associations" do
+    it { should belong_to(:user) }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:user_id) }
+  end
+
   describe "self.date_range" do
     it "returns dates after start date and before end_date" do
       event.starts_at = 30.minutes.ago

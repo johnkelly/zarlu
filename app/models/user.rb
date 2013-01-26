@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :subscriber
+  has_many :events, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

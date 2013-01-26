@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe EventsController do
   let(:event) { events(:build_model) }
+  let(:user) { users(:test_example_com) }
+
+  before { sign_in(user) }
 
   describe "index" do
     context "with start and end params" do

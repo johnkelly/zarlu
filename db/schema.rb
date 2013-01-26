@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107041725) do
+ActiveRecord::Schema.define(:version => 20130126222153) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(:version => 20130107041725) do
     t.boolean  "all_day",     :default => false, :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.integer  "user_id"
   end
+
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "subscribers", :force => true do |t|
     t.string   "plan"
