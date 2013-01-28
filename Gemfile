@@ -26,4 +26,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'fixture_builder'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
