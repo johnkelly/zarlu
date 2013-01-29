@@ -20,4 +20,12 @@ class Subscriber < ActiveRecord::Base
   def under_user_limit_for_plan
     users.count < plan_users
   end
+
+  def no_manager_assigned(users)
+    users.select { |user| user.manager_id == nil }
+  end
+
+  def managers(users)
+    users.select { |user| user.manager == true }
+  end
 end

@@ -11,6 +11,10 @@
   margin-bottom: 20px;
 }
 
+.height_25{
+  height: 25px;
+}
+
 .height_225 {
   height: 225px;
 }
@@ -72,4 +76,8 @@ h2 {
 }
 .alert p {
   text-align: center;
+}
+
+.sortable {
+  min-height: 100px;
 }

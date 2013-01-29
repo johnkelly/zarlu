@@ -4,6 +4,8 @@ class SubscribersController < ApplicationController
 
   def show
     @user = User.new
+    @managers = @subscriber.managers(@users)
+    @no_manager_users = @subscriber.no_manager_assigned(@users)
   end
 
   def add_user
@@ -14,6 +16,26 @@ class SubscribersController < ApplicationController
       flash.now[:alert] = @user.errors.full_messages.first
       render :show
     end
+  end
+
+  def promote_to_manager
+    @user = @subscriber.users.find(params[:user_id])
+    @user.promote_to_manager!
+    redirect_to subscribers_url, notice: %Q{Promoted #{@user.email} to manager.}
+  end
+
+  def change_manager
+    @user = @subscriber.users.find(params[:user_id])
+
+    if params[:manager_id] == "nil"
+      @user.manager_id = nil
+    else
+      @manager = @subscriber.users.where(manager: true).find(params[:manager_id])
+      @user.manager_id = @manager.id
+    end
+
+    @user.save!
+    head :ok
   end
 
   private
