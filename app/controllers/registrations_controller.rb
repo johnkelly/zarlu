@@ -8,6 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource
     resource.subscriber = Subscriber.create!(plan: params[:plan])
+    resource.manager = true
 
     if resource.save
       if resource.active_for_authentication?
