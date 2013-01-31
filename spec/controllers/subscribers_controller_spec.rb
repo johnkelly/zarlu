@@ -5,7 +5,7 @@ describe SubscribersController do
   let(:user) { users(:test_example_com) }
   let(:manager) { users(:manager_example_com) }
 
-  before { sign_in(user) }
+  before { sign_in(manager) }
 
   describe "#show" do
     before { get :show }

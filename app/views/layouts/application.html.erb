@@ -16,7 +16,7 @@
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <li><%= link_to "Calendar", home_path, data: { "no-turbolink" => true } %></li>
-            <li><%= link_to "Account", subscribers_path %></li>
+            <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>

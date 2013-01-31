@@ -1,5 +1,6 @@
 <div class="paper">
   <h2>Subscription: <%= @subscriber.plan.titleize %> Plan</h2>
+  <p>(Only managers can view this page)</p>
   <div class="row">
     <div class="span6">
       <h4>Employees (<%= @users.count %> / <%= @subscriber.plan_users %>)</h4>
