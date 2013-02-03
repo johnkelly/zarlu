@@ -16,10 +16,10 @@
         <%= display_banner %>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
-            <li><%= link_to "Calendar", home_path, data: { "no-turbolink" => true } %></li>
+            <li><%= link_to "Calendar", home_path %></li>
             <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
-            <li><%= link_to "Support", "javascript:UserVoice.showPopupWidget();" %></li>
+            <li><%= link_to "Support", "#", id: "support_link" %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li>
@@ -33,7 +33,7 @@
             <small>Try it now!</small>
             </li>
             <li>
-            <strong><%= link_to "Support", "javascript:UserVoice.showPopupWidget();" %></strong>
+            <strong><%= link_to "Support", "#", id: "support_link" %></strong>
             <br/>
             <small>Contact us!</small>
             </li>

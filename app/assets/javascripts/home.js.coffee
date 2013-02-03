@@ -4,9 +4,12 @@ get_gravatar_for_email = ->
     $('.img-circle').attr('src', 'http://www.gravatar.com/avatar/' + $.md5(email))
   )
 
+trigger_uservoice_popup = ->
+  $('#support_link').on('click', (e) ->
+    e.preventDefault()
+    UserVoice.showPopupWidget()
+  )
+
 jQuery ->
   get_gravatar_for_email()
-
-$(document).bind('page:change', ->
-  get_gravatar_for_email()
-)
+  trigger_uservoice_popup()

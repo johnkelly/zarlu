@@ -15,6 +15,8 @@ gem 'strong_parameters'
 gem 'cache_digests'
 gem 'routing_concerns'
 
+gem 'jquery-turbolinks'
+
 # Gems used only for assets
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
