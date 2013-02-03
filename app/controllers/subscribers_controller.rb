@@ -13,8 +13,7 @@ class SubscribersController < ApplicationController
     if @user.save
       redirect_to subscribers_url, notice: %Q{Successfully created new user.}
     else
-      flash.now[:alert] = @user.errors.full_messages.first
-      render :show
+      redirect_to subscribers_url, alert: @user.errors.full_messages.first
     end
   end
 

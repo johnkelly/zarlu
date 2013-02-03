@@ -31,8 +31,8 @@ describe SubscribersController do
 
     context "error" do
       before { post :add_user, user: { email: "", password: "" }}
-      it { should render_template(:show) }
-      it { should set_the_flash[:alert].now }
+      it { should redirect_to subscribers_url }
+      it { should set_the_flash[:alert] }
       it { should assign_to(:subscriber).with(subscriber) }
       it { should assign_to(:user) }
     end
