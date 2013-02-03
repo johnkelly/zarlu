@@ -16,5 +16,6 @@
 //= require bootstrap
 //= require jquery.md5
 //= require fullcalendar
+//= require uservoice
 //= require_tree .
 //= require turbolinks

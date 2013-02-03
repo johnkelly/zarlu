@@ -19,22 +19,28 @@
             <li><%= link_to "Calendar", home_path, data: { "no-turbolink" => true } %></li>
             <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
+            <li><%= link_to "Support", "javascript:UserVoice.showPopupWidget();" %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li>
-              <strong><%= link_to "Pricing", pricing_path %></strong>
-              <br/>
-              <small>Starting at Free</small>
+            <strong><%= link_to "Pricing", pricing_path %></strong>
+            <br/>
+            <small>Starting at Free</small>
             </li>
             <li>
-              <strong><%= link_to "Free Account", pricing_path %></strong>
-              <br/>
-              <small>Try it now!</small>
+            <strong><%= link_to "Free Account", pricing_path %></strong>
+            <br/>
+            <small>Try it now!</small>
             </li>
             <li>
-              <strong><%= link_to "Log In →", new_user_session_path %></strong>
-              <br/>
-              <small>Access your account</small>
+            <strong><%= link_to "Support", "javascript:UserVoice.showPopupWidget();" %></strong>
+            <br/>
+            <small>Contact us!</small>
+            </li>
+            <li>
+            <strong><%= link_to "Log In →", new_user_session_path %></strong>
+            <br/>
+            <small>Access your account</small>
             </li>
           <% end %>
         </ul>
