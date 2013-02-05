@@ -1,7 +1,7 @@
 get_gravatar_for_email = ->
   $('#user_email').blur(->
     email = $('#user_email').val()
-    $('.img-circle').attr('src', 'http://www.gravatar.com/avatar/' + $.md5(email))
+    $('.img-circle').attr('src', 'https://secure.gravatar.com/avatar/' + $.md5(email))
   )
 
 trigger_uservoice_popup = ->
