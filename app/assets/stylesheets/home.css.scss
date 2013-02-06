@@ -98,7 +98,12 @@ section.feature_in_depth {
 .plans {
   .span3 {
     background: #F7F6F4;
-    height: 350px;
+    min-height: 370px;
+
+    h5 {
+      text-align: left;
+      padding-left: 15px;
+    }
   }
 }
 .plan_name {

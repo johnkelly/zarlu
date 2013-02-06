@@ -1,51 +1,53 @@
 <header class="center">
-  <h1 class="blue">
-    Easy to use, no surprises.
-    <small>Pay month to month. Change plans with ease. Cancel at any time.</small>
-  </h1>
+<h1 class="blue">
+  Easy to use, no surprises.
+  <small>Pay month to month. Change plans with ease. Cancel at any time.</small>
+</h1>
 </header>
 <section>
-  <div class="row plans center">
-    <div class="span3">
-      <div class="plan_name coach">Coach</div>
-      <h3>Free</h3>
-      <h5>Full Access to all features</h5>
-      <h5>Account is private</h5>
-      <h5>Weekly data backups</h5>
-      <h5>Up to 2 employees</h5>
-      <h5>Email time off requests</h5>
-      <%= link_to "Subscribe", new_user_registration_path(plan: "coach"), class: "mt25 btn btn-warning btn-large" %>
-    </div>
-    <div class="span3">
-      <div class="plan_name business">Business</div>
-      <h3>$50 / month</h3>
-      <h5>Full Access to all features</h5>
-      <h5>Account is private</h5>
-      <h5>Daily data backups</h5>
-      <h5>Up to 20 employees</h5>
-      <h5>Email time off requests</h5>
-      <%= link_to "Subscribe", new_user_registration_path(plan: "business"), class: "mt25 btn btn-success btn-large" %>
-    </div>
-    <div class="span3">
-     <div class="plan_name business_select">Business Select</div>
-     <h3>$100 / month</h3>
-      <h5>Full Access to all features</h5>
-      <h5>Account is private</h5>
-      <h5>Daily data backups</h5>
-      <h5>Up to 60 employees</h5>
-      <h5>Email time off requests</h5>
-      <%= link_to "Subscribe", new_user_registration_path(plan: "business_select"), class: "mt25 btn btn-primary btn-large" %>
-    </div>
-    <div class="span3">
-      <div class="plan_name first_class">1st Class</div>
-      <h3>$150 / month</h3>
-      <h5>Full Access to all features</h5>
-      <h5>Account is private</h5>
-      <h5>Daily data backups</h5>
-      <h5>Up to 200 employees</h5>
-      <h5>Email time off requests</h5>
-      <%= link_to "Subscribe", new_user_registration_path(plan: "first_class"), class: "mt25 btn btn-info btn-large" %>
-    </div>
+<div class="row plans center">
+  <div class="span3">
+    <div class="plan_name coach">Coach</div>
+    <h3>Free</h3>
+    <h5><i class="icon-user"></i>&nbsp;2 staffers</h5>
+    <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
+    <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
+    <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
+    <%= link_to "Subscribe", new_user_registration_path(plan: "coach"), class: "mt25 mb15 btn btn-warning btn-large" %>
   </div>
-  <h5 class="mt25 center">Have more than 200 employees?  Contact us for Enterprise plans that fit your needs.</h5>
+  <div class="span3">
+    <div class="plan_name business">Business</div>
+    <h3>$50 / month</h3>
+    <h5><i class="icon-user"></i>&nbsp;30 staffers</h5>
+    <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
+    <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
+    <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
+    <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
+    <h5><i class="icon-upload"></i>&nbsp;Daily data backups</h5>
+    <%= link_to "Subscribe", new_user_registration_path(plan: "business"), class: "mt25 mb15 btn btn-success btn-large" %>
+  </div>
+  <div class="span3">
+    <div class="plan_name business_select">Business Select</div>
+    <h3>$100 / month</h3>
+    <h5><i class="icon-user"></i>&nbsp;75 staffers</h5>
+    <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
+    <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
+    <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
+    <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
+    <h5><i class="icon-upload"></i>&nbsp;Daily data backups</h5>
+    <%= link_to "Subscribe", new_user_registration_path(plan: "business_select"), class: "mt25 mb15 btn btn-primary btn-large" %>
+  </div>
+  <div class="span3">
+    <div class="plan_name first_class">1st Class</div>
+    <h3>$150 / month</h3>
+    <h5><i class="icon-user"></i>&nbsp;150 staffers</h5>
+    <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
+    <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
+    <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
+    <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
+    <h5><i class="icon-upload"></i>&nbsp;Daily data backups</h5>
+    <%= link_to "Subscribe", new_user_registration_path(plan: "first_class"), class: "mt25 mb15 btn btn-info btn-large" %>
+  </div>
+</div>
+<h5 class="mt25 center">Have more than 150 staffers?  Contact us for Enterprise plans that fit your needs.</h5>
 </section>

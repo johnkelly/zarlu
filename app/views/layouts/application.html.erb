@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Zarlu - Employee scheduling and calendar web application</title>
+  <title>Zarlu - Employee scheduling and calendar software</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1" %>
-  <%= tag :meta, name: "description", content: "Zarlu is an employee scheduling and management cloud application. Submit, view, and manage employee schedules with our easy to use calendar." %>
+  <%= tag :meta, name: "description", content: "Zarlu is an employee scheduling and calendar software. Submit, view, and manage employee schedules with our easy to use calendar." %>
 </head>
 <body class="<%= controller.controller_path %>_<%= controller.action_name %>">
   <div class="container">
     <%= render partial: "layouts/flash_messages" %>
-    <div class="navbar pt15">
-      <div class="navbar-inner nav-collapse collapse">
+    <div class="navbar mt5 pt15">
+      <div class="navbar-inner">
         <%= display_banner %>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <li><%= link_to "Calendar", home_path %></li>
+            <li><%= link_to "Employees", employees_path if current_user.manager? %></li>
             <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
             <li><%= link_to "Support", "#", id: "support_link" %></li>
