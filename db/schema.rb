@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126231422) do
+ActiveRecord::Schema.define(:version => 20130204071048) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20130126231422) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.integer  "user_id"
+    t.boolean  "approved",    :default => false, :null => false
+    t.boolean  "rejected",    :default => false, :null => false
   end
 
   add_index "events", ["user_id"], :name => "index_events_on_user_id"

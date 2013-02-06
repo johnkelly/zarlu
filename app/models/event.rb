@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :description, :starts_at, :ends_at, :all_day
+  attr_accessible :title, :description, :starts_at, :ends_at, :all_day, :approved
 
   belongs_to :user
 
@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
 
   scope :before, ->(end_time) { where("ends_at < ?", Event.format_date(end_time)) }
   scope :after, ->(start_time) { where("starts_at > ?", Event.format_date(start_time)) }
+
+  after_create :approve!, if: Proc.new {|event| event.user.manager_id == nil }
 
   def self.date_range(start_date, end_date)
     range = self.after(start_date)
@@ -24,6 +26,16 @@ class Event < ActiveRecord::Base
       allDay: all_day,
       recurring: false,
     }
+  end
+
+  def approve!
+    self.approved = true
+    self.save!
+  end
+
+  def reject!
+    self.rejected = true
+    self.save!
   end
 
   private
