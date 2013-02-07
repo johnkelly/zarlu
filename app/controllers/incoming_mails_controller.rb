@@ -26,6 +26,10 @@ class IncomingMailsController < ApplicationController
   end
 
   def email(params)
-    params[:headers][:From].downcase.gsub(/<|>/, "")
+    params[:headers][:From].downcase.scan(email_validation).first
+  end
+
+  def email_validation
+    /[a-zA-Z0-9!\#$%&'*+\-\/=?^_`{|}~.]+@+[a-zA-Z0-9\-.]+.+[a-zA-Z0-9]/
   end
 end

@@ -4,7 +4,7 @@ describe IncomingMailsController do
   describe "#create" do
     let(:user) { users(:test_example_com) }
 
-    before { post :create, plain: "Hey Matt, \n\nI came down with the flu this morning\n \n-John", headers: { From: "<#{user.email.upcase}>", Subject: "05/05/2012" } }
+    before { post :create, plain: "Hey Matt, \n\nI came down with the flu this morning\n \n-John", headers: { From: "John Kelly <#{user.email.upcase}>", Subject: "05/05/2012" } }
 
     context "http" do
       it { should respond_with(:success) }
