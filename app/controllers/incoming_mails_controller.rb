@@ -4,7 +4,7 @@ class IncomingMailsController < ApplicationController
   def create
     message = params[:plain]
     date = format_date(date_from_subject(params[:headers][:Subject]))
-    user = User.where(email: params[:headers][:From]).first
+    user = User.where(email: email(params)).first
 
     if user.present?
       @event = user.events.create!(title: "Time off", description: message, starts_at: date, ends_at: date, all_day: true)
@@ -23,5 +23,9 @@ class IncomingMailsController < ApplicationController
 
   def format_date(splitted_date)
     "#{splitted_date[2]}/#{splitted_date[0]}/#{splitted_date[1]}".to_date
+  end
+
+  def email(params)
+    params[:headers][:From].downcase.gsub(/<|>/, "")
   end
 end
