@@ -4,7 +4,7 @@
  <title>Zarlu Blog</title>
  <link href="www.zarlu.com/atom.xml" rel="self"/>
  <link href="www.zarlu.com"/>
- <updated>2013-02-06T16:12:34-08:00</updated>
+ <updated>2013-02-06T23:13:57-08:00</updated>
  <id>www.zarlu.com</id>
  <author>
    <name>Zarlu Blog</name>
@@ -22,7 +22,7 @@
 
 &lt;p&gt;With Zarlu, I tried to make a scheduling application that I would want to use on a daily basis. My top three priorities were ease of use, speed, and convenience. For speed, Zarlu was developed using the latest web development techniques to allow pages and information to load as quickly as possible. The majority of Zarlu is rendered on our server &amp;lt; 100ms. Yes, you read that right. I measure your time in milliseconds because that&amp;#8217;s how much I care about devlivering excellent software. Sub 200ms response times are synonomous with &amp;#8220;instant&amp;#8221; in the software industry. With Zarlu, you will never have to wait around staring at a spinner or indefinite progress bar while your computer &amp;#8220;thinks&amp;#8221;.&lt;/p&gt;
 
-&lt;p&gt;In my top three priorities for Zarlu, I also mentioned conveience. I have developed a feature that allows you to send a time off request directly from your email account whether on your phone at the top of a ski slope, on your iPad laying in bed while recovering from the flu, or on your notebook at work. No logging in required. Just email us at timeoff@zarlu.com with your work email and we will add your time off request to your calendar and notify your manager to approve or reject your request. That&amp;#8217;s it!&lt;/p&gt;
+&lt;p&gt;In my top three priorities for Zarlu, I also mentioned conveience. I have developed a feature that allows you to send a time off request directly from your email account whether on your phone at the top of a ski slope, on your iPad laying in bed while recovering from the flu, or on your notebook at work. No logging in required. Just email us at timeoff@mail.zarlu.com with your work email and we will add your time off request to your calendar and notify your manager to approve or reject your request. That&amp;#8217;s it!&lt;/p&gt;
 
 &lt;p&gt;Finally, ease of use was my third goal in my trifecta of priorites for developing calendar and scheduler software. I have developed our calendar to use a simple drag and drop interface to make modifying or adding events as simple as possible. Need to extend an event on your calendar? Simply click on it and drag your mouse to the desired time. Zarlu will save the event to your schedule when you let go of the mouse. How easy is that?&lt;/p&gt;
 

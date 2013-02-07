@@ -5,9 +5,14 @@ class IncomingMailsController < ApplicationController
     message = params[:plain]
     date = format_date(date_from_subject(params[:headers][:Subject]))
     user = User.where(email: params[:headers][:From]).first
-    @event = user.events.create!(title: "Time off", description: message, starts_at: date, ends_at: date, all_day: true)
 
-    render text: 'success', status: 200
+    if user.present?
+      @event = user.events.create!(title: "Time off", description: message, starts_at: date, ends_at: date, all_day: true)
+      render text: 'success', status: 200
+    else
+      Rails.logger.info "Email Rejected: #{params[:headers][:From]} is not a user"
+      render text: 'The email address you sent this email from is not registered at Zarlu', status: 404
+    end
   end
 
   private
