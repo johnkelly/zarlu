@@ -21,6 +21,7 @@
             <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
             <li><%= link_to "Support", "#", id: "support_link" %></li>
+            <li><%= link_to "Blog", blog_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li>
@@ -31,12 +32,17 @@
             <li>
             <strong><%= link_to "Free Account", pricing_path %></strong>
             <br/>
-            <small>Try it now!</small>
+            <small>Try Zarlu now</small>
             </li>
             <li>
             <strong><%= link_to "Support", "#", id: "support_link" %></strong>
             <br/>
-            <small>Contact us!</small>
+            <small>Contact us</small>
+            </li>
+            <li>
+            <strong><%= link_to "Blog", blog_path %></strong>
+            <br/>
+            <small>Learn more</small>
             </li>
             <li>
             <strong><%= link_to "Log In →", new_user_session_path %></strong>

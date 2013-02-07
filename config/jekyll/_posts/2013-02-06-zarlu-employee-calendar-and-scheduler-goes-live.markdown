@@ -1,0 +1,14 @@
+---
+layout: post
+title: Zarlu Employee Calendar and Scheduler Goes Live
+---
+###Zarlu Employee Calendar and Scheduler
+After months of hard work, I am proud to officially announce the release of Zarlu. I started working on Zarlu after experiencing the frustration of submitting time off requests using traditional employee scheduling software. I found their software to be clunky, dated, and hard to use. Submitting a time off request should be easy. Viewing my schedule for a month, week, or day should be easy.  Having a calendar to view my schedule is a requirement for a great personnel scheduler. I decided I could design a web application that made taking time off a better experience for the employee and the business. I wanted something better then what currently exists!
+
+With Zarlu, I tried to make a scheduling application that I would want to use on a daily basis. My top three priorities were ease of use, speed, and convenience. For speed, Zarlu was developed using the latest web development techniques to allow pages and information to load as quickly as possible. The majority of Zarlu is rendered on our server < 100ms.  Yes, you read that right. I measure your time in milliseconds because that's how much I care about devlivering excellent software. Sub 200ms response times are synonomous with "instant" in the software industry.  With Zarlu, you will never have to wait around staring at a spinner or indefinite progress bar while your computer "thinks".
+
+In my top three priorities for Zarlu, I also mentioned conveience. I have developed a feature that allows you to send a time off request directly from your email account whether on your phone at the top of a ski slope, on your iPad laying in bed while recovering from the flu, or on your notebook at work.  No logging in required.  Just email us at timeoff@zarlu.com with your work email and we will add your time off request to your calendar and notify your manager to approve or reject your request.  That's it!
+
+Finally, ease of use was my third goal in my trifecta of priorites for developing calendar and scheduler software. I have developed our calendar to use a simple drag and drop interface to make modifying or adding events as simple as possible. Need to extend an event on your calendar?  Simply click on it and drag your mouse to the desired time. Zarlu will save the event to your schedule when you let go of the mouse.  How easy is that?
+
+I look forward to hearing your feedback of what Zarlu can do to make scheduling even easier for you!  Click on the link below to try Zarlu for yourself if you haven't already. Our lowest plan is free to use with no time limit!

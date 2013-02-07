@@ -1,5 +1,7 @@
 Zarlu::Application.routes.draw do
   root to: "homes#index"
+  match 'blog' => 'blog#index'
+  match 'blog/:title' => 'blog#post'
   match '/pricing', to: 'homes#pricing'
   match '/home', to: 'homes#show'
   devise_for :users, controllers: { registrations: 'registrations' }

@@ -1,0 +1,14 @@
+---
+layout: application
+---
+
+<div class="paper">
+  <header>
+    <h1>Zarlu Blog</h1>
+  </header>
+  <div class="posts">
+    {% for post in site.posts %}
+      <h3><a href="/blog{{ post.url }}">{{ post.title }}</a></h3>
+    {% endfor %}
+  </ul>
+</div>

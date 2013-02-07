@@ -16,6 +16,7 @@ gem 'cache_digests'
 gem 'routing_concerns'
 
 gem 'jquery-turbolinks'
+gem 'bloggy'
 
 # Gems used only for assets
 group :assets do
