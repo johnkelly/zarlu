@@ -17,6 +17,7 @@
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <li><%= link_to "Calendar", home_path %></li>
+            <li><%= link_to "Requests", schedule_path(current_user) %></li>
             <li><%= link_to "Employees", employees_path if current_user.manager? %></li>
             <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>

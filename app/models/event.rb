@@ -7,7 +7,10 @@ class Event < ActiveRecord::Base
 
   scope :before, ->(end_time) { where("ends_at < ?", Event.format_date(end_time)) }
   scope :after, ->(start_time) { where("starts_at > ?", Event.format_date(start_time)) }
-  scope :not_rejected, -> { where("rejected != true") }
+  scope :not_rejected, -> { where(rejected: false) }
+  scope :rejected, -> { where(rejected: true) }
+  scope :pending, -> { where(approved: false, rejected: false) }
+  scope :lifo, -> { order("created_at desc") }
 
   after_create :approve!, if: Proc.new {|event| event.user.manager_id == nil }
 
