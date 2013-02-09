@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @events = contains_date_params? ? current_user.events.date_range(params[:start], params[:end]) : []
+    @events = contains_date_params? ? current_user.events.not_rejected.date_range(params[:start], params[:end]) : []
 
     respond_to do |format|
       format.json { render json: @events }

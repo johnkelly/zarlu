@@ -7,12 +7,13 @@ class Event < ActiveRecord::Base
 
   scope :before, ->(end_time) { where("ends_at < ?", Event.format_date(end_time)) }
   scope :after, ->(start_time) { where("starts_at > ?", Event.format_date(start_time)) }
+  scope :not_rejected, -> { where("rejected != true") }
 
   after_create :approve!, if: Proc.new {|event| event.user.manager_id == nil }
 
   def self.date_range(start_date, end_date)
-    range = self.after(start_date)
-    range << before(end_date)
+    range = self.after(start_date.to_i - 1.day.to_i)
+    range << before(end_date.to_i + 1.day.to_i)
     range.uniq
   end
 
