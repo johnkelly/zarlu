@@ -2,7 +2,7 @@
 layout: post
 title: How does Zarlu keep my data safe?
 ---
-###How does Zarlu keep my data safe?
+###How does Zarlu keep my data safe?### {: .center}
 In the past few years there has been a movement to move data from local computers into the cloud. Cloud Storage provides many benefits: it can be accessed from multiple devices, your data can stay synced between machines, and cloud providers are a backup for your data. One downside to cloud applications is that the user is giving up control of their data and trusting a 3rd party vendor to keep their data safe. As a cloud web application, I designed Zarlu to be worthy of your trust.
 
 #####SSL
