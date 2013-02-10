@@ -17,6 +17,7 @@ gem 'routing_concerns'
 
 gem 'jquery-turbolinks'
 gem 'bloggy'
+gem 'stripe'
 
 # Gems used only for assets
 group :assets do

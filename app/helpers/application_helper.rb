@@ -13,4 +13,12 @@ module ApplicationHelper
       "<i>#{User.find(manager_id).email.capitalize} approves my schedule</i>".html_safe
     end
   end
+
+  def display_card_info(subscriber)
+    if subscriber.customer_token.present?
+      "#{subscriber.card_type} XXXXXXXXXXXX#{subscriber.card_last4}"
+    else
+      "You have no credit card on file."
+    end
+  end
 end

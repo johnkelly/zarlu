@@ -12,6 +12,42 @@ describe Subscriber do
     it { should ensure_inclusion_of(:plan).in_array(['coach', 'business', 'business_select', 'first_class']) }
   end
 
+  describe "save_customer" do
+    context "valid" do
+      context "customer token nil" do
+        it "calls create_customer" do
+          coach_subscriber.stub(:customer_token).and_return(nil)
+          coach_subscriber.should_receive(:create_customer).and_return(true)
+          coach_subscriber.save_customer.should == true
+        end
+      end
+
+      context "customer token present" do
+        it "calls update_customer" do
+          coach_subscriber.stub(:customer_token).and_return("fake_token")
+          coach_subscriber.should_receive(:update_customer).and_return(true)
+          coach_subscriber.save_customer.should == true
+        end
+      end
+
+      context "Stripe Error" do
+        it "returns false" do
+          error_message = stub(message: "Stripe had an issue")
+          coach_subscriber.stub(:customer_token).and_return("fake_token")
+          coach_subscriber.should_receive(:update_customer).and_raise(Stripe::StripeError.new(error_message))
+          coach_subscriber.save_customer.should == false
+        end
+      end
+    end
+
+    context "invalid subscriber data" do
+      it "returns false" do
+        coach_subscriber.stub(:valid?).and_return(false)
+        coach_subscriber.save_customer.should == false
+      end
+    end
+  end
+
   describe "plan_users" do
     it "returns 2 for coach plan" do
       coach_subscriber.plan_users.should == 2

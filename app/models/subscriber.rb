@@ -1,6 +1,6 @@
 class Subscriber < ActiveRecord::Base
   has_many :users, dependent: :destroy
-  attr_accessible :plan, :card_token
+  attr_accessible :plan
 
   validates :plan, presence: true, inclusion: { in: %w(coach business business_select first_class) }
 
@@ -12,6 +12,22 @@ class Subscriber < ActiveRecord::Base
     "Business Select $100 / month" => "business_select",
     "First Class $150 / month" => "first_class"
   }
+
+  def save_customer
+    if valid?
+      if customer_token.present?
+        update_customer
+      else
+        create_customer
+      end
+    else
+      false
+    end
+  rescue Stripe::StripeError => e
+    logger.error "Stripe error while subscribing customer: #{e.message}"
+    self.card_token = nil
+    false
+  end
 
   def plan_users
     case plan
@@ -49,5 +65,26 @@ class Subscriber < ActiveRecord::Base
 
   def managers(users)
     users.select { |user| user.manager == true }
+  end
+
+  private
+
+  def create_customer
+    customer = Stripe::Customer.create(description: "Subscriber: #{id}", card: card_token, plan: plan)
+    self.customer_token = customer.id
+    store_card_info(customer.active_card)
+    true
+  end
+
+  def update_customer
+    customer = Stripe::Customer.retrieve(customer_token)
+    customer.update_subscription(plan: plan, card: card_token)
+    store_card_info(customer.active_card)
+    true
+  end
+
+  def store_card_info(card)
+    self.card_last4 = card.last4
+    self.card_type = card.type
   end
 end
