@@ -5,7 +5,7 @@ class SubscribersController < ApplicationController
 
   def show
     @user = User.new
-    @managers = @subscriber.managers(@users)
+    @managers = @subscriber.managers(@users).sort_by { |manager| manager.email }
     @no_manager_users = @subscriber.no_manager_assigned(@users)
   end
 

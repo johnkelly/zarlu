@@ -9,13 +9,18 @@
 @import "devise";
 @import "home";
 
+.navbar-inner {
+  padding-left: 0px !important;
+}
+
 .navbar, .navbar-inner {
   background: transparent !important;
   border: none;
   box-shadow: none;
+  margin-bottom: 0px !important;
 
   li {
-    margin-right: 2em;
+    margin-right: 1.5em;
     text-align: center;
 
     a {

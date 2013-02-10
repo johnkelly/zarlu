@@ -1,5 +1,5 @@
 <div class="centered_page">
-  <span></span><div class="login-center height_225">
+  <span></span><div class="login-center height_220">
   <div>
   <%= image_tag "https://secure.gravatar.com/avatar/HASH", width: 100, height: 100, class: "img-circle" %>
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
@@ -9,7 +9,7 @@
   </div>
     <div>
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <small class="float_right"><b><%= link_to "Create an account", new_registration_path(resource_name) %></b></small>
+        <small class="float_right"><b><%= link_to "Create an account", pricing_path %></b></small>
       <% end -%>
 
       <%- if controller_name != 'sessions' %>

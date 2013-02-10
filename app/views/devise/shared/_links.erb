@@ -3,7 +3,7 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <small class="float_right"><b><%= link_to "Create an account", new_registration_path(resource_name) %></b></small>
+  <small class="float_right"><b><%= link_to "Create an account", pricing_path %></b></small>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>

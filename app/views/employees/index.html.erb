@@ -1,32 +1,30 @@
-<div class="paper">
-  <h1>My employees' schedule</h1>
-  <p>(Only managers can view this page)</p>
-  <div class="row">
-    <div class="span11">
-      <h4>Pending Employee Time Off Requests</h4>
-      <table class="table">
-        <thead>
-          <th>Employee</th>
-          <th>Date</th>
-          <th>Subject</th>
-          <th>Explanation</th>
-          <th>&nbsp;</th>
-        </thead>
-        <tbody>
-          <% @my_employee_pending_events.each do |pending_event| %>
-            <tr>
-              <td><%= pending_event.user.email %></td>
-              <td><%= pending_event.starts_at.strftime('%m-%d-%Y') %></td>
-              <td><%= pending_event.title %></td>
-              <td><%= pending_event.description %></td>
-              <td>
-                <%= link_to "Approve", employee_url(pending_event, type: "approve"), method: :put, class: "btn btn-success" %>
-                <%= link_to "Reject", employee_url(pending_event, type: "reject"), method: :put, class: "btn btn-danger" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+<p class="pull-right">(Only managers can view this page)</p>
+<h1>Manage each of your employee's schedule</h1>
+<div class="row">
+  <div class="span11">
+    <h4>Pending Employee Time Off Requests</h4>
+    <table class="table">
+      <thead>
+        <th>Employee</th>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>Explanation</th>
+        <th>&nbsp;</th>
+      </thead>
+      <tbody>
+        <% @my_employee_pending_events.each do |pending_event| %>
+          <tr>
+            <td><%= pending_event.user.email %></td>
+            <td><%= pending_event.starts_at.strftime('%m-%d-%Y') %></td>
+            <td><%= pending_event.title %></td>
+            <td><%= pending_event.description %></td>
+            <td>
+              <%= link_to "Approve", employee_url(pending_event, type: "approve"), method: :put, class: "btn btn-success" %>
+              <%= link_to "Reject", employee_url(pending_event, type: "reject"), method: :put, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

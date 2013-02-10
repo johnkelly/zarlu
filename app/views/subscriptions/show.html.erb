@@ -1,42 +1,40 @@
-<div class="paper">
-  <div class="row">
-    <div class="span5">
-      <h3>My subscription information</h3>
-      <dl>
-        <dt>Current Plan</dt>
-        <dd><%= @subscriber.plan.titleize %></dd>
-        <dt>Max Users</dt>
-        <dd><%= @subscriber.plan_users %></dd>
-        <dt>Cost</dt>
-        <dd><%= number_to_currency(@subscriber.plan_cost) %> / month</dd>
-      </dl>
+<div class="row">
+  <div class="span5">
+    <h3>My subscription information</h3>
+    <dl>
+      <dt>Current Plan</dt>
+      <dd><%= @subscriber.plan.titleize %></dd>
+      <dt>Max Users</dt>
+      <dd><%= @subscriber.plan_users %></dd>
+      <dt>Cost</dt>
+      <dd><%= number_to_currency(@subscriber.plan_cost) %> / month</dd>
+    </dl>
+  </div>
+  <div class="span6">
+    <h3>My payment information</h3>
+    <dl>
+      <dt>Current Credit Card</dt>
+      <dd><%= display_card_info(@subscriber) %></dd>
+    </dl>
+    <hr />
+    <h4 class="mb15">Add / Change Credit Card</h4>
+    <p>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers. Our payment provider gives us your card type and last four digits, which we display so that you can know which of your credit cards we are charging.</p>
+    <p>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.</p>
+    <div id="stripe_error" class="alert alert-error hide">
+      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
-    <div class="span6">
-      <h3>My payment information</h3>
-      <dl>
-        <dt>Current Credit Card</dt>
-        <dd><%= display_card_info(@subscriber) %></dd>
-      </dl>
-      <hr />
-      <h4 class="mb15">Add / Change Credit Card</h4>
-      <p>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers. Our payment provider gives us your card type and last four digits, which we display so that you can know which of your credit cards we are charging.</p>
-      <p>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.</p>
-      <div id="stripe_error" class="alert alert-error hide">
-        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-      </div>
-      <h5>Card Number and CVC</h5>
-      <%= text_field_tag :card_number, nil, name: nil, placeholder: "Credit Card Number", class: "span2" %>
-      <%= text_field_tag :card_code, nil, name: nil, placeholder: "Security Code", class: "span2" %>
-      <h5>Card Expiration Date</h5>
-      <%= select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", class: "span2" } %>
-      <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+15 }, { name: nil, id: "card_year", class: "span2" } %>
+    <h5>Card Number and CVC</h5>
+    <%= text_field_tag :card_number, nil, name: nil, placeholder: "Credit Card Number", class: "span2" %>
+    <%= text_field_tag :card_code, nil, name: nil, placeholder: "Security Code", class: "span2" %>
+    <h5>Card Expiration Date</h5>
+    <%= select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", class: "span2" } %>
+    <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+15 }, { name: nil, id: "card_year", class: "span2" } %>
 
-      <h5>Select Plan</h5>
-      <%= form_for @subscriber, url: subscriptions_url, method: :put do |form| %>
-        <%= form.select :plan, Subscriber::PLANS, html: { class: "span4" } %>
-        <%= form.hidden_field :card_token %>
-        <%= form.submit "Save", class: "btn btn-success btn-large span4 mt25" %>
-      <% end %>
-    </div>
+    <h5>Select Plan</h5>
+    <%= form_for @subscriber, url: subscriptions_url, method: :put do |form| %>
+      <%= form.select :plan, Subscriber::PLANS, html: { class: "span4" } %>
+      <%= form.hidden_field :card_token %>
+      <%= form.submit "Save", class: "btn btn-success btn-large span4 mt25" %>
+    <% end %>
   </div>
 </div>

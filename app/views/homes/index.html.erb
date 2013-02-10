@@ -7,7 +7,7 @@
     <div class="span6">
       <ul>
         <li>
-          <strong>Manage employee schedules with ease.</strong>
+          <strong>Manage every employee schedule with ease.</strong>
           <p>Check employee schedules. Allow employees to submit time off requests, and approve employee time off requests with our intuitive software.</p>
         </li>
         <li>
@@ -37,7 +37,7 @@
 <hr/>
 <section class="feature_in_depth">
   <h3>
-    Now everyone can schedule and manage vacations, sick days, and more.
+    Zarlu provides each of your employees with a calendar and scheduler.
     <small>Managing schedules and calendars for an entire business has never been this simple.</small>
   </h3>
   <div class="feature row">
@@ -58,7 +58,7 @@
     </div>
     <div class="span6">
       <h4>Email Schedule and Calendar Changes</h4>
-      <p>Email timeoff@mail.zarlu.com to submit time off requests without logging into Zarlu! Use the email address that you signed up with and put the date of your time off request as the email's subject (mm-dd-yy or mm/dd/yy). Add a message to your email and Zarlu will notify your manager of your time off request with the message you provided. Zarlu does all the work for you! We will update your calendar with your time off request and notify your manager of your request.</p>
+      <p>Email timeoff@mail.zarlu.com to submit time off requests without logging into Zarlu! Use the email address that you signed up with and put the date of your time off request as the email's subject (mm-dd-yy or mm/dd/yy). Add a message to your email and Zarlu will notify your manager of your time off request with the message you provided. We will update your calendar with your time off request and notify your manager of your request. Zarlu does all the work for you!</p>
     </div>
   </div>
 
@@ -92,13 +92,17 @@
       </p>
     </div>
     <div class="span4">
-      <%= image_tag "pricing_zoom.png", width: 370, height: 150, alt: "Zarlu Scheduler Application Plans" %>
+      <%= link_to pricing_path do %>
+        <%= image_tag "pricing_zoom.png", width: 370, height: 150, alt: "Zarlu Scheduler Application Plans" %>
+      <% end %>
     </div>
   </div>
-  <h3>
-    Get started with our Free Plan.
-    <small>See how Zarlu can improve your business' scheduling with no risk or obligation.</small>
-  </h3>
+  <%= link_to pricing_path do %>
+    <h3>
+      Get started with our Free Plan.
+      <small>See how Zarlu can improve your business' scheduling with no risk or obligation.</small>
+    </h3>
+  <% end %>
   <div class="center">
   <%= link_to pricing_path, class: "btn btn-primary btn-huge btn-enormous" do %>
     See Plans &amp; Pricing<br/>

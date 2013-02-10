@@ -11,8 +11,15 @@
   <div class="container">
     <%= render partial: "layouts/flash_messages" %>
     <div class="navbar pt15">
-      <div class="navbar-inner nav-collapse collapse">
+      <div class="navbar-inner">
         <%= link_to "Zarlu", root_path, id: "logo" %>
+        <ul class="nav pull-right">
+          <li><%= link_to "Pricing", pricing_path %></li>
+          <li><%= link_to "Free Account", pricing_path %></li>
+          <li><%= link_to "Support", "#", id: "support_link" %></li>
+          <li><%= link_to "Blog", blog_path %></li>
+          <li><%= link_to "Log In →", new_user_session_path %></li>
+        </ul>
       </div>
     </div>
   </div>

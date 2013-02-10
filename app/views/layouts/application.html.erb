@@ -10,47 +10,27 @@
   <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
 </head>
 <body class="<%= controller.controller_path %>_<%= controller.action_name %>">
-  <div class="container">
-    <%= render partial: "layouts/flash_messages" %>
-    <div class="navbar mt5 pt15">
-      <div class="navbar-inner">
+  <%= render partial: "layouts/flash_messages" %>
+  <div class="container paper">
+    <div class="navbar">
+      <div class="navbar-inner border_bottom">
         <%= display_banner %>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <li><%= link_to "Calendar", home_path %></li>
-            <li><%= link_to "Requests", schedule_path(current_user) %></li>
-            <li><%= link_to "Employees", employees_path if current_user.manager? %></li>
+            <li><%= link_to "My Schedule", schedule_path(current_user) %></li>
+            <li><%= link_to "My Employees", employees_path if current_user.manager? %></li>
             <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
             <li><%= link_to "Support", "#", id: "support_link" %></li>
             <li><%= link_to "Blog", blog_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li>
-            <strong><%= link_to "Pricing", pricing_path %></strong>
-            <br/>
-            <small>Starting at Free</small>
-            </li>
-            <li>
-            <strong><%= link_to "Free Account", pricing_path %></strong>
-            <br/>
-            <small>Try Zarlu now</small>
-            </li>
-            <li>
-            <strong><%= link_to "Support", "#", id: "support_link" %></strong>
-            <br/>
-            <small>Contact us</small>
-            </li>
-            <li>
-            <strong><%= link_to "Blog", blog_path %></strong>
-            <br/>
-            <small>Learn more</small>
-            </li>
-            <li>
-            <strong><%= link_to "Log In →", new_user_session_path %></strong>
-            <br/>
-            <small>Access your account</small>
-            </li>
+            <li><%= link_to "Pricing", pricing_path %></li>
+            <li><%= link_to "Free Account", pricing_path %></li>
+            <li><%= link_to "Support", "#", id: "support_link" %></li>
+            <li><%= link_to "Blog", blog_path %></li>
+            <li><%= link_to "Log In →", new_user_session_path %></li>
           <% end %>
         </ul>
       </div>
