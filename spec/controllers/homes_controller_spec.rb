@@ -10,11 +10,22 @@ describe HomesController do
   end
 
   describe "#show" do
-    before do
-      sign_in users(:test_example_com)
-      get :show
+    context "user on free plan" do
+      before do
+        sign_in users(:test_example_com)
+        get :show
+      end
+      it { should respond_with(:success) }
     end
-    it { should respond_with(:success) }
+
+    context "user on premium plan with no credit card" do
+      before do
+        sign_in users(:freeloader_example_com)
+        get :show
+      end
+      it { should redirect_to(subscriptions_url) }
+      it { should set_the_flash[:alert] }
+    end
   end
 
   describe "#pricing" do

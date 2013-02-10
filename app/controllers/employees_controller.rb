@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_filter :authenticate_manager!
+  before_filter :authenticate_paid_account!
 
   def index
     @my_employees = current_user.employees

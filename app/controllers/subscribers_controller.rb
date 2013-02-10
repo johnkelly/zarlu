@@ -1,5 +1,6 @@
 class SubscribersController < ApplicationController
   before_filter :authenticate_manager!
+  before_filter :authenticate_paid_account!
   before_filter :shared_variables
 
   def show
