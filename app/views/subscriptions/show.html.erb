@@ -1,0 +1,37 @@
+<div class="paper">
+  <div class="row">
+    <div class="span5">
+      <h3>My subscription information</h3>
+      <dl>
+        <dt>Current Plan</dt>
+        <dd><%= @subscriber.plan.titleize %></dd>
+        <dt>Max Users</dt>
+        <dd><%= @subscriber.plan_users %></dd>
+        <dt>Cost</dt>
+        <dd><%= number_to_currency(@subscriber.plan_cost) %> / month</dd>
+      </dl>
+    </div>
+    <div class="span6">
+      <h3>My payment information</h3>
+      <dl>
+        <dt>Current Card Last 4 Digits</dt>
+        <dd>You have no credit card on file</dd>
+      </dl>
+      <hr />
+      <h4 class="mb15">Add / Change Credit Card</h4>
+      <h5>Card Number and CVC</h5>
+      <%= text_field_tag :card_number, nil, name: nil, placeholder: "Credit Card Number", class: "span2" %>
+      <%= text_field_tag :card_code, nil, name: nil, placeholder: "Security Code", class: "span2" %>
+      <h5>Card Expiration Date</h5>
+      <%= select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", class: "span2" } %>
+      <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+15 }, { name: nil, id: "card_year", class: "span2" } %>
+
+      <h5>Select Plan</h5>
+      <%= form_for @subscriber, url: "", method: :put do |form| %>
+        <%= form.select :plan, Subscriber::PLANS, html: { class: "span4" } %>
+        <%= form.hidden_field :card_token %>
+        <%= form.submit "Save", class: "btn btn-success btn-large span4 mt25" %>
+      <% end %>
+    </div>
+  </div>
+</div>

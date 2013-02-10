@@ -1,5 +1,5 @@
 <div class="paper">
-  <h2>Subscription: <%= @subscriber.plan.titleize %> Plan</h2>
+  <h2>Subscription: <%= @subscriber.plan.titleize %> Plan <%= link_to "Change Plan or Billing", subscriptions_path, class: "btn btn-primary" %></h2>
   <p>(Only managers can view this page)</p>
   <div class="row">
     <div class="span6">

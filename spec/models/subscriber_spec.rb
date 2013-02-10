@@ -17,16 +17,34 @@ describe Subscriber do
       coach_subscriber.plan_users.should == 2
     end
 
-    it "returns 25 for business plan" do
-      business_subscriber.plan_users.should == 25
+    it "returns 30 for business plan" do
+      business_subscriber.plan_users.should == 30
+    end
+
+    it "returns 75 for business select plan" do
+      business_select_subscriber.plan_users.should == 75
+    end
+
+    it "returns 150 for first class plan" do
+      first_class_subscriber.plan_users.should == 150
+    end
+  end
+
+  describe "plan_cost" do
+    it "returns 0 for coach plan" do
+      coach_subscriber.plan_cost.should == 0
+    end
+
+    it "returns 50 for business plan" do
+      business_subscriber.plan_cost.should == 50
     end
 
     it "returns 100 for business select plan" do
-      business_select_subscriber.plan_users.should == 100
+      business_select_subscriber.plan_cost.should == 100
     end
 
-    it "returns 200 for first class plan" do
-      first_class_subscriber.plan_users.should == 200
+    it "returns 150 for first class plan" do
+      first_class_subscriber.plan_cost.should == 150
     end
   end
 

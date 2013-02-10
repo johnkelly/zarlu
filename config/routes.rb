@@ -16,4 +16,5 @@ Zarlu::Application.routes.draw do
   resources :incoming_mails, only: %w[create]
   resources :employees, only: %w[index update]
   resources :schedules, only: %w[show]
+  resource :subscriptions, only: %w[update show]
 end
