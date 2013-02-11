@@ -31,6 +31,8 @@ show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
   $('#event_dialog').dialog(
     modal: true
     title: "New Event"
+    open: press_enter_to_save
+    close: unbind_press_enter_to_save
     buttons:
       [
         text: "Save"
@@ -43,6 +45,8 @@ show_edit_event_dialog = (event, jsEvent, view) ->
   $('#event_dialog').dialog(
     modal: true
     title: "Edit Event"
+    open: press_enter_to_save
+    close: unbind_press_enter_to_save
     buttons:
       [{
         text: "Save"
@@ -102,3 +106,13 @@ close_dialog = ->
 
 get_dialog_title = ->
   $('#event_dialog input#title').val()
+
+press_enter_to_save = ->
+  $('#dialog_form').keypress (e) ->
+    if e.keyCode is $.ui.keyCode.ENTER
+      e.preventDefault()
+      $("button:contains('Save')").trigger("click")
+
+unbind_press_enter_to_save = ->
+  $('#dialog_form').unbind("keypress")
+
