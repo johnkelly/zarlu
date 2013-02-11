@@ -18,6 +18,7 @@ gem 'routing_concerns'
 gem 'jquery-turbolinks'
 gem 'bloggy'
 gem 'stripe'
+gem 'newrelic_rpm'
 
 # Gems used only for assets
 group :assets do

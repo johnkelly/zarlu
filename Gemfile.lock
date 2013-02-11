@@ -103,6 +103,7 @@ GEM
     mocha (0.10.5)
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
+    newrelic_rpm (3.4.1)
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -212,6 +213,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   meta_request
+  newrelic_rpm
   pg
   rails
   routing_concerns
