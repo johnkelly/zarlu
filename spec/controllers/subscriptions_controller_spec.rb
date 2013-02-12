@@ -13,6 +13,7 @@ describe SubscriptionsController do
         put :update, subscriber: { plan: "first_class", card_token: "fake_token" }
       end
       it { should redirect_to subscriptions_url }
+      it { should set_the_flash[:analytics].to("/vp/add_first_class_plan") }
       it { should assign_to(:subscriber).with(subscriber) }
       it "should update the subscriber's plan" do
         subscriber.reload.plan.should == "first_class"
