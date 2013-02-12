@@ -1,24 +1,24 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
-gem 'rails'
-gem 'pg'
-gem 'unicorn'
-gem 'jquery-rails'
-gem 'coffee-rails'
-gem 'devise'
-gem 'fullcalendar-rails'
+gem 'rails', '~> 3.2.12'
+gem 'pg', '~> 0.14.1'
+gem 'unicorn', '~> 4.6.0'
+gem 'jquery-rails', '~> 2.2.1'
+gem 'coffee-rails', '~> 3.2.2'
+gem 'devise', '~> 2.2.3'
+gem 'fullcalendar-rails', '~> 1.5.4.0'
 
 # Rails 4 Features
-gem 'turbolinks'
-gem 'strong_parameters'
-gem 'cache_digests'
-gem 'routing_concerns'
+gem 'turbolinks', '~> 1.0.0'
+gem 'strong_parameters', '~> 0.1.6'
+gem 'cache_digests', '~> 0.2.0'
+gem 'routing_concerns', '~> 0.1.0'
 
-gem 'jquery-turbolinks'
-gem 'bloggy'
-gem 'stripe'
-gem 'newrelic_rpm'
+gem 'jquery-turbolinks', '~> 0.2.1'
+gem 'bloggy', '~> 0.2.1'
+gem 'stripe', '~> 1.7.10'
+gem 'newrelic_rpm', '~> 3.5.6.46'
 
 # Gems used only for assets
 group :assets do
