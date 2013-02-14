@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1" %>
   <%= tag :meta, name: "description", content: "Zarlu is an employee time off tracking web application. Submit, view, and manage employee time off requests with our easy to use calendar." %>
-  <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
+  <%= tag :meta, name: "application-name", content: "Zarlu", data: { name: "stripe-key", value: STRIPE_PUBLIC_KEY } %>
 </head>
 <body class="<%= controller.controller_path %>_<%= controller.action_name %>">
   <%= render partial: "layouts/flash_messages" %>

@@ -28,5 +28,5 @@ subscription =
 
 jQuery ->
   if $('.subscriptions_show').length || $('.subscriptions_create').length
-    Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
+    Stripe.setPublishableKey($('meta[data-name="stripe-key"]').attr('data-value'))
     subscription.setupForm()
