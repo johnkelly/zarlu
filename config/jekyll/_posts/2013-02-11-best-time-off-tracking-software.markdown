@@ -4,6 +4,7 @@ published: true
 title: Creating the best time off tracking software
 ---
 #Time off tracking software# {: .center}
+***
 Time off tracking software should be as easy to use and simple as possible. You shouldn't have to think about how to submit a time off request. It should be as simple as possible so that you can work on the tasks that need your attention. At Zarlu, I have designed in my opinion the best software for tracking employee time off requests. Each of your employees will receive a subscription to Zarlu when you sign up for an account, and they will be able to use our fully functional calendar, scheduler, and notification system to easily manage their work schedules.
 
 ##Easily approve time off requests

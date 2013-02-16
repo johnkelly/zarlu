@@ -1,0 +1,23 @@
+<div class="navbar">
+  <div class="nav_container navbar-inner">
+    <ul class="pull-right nav">
+      <% if user_signed_in? %>
+        <li><%= link_to "Calendar", home_path %></li>
+        <li><%= link_to "Schedule", schedule_path(current_user) %></li>
+        <li><%= link_to "Employees", employees_path if current_user.manager? %></li>
+        <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
+        <li><%= link_to "Settings", edit_user_registration_path %></li>
+        <li><%= link_to "Blog", blog_path %></li>
+        <li><%= link_to "Contact Us", "#", id: "support_link" %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Pricing", pricing_path %></li>
+        <li><%= link_to "Blog", blog_path %></li>
+        <li><%= link_to "Contact Us", "#", id: "support_link" %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", pricing_path %></li>
+      <% end %>
+    </ul>
+   <%= link_to "Zarlu", root_path, id: "logo" %>
+  </div>
+</div>

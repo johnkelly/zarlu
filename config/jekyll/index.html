@@ -2,10 +2,9 @@
 layout: application
 ---
 
-<header>
-  <h1>Zarlu Blog</h1>
-</header>
-<div class="posts">
+<div class="blog">
+  <h1 class="center">Zarlu Blog</h1>
+  <hr/>
   {% for post in site.posts %}
     <h3><a href="/blog{{ post.url }}">{{ post.title }}</a></h3>
   {% endfor %}

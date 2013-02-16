@@ -1,35 +1,37 @@
-<p class="pull-right">(Only managers can view this page)</p>
-<h2>Subscription: <%= @subscriber.plan.titleize %> Plan <%= link_to "Change Plan or Billing", subscriptions_path, class: "btn btn-primary" %></h2>
-<div class="row">
-  <div class="span6">
-    <h4>Employees (<%= @users.count %> / <%= @subscriber.plan_users %>)</h4>
-    <%= form_for @user, url: add_user_subscribers_url, html: { class: "mt25 form-inline" }, method: :post do |form| %>
-      <%= form.text_field :email, class: "input-medium", placeholder: "Email" %>
-      <%= form.password_field :password, class: "input-medium", placeholder: "Password" %>
-      <%= form.submit "Add", class: "btn btn-primary" %>
-    <% end %>
-    <h4>Employees without a manager</h4>
-    <p>(Click on employee and drag the tag under the manager)</p>
-    <ul class="unstyled sortable" data-manager_id="nil">
-      <% @no_manager_users.each do |user| %>
-        <li class="alert alert-info" data-user_id="<%= user.id %>">
-        <%= user.email %>
-        <%= link_to "Manager", promote_to_manager_subscribers_path(user_id: user),
-          method: :put, class: "btn btn-info btn-mini float_right" unless user.manager? %>
-        </li>
+<div class="container paper">
+  <p class="pull-right">(Only managers can view this page)</p>
+  <h2>Subscription: <%= @subscriber.plan.titleize %> Plan <%= link_to "Change Plan or Billing", subscriptions_path, class: "btn btn-primary" %></h2>
+  <div class="row">
+    <div class="span6">
+      <h4>Employees (<%= @users.count %> / <%= @subscriber.plan_users %>)</h4>
+      <%= form_for @user, url: add_user_subscribers_url, html: { class: "mt25 form-inline" }, method: :post do |form| %>
+        <%= form.text_field :email, class: "input-medium", placeholder: "Email" %>
+        <%= form.password_field :password, class: "input-medium", placeholder: "Password" %>
+        <%= form.submit "Add", class: "btn btn-primary" %>
       <% end %>
-    </ul>
-  </div>
-  <div class="span5">
-    <h4>Managers</h3>
-    <p>(Managers approve schedules of their employees)</p>
-    <% @managers.each do |manager| %>
-      <h5><%= manager.email.capitalize %> approves:</h5>
-      <ul class="unstyled sortable" data-manager_id="<%= manager.id %>">
-        <% manager.employees.each do |employee| %>
-          <li class="alert alert-info" data-user_id="<%= employee.id %>"><%= employee.email %></li>
+      <h4>Employees without a manager</h4>
+      <p>(Click on employee and drag the tag under the manager)</p>
+      <ul class="unstyled sortable" data-manager_id="nil">
+        <% @no_manager_users.each do |user| %>
+          <li class="alert alert-info" data-user_id="<%= user.id %>">
+          <%= user.email %>
+          <%= link_to "Manager", promote_to_manager_subscribers_path(user_id: user),
+            method: :put, class: "btn btn-info btn-mini float_right" unless user.manager? %>
+          </li>
         <% end %>
       </ul>
-    <% end %>
+    </div>
+    <div class="span5">
+      <h4>Managers</h3>
+      <p>(Managers approve schedules of their employees)</p>
+      <% @managers.each do |manager| %>
+        <h5><%= manager.email.capitalize %> approves:</h5>
+        <ul class="unstyled sortable" data-manager_id="<%= manager.id %>">
+          <% manager.employees.each do |employee| %>
+            <li class="alert alert-info" data-user_id="<%= employee.id %>"><%= employee.email %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>
