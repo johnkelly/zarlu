@@ -1,10 +1,16 @@
-div.home_paper {
+div.white_paper {
   background: #FFF;
   border-radius: 3px;
   width: 100%;
 }
 
 div.grey_paper {
+  background: #F1F3F4;
+  border-radius: 3px;
+  width: 100%;
+}
+
+div.blue_paper {
   background: #373F4A;
   width: 100%;
   color: #FFF;
@@ -12,19 +18,21 @@ div.grey_paper {
 }
 
 .screenshots {
-  background-size: 1000px 603px;
+  background-size: 800px 480px;
   background-repeat:no-repeat;
-  min-height: 603px;
+  min-height: 480px;
   background-image: image-url("macbook_air.png");
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 
   .screenshot {
-    padding-top: 65px;
-    width: 702px;
+    padding-top: 52px;
   }
 }
 .carousel-inner {
-  margin-left: 151px;
-  width: 702px;
+  margin-left: 120px;
+  width: 562px;
 }
 
 .features {
