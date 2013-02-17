@@ -1,12 +1,12 @@
 <div id="flash_messages">
   <% if flash[:notice].present? %>
-    <div class="alert alert-info">
+    <div class="alert alert-info mt50 mb-50">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <p><%= flash[:notice] %></p>
     </div>
   <% end %>
   <% if flash[:alert].present? %>
-    <div class="alert alert-error">
+    <div class="alert alert-error mt50 mb-50">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <p><%= flash[:alert] %></p>
     </div>

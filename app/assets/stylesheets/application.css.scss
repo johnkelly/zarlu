@@ -1,13 +1,13 @@
 @import "bootstrap";
-
-// Responsive styles go here in case you want them
-@import "bootstrap-responsive";
 @import "jquery-ui-1.9.2-custom";
 @import "fullcalendar";
 @import "calendar";
 @import "global";
+@import "button";
+@import "navbar";
 @import "devise";
 @import "home";
+@import "plan";
 @import "blog";
 
 #logo {

@@ -1,114 +1,128 @@
-<div class="container paper">
-  <header class="center">
-    <h1>
-      Employee time off tracking and management software
-      <small>Manage your employee schedules and time off requests with our easy to use software.</small>
-    </h1>
-    <div class="row">
-      <div class="span6">
-        <ul>
-          <li>
-            <strong>Approve or reject employee time off requests.</strong>
-            <p>Check employee schedules. Allow employees to submit time off requests, and approve employee time off requests with our intuitive software.</p>
-          </li>
-          <li>
-            <strong>An employee can submit a time off request from their calendar or by email.</strong>
-            <p>Zarlu provides several ways for an employee to change their schedule. Submit time off requests through the method that makes most sense for you.</p>
-          </li>
-          <li>
-            <strong>Track employee time off across your business.</strong>
-            <p>Zarlu makes it easy to group your business into different grouping, departments, or teams. Ensure that the correct employee is overseeing a department's time off requests.</p>
-          </li>
-        </ul>
-      </div>
-      <div class="span6 left">
-        <%= image_tag "calendar_week.png", width: "500", height: "281", alt: "Calendar Software" %>
-      </div>
-    </div>
-    <div>
-      <%= link_to pricing_path, class: "btn btn-primary btn-huge btn-enormous" do %>
-        Free to try. No time limit.<br/>
-        <small>No credit card required for our starter plan.</small>
+<div class="grey_paper mt50">
+  <div class="container">
+    <header>
+    <div class="w450 pull-right">
+      <%= link_to pricing_path, class: "btn btn-primary btn-action" do %>
+        Try it Free today<br/>
+        <small>No time limit. No credit card.</small>
       <% end %>
     </div>
-    <h2>
-      Zarlu is a powerful scheduling and calendar software application that allows a business to manage employee schedules and time off. Zarlu is accessed through any web enabled device with all data securely stored in the cloud. Zarlu provides your employees and managers with powerful scheduling and calendar tools to create and manage schedules.  Managers can approve time off requests, vacations, or sick days, and more!
+    <div class="w550">
+      <h1>
+        Track Employee Time Off
+        <small>Trusted by businesses around the world to track time off requests.</small>
+        <small>Zarlu gives you everything you need to manage employee time off.</small>
+      </h1>
+    </div>
+    </header>
+  </div>
+</div>
+<div class="home_paper">
+  <div class="container">
+    <div class="screenshots">
+      <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="active item screenshot">
+            <%= image_tag "calendar_large.png" %>
+          </div>
+          <div class="item screenshot">
+            <%= image_tag "approve_large.png" %>
+          </div>
+          <div class="item screenshot">
+            <%= image_tag "email_time_off.png" %>
+          </div>
+          <div class="item screenshot">
+            <%= image_tag "manage_account.png" %>
+          </div>
+          <div class="item screenshot">
+            <%= image_tag "schedule_large.png" %>
+          </div>
+        </div>
+        <%= link_to "&nbsp;&lsaquo;".html_safe, "#myCarousel", class: "carousel-control left", data: { slide: "prev" } %>
+        <%= link_to "&rsaquo;".html_safe, "#myCarousel", class: "carousel-control right", data: { slide: "next" } %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grey_paper">
+  <div class="container">
+    <h2 class="center">
+      Give each of your employees access to our time off tracking software.
+      <br/>
+      <small>Easy for an employee to submit requests and easy for managment to track.</small>
     </h2>
-  </header>
-  <hr/>
-  <section class="feature_in_depth">
-    <h3>
-      Zarlu provides each of your employees with a calendar and scheduler.
-      <small>Managing schedules and calendars for an entire business has never been this simple.</small>
-    </h3>
-    <div class="feature row">
-      <div class="span6 offset1">
-        <h4>Approve or Reject Employee Time Off Requests</h4>
+  </div>
+</div>
+<div class="home_paper">
+  <div class="container features pt40">
+    <div>
+      <div class="feature_picture pull-right">
+        <%= image_tag "approve_large.png" %>
+      </div>
+      <div class="feature_text">
+        <h3 class="blue">Approve or Reject Employee Time Off</h3>
         <p>
         Approve, modify, or reject your employees time off requests or schedule changes with our easy to use interfaces. Zarlu gives you powerful tools to administrate schedules in an easy to use intuitive way. It has never been this easy!
         </p>
       </div>
-      <div class="span4">
-        <%= image_tag "approve.png", width: 370, height: 228, alt: "Manage Employees" %>
-      </div>
+      <div class="clearfix"></div>
     </div>
-
-    <div class="feature row">
-      <div class="span4 offset1">
-        <%= image_tag "zarlu_email.png", width: 370, height: 228, alt: "Email Schedule" %>
-      </div>
-      <div class="span6">
-        <h4>Email Schedule and Calendar Changes</h4>
-        <p>Email timeoff@mail.zarlu.com to submit time off requests without logging into Zarlu! Use the email address that you signed up with and put the date of your time off request as the email's subject (mm-dd-yy or mm/dd/yy). Add a message to your email and Zarlu will notify your manager of your time off request with the message you provided. We will update your calendar with your time off request and notify your manager of your request. Zarlu does all the work for you!</p>
-      </div>
-    </div>
-
-    <div class="feature row">
-      <div class="span6 offset1">
-        <h4>Interactive Calendar and Scheduler</h4>
-        <p>Every employee subscription comes with a fully featured calendar. Each calendar can be viewed as the whole month, week, or a single day. Schedule for multiple days or as little as 15 minutes. Drag and Drop events as your schedule changes. Increase the event's time by simpling dragging the event. To create a new calendar event simply click on a day, hour, or minute and drag your mouse/finger to the end time. It's that easy!</p>
-      </div>
-      <div class="span4">
-        <%= image_tag "calendar.png", width: 370, height: 228, alt: "Employee Calendar and Scheduler" %>
-      </div>
-    </div>
-
-    <div class="feature row">
-      <div class="span4 offset1">
-        <%= image_tag "employee_sort.png", width: 370, height: 228, alt: "Employee Management" %>
-      </div>
-      <div class="span6">
-        <h4>Scheduler Setup in 1-2</h4>
+    <hr/>
+    <div>
+      <div class="feature_text pull-right">
+        <h3 class="blue">Email Schedule and Calendar Changes</h3>
         <p>
-        Jumping into a new software application usually means dealing with a painful data import process. Zarlu has streamlined the employee import process to be as efficient and quick as posssible. Simply enter an employee's work email and a pass phrase they can change later.  That's it! No confirmation emails or long sign up process.  The employee is then ready to start using Zarlu!  Grouping employees by manager to approve their schedule can be done on the same page by simply clicking on the employee and dragging their email under the manager's email. With those two steps your account is completely setup!
+        Email timeoff@mail.zarlu.com to submit time off requests without logging into Zarlu! Use the email address that you signed up with and put the date of your time off request as the email's subject (mm-dd-yy or mm/dd/yy). Add a message to your email and Zarlu will notify your manager of your time off request with the message you provided. We will update your calendar with your time off request and notify your manager of your request. Zarlu does all the work for you!
+        </p>
+      </div>
+      <div class="feature_picture">
+        <%= image_tag "email_time_off.png" %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <hr/>
+    <div>
+      <div class="feature_picture pull-right">
+        <%= image_tag "calendar_large.png" %>
+      </div>
+      <div class="feature_text">
+        <h3 class="blue">Interactive Calendar and Scheduler</h3>
+        <p>
+        Every employee subscription comes with a fully featured calendar. Each calendar can be viewed as the whole month, week, or a single day. Schedule for multiple days or as little as 15 minutes. Drag and Drop events as your schedule changes. Increase the event's time by simpling dragging the event. To create a new calendar event simply click on a day, hour, or minute and drag your mouse/finger to the end time. It's that easy!
         </p>
       </div>
     </div>
-
-    <div class="feature row">
-      <div class="span6 offset1">
-        <h4>Choose the plan that is right for YOU.</h4>
+    <hr/>
+    <div>
+      <div class="feature_text pull-right">
+        <h3 class="blue">Scheduler Setup in 1-2</h3>
         <p>
-          We offer a variety of plans, so that there is plan that will meet your needs. Whether you are an individual, start up, small business, or large corporation. We have the plan for you. Choose from plans that start at $0/month.
+        Jumping into a new software application usually means dealing with a painful data import process. Zarlu has streamlined the employee import process to be as efficient and quick as posssible. Simply enter an employee's work email and a pass phrase they can change later. That's it! No confirmation emails or long sign up process. The employee is then ready to start using Zarlu! Grouping employees by manager to approve their schedule can be done on the same page by simply clicking on the employee and dragging their email under the manager's email. With those two steps your account is completely setup!
         </p>
       </div>
-      <div class="span4">
-        <%= link_to pricing_path do %>
-          <%= image_tag "pricing_zoom.png", width: 370, height: 150, alt: "Zarlu Scheduler Application Plans" %>
-        <% end %>
+      <div class="feature_picture">
+        <%= image_tag "manage_account.png" %>
       </div>
+      <div class="clearfix"></div>
     </div>
-    <%= link_to pricing_path do %>
-      <h3>
-        Get started with our Free Plan.
-        <small>See how Zarlu can improve your business' scheduling with no risk or obligation.</small>
-      </h3>
-    <% end %>
-    <div class="center">
+    <hr/>
+    <div>
+      <div class="feature_picture pull-right">
+        <%= image_tag "pricing.png" %>
+      </div>
+      <div class="feature_text">
+        <h3 class="blue">Choose the plan that is right for you.</h3>
+        <p>
+        We offer a variety of plans, so that there is plan that will meet your needs. Whether you are an individual, start up, small business, or large corporation. We have the plan for you. Choose from plans that start at $0/month.
+        </p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="center pt20 pb20">
     <%= link_to pricing_path, class: "btn btn-primary btn-huge btn-enormous" do %>
-      See Plans &amp; Pricing<br/>
-      <small>Starting at $0 / month</small>
+      Try it Free today<br/>
+      <small>No time limit. No credit card.</small>
     <% end %>
-    </div>
-  </section>
+  </div>
 </div>

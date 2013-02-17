@@ -1,13 +1,16 @@
-span.fc-button-inner, span.fc-button{
-  background-repeat: none !important;
-  background-color: #006CCC !important;
-  color: #FFF !important;
-  border: none !important;
-  border-radius: 5px;
-  height: 25px;
-  margin-right: 5px !important;
+#calendar {
+  span.fc-button-inner, span.fc-button{
+    background-repeat: none !important;
+    background-color: #006CCC !important;
+    color: #FFF !important;
+    border: none !important;
+    border-radius: 5px;
+    height: 25px;
+    margin-right: 5px !important;
+  }
+
+  .fc-state-default .fc-button-effect {
+    top: 0;
+  }
 }
 
-.fc-state-default .fc-button-effect {
-  top: 0;
-}

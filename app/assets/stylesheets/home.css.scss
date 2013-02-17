@@ -1,128 +1,73 @@
-div.paper {
+div.home_paper {
   background: #FFF;
-  padding: 10px 25px 50px 25px;
-  margin-top: 65px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+div.grey_paper {
+  background: #373F4A;
+  width: 100%;
+  color: #FFF;
+  padding-bottom: 20px;
+}
+
+.screenshots {
+  background-size: 1000px 603px;
+  background-repeat:no-repeat;
+  min-height: 603px;
+  background-image: image-url("macbook_air.png");
+
+  .screenshot {
+    padding-top: 65px;
+    width: 702px;
+  }
+}
+.carousel-inner {
+  margin-left: 151px;
+  width: 702px;
+}
+
+.features {
+  padding-bottom: 30px;
+
+  .feature_picture {
+    width: 400px;
+  }
+
+  .feature_text {
+    width: 500px;
+
+    p {
+      line-height: 25px;
+      font-size: 18px;
+    }
+  }
+}
+
+.blue {
+  color: #05C;
+  font-family: 'Droid Serif', serif;
+  font-size: 25px;
+
+  small {
+    color: #444;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 18px;
+  }
 }
 
 header {
-  padding-top: 20px;
+  margin-left: 0px !important;
+  height: 110px;
+  padding-top: 10px;
 
   h1 {
-    font-weight: 300;
-    padding-bottom: 20px;
-
+    margin-left: 15px;
     small {
       display: block;
       font-size: 16px;
       padding-top: 10px;
+      color: #FFF;
     }
   }
-
-  .blue {
-    color: #05C;
-    font-family: 'Droid Serif', serif;
-    text-align: center;
-    padding-bottom: 50px;
-
-    small {
-      color: #444;
-      font-family: 'Droid Sans', sans-serif;
-      font-size: 18px;
-    }
-  }
-
-  h2 {
-    font-weight: 300;
-    padding-top: 20px;
-    margin: auto;
-    line-height: 33px;
-    text-align: left;
-    font-size: 20px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-
-  ul {
-    padding-left: 45px;
-    padding-bottom: 10px;
-
-    li {
-      padding-left: 36px;
-      background: url(checkmark.png) no-repeat left top;
-      margin-bottom: 10px;
-      font-size: 16px;
-      line-height: 26px;
-      text-align: left;
-      list-style: none;
-    }
-  }
-  a small {
-    font-size: 14px;
-  }
-}
-
-section.feature_in_depth {
-  text-align: left;
-  margin-bottom: 50px;
-
-  .feature.row {
-    margin-top: 75px;
-
-    .span6 p {
-      font-size: 16px;
-      line-height: 26px;
-    }
-  }
-
-  h3 {
-    margin: 25px 0 50px;
-    color: #05C;
-    font-size: 32px;
-    font-weight: 300;
-    font-family: 'Droid Serif', serif;
-    text-align: center;
-
-    small {
-      display: block;
-      color: #444;
-      margin-top: 10px;
-      font-family: 'Droid Sans', sans-serif;
-      font-weight: 300;
-      font-size: 18px;
-    }
-  }
-}
-.plans {
-  .span3 {
-    background: #F7F6F4;
-    min-height: 370px;
-
-    h5 {
-      text-align: left;
-      padding-left: 15px;
-    }
-  }
-}
-.plan_name {
-  height: 40px;
-  font-size: 25px;
-  text-align: center;
-  padding-top: 10px;
-  color: #fff;
-}
-
-.coach {
-  background: #FA9B18;
-}
-
-.business {
-  background: #51B851;
-}
-
-.business_select {
-  background: #007ECC;
-}
-
-.first_class {
-  background: #52BCDA;
 }
