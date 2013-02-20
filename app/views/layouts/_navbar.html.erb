@@ -14,8 +14,8 @@
         <li><%= link_to "Pricing", pricing_path %></li>
         <li><%= link_to "Blog", blog_path %></li>
         <li><%= link_to "Contact Us", "#", id: "support_link" %></li>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-        <li><%= link_to "Sign Up", pricing_path %></li>
+        <li><div><%= link_to "Sign Up", pricing_path, class: "btn btn-success mr15" %></div></li>
+        <li><div><%= link_to "Log In", new_user_session_path, class: "btn btn-primary" %></div></li>
       <% end %>
     </ul>
    <%= link_to "Zarlu", root_path, id: "logo" %>
