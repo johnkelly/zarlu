@@ -4,17 +4,18 @@ div.white_paper {
   width: 100%;
 }
 
-div.grey_paper {
-  background: #F1F3F4;
-  border-radius: 3px;
-  width: 100%;
-}
-
 div.blue_paper {
-  background: #373F4A;
   width: 100%;
   color: #FFF;
   padding-bottom: 20px;
+  background: -moz-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+  background: -webkit-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+  background: linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+}
+
+div.dark_blue_paper {
+  background: #373F4A;
+  color: #FFF;
 }
 
 .screenshots {
