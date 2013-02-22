@@ -106,8 +106,16 @@ div.paper {
 }
 
 //Heights
+.full_page {
+  min-height: 600px;
+}
+
 .height_25{
   height: 25px;
+}
+
+.height_55 {
+  height: 55px;
 }
 
 .height_220 {

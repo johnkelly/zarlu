@@ -1,13 +1,21 @@
-<div class="centered_page">
-  <span></span><div class="login-center height_285">
-  <div>
-  <%= image_tag "https://secure.gravatar.com/avatar/HASH", width: 100, height: 100, class: "img-circle" %>
+<div class="blue_paper mt50 height_55">
+  <div class="container">
+    <header>
+    <h1 class="center">Welcome Back! Your Subscription Is A Click Away.</h1>
+    </header>
+  </div>
+</div>
+<div class="devise_box">
+  <div class="navigation_link">
+    <ul class="nav nav-pills">
+      <li class="active"><%= link_to "Sign In", new_user_session_path %></li>
+      <li><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
+      <li><%= link_to "Sign Up", pricing_path %></li>
+    </ul>
+  </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="mb20"><%= f.email_field :email, placeholder: "Email address" %></div>
-    <div><%= f.password_field :password, placeholder: "Secret phrase" %></div>
-    <div><%= f.submit "Log in", class: "btn btn-primary", disable_with: "Logging in..." %></div>
+    <div><%= f.email_field :email, placeholder: "Email address", class: "input-xlarge" %></div>
+    <div><%= f.password_field :password, placeholder: "Secret phrase", class: "input-xlarge" %></div>
+    <div><%= f.submit "Sign In", class: "btn btn-primary btn-large", disable_with: "Signing in..." %></div>
   <% end %>
-  </div>
-    <div class="pt5"><%= render "devise/shared/links" %></div>
-  </div>
 </div>

@@ -1,20 +1,23 @@
-<div class="centered_page">
-  <span></span><div class="login-center height_395">
-    <div>
-      <%= image_tag "https://secure.gravatar.com/avatar/HASH", width: 100, height: 100, class: "img-circle" %>
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-        <p><strong>Fill out the form below to signup.</strong></p>
-        <p><strong><%= @plan.titleize if @plan %> Plan</strong>
-        <%= link_to "Change Plan", pricing_path, class: "btn-small btn-inverse v-align-top" %></p>
-        <%= hidden_field_tag 'plan', @plan %>
-        <div class="mb20"><%= f.email_field :email, placeholder: "Email address" %></div>
-
-        <div class="mb20"><%= f.password_field :password, placeholder: "Secret phrase" %></div>
-
-        <div><%= f.password_field :password_confirmation, placeholder: "Secret phrase confirmation" %></div>
-        <div><%= f.submit "Create", class: "btn btn-primary", disable_with: "Creating..." %></div>
-      <% end %>
-    </div>
-    <div><%= render "devise/shared/links" %></div>
+<div class="blue_paper mt50 height_55">
+  <div class="container">
+    <header>
+    <h1 class="center">Start Scheduling Time Off Requests In Seconds</h1>
+    </header>
   </div>
+</div>
+<div class="devise_box">
+  <div class="navigation_link">
+    <ul class="nav nav-pills">
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+      <li><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
+      <li class="active"><%= link_to "Sign Up", pricing_path %></li>
+    </ul>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= hidden_field_tag 'plan', @plan %>
+    <div><%= f.email_field :email, placeholder: "Email address", class: "input-xlarge" %></div>
+    <div><%= f.password_field :password, placeholder: "Secret phrase", class: "input-xlarge" %></div>
+    <div><%= f.password_field :password_confirmation, placeholder: "Secret phrase confirmation", class: "input-xlarge" %></div>
+    <div><%= f.submit "Sign Up", class: "btn btn-success btn-large", disable_with: "Creating..." %></div>
+  <% end %>
 </div>
