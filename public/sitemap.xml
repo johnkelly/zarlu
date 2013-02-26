@@ -1,42 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-  <loc>https://zarlu.com/</loc>
+  <loc>https://www.zarlu.com/</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/pricing</loc>
+  <loc>https://www.zarlu.com/pricing</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/blog</loc>
+  <loc>https://www.zarlu.com/blog</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/sign_in</loc>
+  <loc>https://www.zarlu.com/users/sign_in</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/sign_up?plan=coach</loc>
+  <loc>https://www.zarlu.com/users/sign_up?plan=coach</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/sign_up?plan=business</loc>
+  <loc>https://www.zarlu.com/users/sign_up?plan=business</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/sign_up?plan=business_select</loc>
+  <loc>https://www.zarlu.com/users/sign_up?plan=business_select</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/sign_up?plan=first_class</loc>
+  <loc>https://www.zarlu.com/users/sign_up?plan=first_class</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/blog/zarlu-employee-calendar-and-scheduler-goes-live</loc>
+  <loc>https://www.zarlu.com/blog/zarlu-employee-calendar-and-scheduler-goes-live</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/blog/how-does-zarlu-keep-my-data-safe</loc>
+  <loc>https://www.zarlu.com/blog/how-does-zarlu-keep-my-data-safe</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/blog/best-time-off-tracking-software</loc>
+  <loc>https://www.zarlu.com/blog/best-time-off-tracking-software</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/sign_up</loc>
+  <loc>https://www.zarlu.com/blog/when-to-take-sick-days</loc>
 </url>
 <url>
-  <loc>https://zarlu.com/users/password/new</loc>
+  <loc>https://www.zarlu.com/blog/pros-and-cons-of-unlimited-time-off-policies</loc>
+</url>
+<url>
+  <loc>https://www.zarlu.com/blog/overcoming-peer-pressure-to-not-take-vacations</loc>
+</url>
+<url>
+  <loc>https://www.zarlu.com/users/sign_up</loc>
+</url>
+<url>
+  <loc>https://www.zarlu.com/users/password/new</loc>
 </url>
 </urlset>
