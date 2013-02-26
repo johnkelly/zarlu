@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: Creating the best time off tracking software
+title: Creating The Best Time Off Tracking Software
 ---
 #Time off tracking software# {: .center}
 ***

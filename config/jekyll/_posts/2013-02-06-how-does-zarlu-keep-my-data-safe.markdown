@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How does Zarlu secure my data safe?
+title: How Does Zarlu Secure My Data?
 ---
 #How does Zarlu secure my data?# {: .center}
 ***
