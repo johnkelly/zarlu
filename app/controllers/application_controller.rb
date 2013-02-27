@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :redirect_root_to_www
 
   def after_sign_in_path_for(resource)
     home_path
@@ -12,6 +13,14 @@ class ApplicationController < ActionController::Base
   def authenticate_paid_account!
     if current_user.subscriber.plan != "coach" && current_user.subscriber.customer_token.blank?
       return redirect_to subscriptions_url, alert: "Paid accounts must have a credit card. Please add a credit card to use Zarlu."
+    end
+  end
+
+  private
+
+  def redirect_root_to_www
+    if Rails.env.production? and request.try(:subdomain) != "wwww"
+      redirect_to request.protocol + 'www.zarlu.com' + request.fullpath, status: 301
     end
   end
 end
