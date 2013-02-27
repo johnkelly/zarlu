@@ -4,7 +4,7 @@
  <title>Zarlu Blog</title>
  <link href="www.zarlu.com/atom.xml" rel="self"/>
  <link href="www.zarlu.com"/>
- <updated>2013-02-26T09:22:13-07:00</updated>
+ <updated>2013-02-26T18:22:40-08:00</updated>
  <id>www.zarlu.com</id>
  <author>
    <name>Zarlu Blog</name>
@@ -14,7 +14,7 @@
  <entry>
    <title>When To Take Sick Days</title>
    <link href="YOUR_URL/when-to-take-sick-days"/>
-   <updated>2013-02-26T00:00:00-07:00</updated>
+   <updated>2013-02-26T00:00:00-08:00</updated>
    <id>BLOG_URL/when-to-take-sick-days</id>
    <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;when_to_take_sick_days&#39;&gt;When to take sick days&lt;/h1&gt;
 &lt;hr /&gt;
@@ -34,7 +34,7 @@
  <entry>
    <title>The Pros And Cons Of Unlimited Time Off Policies</title>
    <link href="YOUR_URL/pros-and-cons-of-unlimited-time-off-policies"/>
-   <updated>2013-02-26T00:00:00-07:00</updated>
+   <updated>2013-02-26T00:00:00-08:00</updated>
    <id>BLOG_URL/pros-and-cons-of-unlimited-time-off-policies</id>
    <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;the_pros_and_cons_of_unlimited_time_off_policies&#39;&gt;The Pros And Cons Of Unlimited Time Off Policies&lt;/h1&gt;
 &lt;hr /&gt;
@@ -56,7 +56,7 @@
  <entry>
    <title>Overcoming Peer Pressure To Not Take Vacations</title>
    <link href="YOUR_URL/overcoming-peer-pressure-to-not-take-vacations"/>
-   <updated>2013-02-26T00:00:00-07:00</updated>
+   <updated>2013-02-26T00:00:00-08:00</updated>
    <id>BLOG_URL/overcoming-peer-pressure-to-not-take-vacations</id>
    <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;overcoming_peer_pressure_to_not_take_vacations&#39;&gt;Overcoming peer pressure to not take vacations&lt;/h1&gt;
 &lt;hr /&gt;
@@ -76,7 +76,7 @@
  <entry>
    <title>Creating The Best Time Off Tracking Software</title>
    <link href="YOUR_URL/best-time-off-tracking-software"/>
-   <updated>2013-02-11T00:00:00-07:00</updated>
+   <updated>2013-02-11T00:00:00-08:00</updated>
    <id>BLOG_URL/best-time-off-tracking-software</id>
    <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;time_off_tracking_software&#39;&gt;Time off tracking software&lt;/h1&gt;
 &lt;hr /&gt;
@@ -96,7 +96,7 @@
  <entry>
    <title>Zarlu Employee Calendar and Scheduler Goes Live</title>
    <link href="YOUR_URL/zarlu-employee-calendar-and-scheduler-goes-live"/>
-   <updated>2013-02-06T00:00:00-07:00</updated>
+   <updated>2013-02-06T00:00:00-08:00</updated>
    <id>BLOG_URL/zarlu-employee-calendar-and-scheduler-goes-live</id>
    <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;zarlu_employee_time_off_tracking_software&#39;&gt;Zarlu Employee Time Off Tracking Software&lt;/h1&gt;
 &lt;hr /&gt;
@@ -114,7 +114,7 @@
  <entry>
    <title>How Does Zarlu Secure My Data?</title>
    <link href="YOUR_URL/how-does-zarlu-keep-my-data-safe"/>
-   <updated>2013-02-06T00:00:00-07:00</updated>
+   <updated>2013-02-06T00:00:00-08:00</updated>
    <id>BLOG_URL/how-does-zarlu-keep-my-data-safe</id>
    <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;how_does_zarlu_secure_my_data&#39;&gt;How does Zarlu secure my data?&lt;/h1&gt;
 &lt;hr /&gt;
