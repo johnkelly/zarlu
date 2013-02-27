@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   def redirect_root_to_www
-    if Rails.env.production? and request.try(:subdomain) != "wwww"
+    if Rails.env.production? && request.subdomain.blank?
       redirect_to request.protocol + 'www.zarlu.com' + request.fullpath, status: 301
     end
   end
