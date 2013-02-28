@@ -13,7 +13,7 @@
   <% if content_for? :meta_description %>
     <%= tag :meta, name: "description", content: content_for(:meta_description) %>
   <% else %>
-    <%= tag :meta, name: "description", content: "Zarlu is an employee time off tracking web application. Submit, view, and manage employee time off requests with our easy to use calendar." %>
+    <%= tag :meta, name: "description", content: "Zarlu is an employee time off tracking web application. Submit, view, and manage employee time off requests with our easy to use software." %>
   <% end %>
   <%= tag :meta, name: "application-name", content: "Zarlu", data: { name: "stripe-key", value: STRIPE_PUBLIC_KEY } %>
 </head>
