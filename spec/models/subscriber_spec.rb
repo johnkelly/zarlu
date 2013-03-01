@@ -49,20 +49,20 @@ describe Subscriber do
   end
 
   describe "plan_users" do
-    it "returns 2 for coach plan" do
-      coach_subscriber.plan_users.should == 2
+    it "returns 10 for coach plan" do
+      coach_subscriber.plan_users.should == 10
     end
 
-    it "returns 30 for business plan" do
-      business_subscriber.plan_users.should == 30
+    it "returns 40 for business plan" do
+      business_subscriber.plan_users.should == 40
     end
 
-    it "returns 75 for business select plan" do
-      business_select_subscriber.plan_users.should == 75
+    it "returns 100 for business select plan" do
+      business_select_subscriber.plan_users.should == 100
     end
 
-    it "returns 150 for first class plan" do
-      first_class_subscriber.plan_users.should == 150
+    it "returns 175 for first class plan" do
+      first_class_subscriber.plan_users.should == 175
     end
   end
 
@@ -87,14 +87,14 @@ describe Subscriber do
   describe "under_user_limit_for_plan" do
     context "over plan limit" do
       it "returns false" do
-        Subscriber.any_instance.stub(:users).and_return([1,2,3])
+        Subscriber.any_instance.stub(:users).and_return((1..11).to_a)
         coach_subscriber.under_user_limit_for_plan.should be_false
       end
     end
 
     context "at plan limit" do
       it "returns false" do
-        Subscriber.any_instance.stub(:users).and_return([1,2])
+        Subscriber.any_instance.stub(:users).and_return((1..10).to_a)
         coach_subscriber.under_user_limit_for_plan.should be_false
       end
     end

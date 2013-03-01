@@ -32,13 +32,13 @@ class Subscriber < ActiveRecord::Base
   def plan_users
     case plan
     when "coach"
-      2
+      10
     when "business"
-      30
+      40
     when "business_select"
-      75
+      100
     when "first_class"
-      150
+      175
     end
   end
 
