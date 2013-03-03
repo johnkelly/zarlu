@@ -24,7 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    subscribers_path
+    activities_path
   end
 
   private
@@ -39,6 +39,7 @@ class RegistrationsController < Devise::RegistrationsController
     set_flash_message :notice, :signed_up if is_navigational_format?
     flash[:analytics] = "/vp/create_account"
     sign_in(resource_name, resource)
+    track_activity!(resource)
     respond_with resource, location: after_sign_up_path_for(resource)
   end
 

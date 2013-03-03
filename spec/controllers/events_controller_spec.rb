@@ -26,6 +26,7 @@ describe EventsController do
     before do
       @starts_at = 12.hours.from_now
       @ends_at = 13.hours.from_now
+      ApplicationController.any_instance.should_receive(:track_activity!)
       post :create, event: { title: "Brand New", starts_at: @starts_at, ends_at: @ends_at }, format: :json
     end
 
@@ -42,6 +43,8 @@ describe EventsController do
   end
 
   describe "update" do
+    before { ApplicationController.any_instance.should_receive(:track_activity!) }
+
     context "http" do
       before { put :update, id: event.to_param, event: { starts_at: 12.hours.from_now, ends_at: 13.hours.from_now }, format: :json }
       it { should respond_with(:success) }
@@ -67,8 +70,9 @@ describe EventsController do
   end
 
   describe "#destroy" do
+    before { ApplicationController.any_instance.should_receive(:track_activity!) }
     context "http" do
-      before { delete :destroy, id: event.to_param, format: :json}
+      before { delete :destroy, id: event.to_param, format: :json }
       it { should respond_with(:success) }
       it { should assign_to(:event).with(event) }
     end

@@ -13,6 +13,7 @@ describe EmployeesController do
   describe '#update' do
     context "approve" do
       before do
+        ApplicationController.any_instance.should_receive(:track_activity!)
         Event.any_instance.should_receive(:approve!).and_return(true)
         put :update, id: event.to_param, type: "approve"
       end
@@ -24,6 +25,7 @@ describe EmployeesController do
 
     context "reject" do
       before do
+        ApplicationController.any_instance.should_receive(:track_activity!)
         Event.any_instance.should_receive(:reject!).and_return(true)
         put :update, id: event.to_param, type: "reject"
       end

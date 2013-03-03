@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :subscriber
   has_many :events, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -17,6 +18,10 @@ class User < ActiveRecord::Base
 
   def employees
     User.where(manager_id: self.id)
+  end
+
+  def has_manager?
+    manager_id.present?
   end
 
   private

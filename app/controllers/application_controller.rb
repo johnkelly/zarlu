@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_root_to_www
 
   def after_sign_in_path_for(resource)
-    home_path
+    activities_path
   end
 
   def authenticate_manager!
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     if current_user.subscriber.plan != "coach" && current_user.subscriber.customer_token.blank?
       return redirect_to subscriptions_url, alert: "Paid accounts must have a credit card. Please add a credit card to use Zarlu."
     end
+  end
+
+  def track_activity!(trackable, action = params[:action])
+    current_user.activities.create! action: action, trackable: trackable
   end
 
   private

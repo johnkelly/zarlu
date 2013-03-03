@@ -12,6 +12,7 @@ class SubscribersController < ApplicationController
   def add_user
     @user = @subscriber.users.new(params[:user])
     if @user.save
+      track_activity!(@user)
       redirect_to subscribers_url, notice: %Q{Successfully created new user.}
     else
       redirect_to subscribers_url, alert: @user.errors.full_messages.first
@@ -21,6 +22,7 @@ class SubscribersController < ApplicationController
   def promote_to_manager
     @user = @subscriber.users.find(params[:user_id])
     @user.promote_to_manager!
+    track_activity!(@user)
     redirect_to subscribers_url, notice: %Q{Promoted #{@user.email} to manager.}
   end
 

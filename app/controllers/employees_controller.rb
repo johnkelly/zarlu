@@ -14,9 +14,11 @@ class EmployeesController < ApplicationController
     case params[:type]
     when "approve"
       @my_employee_pending_event.approve!
+      track_activity!(@my_employee_pending_event, "approve")
       redirect_to employees_url, notice: "Approved."
     when "reject"
       @my_employee_pending_event.reject!
+      track_activity!(@my_employee_pending_event, "reject")
       redirect_to employees_url, notice: "Rejected."
     end
   end

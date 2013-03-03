@@ -3,9 +3,9 @@
     <ul class="pull-right nav">
       <% if user_signed_in? %>
         <li><div><%= link_to "Tour", "#", id: "start_tour", class: "hide btn btn-success" %></div></li>
-
+        <li><%= link_to "<i class='icon-tasks'></i>&nbsp;Account Feed".html_safe, activities_path %></li>
         <li><%= link_to "<i class='icon-calendar'></i>&nbsp;Calendar".html_safe, home_path %></li>
-        <li><%= link_to "<i class='icon-tasks'></i>&nbsp;Time Off Feed".html_safe, schedule_path(current_user) %></li>
+        <li><%# link_to "<i class='icon-tasks'></i>&nbsp;Something".html_safe, schedule_path(current_user) %></li>
         <li><%= link_to "Employees", employees_path if current_user.manager? %></li>
         <li><%= link_to "Account", subscribers_path if current_user.manager? %></li>
         <li><%= link_to "<i class='icon-user'></i>&nbsp;Contact Us".html_safe, "#", id: "support_link" %></li>

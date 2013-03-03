@@ -17,4 +17,5 @@ Zarlu::Application.routes.draw do
   resources :employees, only: %w[index update]
   resources :schedules, only: %w[show]
   resource :subscriptions, only: %w[update show]
+  resources :activities, only: %w[index]
 end

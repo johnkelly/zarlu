@@ -20,6 +20,7 @@ describe SubscribersController do
   describe "#add_user" do
     context "success" do
       before do
+        ApplicationController.any_instance.should_receive(:track_activity!)
         User.any_instance.stub(:valid_number_of_users).and_return(true)
         post :add_user, user: { email: "new@example.com" , password: "password" }
       end
@@ -40,6 +41,7 @@ describe SubscribersController do
 
   describe "#promote_to_manager" do
     before do
+      ApplicationController.any_instance.should_receive(:track_activity!)
       User.any_instance.should_receive(:promote_to_manager!).and_return(true)
       put :promote_to_manager, user_id: user.to_param
     end

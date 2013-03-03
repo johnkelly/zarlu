@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.create!(params[:event])
+    track_activity!(@event)
 
     respond_to do |format|
       format.json { render json: @event }
@@ -20,6 +21,7 @@ class EventsController < ApplicationController
   def update
     @event = current_user.events.find(params[:id])
     @event.update_attributes!(params[:event])
+    track_activity!(@event)
 
     respond_to do |format|
       format.json { render json: @event }
@@ -29,6 +31,8 @@ class EventsController < ApplicationController
   def destroy
     @event = current_user.events.find(params[:id])
     @event.destroy
+    track_activity!(@event)
+
     head :ok
   end
 

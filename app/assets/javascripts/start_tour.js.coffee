@@ -14,3 +14,7 @@ jQuery ->
     $('#start_tour').removeClass('hide').text("Tour Account")
     account_tour = new AccountTour()
     start_tour_on_click(account_tour, "account")
+  else if $('body.activities_index').length
+    $('#start_tour').removeClass('hide').text("Tour Activity Feed")
+    account_tour = new ActivityFeedTour()
+    start_tour_on_click(account_tour, "activity_feed")

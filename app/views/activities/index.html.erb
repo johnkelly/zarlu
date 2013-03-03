@@ -1,0 +1,22 @@
+<div class="container paper">
+<ul class="nav nav-pills">
+  <li class="<%=@level_of_activity == 'user' ? 'active' : '' %>">
+    <%= link_to "My Activity", activities_path %>
+  </li>
+  <li class="<%= @level_of_activity == 'manager' ? 'active' : '' %>">
+    <%= link_to "My Employees' Activity", activities_path(activity_type: "manager") %>
+  </li>
+  <li class="<%=@level_of_activity == 'company' ? 'active' : '' %>">
+    <%= link_to "My Company's Activity", activities_path(activity_type: "company") %>
+  </li>
+</ul>
+  <ul class="unstyled" id="activity_feed">
+    <% @activities.each do |activity| %>
+        <%= render "activities/#{activity.trackable_type.underscore}s/#{activity.action}", activity: activity %>
+    <% end %>
+  </ul>
+</div>
+
+
+
+

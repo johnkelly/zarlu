@@ -1,0 +1,6 @@
+<% user = activity.user %>
+<li class="alert alert-success">
+  <i class="icon-user"></i>&nbsp;<%= user.email %> has added <%= activity.trackable.try(:email) %> to Zarlu.
+  <i class="icon-time"></i>
+  <small><%= time_ago_in_words(activity.created_at) %> ago</small>
+</li>

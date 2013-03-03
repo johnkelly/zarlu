@@ -7,6 +7,7 @@ describe User do
   describe "attributes" do
     it { should belong_to(:subscriber) }
     it { should have_many(:events).dependent(:destroy) }
+    it { should have_many(:activities).dependent(:destroy) }
     it { should validate_presence_of(:subscriber_id) }
   end
 
@@ -27,6 +28,22 @@ describe User do
     context "has employees" do
       subject { manager }
       its(:employees) { should == [user] }
+    end
+  end
+
+  describe "has_manager?" do
+    context "user with a manager id" do
+      it "returns true" do
+        user.manager_id.should be_present
+        user.has_manager?.should be_true
+      end
+    end
+
+    context "user without a manager id" do
+      it "returns false" do
+        manager.manager_id.should be_blank
+        manager.has_manager?.should be_false
+      end
     end
   end
 end
