@@ -14,10 +14,13 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.cookie
 //= require bootstrap
 //= require jquery.md5
 //= require fullcalendar
 //= require uservoice
+//= require bootstrap-tour
+//= require_tree ./tours
 //= require_tree .
 //= require turbolinks
 //= require google_analytics

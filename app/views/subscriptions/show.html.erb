@@ -20,7 +20,7 @@
       <hr />
       <h4 class="mb15">Add / Change Credit Card</h4>
       <p>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers. Our payment provider gives us your card type and last four digits, which we display so that you can know which of your credit cards we are charging.</p>
-      <p>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.</p>
+      <%= image_tag "credit_card.png", width: "285", height: "43", alt: "Credit Cards" %>
       <div id="stripe_error" class="alert alert-error hide">
         <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
@@ -30,7 +30,6 @@
       <h5>Card Expiration Date</h5>
       <%= select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", class: "span2" } %>
       <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+15 }, { name: nil, id: "card_year", class: "span2" } %>
-
       <h5>Select Plan</h5>
       <%= form_for @subscriber, url: subscriptions_url, method: :put do |form| %>
         <%= form.select :plan, Subscriber::PLANS, html: { class: "span4" } %>

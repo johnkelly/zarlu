@@ -38,7 +38,8 @@ GEM
       rack-contrib
       rails
       rdiscount
-    bootstrap-sass (2.1.0.1)
+    bootstrap-sass (2.3.0.1)
+      sass (~> 3.2)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -202,7 +203,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   bloggy (~> 0.2.1)
-  bootstrap-sass (~> 2.1.0.1)
+  bootstrap-sass (~> 2.3.0.1)
   cache_digests (~> 0.2.0)
   coffee-rails (~> 3.2.2)
   devise (~> 2.2.3)
