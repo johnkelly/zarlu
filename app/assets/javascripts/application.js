@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require bootstrap
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.cookie
-//= require bootstrap
 //= require jquery.md5
 //= require fullcalendar
 //= require uservoice
