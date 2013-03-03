@@ -85,6 +85,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-turbolinks (0.2.1)
       rails (>= 3.1.0)
+    jquery-ui-rails (4.0.1)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.7)
     kgio (2.8.0)
     kramdown (0.13.8)
@@ -211,6 +214,7 @@ DEPENDENCIES
   fullcalendar-rails (~> 1.5.4.0)
   jquery-rails (~> 2.2.1)
   jquery-turbolinks (~> 0.2.1)
+  jquery-ui-rails (~> 4.0.1)
   meta_request
   newrelic_rpm (~> 3.5.7.59)
   pg (~> 0.14.1)

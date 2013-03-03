@@ -14,7 +14,7 @@
 //= require jquery.turbolinks
 //= require bootstrap
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require jquery.cookie
 //= require jquery.md5
 //= require fullcalendar
