@@ -2,7 +2,7 @@
 <li class="alert alert-info">
   <i class="icon-bell"></i>&nbsp;<%= user.email %> submitted a time off request
   <% if user.has_manager? %>
-  for <%= User.find(user.manager_id).email %> to approve.
+  for <%= @managers.detect{|m| m.id == user.manager_id}.email %> to approve.
   <% end %>
   <i class="icon-time"></i>
   <small><%= time_ago_in_words(activity.created_at) %> ago</small>

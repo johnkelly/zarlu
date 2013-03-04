@@ -1,6 +1,6 @@
 <% user = activity.user %>
 <li class="alert alert-success">
-  <i class="icon-ok"></i>&nbsp;<%= User.find(user.manager_id).email %> has approved <%= user.email %>'s time off request.
+  <i class="icon-ok"></i>&nbsp;<%= @managers.detect{|m| m.id == user.manager_id}.email %> has approved <%= user.email %>'s time off request.
   <i class="icon-time"></i>
   <small><%= time_ago_in_words(activity.created_at) %> ago</small>
 </li>
