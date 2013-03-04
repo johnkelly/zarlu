@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def track_activity!(trackable, action = params[:action])
-    current_user.activities.create! action: action, trackable: trackable
+    ActivityWorker.perform_async(current_user.id, action, trackable.class.to_s, trackable.id)
   end
 
   private

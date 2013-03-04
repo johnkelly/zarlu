@@ -20,6 +20,9 @@ gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.7.10'
 gem 'newrelic_rpm', '~> 3.5.7.59'
+gem 'sidekiq', '~> 2.8.0'
+gem 'sinatra', '~> 1.3.5', require: false
+gem 'slim', '~> 1.3.6'
 gem 'hirefire-resource', '~> 0.0.2'
 
 # Gems used only for assets

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Zarlu::Application.routes.draw do
   root to: "homes#index"
   match 'blog' => 'blog#index'
@@ -18,4 +20,5 @@ Zarlu::Application.routes.draw do
   resources :schedules, only: %w[show]
   resource :subscriptions, only: %w[update show]
   resources :activities, only: %w[index]
+  mount Sidekiq::Web => '/sidekiq'
 end
