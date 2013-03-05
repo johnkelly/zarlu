@@ -11,9 +11,7 @@
   </li>
 </ul>
   <ul class="unstyled" id="activity_feed">
-    <% @activities.each do |activity| %>
-        <%= render "activities/#{activity.trackable_type.underscore}s/#{activity.action}", activity: activity %>
-    <% end %>
+    <%= render partial: @activities, as: :activity %>
   </ul>
 </div>
 
