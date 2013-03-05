@@ -8,13 +8,13 @@ class ActivitiesController < ApplicationController
     @managers = subscriber.managers(subscriber.users)
     case @level_of_activity
     when "user"
-      @activities = current_user.activities.order("created_at desc").limit(50).includes(:user)
+      @activities = current_user.activities.order("created_at desc").includes(:user).paginate(page: params[:page], per_page: 30)
     when "manager"
       employees = current_user.employees.collect(&:id)
-      @activities = Activity.order("created_at desc").where(user_id: employees).limit(50).includes(:user)
+      @activities = Activity.order("created_at desc").where(user_id: employees).includes(:user).paginate(page: params[:page], per_page: 30)
     when "company"
       company = current_user.subscriber.users.collect(&:id)
-      @activities = Activity.order("created_at desc").where(user_id: company).limit(50).includes(:user)
+      @activities = Activity.order("created_at desc").where(user_id: company).includes(:user).paginate(page: params[:page], per_page: 30)
     end
   end
 end

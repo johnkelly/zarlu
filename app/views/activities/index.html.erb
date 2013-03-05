@@ -13,6 +13,7 @@
   <ul class="unstyled" id="activity_feed">
     <%= render partial: @activities, as: :activity %>
   </ul>
+  <%= will_paginate @activities %>
 </div>
 
 
