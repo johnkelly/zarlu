@@ -1,4 +1,6 @@
-<li class="alert alert-danger">
+<% cache activity do %>
+  <li class="alert alert-danger">
   <i class="icon-trash"></i>&nbsp;<%= activity.user.email %> deleted a time off request  <i class="icon-time"></i>
   <small><%= time_ago_in_words(activity.created_at) %> ago</small>
-</li>
+  </li>
+<% end %>

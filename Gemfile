@@ -24,6 +24,8 @@ gem 'sidekiq', '~> 2.8.0'
 gem 'sinatra', '~> 1.3.5', require: false
 gem 'slim', '~> 1.3.6'
 gem 'hirefire-resource', '~> 0.0.2'
+gem 'memcachier', '~> 0.0.2'
+gem 'dalli', '~> 2.6.2'
 
 # Gems used only for assets
 group :assets do

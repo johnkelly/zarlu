@@ -59,6 +59,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     connection_pool (1.0.0)
+    dalli (2.6.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -104,6 +105,7 @@ GEM
       treetop (~> 1.4.8)
     maruku (0.6.1)
       syntax (>= 1.0.0)
+    memcachier (0.0.2)
     meta_request (0.2.1)
       rack-contrib
       rails
@@ -235,6 +237,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.0.1)
   cache_digests (~> 0.2.0)
   coffee-rails (~> 3.2.2)
+  dalli (~> 2.6.2)
   devise (~> 2.2.3)
   fixture_builder
   fullcalendar-rails (~> 1.5.4.0)
@@ -242,6 +245,7 @@ DEPENDENCIES
   jquery-rails (~> 2.2.1)
   jquery-turbolinks (~> 0.2.1)
   jquery-ui-rails (~> 4.0.1)
+  memcachier (~> 0.0.2)
   meta_request
   newrelic_rpm (~> 3.5.7.59)
   pg (~> 0.14.1)

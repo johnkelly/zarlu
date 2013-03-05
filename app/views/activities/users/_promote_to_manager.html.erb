@@ -1,6 +1,8 @@
-<% user = activity.user %>
-<li class="alert alert-info">
+<% cache activity do %>
+  <% user = activity.user %>
+  <li class="alert alert-info">
   <i class="icon-chevron-up"></i>&nbsp;<%= user.email %> has promoted <%= activity.trackable.try(:email) %> to manger.
   <i class="icon-time"></i>
   <small><%= time_ago_in_words(activity.created_at) %> ago</small>
-</li>
+  </li>
+<% end %>

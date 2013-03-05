@@ -11,26 +11,13 @@
       <% end %>
       <h4>Employees without a manager</h4>
       <ul class="unstyled sortable" data-manager_id="nil">
-        <% @no_manager_users.each do |user| %>
-          <li class="alert alert-info" data-user_id="<%= user.id %>">
-          <%= user.email %>
-          <%= link_to "Manager", promote_to_manager_subscribers_path(user_id: user),
-            method: :put, class: "btn btn-info btn-mini float_right" unless user.manager? %>
-          </li>
-        <% end %>
+        <%= render partial: "subscribers/no_manager", collection: @no_manager_users, as: :user %>
       </ul>
     </div>
     <div class="span5">
       <h4>Managers</h3>
       <p>(Managers approve schedules of their employees)</p>
-      <% @managers.each do |manager| %>
-        <h5><%= manager.email.capitalize %> approves:</h5>
-        <ul class="unstyled sortable" data-manager_id="<%= manager.id %>">
-          <% manager.employees.each do |employee| %>
-            <li class="alert alert-info" data-user_id="<%= employee.id %>"><%= employee.email %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= render partial: "subscribers/manager", collection: @managers, as: :manager %>
     </div>
   </div>
 </div>

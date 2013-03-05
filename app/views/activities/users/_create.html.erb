@@ -1,6 +1,8 @@
-<% user = activity.user %>
-<li class="alert alert-success">
+<% cache activity do %>
+  <% user = activity.user %>
+  <li class="alert alert-success">
   <i class="icon-user"></i>&nbsp;<%= user.email %> has joined Zarlu.
   <i class="icon-time"></i>
   <small><%= time_ago_in_words(activity.created_at) %> ago</small>
-</li>
+  </li>
+<% end %>
