@@ -70,7 +70,6 @@ describe EventsController do
   end
 
   describe "#destroy" do
-    before { ApplicationController.any_instance.should_receive(:track_activity!) }
     context "http" do
       before { delete :destroy, id: event.to_param, format: :json }
       it { should respond_with(:success) }
