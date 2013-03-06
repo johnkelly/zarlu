@@ -1,4 +1,13 @@
 body.welcomes_show {
+  div.welcome_images {
+    margin-top: 15px;
+    padding-left: 10px;
+
+    img {
+      margin-bottom: 20px;
+      border: 1px solid #0088CC;
+    }
+  }
   ul.account_setup {
     li {
       font-size: 25px;

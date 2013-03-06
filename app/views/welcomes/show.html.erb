@@ -1,7 +1,15 @@
 <div class="container paper">
   <div class="row">
-    <div class="span4">
-      Screenshots here
+    <div class="span4 welcome_images">
+      <%= link_to home_path do %>
+        <%= image_tag "welcome_calendar.png", width: 250, height: 250, alt: "Calendar" %>
+      <% end %>
+      <%= link_to activities_path do %>
+        <%= image_tag "welcome_activity_feed.png", width: 250, height: 250, alt: "Activity Feed" %>
+      <% end %>
+      <%= link_to subscribers_path do %>
+        <%= image_tag "welcome_account.png", width: 250, height: 250, alt: "Account Management" %>
+      <% end %>
     </div>
     <div class="span8">
       <h2>Let's Get Your Account Setup</h2>
