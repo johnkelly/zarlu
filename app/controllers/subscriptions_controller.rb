@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
 
     if plan_and_token_present?(@subscriber) && @subscriber.save_customer && @subscriber.save
       set_analytics_flash(@subscriber.plan)
-      redirect_to subscriptions_url, notice: "Successfully updated your company's billing and/or plan."
+      redirect_after_payment_url
     else
       flash.now[:alert] = "There was a problem with your credit card. If you believe you entered your information correctly, please try again or contact support."
       render :show
@@ -31,5 +31,13 @@ class SubscriptionsController < ApplicationController
 
   def set_analytics_flash(plan)
     flash[:analytics] = "/vp/add_#{plan}_plan"
+  end
+
+  def redirect_after_payment_url
+    if current_user.sign_in_count == 1
+      redirect_to welcome_path, notice: "Successfully updated your company's billing and/or plan."
+    else
+      redirect_to subscriptions_url, notice: "Successfully updated your company's billing and/or plan."
+    end
   end
 end
