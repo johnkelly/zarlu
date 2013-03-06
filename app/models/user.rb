@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_presence_of :subscriber_id
   validate :valid_number_of_users, on: :create
 
+  store :properties, accessors: [:complete_welcome_tour]
+
   def promote_to_manager!
     self.manager = true
     self.save!
@@ -22,6 +24,10 @@ class User < ActiveRecord::Base
 
   def has_manager?
     manager_id.present?
+  end
+
+  def completed_welcome_tour?
+    complete_welcome_tour.present?
   end
 
   private

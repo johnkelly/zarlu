@@ -1,9 +1,20 @@
 start_tour_on_click = (tour, type) ->
-  $('#start_tour').click (e) ->
+  $('#start_tour, .tour').click (e) ->
     e.preventDefault()
     _gaq.push(['_trackPageview', "/vp/tour/#{type}"])
     tour.restart()
     tour.start()
+    send_started_welcome_tour() if type is "welcome"
+
+send_started_welcome_tour = ->
+  $.ajax(
+    type: "POST"
+    url: "/welcomes"
+    success: ->
+      $('#welcome_tour_task').prop("disabled", false)
+      $('#welcome_tour_task').prop("checked", true)
+      $('#welcome_tour_task').prop("disabled", true)
+  )
 
 jQuery ->
   if $('body.homes_show').length
@@ -18,3 +29,7 @@ jQuery ->
     $('#start_tour').removeClass('hide').text("Tour Activity Feed")
     account_tour = new ActivityFeedTour()
     start_tour_on_click(account_tour, "activity_feed")
+  else if $('body.welcomes_show').length
+    $('#start_tour').removeClass('hide').text("Welcome Tour")
+    welcome_tour = new WelcomeTour()
+    start_tour_on_click(welcome_tour, "welcome")

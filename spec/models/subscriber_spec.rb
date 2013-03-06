@@ -106,4 +106,18 @@ describe Subscriber do
       end
     end
   end
+
+  describe "paid_plan?" do
+    context "coach plan" do
+      it "returns false" do
+        coach_subscriber.paid_plan?.should be_false
+      end
+    end
+
+    context "business plan" do
+      it "returns true" do
+        business_subscriber.paid_plan?.should be_true
+      end
+    end
+  end
 end

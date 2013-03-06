@@ -7,36 +7,36 @@
       <h2>Let's Get Your Account Setup</h2>
       <ul class="unstyled account_setup">
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Learn how to use Zarlu with a 1 minute tour.", "" %>
+        <%= display_welcome_tour_task(current_user) %>
+        <%= link_to "Learn how to use Zarlu with a 1 minute tour.", "", class: "tour" %>
         </li>
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Add a coworker to your account.", "" %>
+        <%= display_add_co_worker_task(current_user) %>
+        <%= link_to "Add a coworker to your account.", subscribers_path %>
         </li>
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Assign an employee to a manager.", "" %>
+        <%= display_assign_employee_task(current_user) %>
+        <%= link_to "Assign an employee to a manager.", subscribers_path %>
         </li>
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Create your first time off request.", "" %>
+        <%= display_add_time_off_task(current_user) %>
+        <%= link_to "Create your first time off request.", home_path %>
         </li>
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "View your activity feed.", "" %>
+        <%= display_add_paid_plan_task(current_user) %>
+        <%= link_to "Add a Paid Plan.", subscriptions_path %>
+        </li>
+      </ul>
+      <h3>Bonus Tasks</h3>
+      <ul class="account_setup">
+        <li>
+        <%= link_to "View your activity feed.", activities_path %>
         </li>
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Approve a Time Off Request.", "" %>
+        <%= link_to "Approve a time off request.", employees_path %>
         </li>
         <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Contact Support and say Hello!", "" %>
-        </li>
-        <li>
-        <%= check_box_tag 'intro_tour', 'complete', false %>
-        <%= link_to "Add a Paid Plan.", "" %>
+        <%= link_to "Contact Support and say Hello!", "", id: "support_link" %>
         </li>
       </ul>
     </div>

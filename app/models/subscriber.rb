@@ -67,6 +67,10 @@ class Subscriber < ActiveRecord::Base
     users.select { |user| user.manager == true }
   end
 
+  def paid_plan?
+    %w[business business_select first_class].include?(plan)
+  end
+
   private
 
   def create_customer

@@ -46,4 +46,20 @@ describe User do
       end
     end
   end
+
+  describe "completed_welcome_tour?" do
+    context "complete_welcome_tour present" do
+      it "returns true" do
+        user.should_receive(:complete_welcome_tour).and_return("true")
+        user.completed_welcome_tour?.should be_true
+      end
+    end
+
+    context "complete_welcome_tour NOT present" do
+      it "returns false" do
+        user.complete_welcome_tour.should be_blank
+        user.completed_welcome_tour?.should be_false
+      end
+    end
+  end
 end
