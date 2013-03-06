@@ -1,0 +1,19 @@
+body.welcomes_show {
+  ul.account_setup {
+    li {
+      font-size: 25px;
+      line-height: 50px;
+
+      a {
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    }
+    input[type=checkbox] {
+      transform: scale(1.75);
+      -ms-transform: scale(1.75);
+      -moz-transform: scale(1.75);
+      -webkit-transform: scale(1.75);
+    }
+  }
+}

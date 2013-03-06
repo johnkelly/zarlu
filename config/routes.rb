@@ -6,6 +6,7 @@ Zarlu::Application.routes.draw do
   match 'blog/:title' => 'blog#post'
   match '/pricing', to: 'homes#pricing'
   match '/home', to: 'homes#show'
+  match '/welcome', to: 'welcomes#show'
   devise_for :users, controllers: { registrations: 'registrations' }
   resource :subscribers, only: %w[show] do
     collection { post :add_user }
