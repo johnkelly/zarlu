@@ -12,14 +12,14 @@ gem 'fullcalendar-rails', '~> 1.5.4.0'
 
 # Rails 4 Features
 gem 'turbolinks', '~> 1.0.0'
-gem 'strong_parameters', '~> 0.1.6'
+gem 'strong_parameters', '~> 0.2.0'
 gem 'cache_digests', '~> 0.2.0'
 gem 'routing_concerns', '~> 0.1.0'
 
 gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.7.10'
-gem 'newrelic_rpm', '~> 3.5.7.59'
+gem 'newrelic_rpm', '~> 3.5.8.72'
 gem 'sidekiq', '~> 2.8.0'
 gem 'sinatra', '~> 1.3.5', require: false
 gem 'slim', '~> 1.3.6'
