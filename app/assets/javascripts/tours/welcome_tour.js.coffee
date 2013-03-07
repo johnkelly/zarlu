@@ -9,7 +9,6 @@ class window.WelcomeTour
     @step6()
     @step7()
     @step8()
-    @step9()
 
   start: ->
     @tour.start(true)
@@ -40,7 +39,7 @@ class window.WelcomeTour
       path: "/welcome"
       element: "#navbar_settings_dropdown"
       title: "Settings"
-      content: "The settings link is a dropdown that gives you access to several key pages for managing your subscription.<br/<br/><strong>Welcome</strong> is the page you are currently on where you can view your progress in learning Zarlu or replay this tour.<br/><br/><strong>Change Billing / Plan</strong> is where you add or change your credit card information or upgrade or downgrade your payment plan.<br/><br/><strong>Sign Out</strong> is where you click when you want to exit Zarlu.<br/><br/><strong>Change Email / Pass Phrase</strong> is where you go to change your email, pass phrase, or delete your account."
+      content: "The settings link is a dropdown that gives you access to several key pages for managing your subscription.<br/><br/><strong>Change Billing / Plan</strong> is where you add or change your credit card information or upgrade or downgrade your payment plan.<br/><br/><strong>Change Email / Pass Phrase</strong> is where you go to change your email, pass phrase, or delete your account.<br/><br/><strong>Sign Out</strong> is where you click when you want to exit Zarlu."
       placement: "bottom"
     )
 
@@ -74,25 +73,16 @@ class window.WelcomeTour
   step7: ->
     @tour.addStep(
       path: "/welcome"
-      element: "#navbar_employees"
-      title: "Approve or Reject Time Off"
-      content: "The employees page is where a manager approves or rejects time off and schedule changes. Employees who have a manager will have time off requests go to their manager's employee tab for their manager's approval."
+      element: "#navbar_manage_dropdown"
+      title: "Manage Pages"
+      content: "<strong>The time off request page is where a manager approves or rejects time off and schedule changes.</strong> Employees who have a manager will have time off requests go to their manager's employee tab for their manager's approval.<br/><br/><strong>The account page is where a manager adds and groups employees.</strong> Assign new managers, add co-workers to your account, and group employees by the manager who will approve their schedule changes."
       placement: "bottom"
     )
 
   step8: ->
     @tour.addStep(
       path: "/welcome"
-      element: "#navbar_account"
-      title: "Account"
-      content: "The account is where a manager adds co-workers to Zarlu, assigns managers, and groups employees by their manager who will approve their schedule changes."
-      placement: "bottom"
-    )
-
-  step9: ->
-    @tour.addStep(
-      path: "/welcome"
-      element: "#navbar_account"
+      element: "#navbar_welcome"
       title: "Congratulations!"
       content: "You have completed the welcome tour! You now know how to navigate Zarlu to find the features you need to manage employee time off. If you still have questions, do not hesitate to contact us."
       placement: "bottom"
