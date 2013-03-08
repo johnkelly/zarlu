@@ -4,12 +4,26 @@
  <title>Zarlu Blog</title>
  <link href="www.zarlu.com/atom.xml" rel="self"/>
  <link href="www.zarlu.com"/>
- <updated>2013-03-07T21:42:27-08:00</updated>
+ <updated>2013-03-07T22:13:03-08:00</updated>
  <id>www.zarlu.com</id>
  <author>
    <name>Zarlu Blog</name>
  </author>
 
+ 
+ <entry>
+   <title>Introducing the activity feed</title>
+   <link href="YOUR_URL/introducing-the-activity-feed"/>
+   <updated>2013-03-07T00:00:00-08:00</updated>
+   <id>BLOG_URL/introducing-the-activity-feed</id>
+   <content type="html">&lt;h1 class=&#39;center&#39; id=&#39;introducing_the_activity_feed&#39;&gt;Introducing the activity feed&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;I&amp;#8217;m proud to announce the addition of a great new feature to our software. Over the past few days we have rolled out to all subscriptions of all plan levels an activity feed that gives our customers a great way to view how their company is using our software. The activity feed gives you a history of all the actions that are happening in your account in reverse chronological order. I have leveraged the software feature infinite page scrolling into our activity feed, so that you can view activity as far back as the creation of your account without clicking through pages or even refreshing the page. All your account activity is transparently visible to you our customer.&lt;/p&gt;
+
+&lt;p&gt;The activity feed has three different sections available to your employees. The default and first view is a look into the signed in employee&amp;#8217;s activity. For example, if you are signed in you will be able to view a history of all the time off requests you have submitted or changed since you joined Zarlu. The second view gives managers a look into all activity for each of the employees that they are managing time off requests for. The manager view gives managers a quick and easy way to see if co-workers have added time off that they (the manager) need to approve or reject. It also has the benefit of keeping managers updated with all of the schedules they are responsible for managing. The final view gives employees a view of all time off and schedule changes throughout their company.&lt;/p&gt;
+
+&lt;p&gt;You can check the activity feed for yourself by signing in to your subscription. The link is on the top of every page in the navigation bar.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>10 countries with the most employee time off</title>
