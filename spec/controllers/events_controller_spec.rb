@@ -60,11 +60,11 @@ describe EventsController do
       end
 
       it "saves the start time in utc" do
-        event.reload.starts_at.to_i.should == @starts_at.to_i - 8.hours.to_i
+        event.reload.starts_at.to_i.should == @starts_at.to_i - 7.hours.to_i
       end
 
       it "saves the end time in utc" do
-        event.reload.ends_at.to_i.should == @ends_at.to_i - 8.hours.to_i
+        event.reload.ends_at.to_i.should == @ends_at.to_i - 7.hours.to_i
       end
     end
   end
