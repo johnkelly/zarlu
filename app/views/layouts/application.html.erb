@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <% if content_for? :title %>
-    <title>Zarlu - <%= content_for :title %></title>
+    <title><%= content_for :title %> - Zarlu</title>
   <% else %>
-    <title>Zarlu - Employee time off tracking software</title>
+    <title>Employee Time & Attendance Software for your Business - Zarlu</title>
   <% end %>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
@@ -13,7 +13,7 @@
   <% if content_for? :meta_description %>
     <%= tag :meta, name: "description", content: content_for(:meta_description) %>
   <% else %>
-    <%= tag :meta, name: "description", content: "Zarlu is an employee time off tracking web application. Submit, view, and manage employee time off requests with our easy to use software." %>
+    <%= tag :meta, name: "description", content: "Zarlu is an employee time & attendance tracking software application. Employees can submit schedule changes and businesses can manage employee schedule changes." %>
   <% end %>
   <%= tag :meta, name: "application-name", content: "Zarlu", data: { name: "stripe-key", value: STRIPE_PUBLIC_KEY } %>
   <%= favicon_link_tag %>
