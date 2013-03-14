@@ -1,0 +1,46 @@
+<footer id="footer">
+<div class="container center">
+  <div class="row">
+    <div class="span2 left">
+      <h2>Company</h2>
+      <ul class="unstyled">
+        <li><%= link_to "Pricing", pricing_path %></li>
+        <li><%= link_to "Features", "" %></li>
+        <li><%= link_to "Contact Us", "#", class: "support_link" %></li>
+        <li><%= link_to "Security", "/blog/how-does-zarlu-keep-my-data-safe" %></li>
+      </ul>
+    </div>
+    <div class="offset1 span6">
+      <h2>Zarlu</h2>
+      <p>Zarlu is an employee time & attendance tracking software application. Employees can submit schedule changes and businesses can manage employee schedule changes.</p>
+      <br/>
+      Zarlu &copy; 2013
+    </div>
+    <div class="offset1 span2 left">
+      <h2>Social</h2>
+      <ul class="unstyled">
+        <li>
+        <%= link_to blog_path do %>
+          <%= image_tag "blogger.png", width: 25, height: 25, alt: "Blog Icon" %>&nbsp;Blog
+        <% end %>
+        </li>
+        <li>
+        <%= link_to "https://twitter.com/zarlusoftware", target: "_blank" do %>
+          <%= image_tag "twitter.png", width: 25, height: 25, alt: "Twitter Icon" %>&nbsp;Twitter
+        <% end %>
+        </li>
+        <li>
+        <%= link_to "https://www.facebook.com/pages/Zarlu/553117844722452", target: "_blank" do %>
+          <%= image_tag "facebook.png", width: 25, height: 25, alt: "Facebook Icon" %>&nbsp;Facebook
+        <% end %>
+        </li>
+        <li>
+        <%= link_to "https://plus.google.com/107268300619396695863", target: "_blank" do %>
+          <%= image_tag "google_plus.png", width: 25, height: 25, alt: "Google Plus Icon" %>&nbsp;Google Plus
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</footer>

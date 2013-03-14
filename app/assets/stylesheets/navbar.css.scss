@@ -18,3 +18,51 @@
     background: none;
   }
 }
+
+.homes_pricing, .homes_index {
+  .body_without_footer {
+    background-color: #FFF;
+  }
+}
+
+.body_without_footer {
+  min-height: 60%;
+  height: auto !important;
+  padding-bottom: 20px;
+}
+
+footer {
+  background-color: #373F4A;
+  color: #FFF;
+  min-height: 300px;
+  font-size: 20px;
+
+  .container {
+    padding-top: 20px;
+  }
+
+  a {
+    color: #FFF;
+    opacity: .75;
+    text-decoration: none;
+
+    &:visited {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: #FFF;
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+  li {
+    line-height: 45px;
+  }
+
+  p {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
