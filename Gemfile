@@ -5,7 +5,7 @@ gem 'rails', '~> 3.2.12'
 gem 'pg', '~> 0.14.1'
 gem 'unicorn', '~> 4.6.0'
 gem 'jquery-rails', '~> 2.2.1'
-gem 'jquery-ui-rails', '~> 4.0.1'
+gem 'jquery-ui-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'devise', '~> 2.2.3'
 gem 'fullcalendar-rails', '~> 1.5.4.0'
@@ -32,7 +32,7 @@ gem 'will_paginate', '~> 3.0.4'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass', '~> 2.3.0.1'
+  gem 'bootstrap-sass', '~> 2.3.1.0'
 end
 
 group :development, :test do
@@ -42,4 +42,5 @@ group :development, :test do
   gem 'better_errors'
   #gem 'binding_of_caller' Not compatible with Ruby 2.0
   gem 'meta_request'
+  gem 'quiet_assets'
 end
