@@ -1,124 +1,101 @@
-<div class="blue_paper mt50">
-  <div class="container">
-    <header>
-    <div class="w450 pull-right">
-      <%= link_to pricing_path, class: "btn btn-primary btn-action" do %>
-        Try it Free today<br/>
-        <small>No time limit. No credit card.</small>
-      <% end %>
-    </div>
-    <div class="w550">
-      <h1>
-        Schedule Employee Time Off
-        <small>Software trusted by businesses to track, schedule, and manage time off.</small>
-        <small>We give you everything you need to manage employee time off requests.</small>
-      </h1>
-    </div>
-    </header>
-  </div>
-</div>
-<div class="white_paper">
-  <div class="container">
-    <div class="screenshots">
-      <div id="myCarousel" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="active item screenshot">
-            <%= image_tag "calendar_large.png", width: 702, height: 440, alt: "Time Off Calendar" %>
-          </div>
-          <div class="item screenshot">
-            <%= image_tag "approve_large.png", width: 702, height: 440, alt: "Approve Time Off Request" %>
-          </div>
-          <div class="item screenshot">
-            <%= image_tag "email_time_off.png", width: 702, height: 440, alt: "Email Sick Time Off" %>
-          </div>
-          <div class="item screenshot">
-            <%= image_tag "manage_account.png", width: 702, height: 440, alt: "Track Employee Time Off" %>
-          </div>
-          <div class="item screenshot">
-            <%= image_tag "schedule_large.png", width: 702, height: 440, alt: "Time Off Calendar" %>
-          </div>
-        </div>
-        <%= link_to "&nbsp;&lsaquo;".html_safe, "#myCarousel", class: "carousel-control left mt25", data: { slide: "prev" } %>
-        <%= link_to "&rsaquo;".html_safe, "#myCarousel", class: "carousel-control right mt25", data: { slide: "next" } %>
+<div class="image_wrap">
+  <div class="splash_image">
+    <div class="container">
+      <h1>Employee Time & Attendance Software</h1>
+      <div class="row">
+        <div class="span5 left">
+          <h3>Free and Paid Plans include:</h3>
+          <ul>
+          <li><h4>Employee & Manager accounts</h4></li>
+          <li><h4>Calendar for each Employee</h4></li>
+          <li><h4>Employee Attendance Tracker</h4></li>
+          <li><h4>Company Schedule Changes Feed</h4></li>
+          <li><h4>Group Employees by Manager</h4></li>
+          <li><h4>Tour on every page. No confusion.</h4></li>
+          <li><h4>And much more!</h4></li>
+        </ul>
+        <br/>
+        <%# link_to "Features", "", class: "btn btn-info btn-huge" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to "Start Now", pricing_path, class: "btn btn-success btn-huge" %>
+      </div>
+      <div class="span7">
+        <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
       </div>
     </div>
   </div>
 </div>
-<div class="dark_blue_paper">
-  <div class="container ptb5">
-    <h2 class="center">
-      Give each of your employees access to our time off tracking software.
-      <br/>
-      <small class="white">Easy for an employee to submit requests and easy for managment to track.</small>
-    </h2>
-  </div>
 </div>
-<div class="white_paper">
-  <div class="container features pt40">
-    <div class="pb100">
-      <div class="feature_picture pull-right">
-        <%= image_tag "approve_large.png", width: 400, height: 251, alt: "Approve Employee Vacation" %>
-      </div>
-      <div class="feature_text">
-        <h3 class="blue">Approve or Reject Employee Time Off</h3>
-        <p>
-        Approve, modify, or reject your employees time off requests or schedule changes with our easy to use interfaces. Zarlu gives you powerful tools to administrate schedules in an easy to use intuitive way. It has never been this easy!
-        </p>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="pb100">
-      <div class="feature_text pull-right">
-        <h3 class="blue">Email Schedule and Calendar Changes</h3>
-        <p>
-        Email time off requests without logging into Zarlu! Use the email address that you signed up with and put the date of your time off request as the email's subject (mm-dd-yy or mm/dd/yy). Add a message to your email and Zarlu will notify your manager of your time off request with the message you provided. We will update your calendar with your time off request and notify your manager of your request. Zarlu does all the work for you!
-        </p>
-      </div>
-      <div class="feature_picture">
-        <%= image_tag "email_time_off.png", width: 400, height: 251, alt: "Email Time Off Request" %>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="pb100">
-      <div class="feature_picture pull-right">
-        <%= image_tag "calendar_large.png", width: 400, height: 251, alt: "Schedule Time Off" %>
-      </div>
-      <div class="feature_text">
-        <h3 class="blue">Interactive Calendar and Scheduler</h3>
-        <p>
-        Every employee subscription comes with a fully featured calendar. Each calendar can be viewed as the whole month, week, or a single day. Schedule for multiple days or as little as 15 minutes. Drag and Drop events as your schedule changes. Increase the event's time by simpling dragging the event. To create a new calendar event simply click on a day, hour, or minute and drag your mouse/finger to the end time. It's that easy!
+<div class="container mt25">
+  <div class="row center">
+    <div class="span4">
+      <h3>Time & Attendance</h3>
+      <div class="left">
+        <h4 class="underline center">Employee Software</h4>
+        <p class="feature_explanation">
+        Zarlu's software boosts employee productivity and morale.
+        Our software allows employees to spend less time submitting schedule changes.
+        Zarlu software is designed to make attendance changes as easy as possible.
         </p>
       </div>
     </div>
-    <div class="pb100">
-      <div class="feature_text pull-right">
-        <h3 class="blue">Scheduler Setup in 1-2</h3>
-        <p>
-        Jumping into a new software application usually means dealing with a painful data import process. Zarlu has streamlined the employee import process to be as efficient and quick as posssible. Simply enter an employee's work email and a pass phrase they can change later. That's it! No confirmation emails or long sign up process. The employee is then ready to start using Zarlu! Grouping employees by manager to approve their schedule can be done on the same page by simply clicking on the employee and dragging their email under the manager's email. With those two steps your account is completely setup!
+    <div class="span4">
+      <h3>Employee Calendars</h3>
+      <div class="left">
+        <h4 class="underline center">Employee Software</h4>
+        <p class="feature_explanation">
+        Each employee account has access to their own daily, weekly, and monthly calendar.
+        Events as short as fifteen minutes or as long as several days can be created.
+        Schedule changes can be created & submitted in less than 5 seconds!
         </p>
       </div>
-      <div class="feature_picture">
-        <%= image_tag "manage_account.png", width: 400, height: 251, alt: "Track employee time" %>
-      </div>
-      <div class="clearfix"></div>
     </div>
-    <div class="pb20">
-      <div class="feature_picture pull-right">
-        <%= image_tag "pricing.png", width: 400, height: 251, alt: "Zarlu pricing" %>
-      </div>
-      <div class="feature_text">
-        <h3 class="blue">Choose the plan that is right for you.</h3>
-        <p>
-        We offer a variety of plans, so that there is plan that will meet your needs. Whether you are an individual, start up, small business, or large corporation. We have the plan for you. Choose from plans that start at $0/month.
+    <div class="span4">
+      <h3>Easy Business Software</h3>
+      <div class="left">
+        <h4 class="underline center">Employee Software</h4>
+        <p class="feature_explanation">
+        Make schedule changes by logging into Zarlu from any web enabled device.
+        Additionally, Zarlu provides employees the ability to send employee attendance changes via email.
+        Employees can email a time off request and we'll add it to your calendar and notify your manager about your time off.
         </p>
       </div>
-      <div class="clearfix"></div>
     </div>
   </div>
-  <div class="center pt20 pb20">
-    <%= link_to pricing_path, class: "btn btn-primary btn-huge btn-enormous" do %>
-      Try it Free today<br/>
-      <small>No time limit. No credit card.</small>
-    <% end %>
+  <div class="row center">
+    <div class="span4">
+      <div class="left">
+        <h4 class="underline center">Business Managers</h4>
+        <p class="feature_explanation">
+        Tracking and Managing employee attendance & time should be as easy to use as possible.
+        Businesses should be able to manange time off requests stress free.
+        Zarlu provides managers with easy to use software to save your business time and money!
+        </p>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="left">
+        <h4 class="underline center">Business Managers</h4>
+        <p class="feature_explanation">
+        Managers can view the schedule changes that each of their employees submits.
+        Managers will receive a notification to approve or reject their co-workers time off.
+        Approve or Reject an employee schedule change in less than 5 seconds!
+        </p>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="left">
+        <h4 class="underline center">Business Managers</h4>
+        <p class="feature_explanation">
+        With all your data is in the cloud, managers can view all attendance changes from as recent as a minute ago or from anytime since you joined Zarlu.
+        View attendance records your the employees your oversee or even the entire business. Zarlu brings transparency to attendance management.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row mt30 mb20">
+    <div class="span12">
+      <%= link_to "I want to improve my company's time & attendance process!", pricing_path, class: "btn btn-success btn-huge btn-block" %>
+    </div>
   </div>
 </div>
