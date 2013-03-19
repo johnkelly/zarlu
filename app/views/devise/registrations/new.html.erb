@@ -16,7 +16,7 @@ Create a free Zarlu account for your business and enjoy the best employee time &
     <ul class="nav nav-pills">
       <li><%= link_to "Sign In", new_user_session_path %></li>
       <li><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
-      <li class="active"><%= link_to "Sign Up", pricing_path %></li>
+      <li class="active"><%= link_to "Sign Up", new_user_registration_path %></li>
     </ul>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
