@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '~> 3.2.12'
+gem 'rails', '~> 3.2.13'
 gem 'pg', '~> 0.14.1'
 gem 'unicorn', '~> 4.6.0'
 gem 'jquery-rails', '~> 2.2.1'
@@ -37,7 +37,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 1.4.2'
   gem 'fixture_builder'
   gem 'better_errors'
   #gem 'binding_of_caller' Not compatible with Ruby 2.0
