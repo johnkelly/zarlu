@@ -4,30 +4,32 @@
       <h1>Employee Time & Attendance Software</h1>
       <div class="row">
         <div class="span5 left">
-          <h3>Free and Paid Plans include:</h3>
-          <ul>
-          <li><h4>Employee & Manager accounts</h4></li>
-          <li><h4>Calendar for each Employee</h4></li>
-          <li><h4>Employee Attendance Tracker</h4></li>
-          <li><h4>Company Schedule Changes Feed</h4></li>
-          <li><h4>Group Employees by Manager</h4></li>
-          <li><h4>Tour on every page. No confusion.</h4></li>
-          <li><h4>And much more!</h4></li>
-        </ul>
-        <br/>
-        <%# link_to "Features", "", class: "btn btn-info btn-huge" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to "Start Now", pricing_path, class: "btn btn-success btn-huge" %>
-      </div>
-      <div class="span7">
-        <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
+          <div class="ml15">
+            <h3>Free and Paid Plans include:</h3>
+            <ul>
+              <li><h4>Employee & Manager accounts</h4></li>
+              <li><h4>Calendar for each Employee</h4></li>
+              <li><h4>Employee Attendance Tracker</h4></li>
+              <li><h4>Company Schedule Changes Feed</h4></li>
+              <li><h4>Group Employees by Manager</h4></li>
+              <li><h4>Tour on every page. No confusion.</h4></li>
+              <li><h4>And much more!</h4></li>
+            </ul>
+            <br/>
+            <%# link_to "Features", "", class: "btn btn-info btn-huge" %>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <%= link_to "Start Now", new_user_registration_path, class: "btn btn-success btn-huge" %>
+          </div>
+        </div>
+        <div class="span7">
+          <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 <div class="container mt25">
-  <div class="row center">
+  <div class="row center ml15">
     <div class="span4">
       <h3>Time & Attendance</h3>
       <div class="left">
@@ -62,7 +64,7 @@
       </div>
     </div>
   </div>
-  <div class="row center">
+  <div class="row center ml15">
     <div class="span4">
       <div class="left">
         <h4 class="underline center">Business Managers</h4>
@@ -93,9 +95,9 @@
       </div>
     </div>
   </div>
-  <div class="row mt30 mb20">
+  <div class="row mt30 mb20 ml15">
     <div class="span12">
-      <%= link_to "I want to improve my company's time & attendance process!", pricing_path, class: "btn btn-success btn-huge btn-block" %>
+      <%= link_to "I want to improve my company's time & attendance process!", new_user_registration_path, class: "btn btn-success btn-huge btn-block" %>
     </div>
   </div>
 </div>
