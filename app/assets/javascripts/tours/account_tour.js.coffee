@@ -53,7 +53,7 @@ class window.AccountTour
   step5: ->
     @tour.addStep(
       path: "/subscribers"
-      element: "h2"
+      element: "#navbar_manage_dropdown"
       title: "Congratulations! You mastered the account page."
       content: "You now know how to add employees to your account and group them by the manager who will approve or reject their time off requests."
       placement: "bottom"

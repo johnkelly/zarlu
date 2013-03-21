@@ -1,28 +1,25 @@
-drag_and_drop_lists = ->
-  $('.sortable').sortable(
-    connectWith: ".sortable"
-    placeholder: "alert alert-info height_25"
-    receive: (event, ui) ->
-      _save_manager_for_employee(ui.item, this)
-  ).disableSelection()
+vertical_slider = ->
+  $( "#green_slider" ).slider(
+    range: "min"
+    value: user_amount()
+    min: 0
+    max: 250
+  ).slider('disable').css('opacity', 1)
+
+show_price = ->
+  $('#price').text("$#{price(user_amount())} / month")
 
 jQuery ->
-  if $('body.subscribers_show').length
-    drag_and_drop_lists()
+  if $('body.subscriptions_show').length
+    vertical_slider()
+    show_price()
 
-$(document).bind('page:change', ->
-  if $('body.subscribers_show').length
-    drag_and_drop_lists()
-)
+price = (users) ->
+  amount = (users - 10) * 2
+  if amount < 0
+    0
+  else
+    amount
 
-_save_manager_for_employee = (li, ul) ->
-  user_id = $(li).data('user_id')
-  manager_id = $(ul).data('manager_id')
-
-  $.ajax(
-    url: "/subscribers/change_manager"
-    type: "PUT"
-    data:
-      user_id: user_id
-      manager_id: manager_id
-  )
+user_amount = ->
+  parseInt($('#user_amount').text().match(/\d+/)[0])

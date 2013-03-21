@@ -1,13 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  def new
-    @plan = params[:plan].presence || "coach"
-    super
-  end
-
   def create
     build_resource
-    resource.subscriber = Subscriber.create!(plan: params[:plan])
+    resource.subscriber = Subscriber.create!
     resource.manager = true
 
     if resource.save
@@ -45,7 +40,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_failure(resource)
     clean_up_passwords resource
-    @plan = params[:plan]
     flash.now[:alert] = resource.errors.full_messages.first
     respond_with resource
   end

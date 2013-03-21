@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  Attendance & Time Tracking Software Pricing
+  Business Attendance & Time Software Pricing
 <% end %>
 <% content_for :meta_description do %>
 Software for startups, small businesses, or large enterprises. Schedule and track employee attendance & time off with our scheduling and calendar software.
@@ -7,101 +7,68 @@ Software for startups, small businesses, or large enterprises. Schedule and trac
 <div class="blue_paper mt50 height_55">
   <div class="container">
     <header>
-    <h1 class="center">Pay month to month. Change plans with ease.</h1>
+    <h1 class="center">Time Software for Small or Large Businesses</h1>
     </header>
   </div>
 </div>
-<div class="white_paper pt50 full_page_percent">
+<div class="white_paper">
+  <div id="price_slider">
   <div class="container">
-  <section>
-  <div class="row plans center">
-    <div class="span3">
-      <div class="plan_name coach">Coach</div>
-      <h3>Free</h3>
-      <h5><i class="icon-user"></i>&nbsp;10 employees / managers</h5>
-      <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
-      <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
-      <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
-      <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
-      <h5><i class="icon-time"></i>&nbsp;No trial time limit</h5>
-      <%= link_to "Sign Up", new_user_registration_path(plan: "coach"), class: "mt25 mb15 btn btn-warning btn-large" %>
-    </div>
-    <div class="span3">
-      <div class="popular_plan">Most Popular</div>
-      <div class="plan_name business">Business</div>
-      <h3>$50 / month</h3>
-      <h5><i class="icon-user"></i>&nbsp;40 employees / managers</h5>
-      <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
-      <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
-      <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
-      <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
-      <h5><i class="icon-upload"></i>&nbsp;Daily data backups</h5>
-      <%= link_to "Sign Up", new_user_registration_path(plan: "business"), class: "mt25 mb15 btn btn-success btn-large" %>
-    </div>
-    <div class="span3">
-      <div class="plan_name business_select">Business Select</div>
-      <h3>$100 / month</h3>
-      <h5><i class="icon-user"></i>&nbsp;100 employees / managers</h5>
-      <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
-      <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
-      <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
-      <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
-      <h5><i class="icon-upload"></i>&nbsp;Daily data backups</h5>
-      <%= link_to "Sign Up", new_user_registration_path(plan: "business_select"), class: "mt25 mb15 btn btn-primary btn-large" %>
-    </div>
-    <div class="span3">
-      <div class="plan_name first_class">1st Class</div>
-      <h3>$150 / month</h3>
-      <h5><i class="icon-user"></i>&nbsp;175 employees / managers</h5>
-      <h5><i class="icon-calendar"></i>&nbsp;Calendar for every staffer</h5>
-      <h5><i class="icon-envelope"></i>&nbsp;Email time off requests</h5>
-      <h5><i class="icon-thumbs-up"></i>&nbsp;Approve time off requests</h5>
-      <h5><i class="icon-lock"></i>&nbsp;Bank level encryption</h5>
-      <h5><i class="icon-upload"></i>&nbsp;Daily data backups</h5>
-      <%= link_to "Sign Up", new_user_registration_path(plan: "first_class"), class: "mt25 mb15 btn btn-info btn-large" %>
+    <h2 class="center">Your first 10 employee/manager accounts are on us! No time limit or trial!</h2>
+  </div>
+    <div class="container">
+      <h3 id="price" class="center">$0 / month</h3>
+      <div id="green_slider"></div>
+      <h3 id="user_amount" class="center">10 Employees / Managers</h3>
+      <div class="center">
+        <%= link_to "Create an Account. No credit card required.", new_user_registration_path, class: "btn btn-success btn-huge mt40" %>
+      </div>
     </div>
   </div>
-  </section>
+</div>
+
+<div class="white_paper full_page_percent" id="pricing_questions">
+  <div class="container">
   <section class="mt25">
   <h3 class="center">Have any questions?</h3>
   <div class="row">
     <div class="span6">
-      <h4>Q:Which credit cards are accepted?</h4>
-      <p>A:We accept Visa, Mastercard, American Express, JCB, Discover, and Diners Club.</p>
+      <h3>Which credit cards are accepted?</h3>
+      <p>We accept Visa, Mastercard, American Express, JCB, Discover, and Diners Club.</p>
     </div>
-    <div class="span5 offset1">
-      <h4>Q:Any hidden fees?</h4>
-      <p>A:Absolutely not. There are no setup, cancelation, support, usage, or any other fees.</p>
+    <div class="span6">
+      <h3>Any hidden fees?</h3>
+      <p>Absolutely not. There are no setup, cancelation, support, usage, or any other fees.</p>
     </div>
   </div>
   <div class="row">
     <div class="span6">
-      <h4>Q:Is my payment information secure?</h4>
-      <p>A:Our website is fully PCI compliant, and uses the same encryption that banks use. View our article about security practices to learn more: <%= link_to "How does Zarlu keep my data safe?", "/blog/how-does-zarlu-keep-my-data-safe", target: "_blank" %>.</p>
+      <h3>Is my payment information secure?</h3>
+      <p>Our website is fully PCI compliant, and uses the same encryption that banks use. View our article about security practices to learn more: <%= link_to "How does Zarlu keep my data safe?", "/blog/how-does-zarlu-keep-my-data-safe", target: "_blank" %>.</p>
     </div>
-    <div class="span5 offset1">
-      <h4>Q:Do you have a money back guarentee?</h4>
-      <p>A:If you are not thrilled with Zarlu, we do not want your money. We will refund any payment made within the last thirty days if you are unsatisfied for any reason.</p>
+    <div class="span6">
+      <h3>Do you have a money back guarentee?</h3>
+      <p>If you are not thrilled with Zarlu, we do not want your money. We will refund any payment made within the last thirty days if you are unsatisfied for any reason.</p>
     </div>
   </div>
   <div class="row">
     <div class="span6">
-      <h4>Q:Does the free plan really have no time limit?</h4>
-      <p>A:No catch! The free plan has no time or usage limits. We are confident that you will love our software and we want to give you the opportunity to try it for as long as you like. No pressure.</p>
+      <h3>Do you really offer no time limit?</h3>
+      <p>The free plan has no time limit and includes the same features as the paid plan. We are confident that you will love our software and we want to give you the opportunity to try it for as long as you like. No pressure.</p>
     </div>
-    <div class="span5 offset1">
-      <h4>Q:Does Zarlu offer enterprise plans?</h4>
-      <p>A:We have Enterprise plans availble for customers with more than 175 staffers. Click on the 'Contact Us' link above and send us a message to learn more.</p>
+    <div class="span6">
+      <h3>Does Zarlu offer enterprise plans?</h3>
+      <p>We have Enterprise plans availble for customers with more than 250 staffers. Click on the 'Contact Us' link above and send us a message to learn more.</p>
     </div>
   </div>
   <div class="row">
     <div class="span6">
-      <h4>Q:Unanswered questions?</h4>
-      <p>A:Click on the above 'Contact Us' link to send any unanswered questions. We are happy to answer any questions you have!</p>
+      <h3>Unanswered questions?</h3>
+      <p>Click on the above 'Contact Us' link to send any unanswered questions. We are happy to answer any questions you have!</p>
     </div>
-    <div class="span5 offset1">
-      <h4>Q:Do you have customer support?</h4>
-      <p>A:Our engineers do their best to answer all support requests within 24 hours. Click on the 'Contact Us' link to contact our engineers directly.</p>
+    <div class="span6">
+      <h3>Do you have customer support?</h3>
+      <p>Our engineers do their best to answer all support requests within 24 hours. Click on the 'Contact Us' link to contact our engineers directly.</p>
     </div>
   </div>
   </section>

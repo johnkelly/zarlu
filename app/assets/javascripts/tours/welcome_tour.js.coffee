@@ -39,7 +39,7 @@ class window.WelcomeTour
       path: "/welcome"
       element: "#navbar_settings_dropdown"
       title: "Settings"
-      content: "The settings link is a dropdown that gives you access to several key pages for managing your subscription.<br/><br/><strong>Change Billing / Plan</strong> is where you add or change your credit card information or upgrade or downgrade your payment plan.<br/><br/><strong>Change Email / Pass Phrase</strong> is where you go to change your email, pass phrase, or delete your account.<br/><br/><strong>Sign Out</strong> is where you click when you want to exit Zarlu."
+      content: "The settings link is a dropdown that gives you access to several key pages for managing your subscription.<br/><br/><strong>Change / View Billing Info</strong> is where you add or change your credit card information or view your current subscription's information.<br/><br/><strong>Change Email / Pass Phrase</strong> is where you go to change your email, pass phrase, or delete your account.<br/><br/><strong>Sign Out</strong> is where you click when you want to exit Zarlu."
       placement: "bottom"
     )
 
@@ -75,7 +75,7 @@ class window.WelcomeTour
       path: "/welcome"
       element: "#navbar_manage_dropdown"
       title: "Manage Pages"
-      content: "<strong>The time off request page is where a manager approves or rejects time off and schedule changes.</strong> Employees who have a manager will have time off requests go to their manager's employee tab for their manager's approval.<br/><br/><strong>The account page is where a manager adds and groups employees.</strong> Assign new managers, add co-workers to your account, and group employees by the manager who will approve their schedule changes."
+      content: "<strong>The time off request page is where a manager approves or rejects time off and schedule changes.</strong> Employees who have a manager will have time off requests go to their manager's employee tab for their manager's approval.<br/><br/><strong>The employee page is where a manager adds and groups employees.</strong> Assign new managers, add co-workers to your account, and group employees by the manager who will approve their schedule changes."
       placement: "bottom"
     )
 

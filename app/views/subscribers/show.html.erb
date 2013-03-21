@@ -1,11 +1,9 @@
 <div class="container paper">
-  <p class="pull-right">(Only managers can view this page)</p>
-  <h2>Subscription: <%= @subscriber.plan.titleize %> Plan</h2>
   <div class="row">
     <div class="span6">
-      <h4>Employees (<%= @users.count %> / <%= @subscriber.plan_users %>)</h4>
+      <h4>Add Employeee or Manager</h4>
       <%= form_for @user, url: add_user_subscribers_url, html: { class: "mt25 form-inline" }, method: :post do |form| %>
-        <%= form.text_field :email, class: "input-medium", placeholder: "Email" %>
+        <%= form.email_field :email, class: "input-medium", placeholder: "Email" %>
         <%= form.password_field :password, class: "input-medium", placeholder: "Password" %>
         <%= form.submit "Add", class: "btn btn-primary" %>
       <% end %>

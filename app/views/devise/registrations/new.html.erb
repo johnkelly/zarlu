@@ -20,7 +20,6 @@ Create a free Zarlu account for your business and enjoy the best employee time &
     </ul>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= hidden_field_tag 'plan', @plan %>
     <div><%= f.email_field :email, placeholder: "Email address", class: "input-xlarge" %></div>
     <div><%= f.password_field :password, placeholder: "Secret phrase", class: "input-xlarge" %></div>
     <div><%= f.password_field :password_confirmation, placeholder: "Secret phrase confirmation", class: "input-xlarge" %></div>

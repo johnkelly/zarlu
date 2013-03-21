@@ -12,6 +12,7 @@ class SubscribersController < ApplicationController
   def add_user
     @user = @subscriber.users.new(params[:user])
     if @user.save
+      charge_credit_card(@subscriber)
       track_activity!(@user)
       redirect_to subscribers_url, notice: %Q{Successfully created new user.}
     else
@@ -41,6 +42,12 @@ class SubscribersController < ApplicationController
   end
 
   private
+
+  def charge_credit_card(subscriber)
+    if subscriber.users.count > 10
+      ChargeCreditCardWorker.perform_async(subscriber.id)
+    end
+  end
 
   def shared_variables
     @subscriber = current_user.subscriber

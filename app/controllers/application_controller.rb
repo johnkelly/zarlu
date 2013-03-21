@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_paid_account!
-    if current_user.subscriber.plan != "coach" && current_user.subscriber.customer_token.blank?
-      return redirect_to subscriptions_url, alert: "Paid accounts must have a credit card. Please add a credit card to use Zarlu."
+    if current_user.subscriber.paid_plan? && current_user.subscriber.customer_token.blank?
+      return redirect_to subscriptions_url, alert: "Paid accounts must have a credit card. Please add a credit card to use Zarlu or downgrade to a free account."
     end
   end
 

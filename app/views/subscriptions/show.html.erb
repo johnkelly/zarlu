@@ -1,42 +1,38 @@
 <div class="container paper">
+  <h2 class="center">Current Subscription</h2>
+  <h5 class="center">Your subscription will automatically adjust your payment level when you add or remove users.</h5>
+  <h3 id="price" class="center">$0 / month</h3>
+  <div id="green_slider"></div>
+  <h3 id="user_amount" class="center"><%= @subscriber.users.count %> Employees / Managers</h3>
+  <hr/>
   <div class="row">
-    <div class="span5">
-      <h3>My subscription information</h3>
-      <dl>
-        <dt>Current Plan</dt>
-        <dd><%= @subscriber.plan.titleize %></dd>
-        <dt>Max Users</dt>
-        <dd><%= @subscriber.plan_users %></dd>
-        <dt>Cost</dt>
-        <dd><%= number_to_currency(@subscriber.plan_cost) %> / month</dd>
-      </dl>
-    </div>
-    <div class="span6">
-      <h3>My payment information</h3>
-      <dl>
-        <dt>Current Credit Card</dt>
-        <dd><%= display_card_info(@subscriber) %></dd>
-      </dl>
-      <hr />
-      <h4 class="mb15">Add / Change Credit Card</h4>
-      <p>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers. Our payment provider gives us your card type and last four digits, which we display so that you can know which of your credit cards we are charging.</p>
-      <%= image_tag "rapid_ssl.gif", width: 90, height: 50, alt: "Secured with Rapid SSL" %>
-      <%= image_tag "credit_card.png", width: "285", height: "43", alt: "Credit Cards" %>
+    <h2 class="center">My Business' Credit Card</h3>
+    <p id="credit_card_information">Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers. Our payment provider gives us your card type and last four digits, which we display so that you can know which of your credit cards we are charging.</p>
+    <div class="span6 center">
+      <h3>1. Add / Change Credit Card</h3>
       <div id="stripe_error" class="alert alert-error hide">
         <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
+      <h5>Current Card: <%= display_card_info(@subscriber) %></h5>
       <h5>Card Number and CVC</h5>
       <%= text_field_tag :card_number, nil, name: nil, placeholder: "Credit Card Number", class: "span3" %>
       <%= text_field_tag :card_code, nil, name: nil, placeholder: "Security Code", class: "span2" %>
       <h5>Card Expiration Date</h5>
       <%= select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", class: "span2" } %>
       <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+15 }, { name: nil, id: "card_year", class: "span2" } %>
-      <h5>Select Plan</h5>
       <%= form_for @subscriber, url: subscriptions_url, method: :put do |form| %>
-        <%= form.select :plan, Subscriber::PLANS, html: { class: "span4" } %>
         <%= form.hidden_field :card_token %>
         <%= form.submit "Save", class: "btn btn-success btn-large span4 mt25" %>
       <% end %>
+    </div>
+    <div class="span5">
+      <h3>How is my account charged?</h3>
+      <p>After adding your 11th user, we will begin to charge your credit card once a month. We charge $2 / month per user with your first 10 free. Subscription changes are prorated and the difference is reflected in the next month's bill.</p>
+      <hr/>
+      <%= image_tag "credit_card.png", width: "285", height: "43", alt: "Credit Cards" %>
+      <br/><br/>
+      <%= image_tag "stripe.png", width: 149, height: 41, alt: "Stripe" %>&nbsp;&nbsp;&nbsp;
+      <%= image_tag "rapid_ssl.gif", width: 90, height: 50, alt: "Secured with Rapid SSL" %>
     </div>
   </div>
 </div>
