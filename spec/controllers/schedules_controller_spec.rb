@@ -7,8 +7,8 @@ describe SchedulesController do
   describe "#show" do
     before { get :show, id: user.to_param }
     it { should respond_with(:success) }
-    it { should assign_to(:events) }
-    it { should assign_to(:pending_events) }
-    it { should assign_to(:rejected_events) }
+    it { assigns(:events) }
+    it { assigns(:pending_events) }
+    it { assigns(:rejected_events) }
   end
 end

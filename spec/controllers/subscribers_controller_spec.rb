@@ -10,11 +10,11 @@ describe SubscribersController do
   describe "#show" do
     before { get :show }
     it { should respond_with(:success) }
-    it { should assign_to(:subscriber).with(subscriber) }
-    it { should assign_to(:users).with(subscriber.users) }
-    it { should assign_to(:user).with(be_new_record) }
-    it { should assign_to(:managers).with([manager]) }
-    it { should assign_to(:no_manager_users).with([manager]) }
+    it { assigns(:subscriber).should == subscriber }
+    it { assigns(:users).should == subscriber.users }
+    it { assigns(:user).should be_present }
+    it { assigns(:managers).should == [manager] }
+    it { assigns(:no_manager_users).should == [manager] }
   end
 
   describe "#add_user" do
@@ -27,16 +27,16 @@ describe SubscribersController do
       end
       it { should redirect_to subscribers_url }
       it { should set_the_flash[:notice] }
-      it { should assign_to(:subscriber).with(subscriber) }
-      it { should assign_to(:user) }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:user) }
     end
 
     context "error" do
       before { post :add_user, user: { email: "", password: "" }}
       it { should redirect_to subscribers_url }
       it { should set_the_flash[:alert] }
-      it { should assign_to(:subscriber).with(subscriber) }
-      it { should assign_to(:user) }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:user) }
     end
   end
 
@@ -46,9 +46,9 @@ describe SubscribersController do
       User.any_instance.should_receive(:promote_to_manager!).and_return(true)
       put :promote_to_manager, user_id: user.to_param
     end
-    it { should assign_to(:subscriber).with(subscriber) }
-    it { should assign_to(:users).with(subscriber.users) }
-    it { should assign_to(:user).with(user) }
+    it { assigns(:subscriber).should == subscriber }
+    it { assigns(:users).should == subscriber.users }
+    it { assigns(:user).should == user }
     it { should redirect_to subscribers_url }
     it { should set_the_flash[:notice] }
   end
@@ -61,10 +61,10 @@ describe SubscribersController do
     context "manager id is valid" do
       before { put :change_manager, user_id: user.to_param, manager_id: manager.to_param }
       it { should respond_with(:success) }
-      it { should assign_to(:subscriber).with(subscriber) }
-      it { should assign_to(:users).with(subscriber.users) }
-      it { should assign_to(:user).with(user) }
-      it { should assign_to(:manager).with(manager) }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:users).should == subscriber.users }
+      it { assigns(:user).should == user }
+      it { assigns(:manager).should == manager }
       it "sets the user's manager_id" do
         user.reload.manager_id.should == manager.id
       end
@@ -73,9 +73,9 @@ describe SubscribersController do
     context "manager id is nil" do
       before { put :change_manager, user_id: user.to_param, manager_id: "nil" }
       it { should respond_with(:success) }
-      it { should assign_to(:subscriber).with(subscriber) }
-      it { should assign_to(:users).with(subscriber.users) }
-      it { should assign_to(:user).with(user) }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:users).should == subscriber.users }
+      it { assigns(:user).should == user }
       it "sets the user's manager_id" do
         user.reload.manager_id.should == nil
       end

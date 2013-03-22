@@ -17,8 +17,8 @@ describe EmployeesController do
         Event.any_instance.should_receive(:approve!).and_return(true)
         put :update, id: event.to_param, type: "approve"
       end
-      it { should assign_to(:my_employees).with(manager.employees) }
-      it { should assign_to(:my_employee_pending_event).with(event) }
+      it { assigns(:my_employees).should == manager.employees }
+      it { assigns(:my_employee_pending_event).should == event }
       it { should redirect_to employees_url }
       it { should set_the_flash[:notice] }
     end
@@ -29,8 +29,8 @@ describe EmployeesController do
         Event.any_instance.should_receive(:reject!).and_return(true)
         put :update, id: event.to_param, type: "reject"
       end
-      it { should assign_to(:my_employees).with(manager.employees) }
-      it { should assign_to(:my_employee_pending_event).with(event) }
+      it { assigns(:my_employees).should == manager.employees }
+      it { assigns(:my_employee_pending_event).should == event }
       it { should redirect_to employees_url }
       it { should set_the_flash[:notice] }
     end

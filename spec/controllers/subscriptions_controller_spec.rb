@@ -13,7 +13,7 @@ describe SubscriptionsController do
       end
       it { should redirect_to subscriptions_url }
       it { should set_the_flash[:analytics].to("/vp/add_credit_card") }
-      it { should assign_to(:subscriber).with(subscriber) }
+      it { assigns(:subscriber).should == subscriber }
     end
 
     context "failure stripe error with create customer" do
@@ -38,6 +38,6 @@ describe SubscriptionsController do
   describe "#show" do
     before { get :show }
     it { should respond_with(:success) }
-    it { should assign_to(:subscriber).with(subscriber) }
+    it { assigns(:subscriber).should == subscriber }
   end
 end

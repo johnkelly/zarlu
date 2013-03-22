@@ -10,15 +10,13 @@ describe EventsController do
     context "with start and end params" do
       before { get :index, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
-      it { should respond_with_content_type(/json/) }
-      it { should assign_to(:events).with([event]) }
+      it { assigns(:events).should == [event] }
     end
 
     context "no params" do
       before { get :index, format: :json }
       it { should respond_with(:success) }
-      it { should respond_with_content_type(/json/) }
-      it { should assign_to(:events).with([]) }
+      it { assigns(:events).should == [] }
     end
   end
 
@@ -32,7 +30,6 @@ describe EventsController do
 
     context "http" do
       it { should respond_with(:success) }
-      it { should respond_with_content_type(/json/) }
     end
 
     context "add event to database" do
@@ -48,8 +45,7 @@ describe EventsController do
     context "http" do
       before { put :update, id: event.to_param, event: { starts_at: 12.hours.from_now, ends_at: 13.hours.from_now }, format: :json }
       it { should respond_with(:success) }
-      it { should respond_with_content_type(/json/) }
-      it { should assign_to(:event).with(event) }
+      it { assigns(:event).should == event }
     end
 
     context "update database" do
@@ -73,7 +69,7 @@ describe EventsController do
     context "http" do
       before { delete :destroy, id: event.to_param, format: :json }
       it { should respond_with(:success) }
-      it { should assign_to(:event).with(event) }
+      it { assigns(:event).should == event }
     end
 
     context "database" do

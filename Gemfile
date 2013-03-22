@@ -19,7 +19,7 @@ gem 'routing_concerns', '~> 0.1.0'
 gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.7.10'
-gem 'newrelic_rpm', '~> 3.5.8.72'
+gem 'newrelic_rpm', '~> 3.6.0.78'
 gem 'sidekiq', '~> 2.8.0'
 gem 'sinatra', '~> 1.3.5', require: false
 gem 'slim', '~> 1.3.6'
@@ -37,10 +37,10 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 1.4.2'
+  gem 'shoulda-matchers'
   gem 'fixture_builder'
   gem 'better_errors'
-  #gem 'binding_of_caller' Not compatible with Ruby 2.0
+  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'quiet_assets'
 end
