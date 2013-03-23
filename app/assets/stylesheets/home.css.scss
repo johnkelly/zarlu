@@ -138,14 +138,18 @@ header {
   background: image-url("midtown.png") no-repeat;
   background-color: #FFF;
   margin-top: 50px;
-  height: 440px;
+  height: 540px;
   width: 100%;
   text-align: center;
   color: #FFF;
   padding-bottom: 20px;
 
-  h3 {
-    text-decoration: underline;
+  h1, h2 {
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-weight: 400;
   }
 
   img {
