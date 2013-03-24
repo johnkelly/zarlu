@@ -26,15 +26,14 @@
 }
 
 .body_without_footer {
-  min-height: 60%;
+  min-height: 100%;
   height: auto !important;
-  padding-bottom: 20px;
 }
 
 footer {
   background-color: #373F4A;
   color: #FFF;
-  min-height: 300px;
+  height: 300px;
   font-size: 20px;
 
   .container {
