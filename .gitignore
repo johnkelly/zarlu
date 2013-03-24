@@ -23,6 +23,7 @@ pickle-email-*.html
 /config/pusher.yml
 /config/cloudinary.yml
 /config/sidekiq.yml
+/config/intercom.yml
 routes.txt
 .DS_Store
 /public/uploads

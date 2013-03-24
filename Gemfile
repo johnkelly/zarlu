@@ -27,6 +27,7 @@ gem 'hirefire-resource', '~> 0.0.2'
 gem 'memcachier', '~> 0.0.2'
 gem 'dalli', '~> 2.6.2'
 gem 'will_paginate', '~> 3.0.4'
+gem 'intercom-rails', '~> 0.2.16'
 
 # Gems used only for assets
 group :assets do
