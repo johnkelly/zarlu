@@ -7,6 +7,7 @@ user_slider = ->
     slide: (event, ui) ->
       $('#user_amount').text("#{ui.value} Employees / Managers")
       $('#price').text("$#{price(ui.value)} / month")
+      _gaq.push(['_trackPageview', '/vp/pricing/move-slider'])
   )
 
 jQuery ->
