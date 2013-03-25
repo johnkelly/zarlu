@@ -11,9 +11,7 @@
     </li>
   </ul>
   <ul class="unstyled" id="activity_feed">
-    <% cache @activities do %>
     <%= render partial: @activities, as: :activity %>
-    <% end %>
   </ul>
   <%= will_paginate @activities %>
 </div>
