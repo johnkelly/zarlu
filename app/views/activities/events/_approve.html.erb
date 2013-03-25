@@ -1,8 +1,10 @@
 <% cache activity do %>
-  <% user = activity.user %>
-  <li class="alert alert-success">
-  <i class="icon-ok"></i>&nbsp;<%= @managers.detect{|m| m.id == user.manager_id}.email %> has approved <%= user.email %>'s time off request.
-  <i class="icon-time"></i>
-  <small><%= time_ago_in_words(activity.created_at) %> ago</small>
+  <% user = activity.trackable.user %>
+  <% manager = @managers.detect{|m| m.id == user.manager_id} %>
+  <li>
+  <span class="activity_date"><%= activity.created_at.strftime('%b %d') %></span>
+  <span class="activity_gravatar"><%= image_tag gravatar_url(manager), class: "img-circle", width: 50, height: 50 %></span>
+  <strong class="label label-success">Approved</strong>&nbsp;<%= manager.email.capitalize %> has approved <%= user.email %>'s time off request.
+  <hr/>
   </li>
 <% end %>

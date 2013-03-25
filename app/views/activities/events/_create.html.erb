@@ -1,12 +1,12 @@
 <% cache activity do %>
   <% user = activity.user %>
-  <li class="alert alert-info">
-  <i class="icon-bell"></i>&nbsp;<%= user.email %> submitted a time off request
+  <li>
+  <span class="activity_date"><%= activity.created_at.strftime('%b %d') %></span>
+  <span class="activity_gravatar"><%= image_tag gravatar_url(user), class: "img-circle", width: 50, height: 50 %></span>
+  <strong class="label label-info">New</strong>&nbsp;<%= activity.user.email.capitalize %> created a time-off request
   <% if user.has_manager? %>
     for <%= @managers.detect{|m| m.id == user.manager_id}.email %> to approve.
   <% end %>
-  <i class="icon-time"></i>
-  <small><%= time_ago_in_words(activity.created_at) %> ago</small>
+  <hr/>
   </li>
 <% end %>
-

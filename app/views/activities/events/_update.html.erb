@@ -1,8 +1,9 @@
 <% cache activity do %>
-  <li class="alert alert-info">
-  <i class="icon-edit"></i>&nbsp;<%= activity.user.email %> modified a time off request
-  <i class="icon-time"></i>
-  <small><%= time_ago_in_words(activity.created_at) %> ago</small>
+  <li>
+  <span class="activity_date"><%= activity.created_at.strftime('%b %d') %></span>
+  <span class="activity_gravatar"><%= image_tag gravatar_url(activity.user), class: "img-circle", width: 50, height: 50 %></span>
+  <strong class="label label-info">Update</strong>&nbsp;<%= activity.user.email.capitalize %> modified a time off request
+  <hr/>
   </li>
 <% end %>
 

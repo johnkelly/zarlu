@@ -13,4 +13,8 @@ module ApplicationHelper
       "You have no credit card on file."
     end
   end
+
+  def gravatar_url(user)
+    "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}"
+  end
 end
