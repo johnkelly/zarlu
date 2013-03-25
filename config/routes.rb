@@ -4,6 +4,7 @@ Zarlu::Application.routes.draw do
   root to: "homes#index"
   match 'blog' => 'blog#index'
   match 'blog/:title' => 'blog#post'
+  match '/atom.xml' => 'blog#atom', as: :feed, defaults: { format: 'xml' }
   match '/pricing', to: 'homes#pricing'
   match '/home', to: 'homes#show'
   match '/welcome', to: 'welcomes#show'
