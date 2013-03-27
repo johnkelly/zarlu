@@ -19,6 +19,7 @@ Zarlu::Application.routes.draw do
   resources :events, only: %w[index create update destroy] do
     collection do
       get :manager
+      get :company
     end
   end
   resources :incoming_mails, only: %w[create]

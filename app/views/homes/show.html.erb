@@ -3,7 +3,7 @@
     <li class="<%= @calendar_type == 'user' ? 'active' : '' %>">
     <%= link_to "My Calendar", home_path %>
     </li>
-    <li class="<%= @calendar_type == 'manager' ? 'active' : '' %>">
+    <li class="<%= @calendar_type == 'manager' ? 'active' : '' %> <%= disable_pill(current_user) %>">
     <%= link_to "My Employees' Calendar", home_path(calendar_type: "manager") %>
     </li>
     <li class="<%= @calendar_type == 'company' ? 'active' : '' %>">

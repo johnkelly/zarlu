@@ -5,5 +5,10 @@ trigger_uservoice_popup = ->
     UserVoice.showPopupWidget()
   )
 
+disable_nav = ->
+  $('.nav_disabled').click (e) ->
+    e.preventDefault()
+
 jQuery ->
   trigger_uservoice_popup()
+  disable_nav()

@@ -17,4 +17,8 @@ module ApplicationHelper
   def gravatar_url(user)
     "https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}"
   end
+
+  def disable_pill(user)
+    user.manager? ? "" : "disabled nav_disabled"
+  end
 end

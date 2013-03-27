@@ -49,7 +49,20 @@ describe EventsController do
       it { should respond_with(:success) }
       it { assigns(:events).should == [] }
     end
+  end
 
+  describe "company" do
+    context "with start and end params" do
+      before { get :company, start: event.starts_at, end: event.ends_at, format: :json }
+      it { should respond_with(:success) }
+      it { assigns(:events).should == [event] }
+    end
+
+    context "no params" do
+      before { get :company, format: :json }
+      it { should respond_with(:success) }
+      it { assigns(:events).should == [] }
+    end
   end
 
   describe "create" do

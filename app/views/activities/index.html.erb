@@ -3,7 +3,7 @@
     <li class="<%=@level_of_activity == 'user' ? 'active' : '' %>">
     <%= link_to "My Activity", activities_path %>
     </li>
-    <li class="<%= @level_of_activity == 'manager' ? 'active' : '' %>">
+    <li class="<%= @level_of_activity == 'manager' ? 'active' : '' %> <%= disable_pill(current_user) %>">
     <%= link_to "My Employees' Activity", activities_path(activity_type: "manager") %>
     </li>
     <li class="<%=@level_of_activity == 'company' ? 'active' : '' %>">

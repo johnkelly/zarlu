@@ -41,12 +41,31 @@ manager_calendar = ->
         ignoreTimezone: true
       ]
 
+company_calendar = ->
+  $('#company_calendar').fullCalendar
+    header:
+      left: 'month, agendaWeek, agendaDay'
+      center: 'title'
+    height: 700
+    editable: true
+    selectable: true
+    slotMinutes: 15
+    eventSources:
+      [
+        url: '/events/company'
+        color: '#0668C0'
+        textColor: '#FFF'
+        ignoreTimezone: true
+      ]
+
 jQuery ->
   if $('body.homes_show').length
     if $('#user_calendar').length
       user_calendar()
     else if $('#manager_calendar').length
       manager_calendar()
+    else if $('#company_calendar').length
+      company_calendar()
 
 show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
   $('#event_dialog').dialog(
