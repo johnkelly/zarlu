@@ -6,7 +6,7 @@ class HomesController < ApplicationController
   end
 
   def show
-
+    @calendar_type = params[:calendar_type] || "user"
   end
 
   def pricing

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe EventsController do
   let(:event) { events(:build_model) }
   let(:user) { users(:test_example_com) }
+  let(:manager) { users(:manager_example_com) }
 
   before { sign_in(user) }
 
@@ -18,6 +19,37 @@ describe EventsController do
       it { should respond_with(:success) }
       it { assigns(:events).should == [] }
     end
+  end
+
+  describe "manager" do
+    context "Manager with employees & with start and end params" do
+      before do
+        sign_out(user)
+        sign_in(manager)
+        get :manager, start: event.starts_at, end: event.ends_at, format: :json
+      end
+      it { should respond_with(:success) }
+      it "allows manager to view employee events " do
+        manager.employees.should include(user)
+      end
+      it { assigns(:events).should == [event] }
+    end
+
+    context "No employees & with start and end params" do
+      before { get :manager, start: event.starts_at, end: event.ends_at, format: :json }
+      it { should respond_with(:success) }
+      it "user has no employees" do
+        user.employees.should be_blank
+      end
+      it { assigns(:events).should == [] }
+    end
+
+    context "no params" do
+      before { get :manager, format: :json }
+      it { should respond_with(:success) }
+      it { assigns(:events).should == [] }
+    end
+
   end
 
   describe "create" do

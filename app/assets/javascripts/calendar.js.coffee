@@ -1,5 +1,5 @@
-display_calendar = ->
-  $('#calendar').fullCalendar
+user_calendar = ->
+  $('#user_calendar').fullCalendar
     header:
       left: 'month, agendaWeek, agendaDay'
       center: 'title'
@@ -23,9 +23,30 @@ display_calendar = ->
     select: (startDate, endDate, allDay, jsEvent, view) ->
       show_add_event_dialog(startDate, endDate, allDay, jsEvent, view)
 
+
+manager_calendar = ->
+  $('#manager_calendar').fullCalendar
+    header:
+      left: 'month, agendaWeek, agendaDay'
+      center: 'title'
+    height: 700
+    editable: true
+    selectable: true
+    slotMinutes: 15
+    eventSources:
+      [
+        url: '/events/manager'
+        color: '#0668C0'
+        textColor: '#FFF'
+        ignoreTimezone: true
+      ]
+
 jQuery ->
   if $('body.homes_show').length
-    display_calendar()
+    if $('#user_calendar').length
+      user_calendar()
+    else if $('#manager_calendar').length
+      manager_calendar()
 
 show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
   $('#event_dialog').dialog(
@@ -100,7 +121,7 @@ delete_event = (event) ->
 
 close_dialog = ->
   $('#event_dialog input#title').val("")
-  $('#calendar').fullCalendar('refetchEvents')
+  $('.calendar').fullCalendar('refetchEvents')
   $('#event_dialog').dialog("close")
 
 

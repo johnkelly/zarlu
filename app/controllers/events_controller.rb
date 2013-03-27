@@ -9,6 +9,18 @@ class EventsController < ApplicationController
     end
   end
 
+  def manager
+    if current_user.employees.present? && contains_date_params?
+      @events = Event.where(user_id: current_user.employees).not_rejected.date_range(params[:start], params[:end])
+    else
+      @events = []
+    end
+
+    respond_to do |format|
+      format.json { render json: @events }
+    end
+  end
+
   def create
     @event = current_user.events.create!(params[:event])
     track_activity!(@event)

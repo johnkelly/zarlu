@@ -1,5 +1,16 @@
 <div class="container paper">
-  <div id="calendar"></div>
+  <ul class="nav nav-pills">
+    <li class="<%= @calendar_type == 'user' ? 'active' : '' %>">
+    <%= link_to "My Calendar", home_path %>
+    </li>
+    <li class="<%= @calendar_type == 'manager' ? 'active' : '' %>">
+    <%= link_to "My Employees' Calendar", home_path(calendar_type: "manager") %>
+    </li>
+    <li class="<%= @calendar_type == 'company' ? 'active' : '' %>">
+    <%= link_to "My Company's Calendar", home_path(calendar_type: "company") %>
+    </li>
+  </ul>
+  <div class="calendar" id="<%= @calendar_type %>_calendar"></div>
   <div id="event_dialog" class="dialog ui-helper-hidden">
     <form id="dialog_form">
       <div>

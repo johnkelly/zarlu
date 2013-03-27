@@ -11,11 +11,23 @@ describe HomesController do
 
   describe "#show" do
     context "user on free plan" do
-      before do
-        sign_in users(:test_example_com)
-        get :show
+      context "no calendar type" do
+        before do
+          sign_in users(:test_example_com)
+          get :show
+        end
+        it { should respond_with(:success) }
+        it { assigns(:calendar_type).should == "user" }
       end
-      it { should respond_with(:success) }
+
+      context "calendar type param" do
+        before do
+          sign_in users(:test_example_com)
+          get :show, calendar_type: "manager"
+        end
+        it { should respond_with(:success) }
+        it { assigns(:calendar_type).should == "manager" }
+      end
     end
 
     context "user on premium plan with no credit card" do

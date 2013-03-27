@@ -16,7 +16,11 @@ Zarlu::Application.routes.draw do
       put :promote_to_manager
     end
   end
-  resources :events, only: %w[index create update destroy]
+  resources :events, only: %w[index create update destroy] do
+    collection do
+      get :manager
+    end
+  end
   resources :incoming_mails, only: %w[create]
   resources :employees, only: %w[index update]
   resources :schedules, only: %w[show]
