@@ -15,9 +15,9 @@ user_calendar = ->
         ignoreTimezone: true
       ]
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
-      update_event(event)
+      update_move_event(event)
     eventResize: (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) ->
-      update_event(event)
+      update_move_event(event)
     eventClick: (event, jsEvent, view) ->
       show_edit_event_dialog(event, jsEvent, view)
     select: (startDate, endDate, allDay, jsEvent, view) ->
@@ -130,6 +130,21 @@ update_event = (event) ->
         starts_at: event.start
         ends_at: event.end
         kind: new_kind
+    success: ->
+      close_dialog()
+  )
+
+update_move_event = (event) ->
+  event_title = get_dialog_title()
+  new_title = if !!event_title then event_title else event.title
+  $.ajax(
+    type: "PUT"
+    url: "/events/#{event.id}"
+    data:
+      event:
+        title: new_title
+        starts_at: event.start
+        ends_at: event.end
     success: ->
       close_dialog()
   )
