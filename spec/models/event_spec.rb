@@ -11,6 +11,7 @@ describe Event do
 
   describe "validations" do
     it { should validate_presence_of(:user_id) }
+    it { should validate_presence_of(:kind) }
   end
 
   describe "callbacks" do
@@ -43,6 +44,19 @@ describe Event do
     end
   end
 
+  describe "self.kinds" do
+    it "returns an array with kind text and value" do
+      Event.kinds.should == [
+        ["Vacation", Event::VACATION],
+        ["Sick", Event::SICK],
+        ["Holiday", Event::HOLIDAY],
+        ["Personal", Event::PERSONAL],
+        ["Unpaid", Event::UNPAID],
+        ["Other", Event::OTHER]
+      ]
+    end
+  end
+
   describe "as_json" do
     it "returns event as json in correct order" do
       event_json = {
@@ -52,7 +66,8 @@ describe Event do
         start: event.starts_at,
         end: event.ends_at,
         allDay: event.all_day,
-        recurring: false
+        recurring: false,
+        color: event.color
       }
       event.as_json.should == event_json
     end
@@ -71,6 +86,50 @@ describe Event do
       event.rejected.should be_false
       event.reject!
       event.reload.rejected.should be_true
+    end
+  end
+
+  describe "color" do
+    context "vacation" do
+      it "returns blue" do
+        event.stub(:kind).and_return(Event::VACATION)
+        event.color.should == "#0668C0"
+      end
+    end
+
+    context "sick" do
+      it "returns green" do
+        event.stub(:kind).and_return(Event::SICK)
+        event.color.should == "green"
+      end
+    end
+
+    context "holiday" do
+      it "returns orange" do
+        event.stub(:kind).and_return(Event::HOLIDAY)
+        event.color.should == "#FF5E00"
+      end
+    end
+
+    context "Personal" do
+      it "returns purple" do
+        event.stub(:kind).and_return(Event::PERSONAL)
+        event.color.should == "purple"
+      end
+    end
+
+    context "Unpaid" do
+      it "returns red" do
+        event.stub(:kind).and_return(Event::UNPAID)
+        event.color.should == "red"
+      end
+    end
+
+    context "Other" do
+      it "returns black" do
+        event.stub(:kind).and_return(Event::OTHER)
+        event.color.should == "black"
+      end
     end
   end
 end

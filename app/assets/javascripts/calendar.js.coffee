@@ -77,7 +77,7 @@ show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
       [
         text: "Save"
         click: ->
-          create_event(get_dialog_title(), startDate, endDate, allDay, jsEvent, view)
+          create_event(get_dialog_title(), startDate, endDate, allDay, jsEvent, view, get_dialog_kind())
       ]
   )
 
@@ -100,7 +100,7 @@ show_edit_event_dialog = (event, jsEvent, view) ->
       }]
   )
 
-create_event = (title, startDate, endDate, allDay, jsEvent, view) ->
+create_event = (title, startDate, endDate, allDay, jsEvent, view, kind) ->
   $.ajax(
     type: "POST"
     url: "/events"
@@ -111,13 +111,16 @@ create_event = (title, startDate, endDate, allDay, jsEvent, view) ->
         starts_at: startDate
         ends_at: endDate
         all_day: allDay
+        kind: kind
     success: ->
       close_dialog()
   )
 
 update_event = (event) ->
   event_title = get_dialog_title()
+  event_kind = get_dialog_kind()
   new_title = if !!event_title then event_title else event.title
+  new_kind = if !!event_kind then event_kind else event.kind
   $.ajax(
     type: "PUT"
     url: "/events/#{event.id}"
@@ -126,6 +129,7 @@ update_event = (event) ->
         title: new_title
         starts_at: event.start
         ends_at: event.end
+        kind: new_kind
     success: ->
       close_dialog()
   )
@@ -146,6 +150,9 @@ close_dialog = ->
 
 get_dialog_title = ->
   $('#event_dialog input#title').val()
+
+get_dialog_kind = ->
+  $('#event_dialog #event_kind').val()
 
 press_enter_to_save = ->
   $('#dialog_form').keypress (e) ->
