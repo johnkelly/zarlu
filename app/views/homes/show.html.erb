@@ -10,6 +10,20 @@
     <%= link_to "My Company's Calendar", home_path(calendar_type: "company") %>
     </li>
   </ul>
+  <dl class="color_legend">
+    <dt class="blue_box"></dt>
+    <dd>Vacation</dd>
+    <dt class="green_box"></dt>
+    <dd>Sick</dd>
+    <dt class="orange_box"></dt>
+    <dd>Holiday</dd>
+    <dt class="purple_box"></dt>
+    <dd>Personal</dd>
+    <dt class="red_box"></dt>
+    <dd>Unpaid</dd>
+    <dt class="black_box"></dt>
+    <dd>Other</dd>
+  </dl>
   <div class="calendar" id="<%= @calendar_type %>_calendar"></div>
   <div id="event_dialog" class="dialog ui-helper-hidden">
     <form id="dialog_form">

@@ -186,3 +186,47 @@ header {
   padding-right: 50px;
   line-height: 25px;
 }
+
+dt.blue_box {
+  background-color: #0668C0;
+}
+
+dt.green_box {
+  background-color: green;
+}
+
+dt.orange_box {
+  background-color: #FF5E00;
+}
+
+dt.purple_box {
+  background-color: purple;
+}
+
+dt.red_box {
+  background-color: red;
+}
+
+dt.black_box {
+  background-color: black;
+}
+
+dl.color_legend {
+  text-align: center;
+
+  dt, dd {
+    display: inline-block;
+  }
+
+  dt {
+    width: 20px;
+    height: 20px;
+    margin-left: 25px;
+    border-radius: 15px;
+  }
+
+  dd {
+    margin-left: 2px;
+    vertical-align: top;
+  }
+}
