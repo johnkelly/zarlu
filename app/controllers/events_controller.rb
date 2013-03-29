@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render json: @events }
+      format.json { render json: @events.as_json(display: "email") }
     end
   end
 
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render json: @events }
+      format.json { render json: @events.as_json(display: "email") }
     end
   end
 

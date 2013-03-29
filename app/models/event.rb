@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
   def as_json(options = {})
     {
       id: id,
-      title: title,
+      title: event_title(options),
       description: description,
       start: starts_at,
       end: ends_at,
@@ -82,5 +82,9 @@ class Event < ActiveRecord::Base
 
   def self.format_date(date_time)
     Time.at(date_time.to_i).to_formatted_s(:db)
+  end
+
+  def event_title(options)
+    (options && options[:display] == "email") ? user.email : title
   end
 end

@@ -58,18 +58,35 @@ describe Event do
   end
 
   describe "as_json" do
-    it "returns event as json in correct order" do
-      event_json = {
-        id: event.id,
-        title: event.title,
-        description: event.description,
-        start: event.starts_at,
-        end: event.ends_at,
-        allDay: event.all_day,
-        recurring: false,
-        color: event.color
-      }
-      event.as_json.should == event_json
+    context "option passed" do
+      it "returns event as json in correct order" do
+        event_json = {
+          id: event.id,
+          title: event.user.email,
+          description: event.description,
+          start: event.starts_at,
+          end: event.ends_at,
+          allDay: event.all_day,
+          recurring: false,
+          color: event.color
+        }
+        event.as_json(display: "email").should == event_json
+      end
+    end
+    context "no option passed" do
+      it "returns event as json in correct order" do
+        event_json = {
+          id: event.id,
+          title: event.title,
+          description: event.description,
+          start: event.starts_at,
+          end: event.ends_at,
+          allDay: event.all_day,
+          recurring: false,
+          color: event.color
+        }
+        event.as_json.should == event_json
+      end
     end
   end
 
