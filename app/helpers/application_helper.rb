@@ -2,7 +2,7 @@ module ApplicationHelper
   def display_manager_for_user
     manager_id = current_user.manager_id
     if manager_id.present?
-      "<i>#{User.find(manager_id).email.capitalize} approves my schedule</i>".html_safe
+      "<i>#{User.find(manager_id).display_name} approves my schedule</i>".html_safe
     end
   end
 

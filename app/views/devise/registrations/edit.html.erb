@@ -2,6 +2,21 @@
   <h2>Settings</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="control-group">
+      <label class="control-label mt10">Avatar</label>
+      <div class="controls">
+        <%= image_tag gravatar_url(resource), class: "img-circle", width: 50, height: 50 %>
+        <%= link_to "Change Avatar".html_safe, "https://en.gravatar.com/", target: "_blank", class: "ml5" %>
+        <br/><small>We use gravatar to host user avatars.</small>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :name, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, placeholder: "My Name" %>
+      </div>
+    </div>
     <div class="control-group">
       <%= f.label :email, class: "control-label" %>
       <div class="controls">
@@ -11,19 +26,19 @@
     <div class="control-group">
       <%= f.label :password, class: "control-label" %>
       <div class="controls">
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "New Password" %>
       </div>
     </div>
     <div class="control-group">
       <%= f.label :password_confirmation, class: "control-label" %>
       <div class="controls">
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "New Password Confirmation" %>
       </div>
     </div>
     <div class="control-group">
       <%= f.label :current_password, class: "control-label" %>
       <div class="controls">
-        <%= f.password_field :current_password, autocomplete: "off" %>
+        <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Password", required: true %>
       </div>
     </div>
     <div class="control-group">

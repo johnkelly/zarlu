@@ -85,6 +85,6 @@ class Event < ActiveRecord::Base
   end
 
   def event_title(options)
-    (options && options[:display] == "email") ? user.email : title
+    (options && options[:display] == "email") ? user.display_name : title
   end
 end

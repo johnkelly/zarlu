@@ -62,4 +62,20 @@ describe User do
       end
     end
   end
+
+  describe "display_name" do
+    context "name is present" do
+      it "returns user's name" do
+        user.stub(:name).and_return("john locke")
+        user.display_name.should == "John Locke"
+      end
+    end
+
+    context "name NOT present" do
+      it "returns user's email" do
+        user.stub(:name).and_return(nil)
+        user.display_name.should == "Test@example.com"
+      end
+    end
+  end
 end

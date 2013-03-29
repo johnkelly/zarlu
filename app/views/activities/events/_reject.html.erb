@@ -4,7 +4,7 @@
   <li>
   <span class="activity_date"><%= activity.created_at.in_time_zone('Pacific Time (US & Canada)').strftime('%b %d') %></span>
   <span class="activity_gravatar"><%= image_tag gravatar_url(manager), class: "img-circle", width: 50, height: 50 %></span>
-  <strong class="label label-important">Rejected</strong>&nbsp;<%= manager.email.capitalize %> has rejected <%= user.email %>'s time off request.
+  <strong class="label label-important">Rejected</strong>&nbsp;<%= manager.display_name %> has rejected <%= user.display_name %>'s time off request.
   <hr/>
   </li>
 <% end %>

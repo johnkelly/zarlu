@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :subscriber_id, :manager_id, :manager
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :subscriber_id, :manager_id, :manager, :name
 
   validates_presence_of :subscriber_id
   validate :valid_number_of_users, on: :create
@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
 
   def completed_welcome_tour?
     complete_welcome_tour.present?
+  end
+
+  def display_name
+    name.try(:titleize).presence || email.capitalize
   end
 
   private

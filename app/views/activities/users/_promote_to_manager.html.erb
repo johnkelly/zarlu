@@ -3,7 +3,7 @@
   <li>
   <span class="activity_date"><%= activity.created_at.in_time_zone('Pacific Time (US & Canada)').strftime('%b %d') %></span>
   <span class="activity_gravatar"><%= image_tag gravatar_url(user), class: "img-circle", width: 50, height: 50 %></span>
-  <strong class="label label-info">Promotion</strong>&nbsp;<%= user.email.capitalize %> has promoted <%= activity.trackable.try(:email) %> to manger.
+  <strong class="label label-info">Promotion</strong>&nbsp;<%= user.display_name %> has promoted <%= activity.trackable.try(:display_name) %> to manger.
   <hr/>
   </li>
 <% end %>

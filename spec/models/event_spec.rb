@@ -62,7 +62,7 @@ describe Event do
       it "returns event as json in correct order" do
         event_json = {
           id: event.id,
-          title: event.user.email,
+          title: event.user.display_name,
           description: event.description,
           start: event.starts_at,
           end: event.ends_at,

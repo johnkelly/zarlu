@@ -15,7 +15,7 @@
         <tbody>
           <% @my_employee_pending_events.each do |pending_event| %>
             <tr>
-              <td><%= pending_event.user.email %></td>
+              <td><%= pending_event.user.display_name %></td>
               <td><%= pending_event.starts_at.strftime('%m-%d-%Y') %></td>
               <td><%= pending_event.title %></td>
               <td><%= pending_event.description %></td>

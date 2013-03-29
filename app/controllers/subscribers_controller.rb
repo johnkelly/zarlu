@@ -5,7 +5,7 @@ class SubscribersController < ApplicationController
 
   def show
     @user = User.new
-    @managers = @subscriber.managers(@users).sort_by { |manager| manager.email }
+    @managers = @subscriber.managers(@users).sort_by { |manager| manager.display_name }
     @no_manager_users = @subscriber.no_manager_assigned(@users)
   end
 
@@ -24,7 +24,7 @@ class SubscribersController < ApplicationController
     @user = @subscriber.users.find(params[:user_id])
     @user.promote_to_manager!
     track_activity!(@user)
-    redirect_to subscribers_url, notice: %Q{Promoted #{@user.email} to manager.}
+    redirect_to subscribers_url, notice: %Q{Promoted #{@user.display_name} to manager.}
   end
 
   def change_manager
