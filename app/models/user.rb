@@ -34,6 +34,16 @@ class User < ActiveRecord::Base
     name.try(:titleize).presence || email.capitalize
   end
 
+  def change_manager!(manager_id)
+    if manager_id == -1
+      self.manager_id = nil
+    else
+      manager = subscriber.users.where(manager: true).find(manager_id)
+      self.manager_id = manager.id
+    end
+    self.save!
+  end
+
   private
 
   def valid_number_of_users

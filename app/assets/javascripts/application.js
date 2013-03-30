@@ -17,6 +17,8 @@
 //= require jquery.ui.all
 //= require jquery.cookie
 //= require jquery.md5
+//= require best_in_place
+//= require best_in_place.purr
 //= require fullcalendar
 //= require uservoice
 //= require bootstrap-tour

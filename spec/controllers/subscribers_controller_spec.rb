@@ -12,6 +12,7 @@ describe SubscribersController do
     it { should respond_with(:success) }
     it { assigns(:subscriber).should == subscriber }
     it { assigns(:users).should == subscriber.users }
+    it { assigns(:employees).should == subscriber.users.sort_by(&:display_name) }
     it { assigns(:user).should be_present }
     it { assigns(:managers).should == [manager] }
     it { assigns(:events) }
@@ -55,30 +56,12 @@ describe SubscribersController do
 
   describe "#change_manager" do
     before do
-      user.manager_id = nil
-      user.save!
+      User.any_instance.should_receive(:change_manager!).with(manager.id)
+      put :change_manager, user_id: user.to_param, user: { manager_id: manager.to_param }
     end
-    context "manager id is valid" do
-      before { put :change_manager, user_id: user.to_param, manager_id: manager.to_param }
-      it { should respond_with(:success) }
-      it { assigns(:subscriber).should == subscriber }
-      it { assigns(:users).should == subscriber.users }
-      it { assigns(:user).should == user }
-      it { assigns(:manager).should == manager }
-      it "sets the user's manager_id" do
-        user.reload.manager_id.should == manager.id
-      end
-    end
-
-    context "manager id is nil" do
-      before { put :change_manager, user_id: user.to_param, manager_id: "nil" }
-      it { should respond_with(:success) }
-      it { assigns(:subscriber).should == subscriber }
-      it { assigns(:users).should == subscriber.users }
-      it { assigns(:user).should == user }
-      it "sets the user's manager_id" do
-        user.reload.manager_id.should == nil
-      end
-    end
+    it { assigns(:subscriber).should == subscriber }
+    it { assigns(:users).should == subscriber.users }
+    it { assigns(:user).should == user }
+    it { should respond_with(204) }
   end
 end

@@ -78,4 +78,23 @@ describe User do
       end
     end
   end
+
+  describe "change_manager!" do
+    context "Manager id -1" do
+      it "sets the user's manager id to nil" do
+        user.manager_id.should be_present
+        user.change_manager!(-1)
+        user.reload.manager_id.should be_blank
+      end
+    end
+
+    context "any other manager id" do
+      it "sets the user's manager id to the manager id" do
+        user.update_column(:manager_id, nil)
+        user.manager_id.should be_blank
+        user.change_manager!(manager.id)
+        user.reload.manager_id.should == manager.id
+      end
+    end
+  end
 end
