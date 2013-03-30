@@ -31,6 +31,12 @@ class SubscribersController < ApplicationController
     redirect_to subscribers_url, notice: %Q{Promoted #{@user.display_name} to manager.}
   end
 
+  def demote_to_employee
+    @user = @users.find(params[:user_id])
+    @user.demote_to_employee!
+    redirect_to subscribers_url, notice: %Q{Demoted #{@user.display_name} to employee.}
+  end
+
   def change_manager
     @user = @users.find(params[:user_id])
     @user.change_manager!(params[:user][:manager_id].to_i)

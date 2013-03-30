@@ -19,6 +19,20 @@ describe User do
     end
   end
 
+  describe "demote to employee!" do
+    it "sets all the manager's employees to no manager" do
+      manager.employees.should == [user]
+      manager.demote_to_employee!
+      manager.reload.employees.should == []
+    end
+
+    it "sets the manager's manager attribute to false" do
+      manager.manager?.should be_true
+      manager.demote_to_employee!
+      manager.reload.manager?.should be_false
+    end
+  end
+
   describe "employees" do
     context "no employees" do
       subject { user }

@@ -54,6 +54,18 @@ describe SubscribersController do
     it { should set_the_flash[:notice] }
   end
 
+  describe "#demote_to_employee" do
+    before do
+      User.any_instance.should_receive(:demote_to_employee!).and_return(true)
+      put :demote_to_employee, user_id: user.to_param
+    end
+    it { assigns(:subscriber).should == subscriber }
+    it { assigns(:users).should == subscriber.users }
+    it { assigns(:user).should == user }
+    it { should redirect_to subscribers_url }
+    it { should set_the_flash[:notice] }
+  end
+
   describe "#change_manager" do
     before do
       User.any_instance.should_receive(:change_manager!).with(manager.id)

@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def demote_to_employee!
+    set_employee_manager_id_to_none
+    self.manager = false
+    self.save!
+  end
+
   def employees
     User.where(manager_id: self.id)
   end
@@ -51,5 +57,9 @@ class User < ActiveRecord::Base
       errors.add(:base, %Q{You have reached the free plan limit of 10 employees / managers. Add your business' credit card by clicking on [Settings -> Change / View Billing Info] on the top navigation bar to upgrade your business to a paid plan.})
       false
     end
+  end
+
+  def set_employee_manager_id_to_none
+    employees.each { |employee| employee.change_manager!(-1) }
   end
 end

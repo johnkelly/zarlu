@@ -14,6 +14,7 @@ Zarlu::Application.routes.draw do
     member do
       put :change_manager
       put :promote_to_manager
+      put :demote_to_employee
     end
   end
   resources :events, only: %w[index create update destroy] do
