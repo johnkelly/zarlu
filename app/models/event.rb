@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description, :starts_at, :ends_at, :all_day, :approved, :kind
 
-  belongs_to :user
+  belongs_to :user, touch: true
 
   validates_presence_of :user_id, :kind
 
