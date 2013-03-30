@@ -6,6 +6,8 @@ class window.AccountTour
     @step3()
     @step4()
     @step5()
+    @step6()
+    @step7()
 
   start: ->
     @tour.start(true)
@@ -16,10 +18,10 @@ class window.AccountTour
   step1: ->
     @tour.addStep(
       path: "/subscribers"
-      element: ".paper"
+      element: "#navbar_manage_dropdown"
       title: "Account Management Tour"
-      content: "This tour will teach you how to add employees to your account and group them by manager."
-      placement: "left"
+      content: "This tour will teach you how to add employees to your account and group them by schedule manager."
+      placement: "bottom"
     )
 
   step2: ->
@@ -34,23 +36,40 @@ class window.AccountTour
   step3: ->
     @tour.addStep(
       path: "/subscribers"
-      element: ".btn-mini"
-      title: "Make Employee a Manager"
-      content: "Click on this button to make the employee a manager who will oversee other employees' time off requests."
-      placement: "right"
-      reflex: true
+      element: "th:contains('Schedule Manager')"
+      title: "Change Schedule Manager"
+      content: "You can assign a schedule manager to approve or reject an employee's time-off by clicking the edit icon and selecting a manger."
+      placement: "top"
     )
 
   step4: ->
     @tour.addStep(
       path: "/subscribers"
-      element: "ul.sortable"
-      title: "Group Employees by Manager"
-      content: "Click on the employee highlighted in blue and keep your mouse pressed while you drag the blue tag to the right underneath the manager who will oversee their time off requests."
+      element: "th:contains('Personal')"
+      title: "View Employee Time-Off"
+      content: "View the amount of time-off an employee has used divided by category."
       placement: "top"
     )
 
   step5: ->
+    @tour.addStep(
+      path: "/subscribers"
+      element: ".btn-mini:contains('Promote'):first"
+      title: "Make Employee a Manager"
+      content: "When you click on promote to manager, you will make the employee a manager who can oversee other employees' time off requests."
+      placement: "right"
+    )
+
+  step6: ->
+    @tour.addStep(
+      path: "/subscribers"
+      element: ".btn-mini:contains('Demote'):first"
+      title: "Make Manager an Employee"
+      content: "If an employee's responsibilities have changed, you can demote them back to an employee level account by clicking on the demote to employee button."
+      placement: "right"
+    )
+
+  step7: ->
     @tour.addStep(
       path: "/subscribers"
       element: "#navbar_manage_dropdown"

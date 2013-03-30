@@ -1,4 +1,4 @@
-<% cache employee  do %>
+<% cache employee do %>
 <% employee_events = @events.select { |event| event.user_id == employee.id } %>
 <% manager = @managers.detect{ |manager| manager.id == employee.manager_id } %>
 <tr>

@@ -22,7 +22,7 @@ jQuery ->
     calendar_tour = new CalendarTour()
     start_tour_on_click(calendar_tour, "calendar")
   else if $('body.subscribers_show').length
-    $('#start_tour').removeClass('hide').text("Tour Account")
+    $('#start_tour').removeClass('hide').text("Tour Employees")
     account_tour = new AccountTour()
     start_tour_on_click(account_tour, "account")
   else if $('body.activities_index').length
