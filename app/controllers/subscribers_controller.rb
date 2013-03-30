@@ -5,8 +5,9 @@ class SubscribersController < ApplicationController
 
   def show
     @user = User.new
+    @employees = @subscriber.users
+    @events = Event.where(user_id: @subscriber.users)
     @managers = @subscriber.managers(@users).sort_by { |manager| manager.display_name }
-    @no_manager_users = @subscriber.no_manager_assigned(@users)
   end
 
   def add_user

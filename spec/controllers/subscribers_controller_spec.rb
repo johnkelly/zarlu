@@ -14,7 +14,7 @@ describe SubscribersController do
     it { assigns(:users).should == subscriber.users }
     it { assigns(:user).should be_present }
     it { assigns(:managers).should == [manager] }
-    it { assigns(:no_manager_users).should == [manager] }
+    it { assigns(:events) }
   end
 
   describe "#add_user" do
