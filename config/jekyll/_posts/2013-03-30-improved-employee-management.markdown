@@ -3,7 +3,7 @@ layout: post
 published: true
 title: Improved Employee Management
 ---
-#Imrpoved Employee Management# {: .center}
+#Improved Employee Management# {: .center}
 ***
 I have just released to all free and paid customers a completely redesigned employee management page. After analyzing how our customers used our old interface and brainstorming how to make managing employees a more efficient process, the Zarlu team has worked hard over the past week to build a new page from scratch. The new employee page has all of the old page's features with additional features added to give more information to our customers.
 
