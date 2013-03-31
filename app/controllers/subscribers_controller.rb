@@ -33,8 +33,13 @@ class SubscribersController < ApplicationController
 
   def demote_to_employee
     @user = @users.find(params[:user_id])
-    @user.demote_to_employee!
-    redirect_to subscribers_url, notice: %Q{Demoted #{@user.display_name} to employee.}
+    if @subscriber.managers(@users).count == 1
+      flash[:alert] = "Zarlu requires customers to have at least one manager so that someone in your company can view administrative pages."
+    else
+      @user.demote_to_employee!
+      flash[:notice] = %Q{Demoted #{@user.display_name} to employee.}
+    end
+    redirect_to subscribers_url
   end
 
   def change_manager

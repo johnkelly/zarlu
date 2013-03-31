@@ -55,15 +55,30 @@ describe SubscribersController do
   end
 
   describe "#demote_to_employee" do
-    before do
-      User.any_instance.should_receive(:demote_to_employee!).and_return(true)
-      put :demote_to_employee, user_id: user.to_param
+    context "1 manager" do
+      before do
+        Subscriber.any_instance.should_receive(:managers).and_return([1])
+        User.any_instance.should_not_receive(:demote_to_employee!)
+        put :demote_to_employee, user_id: user.to_param
+      end
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:users).should == subscriber.users }
+      it { assigns(:user).should == user }
+      it { should redirect_to subscribers_url }
+      it { should set_the_flash[:alert] }
     end
-    it { assigns(:subscriber).should == subscriber }
-    it { assigns(:users).should == subscriber.users }
-    it { assigns(:user).should == user }
-    it { should redirect_to subscribers_url }
-    it { should set_the_flash[:notice] }
+
+    context "more than 1 manager" do
+      before do
+        Subscriber.any_instance.should_receive(:managers).and_return([1,2])
+        User.any_instance.should_receive(:demote_to_employee!)
+        put :demote_to_employee, user_id: user.to_param
+      end
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:users).should == subscriber.users }
+      it { assigns(:user).should == user }
+      it { should set_the_flash[:notice] }
+    end
   end
 
   describe "#change_manager" do
