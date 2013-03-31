@@ -70,7 +70,7 @@ jQuery ->
 show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
   $('#event_dialog').dialog(
     modal: true
-    title: "New Event"
+    title: "New Event on #{format_dialog_title_date(startDate)}"
     open: press_enter_to_save
     close: unbind_press_enter_to_save
     buttons:
@@ -84,7 +84,7 @@ show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
 show_edit_event_dialog = (event, jsEvent, view) ->
   $('#event_dialog').dialog(
     modal: true
-    title: "Edit Event"
+    title: "Edit Event on #{format_dialog_title_date(event.start)}"
     open: press_enter_to_save
     close: unbind_press_enter_to_save
     buttons:
@@ -178,3 +178,8 @@ press_enter_to_save = ->
 unbind_press_enter_to_save = ->
   $('#dialog_form').unbind("keypress")
 
+format_dialog_title_date = (event_date) ->
+  event_date.toString().split(todays_year())[0]
+
+todays_year = ->
+  new Date().getFullYear()
