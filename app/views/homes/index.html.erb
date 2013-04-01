@@ -3,29 +3,19 @@
     <div class="container">
       <h1>Employee Time & Attendance Software</h1>
       <h2>Revolutionize How Your Business Handles Employee Time-Off</h2>
-      <div class="row">
-        <div class="span5 left">
-          <div class="ml15">
-            <h3>Free and Paid Plans include:</h3>
-            <ul>
-              <li><h4>Employee & Manager accounts</h4></li>
-              <li><h4>Calendar for each Employee</h4></li>
-              <li><h4>Employee Attendance Tracker</h4></li>
-              <li><h4>Company Schedule Changes Feed</h4></li>
-              <li><h4>Group Employees by Manager</h4></li>
-              <li><h4>Tour on every page. No confusion.</h4></li>
-              <li><h4>And much more!</h4></li>
-            </ul>
-            <br/>
-            <%= link_to "Pricing", pricing_path, class: "btn btn-info btn-huge" %>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <%= link_to "Start Now", new_user_registration_path, class: "btn btn-success btn-huge" %>
-          </div>
-        </div>
-        <div class="span7">
-          <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
-        </div>
-      </div>
+      <%= image_tag "activity_feed_tablet.png", width: 252, height: 376, alt: "Software Pricing" %>
+      <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
+      <%= image_tag "software_pricing_mobile.png", width: 194, height: 376, alt: "Software Pricing" %>
+    </div>
+  </div>
+</div>
+<div class="blue_paper pt8 pb8">
+  <div class="container row">
+    <div class="span9">
+      <h3 class="margin0">Take control of employee attendance today with Zarlu.</h3>
+    </div>
+    <div class="span3">
+      <%= link_to "Get Started Now!", "", class: "btn btn-success btn-large" %>
     </div>
   </div>
 </div>

@@ -7,7 +7,6 @@ div.white_paper {
 div.blue_paper {
   width: 100%;
   color: #FFF;
-  padding-bottom: 20px;
   background: -moz-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
   background: -webkit-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
   background: linear-gradient(top, #53b7f9 0%, #028ed1 100%);
@@ -142,14 +141,15 @@ header {
   width: 100%;
   text-align: center;
   color: #FFF;
-  padding-bottom: 20px;
 
   h1, h2 {
     margin-top: 20px;
+    text-shadow: #000 3px 3px;
   }
 
   h2 {
     font-weight: 400;
+    text-shadow: #000 3px 3px;
   }
 
   img {
@@ -230,4 +230,10 @@ dl.color_legend {
     margin-left: 2px;
     vertical-align: top;
   }
+}
+
+.black_background {
+  background-color: #EEE;
+  color: #0076CC;
+  height: 150px;
 }
