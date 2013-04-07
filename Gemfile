@@ -16,7 +16,7 @@ gem 'strong_parameters', '~> 0.2.0'
 gem 'cache_digests', '~> 0.2.0'
 gem 'routing_concerns', '~> 0.1.0'
 
-gem 'jquery-turbolinks', '~> 0.2.1'
+gem 'jquery-turbolinks', '~> 1.0.0'
 gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.7.10'
 gem 'newrelic_rpm', '~> 3.6.0.78'
