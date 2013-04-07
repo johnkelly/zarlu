@@ -11,7 +11,7 @@ gem 'devise', '~> 2.2.3'
 gem 'fullcalendar-rails', '~> 1.5.4.0'
 
 # Rails 4 Features
-gem 'turbolinks', '~> 1.1.0'
+gem 'turbolinks', '~> 1.1.1'
 gem 'strong_parameters', '~> 0.2.0'
 gem 'cache_digests', '~> 0.2.0'
 gem 'routing_concerns', '~> 0.1.0'
@@ -33,7 +33,7 @@ gem 'best_in_place', '~> 2.1.0'
 # Gems used only for assets
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 2.0.1'
   gem 'bootstrap-sass', '~> 2.3.1.0'
 end
 
