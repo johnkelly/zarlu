@@ -8,6 +8,9 @@ Zarlu::Application.routes.draw do
   match '/pricing', to: 'homes#pricing'
   match '/home', to: 'homes#show'
   match '/welcome', to: 'welcomes#show'
+  get '/employee-leave-management', to: 'articles#employee_leave_management'
+  get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'
+  get '/business-time-tracking', to: 'articles#business_time_tracking'
   devise_for :users, controllers: { registrations: 'registrations' }
   resource :subscribers, only: %w[show] do
     collection { post :add_user }
