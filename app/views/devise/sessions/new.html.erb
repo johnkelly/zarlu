@@ -15,13 +15,18 @@ Sign into your business' time & attendance tracking and scheduling software subs
   <div class="navigation_link">
     <ul class="nav nav-pills">
       <li class="active"><%= link_to "Sign In", new_user_session_path %></li>
-      <li><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
+      <li><%= link_to "Reset Password", new_user_password_path %></li>
       <li><%= link_to "Sign Up", new_user_registration_path %></li>
     </ul>
   </div>
+  <h4 class="center green">Provide your email and password to continue.</h4>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div><%= f.email_field :email, placeholder: "Email address", class: "input-xlarge" %></div>
-    <div><%= f.password_field :password, placeholder: "Secret phrase", class: "input-xlarge" %></div>
+    <div>
+      <%= f.label :email, class: "devise_label" %>
+      <%= f.email_field :email, class: "input-xlarge" %></div>
+    <div>
+      <%= f.label :password, class: "devise_label"%>
+      <%= f.password_field :password, class: "input-xlarge" %></div>
     <div><%= f.submit "Sign In", class: "btn btn-primary btn-large", disable_with: "Signing in..." %></div>
   <% end %>
 </div>

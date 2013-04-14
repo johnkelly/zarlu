@@ -95,7 +95,9 @@ header {
     ul {
       margin-left: auto;
       margin-right: auto;
-      width: 410px;
+      width: 370px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #0088CC;
 
       li.active {
         padding-right: 10px;
@@ -105,7 +107,7 @@ header {
 
   form div {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 
     .btn-large {
       line-height: 1.5;

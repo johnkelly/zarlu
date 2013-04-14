@@ -1,7 +1,7 @@
 <div class="blue_paper mt50 height_55 pb20">
   <div class="container">
     <header>
-    <h1 class="center">Enter Your Account's New Secret Phrase.</h1>
+    <h1 class="center">Enter Your Account's New Password.</h1>
     </header>
   </div>
 </div>
@@ -9,14 +9,21 @@
   <div class="navigation_link">
     <ul class="nav nav-pills">
       <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li class="disabled"><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
+      <li class="disabled"><%= link_to "Reset Password", new_user_password_path %></li>
       <li><%= link_to "Sign Up", pricing_path %></li>
     </ul>
   </div>
+  <h4 class="center green">Please provide a new password and confirm it.</h4>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.hidden_field :reset_password_token %>
-    <div><%= f.password_field :password, placeholder: "New Secret phrase", class: "input-xlarge" %></div>
-    <div><%= f.password_field :password_confirmation, placeholder: "New Secret phrase confirmation", class: "input-xlarge" %></div>
+    <div>
+      <%= f.label :password, class: "devise_label"%>
+      <%= f.password_field :password, class: "input-xlarge" %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation, class: "devise_label"%>
+      <%= f.password_field :password_confirmation, class: "input-xlarge" %>
+    </div>
     <div><%= f.submit "Change", class: "btn btn-success btn-large", disable_with: "Changing..." %></div>
   <% end %>
 </div>

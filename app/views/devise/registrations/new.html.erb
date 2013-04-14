@@ -15,14 +15,22 @@ Create a free Zarlu account for your business and enjoy the best employee time &
   <div class="navigation_link">
     <ul class="nav nav-pills">
       <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
+      <li><%= link_to "Reset Password", new_user_password_path %></li>
       <li class="active"><%= link_to "Sign Up", new_user_registration_path %></li>
     </ul>
   </div>
+  <h4 class="center green">Provide your email and confirm your password.</h4>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div><%= f.email_field :email, placeholder: "Email address", class: "input-xlarge" %></div>
-    <div><%= f.password_field :password, placeholder: "Secret phrase", class: "input-xlarge" %></div>
-    <div><%= f.password_field :password_confirmation, placeholder: "Secret phrase confirmation", class: "input-xlarge" %></div>
+    <div>
+      <%= f.label :email, class: "devise_label" %>
+      <%= f.email_field :email, class: "input-xlarge" %>
+    </div>
+    <div>
+      <%= f.label :password, class: "devise_label" %>
+      <%= f.password_field :password, class: "input-xlarge" %></div>
+    <div>
+      <%= f.label :password_confirmation, class: "devise_label" %>
+      <%= f.password_field :password_confirmation, class: "input-xlarge" %></div>
     <div><%= f.submit "Sign Up", class: "btn btn-success btn-large", disable_with: "Creating..." %></div>
   <% end %>
 </div>

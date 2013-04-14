@@ -15,13 +15,17 @@ Enter your email address to reset your pass phrase for your employee attendance 
   <div class="navigation_link">
     <ul class="nav nav-pills">
       <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li class="active"><%= link_to "Reset Secret Phrase", new_user_password_path %></li>
+      <li class="active"><%= link_to "Reset Password", new_user_password_path %></li>
       <li><%= link_to "Sign Up", new_user_registration_path %></li>
     </ul>
   </div>
+  <h4 class="center green">Provide your email to send reset instructions.</h4>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
     <%= hidden_field_tag 'plan', @plan %>
-    <div><%= f.email_field :email, placeholder: "Email address", class: "input-xlarge" %></div>
+    <div>
+      <%= f.label :email, class: "devise_label" %>
+      <%= f.email_field :email, class: "input-xlarge" %>
+    </div>
     <div><%= f.submit "Reset", class: "btn btn-primary btn-large", disable_with: "Resetting..." %></div>
   <% end %>
 </div>

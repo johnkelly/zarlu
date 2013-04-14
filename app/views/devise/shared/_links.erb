@@ -7,7 +7,7 @@
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <small class="float_left"><%= link_to "Reset secret phrase", new_password_path(resource_name) %></small>
+  <small class="float_left"><%= link_to "Reset password", new_password_path(resource_name) %></small>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

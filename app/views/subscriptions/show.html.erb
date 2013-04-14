@@ -14,7 +14,7 @@
         <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
       <h5>Current Card: <%= display_card_info(@subscriber) %></h5>
-      <h5>Card Number and CVC</h5>
+      <h5>Card Number | Security Code (CVC)</h5>
       <%= text_field_tag :card_number, nil, name: nil, placeholder: "Credit Card Number", class: "span3" %>
       <%= text_field_tag :card_code, nil, name: nil, placeholder: "Security Code", class: "span2" %>
       <h5>Card Expiration Date</h5>
