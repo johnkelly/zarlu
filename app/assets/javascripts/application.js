@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery_ui_touch_punch
 //= require jquery.cookie
 //= require jquery.md5
 //= require best_in_place
