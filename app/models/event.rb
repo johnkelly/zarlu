@@ -78,6 +78,14 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def duration
+    if all_day
+      calculate_all_day_duration
+    else
+      calculate_event_duration
+    end
+  end
+
   private
 
   def self.format_date(date_time)
@@ -86,5 +94,22 @@ class Event < ActiveRecord::Base
 
   def event_title(options)
     (options && options[:display] == "email") ? user.display_name : title
+  end
+
+  def calculate_all_day_duration
+    if ends_at.present?
+      (((ends_at - starts_at) / 1.day) + 1).to_i * 8
+    else
+      8
+    end
+  end
+
+  def calculate_event_duration
+    hours_off = ((ends_at - starts_at) / 1.hour).round(2)
+    if hours_off > 8
+      8
+    else
+      hours_off
+    end
   end
 end

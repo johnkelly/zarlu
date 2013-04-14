@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Event do
   let(:event) { events(:build_model) }
+  let(:all_day_event) { events(:all_day) }
   let(:manager) { users(:manager_example_com) }
   let(:user) { users(:test_example_com) }
 
@@ -40,7 +41,7 @@ describe Event do
       event.ends_at = 90.minutes.ago
       event.save!
 
-      Event.date_range(2.hours.ago, 2.hours.from_now).should == [event]
+      Event.date_range(2.hours.ago, 2.hours.from_now).should include event
     end
   end
 
@@ -146,6 +147,39 @@ describe Event do
       it "returns black" do
         event.stub(:kind).and_return(Event::OTHER)
         event.color.should == "black"
+      end
+    end
+  end
+
+  describe "duration" do
+    context "all day event" do
+      context "1 day" do
+        it "returns 8 hours" do
+          all_day_event.duration.should == 8.0
+        end
+      end
+
+      context "3 days" do
+        it "returns 24 hours" do
+          all_day_event.stub(:ends_at).and_return((Date.today + 2).midnight)
+          all_day_event.duration.should == 24.0
+        end
+      end
+
+    end
+
+    context "not all day event" do
+      context "more than 8 hours" do
+        it "returns the number of hours" do
+          event.stub(:ends_at).and_return(event.starts_at + 12.hours)
+          event.duration.should == 8.0
+        end
+      end
+
+      context "less than 8 hours" do
+        it "returns the number of hours" do
+          event.duration.should == 1.98
+        end
       end
     end
   end

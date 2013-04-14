@@ -10,6 +10,7 @@ module BuildModels
       no_cc_user = paid_subscriber.users.create!(email: "freeloader@example.com", password: "password", password_confirmation: "password", manager: true)
 
       event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+      allday_event = user.events.create!(title: "All day", description: "From the lib file", starts_at: Date.today.midnight, ends_at: Date.today.midnight, all_day: true)
     end
   end
 end

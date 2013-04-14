@@ -8,12 +8,12 @@
       collection: @manager_collection, nil: "None", activator: "#icon-edit-#{employee.id}" %>
     <i id="icon-edit-<%= employee.id %>" class="icon-edit"></i>
   </td>
-  <td><%= employee_events.select{ |event| event.kind == Event::VACATION }.count %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::SICK }.count %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::HOLIDAY }.count %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::PERSONAL }.count %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::UNPAID }.count %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::OTHER }.count %></td>
+  <td><%= employee_events.select{ |event| event.kind == Event::VACATION }.map(&:duration).reduce(:+) %></td>
+  <td><%= employee_events.select{ |event| event.kind == Event::SICK }.map(&:duration).reduce(:+) %></td>
+  <td><%= employee_events.select{ |event| event.kind == Event::HOLIDAY }.map(&:duration).reduce(:+) %></td>
+  <td><%= employee_events.select{ |event| event.kind == Event::PERSONAL }.map(&:duration).reduce(:+) %></td>
+  <td><%= employee_events.select{ |event| event.kind == Event::UNPAID }.map(&:duration).reduce(:+) %></td>
+  <td><%= employee_events.select{ |event| event.kind == Event::OTHER }.map(&:duration).reduce(:+) %></td>
   <td>
     <% if employee.manager? %>
       <%= link_to "Demote to Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right", data: { confirm: "Are you sure?" } %>

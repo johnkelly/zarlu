@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe EventsController do
   let(:event) { events(:build_model) }
+  let(:all_day_event) { events(:all_day) }
   let(:user) { users(:test_example_com) }
   let(:manager) { users(:manager_example_com) }
 
@@ -11,7 +12,7 @@ describe EventsController do
     context "with start and end params" do
       before { get :index, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [event] }
+      it { assigns(:events).should == [all_day_event, event] }
     end
 
     context "no params" do
@@ -32,7 +33,7 @@ describe EventsController do
       it "allows manager to view employee events " do
         manager.employees.should include(user)
       end
-      it { assigns(:events).should == [event] }
+      it { assigns(:events).should == [all_day_event, event] }
     end
 
     context "No employees & with start and end params" do
@@ -55,7 +56,7 @@ describe EventsController do
     context "with start and end params" do
       before { get :company, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [event] }
+      it { assigns(:events).should == [event, all_day_event] }
     end
 
     context "no params" do
