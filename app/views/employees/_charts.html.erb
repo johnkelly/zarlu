@@ -1,0 +1,26 @@
+<div class="btn-group">
+  <%= link_to "Time Off Log", employee_path(@employee), class: "btn btn-large" %>
+  <%= link_to "Time Off Charts", employee_path(@employee, charts: "true"), class: "btn btn-large btn-primary" %>
+</div>
+<div class="mt30">
+  <h3>Time Off Used by Category</h3>
+  <dl class="color_legend">
+    <dt class="blue_box"></dt>
+    <dd>Vacation</dd>
+    <dt class="green_box"></dt>
+    <dd>Sick</dd>
+    <dt class="orange_box"></dt>
+    <dd>Holiday</dd>
+    <dt class="purple_box"></dt>
+    <dd>Personal</dd>
+    <dt class="red_box"></dt>
+    <dd>Unpaid</dd>
+    <dt class="black_box"></dt>
+    <dd>Other</dd>
+  </dl>
+  <% if @event_durations.any? %>
+    <div id="pie_chart" data-durations='<%= @event_durations.pie_chart_data %>'></div>
+  <% else %>
+    <h4>No chart to show because this employee has not used any time off.</h4>
+  <% end %>
+</div>

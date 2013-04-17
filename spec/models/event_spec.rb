@@ -161,6 +161,7 @@ describe Event do
 
       context "3 days" do
         it "returns 24 hours" do
+          all_day_event.stub(:starts_at).and_return((Date.today).midnight)
           all_day_event.stub(:ends_at).and_return((Date.today + 2).midnight)
           all_day_event.duration.should == 24.0
         end

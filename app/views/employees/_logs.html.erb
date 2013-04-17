@@ -1,0 +1,11 @@
+<div class="btn-group">
+  <%= link_to "Time Off Log", employee_path(@employee), class: "btn btn-large btn-primary" %>
+  <%= link_to "Time Off Charts", employee_path(@employee, charts: "true"), class: "btn btn-large" %>
+</div>
+<div class="mt30">
+  <% if @events.present? %>
+    <%= render partial: "log", collection: @events %>
+  <% else %>
+    <h4>No logs to show because this employee has not used any time off.</h4>
+  <% end %>
+</div>

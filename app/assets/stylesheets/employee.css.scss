@@ -1,0 +1,41 @@
+body.employees_show {
+  .paper {
+    padding: 0px !important;
+  }
+  .row {
+    margin: 0px !important;
+    overflow: hidden;
+
+    .span3 {
+      margin: 0px !important;
+    }
+
+    .span3, .span9{
+      margin-bottom: -9999px !important;
+      padding-bottom: 9999px !important;
+    }
+  }
+
+  dd {
+    padding-bottom: 10px;
+  }
+
+  #time_off_used_by_month_chart {
+    .axis .domain, .axis .tick {
+      stroke: #000;
+      fill: none;
+    }
+
+    .title {
+      fill: #000;
+      text-anchor: middle;
+      font-size: 24.5px;
+      font-weight: bold;
+    }
+
+    .bar {
+      fill: #0A76B7;
+      stroke: #000;
+    }
+  }
+}

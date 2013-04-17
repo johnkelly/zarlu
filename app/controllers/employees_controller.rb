@@ -22,4 +22,12 @@ class EmployeesController < ApplicationController
       redirect_to employees_url, notice: "Rejected."
     end
   end
+
+  def show
+    @display = params[:charts].presence || "logs"
+    @employee = current_user.subscriber.users.find(params[:id])
+    @manager = @employee.has_manager? ? User.find(@employee.manager_id).display_name : "No Manager Assigned"
+    @events = @employee.events.lifo
+    @event_durations = EventDurationService.new(@events)
+  end
 end

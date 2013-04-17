@@ -15,6 +15,7 @@
   <td><%= employee_events.select{ |event| event.kind == Event::UNPAID }.map(&:duration).reduce(0,:+) %></td>
   <td><%= employee_events.select{ |event| event.kind == Event::OTHER }.map(&:duration).reduce(0,:+) %></td>
   <td>
+    <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
     <% if employee.manager? %>
       <%= link_to "Demote to Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right", data: { confirm: "Are you sure?" } %>
     <% else %>
