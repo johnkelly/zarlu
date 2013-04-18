@@ -11,4 +11,7 @@ class HomesController < ApplicationController
 
   def pricing
   end
+
+  def privacy
+  end
 end

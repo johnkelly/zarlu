@@ -7,6 +7,7 @@ Zarlu::Application.routes.draw do
   match '/atom.xml' => 'blog#atom', as: :feed, defaults: { format: 'xml' }
   match '/pricing', to: 'homes#pricing'
   match '/home', to: 'homes#show'
+  match '/privacy-policy', to: 'homes#privacy'
   match '/welcome', to: 'welcomes#show'
   get '/employee-leave-management', to: 'articles#employee_leave_management'
   get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'

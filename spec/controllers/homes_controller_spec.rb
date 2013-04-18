@@ -4,7 +4,7 @@ describe HomesController do
 
   describe "#index" do
     it "returns success" do
-      get 'index'
+      get :index
       response.should be_success
     end
   end
@@ -42,9 +42,15 @@ describe HomesController do
 
   describe "#pricing" do
     it "returns success" do
-      get 'pricing'
+      get :pricing
       response.should be_success
     end
   end
 
+  describe "#privacy" do
+    it "returns success" do
+      get :privacy
+      response.should be_success
+    end
+  end
 end
