@@ -18,6 +18,19 @@ describe SubscribersController do
     it { assigns(:events) }
   end
 
+  describe "#update" do
+    context "http" do
+      before { put :update, id: subscriber.to_param, subscriber: { name: "Zarlu" }}
+      it { should respond_with(204) }
+    end
+
+    context "database" do
+      before { put :update, id: subscriber.to_param, subscriber: { name: "Zarlu" }}
+      subject { subscriber.reload }
+      its(:name) { should == "Zarlu" }
+    end
+  end
+
   describe "#add_user" do
     context "success" do
       before do

@@ -3,14 +3,18 @@ class SubscribersController < ApplicationController
   before_filter :authenticate_paid_account!
   before_filter :shared_variables
 
-  respond_to :json, only: %w[update]
-
   def show
     @user = User.new
     @employees = @users.sort_by(&:display_name)
     @events = Event.where(user_id: @subscriber.users)
     @managers = @subscriber.managers(@users).sort_by(&:display_name)
     @manager_collection = manager_collection
+  end
+
+  def update
+    @subscriber = current_user.subscriber
+    @subscriber.update_attributes!(params[:subscriber])
+    respond_with_bip(@subscriber)
   end
 
   def add_user

@@ -1,10 +1,19 @@
 class Subscriber < ActiveRecord::Base
   has_many :users, dependent: :destroy
-  attr_accessible :plan
+  has_many :company_settings
+  has_one :vacation_company_setting, class_name: "VacationCompanySetting", foreign_key: :subscriber_id
+  has_one :sick_company_setting, class_name: "SickCompanySetting", foreign_key: :subscriber_id
+  has_one :holiday_company_setting, class_name: "HolidayCompanySetting", foreign_key: :subscriber_id
+  has_one :personal_company_setting, class_name: "PersonalCompanySetting", foreign_key: :subscriber_id
+  has_one :unpaid_company_setting, class_name: "UnpaidCompanySetting", foreign_key: :subscriber_id
+  has_one :other_company_setting, class_name: "OtherCompanySetting", foreign_key: :subscriber_id
+  attr_accessible :plan, :name, :time_zone
 
   validates_inclusion_of :plan, in: %w(public_paid_plan), allow_blank: true
 
   attr_accessor :card_token
+
+  before_create :create_settings
 
   def save_credit_card
     if valid?
@@ -49,6 +58,10 @@ class Subscriber < ActiveRecord::Base
     end
   end
 
+  def available_events
+    company_settings.select(&:enabled?).map(&:kind)
+  end
+
   private
 
   def add_credit_card
@@ -73,5 +86,14 @@ class Subscriber < ActiveRecord::Base
 
   def paid_subscription_quantity
     users.count - 10
+  end
+
+  def create_settings
+    build_vacation_company_setting
+    build_sick_company_setting
+    build_holiday_company_setting
+    build_personal_company_setting
+    build_unpaid_company_setting
+    build_other_company_setting
   end
 end

@@ -30,7 +30,7 @@
       <div>
         <label>Title:</label>
         <input id="title" class="field" type="text"></input>
-        <%= select :event, :kind, Event.kinds %>
+        <%= select :event, :kind, @available_events %>
       </div>
     </form>
   </div>

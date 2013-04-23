@@ -6,6 +6,7 @@ class HomesController < ApplicationController
   end
 
   def show
+    @available_events = current_user.subscriber.available_events
     @calendar_type = params[:calendar_type] || "user"
   end
 

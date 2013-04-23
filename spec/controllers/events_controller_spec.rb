@@ -12,7 +12,7 @@ describe EventsController do
     context "with start and end params" do
       before { get :index, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [all_day_event, event] }
+      it { assigns(:events).should include(event) }
     end
 
     context "no params" do
@@ -33,7 +33,7 @@ describe EventsController do
       it "allows manager to view employee events " do
         manager.employees.should include(user)
       end
-      it { assigns(:events).should == [all_day_event, event] }
+      it { assigns(:events).should include(event) }
     end
 
     context "No employees & with start and end params" do
@@ -56,7 +56,7 @@ describe EventsController do
     context "with start and end params" do
       before { get :company, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [event, all_day_event] }
+      it { assigns(:events).should include(event) }
     end
 
     context "no params" do

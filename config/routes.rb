@@ -13,7 +13,7 @@ Zarlu::Application.routes.draw do
   get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'
   get '/business-time-tracking', to: 'articles#business_time_tracking'
   devise_for :users, controllers: { registrations: 'registrations' }
-  resource :subscribers, only: %w[show] do
+  resource :subscribers, only: %w[update show] do
     collection { post :add_user }
     member do
       put :change_manager
@@ -33,5 +33,6 @@ Zarlu::Application.routes.draw do
   resource :subscriptions, only: %w[update show]
   resources :activities, only: %w[index]
   resources :welcomes, only: %w[create]
+  resources :company_settings, only: %w[index update]
   mount Sidekiq::Web => '/sidekiq'
 end

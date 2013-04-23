@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329062244) do
+ActiveRecord::Schema.define(:version => 20130420234942) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20130329062244) do
 
   add_index "activities", ["trackable_id"], :name => "index_activities_on_trackable_id"
   add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
+
+  create_table "company_settings", :force => true do |t|
+    t.string   "type"
+    t.integer  "subscriber_id"
+    t.boolean  "enabled",       :default => true, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -43,11 +51,13 @@ ActiveRecord::Schema.define(:version => 20130329062244) do
 
   create_table "subscribers", :force => true do |t|
     t.string   "plan"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "customer_token"
     t.string   "card_last4"
     t.string   "card_type"
+    t.string   "name"
+    t.string   "time_zone",      :default => "Pacific Time (US & Canada)"
   end
 
   create_table "users", :force => true do |t|

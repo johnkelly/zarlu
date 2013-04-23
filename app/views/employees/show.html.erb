@@ -5,7 +5,7 @@
       <h4><%= @employee.display_name %></h4>
       <dl>
         <dt>Member Since</dt>
-        <dd><%= @employee.created_at.in_time_zone('Pacific Time (US & Canada)').strftime('%b %d %Y') %></dd>
+        <dd><%= @employee.created_at.in_time_zone(@subscriber.time_zone).strftime('%b %d %Y') %></dd>
         <dt>Managed By</dt>
         <dd><%= @manager %></dd>
         <dt>Used Vacation Leave</dt>

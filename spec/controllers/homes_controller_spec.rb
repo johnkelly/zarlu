@@ -18,6 +18,7 @@ describe HomesController do
         end
         it { should respond_with(:success) }
         it { assigns(:calendar_type).should == "user" }
+        it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
       end
 
       context "calendar type param" do
@@ -27,6 +28,7 @@ describe HomesController do
         end
         it { should respond_with(:success) }
         it { assigns(:calendar_type).should == "manager" }
+        it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
       end
     end
 
