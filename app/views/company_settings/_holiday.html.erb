@@ -1,0 +1,12 @@
+<div class="company_setting">
+  <div class="setting_header">
+    <h3>Holiday Leave Settings</h3>
+  </div>
+  <div class="row">
+    <div class="span4 setting_label">Enabled</div>
+    <div class="offset1 span4">
+      <%= best_in_place holiday, :enabled, path: company_setting_path(holiday), type: :checkbox, activator: "#icon-edit-subscriber-holiday-enabled" %>
+      <i id="icon-edit-subscriber-holiday-enabled" class="icon-edit"></i>
+    </div>
+  </div>
+</div>

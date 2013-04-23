@@ -1,0 +1,12 @@
+<div class="company_setting">
+  <div class="setting_header">
+    <h3>Vacation Leave Settings</h3>
+  </div>
+  <div class="row">
+    <div class="span4 setting_label">Enabled</div>
+    <div class="offset1 span4">
+      <%= best_in_place vacation, :enabled, path: company_setting_path(vacation), type: :checkbox, activator: "#icon-edit-subscriber-vacation-enabled" %>
+      <i id="icon-edit-subscriber-vacation-enabled" class="icon-edit"></i>
+    </div>
+  </div>
+</div>
