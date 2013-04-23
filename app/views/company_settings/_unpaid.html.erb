@@ -9,4 +9,11 @@
       <i id="icon-edit-subscriber-unpaid-enabled" class="icon-edit"></i>
     </div>
   </div>
+  <div class="row">
+    <div class="span4 setting_label">Default Accrual Rate</div>
+    <div class="offset1 span4">
+      <%= best_in_place unpaid, :default_accrual_rate, path: company_setting_path(unpaid), activator: "#icon-edit-subscriber-unpaid-default-accrual" %>
+      Hours&nbsp;<i id="icon-edit-subscriber-unpaid-default-accrual" class="icon-edit"></i>
+    </div>
+  </div>
 </div>

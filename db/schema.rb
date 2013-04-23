@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420234942) do
+ActiveRecord::Schema.define(:version => 20130423061209) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(:version => 20130420234942) do
   create_table "company_settings", :force => true do |t|
     t.string   "type"
     t.integer  "subscriber_id"
-    t.boolean  "enabled",       :default => true, :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.boolean  "enabled",              :default => true, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.decimal  "default_accrual_rate", :default => 0.0
   end
 
   create_table "events", :force => true do |t|

@@ -9,4 +9,11 @@
       <i id="icon-edit-subscriber-vacation-enabled" class="icon-edit"></i>
     </div>
   </div>
+  <div class="row">
+    <div class="span4 setting_label">Default Accrual Rate</div>
+    <div class="offset1 span4">
+      <%= best_in_place vacation, :default_accrual_rate, path: company_setting_path(vacation), activator: "#icon-edit-subscriber-vacation-default-accrual" %>
+      Hours&nbsp;<i id="icon-edit-subscriber-vacation-default-accrual" class="icon-edit"></i>
+    </div>
+  </div>
 </div>
