@@ -16,4 +16,12 @@
       Hours&nbsp;<i id="icon-edit-subscriber-vacation-default-accrual" class="icon-edit"></i>
     </div>
   </div>
+  <div class="row">
+    <div class="span4 setting_label">Accrual Frequency</div>
+    <div class="offset1 span4">
+      Every&nbsp;<%= best_in_place vacation, :accrual_frequency, path: company_setting_path(vacation), type: :select, collection: CompanySetting.accrual_frequencies,
+ activator: "#icon-edit-subscriber-vacation-accrual-frequency" %>
+      <i id="icon-edit-subscriber-vacation-accrual-frequency" class="icon-edit"></i>
+    </div>
+  </div>
 </div>

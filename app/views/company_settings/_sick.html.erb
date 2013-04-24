@@ -16,4 +16,12 @@
       Hours&nbsp;<i id="icon-edit-subscriber-sick-default-accrual" class="icon-edit"></i>
     </div>
   </div>
+  <div class="row">
+    <div class="span4 setting_label">Accrual Frequency</div>
+    <div class="offset1 span4">
+      Every&nbsp;<%= best_in_place sick, :accrual_frequency, path: company_setting_path(sick), type: :select, collection: CompanySetting.accrual_frequencies,
+ activator: "#icon-edit-subscriber-sick-accrual-frequency" %>
+      <i id="icon-edit-subscriber-sick-accrual-frequency" class="icon-edit"></i>
+    </div>
+  </div>
 </div>

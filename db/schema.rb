@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423061209) do
+ActiveRecord::Schema.define(:version => 20130424041418) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130423061209) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.decimal  "default_accrual_rate", :default => 0.0
+    t.integer  "accrual_frequency",    :default => 0
   end
 
   create_table "events", :force => true do |t|
