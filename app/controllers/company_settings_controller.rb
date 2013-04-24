@@ -11,7 +11,11 @@ class CompanySettingsController < ApplicationController
   def update
     @subscriber = current_user.subscriber
     @company_setting = @subscriber.company_settings.find(params[:id])
+    if has_date_param?
+      update_date_params
+    else
     @company_setting.update_attributes!(setting_params)
+    end
     respond_with_bip(@company_setting)
   end
 
@@ -19,6 +23,14 @@ class CompanySettingsController < ApplicationController
 
   def setting_params
     params[:vacation_company_setting].presence || params[:sick_company_setting].presence || params[:holiday_company_setting].presence || params[:personal_company_setting].presence || params[:unpaid_company_setting].presence || params[:other_company_setting].presence
+  end
+
+  def update_date_params
+    @company_setting.update_attributes!(start_accrual: Date.strptime(setting_params[:start_accrual], "%m/%d/%Y"))
+  end
+
+  def has_date_param?
+    setting_params.keys.include?("start_accrual") && setting_params[:start_accrual].present?
   end
 end
 

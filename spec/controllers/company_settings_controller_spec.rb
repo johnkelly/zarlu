@@ -83,6 +83,15 @@ describe CompanySettingsController do
         subject { subscriber.other_company_setting.reload }
         its(:enabled) { should be_false }
       end
+
+      context "update date" do
+        before do
+          subscriber.other_company_setting.start_accrual.should be_blank
+          put :update, id: other.to_param, other_company_setting: { start_accrual: "10/01/1987" }
+        end
+        subject { subscriber.other_company_setting.reload }
+        its(:start_accrual) { should ==  Date.strptime("10/01/1987", "%m/%d/%Y") }
+      end
     end
   end
 end

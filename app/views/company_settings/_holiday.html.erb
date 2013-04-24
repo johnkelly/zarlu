@@ -24,4 +24,11 @@
       <i id="icon-edit-subscriber-holiday-accrual-frequency" class="icon-edit"></i>
     </div>
   </div>
+  <div class="row">
+    <div class="span4 setting_label">Next Accrual Date</div>
+    <div class="offset1 span4">
+      <%= best_in_place holiday, :start_accrual, path: company_setting_path(holiday), type: :date, activator: "#icon-edit-subscriber-holiday-start-accrual", display_as: :display_start_accrual %>
+      <i id="icon-edit-subscriber-holiday-start-accrual" class="icon-edit"></i>
+    </div>
+  </div>
 </div>

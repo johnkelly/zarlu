@@ -1,7 +1,7 @@
 class CompanySetting < ActiveRecord::Base
   belongs_to :subscriber
 
-  attr_accessible :subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency
+  attr_accessible :subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency, :start_accrual
   validates_presence_of :subscriber_id
   validates_numericality_of :default_accrual_rate, allow_nil: true, greater_than_or_equal_to: 0
 
@@ -21,6 +21,10 @@ class CompanySetting < ActiveRecord::Base
       [WEEK, "Week"],
       [DAY, "Day"]
     ]
+  end
+
+  def display_start_accrual
+    start_accrual.strftime('%m-%d-%Y') if start_accrual.present?
   end
 end
 
