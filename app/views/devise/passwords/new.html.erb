@@ -26,6 +26,6 @@ Enter your email address to reset your pass phrase for your employee attendance 
       <%= f.label :email, class: "devise_label" %>
       <%= f.email_field :email, class: "input-xlarge" %>
     </div>
-    <div><%= f.submit "Reset", class: "btn btn-primary btn-large", disable_with: "Resetting..." %></div>
+    <div><%= f.submit "Reset", class: "btn btn-primary btn-large", data: { disable_with: "Resetting..." } %></div>
   <% end %>
 </div>

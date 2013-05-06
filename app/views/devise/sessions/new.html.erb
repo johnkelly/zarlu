@@ -27,6 +27,6 @@ Sign into your business' time & attendance tracking and scheduling software subs
     <div>
       <%= f.label :password, class: "devise_label"%>
       <%= f.password_field :password, class: "input-xlarge" %></div>
-    <div><%= f.submit "Sign In", class: "btn btn-primary btn-large", disable_with: "Signing in..." %></div>
+    <div><%= f.submit "Sign In", class: "btn btn-primary btn-large", data: { disable_with: "Signing in..." } %></div>
   <% end %>
 </div>

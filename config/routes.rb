@@ -2,13 +2,13 @@ require 'sidekiq/web'
 
 Zarlu::Application.routes.draw do
   root to: "homes#index"
-  match 'blog' => 'blog#index'
-  match 'blog/:title' => 'blog#post'
-  match '/atom.xml' => 'blog#atom', as: :feed, defaults: { format: 'xml' }
-  match '/pricing', to: 'homes#pricing'
-  match '/home', to: 'homes#show'
-  match '/privacy-policy', to: 'homes#privacy'
-  match '/welcome', to: 'welcomes#show'
+  get 'blog' => 'blog#index'
+  get 'blog/:title' => 'blog#post'
+  get '/atom.xml' => 'blog#atom', as: :feed, defaults: { format: 'xml' }
+  get '/pricing', to: 'homes#pricing'
+  get '/home', to: 'homes#show'
+  get '/privacy-policy', to: 'homes#privacy'
+  get '/welcome', to: 'welcomes#show'
   get '/employee-leave-management', to: 'articles#employee_leave_management'
   get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'
   get '/business-time-tracking', to: 'articles#business_time_tracking'

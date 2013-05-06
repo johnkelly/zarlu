@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @events = contains_date_params? ? current_user.events.not_rejected.date_range(params[:start], params[:end]) : []
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.create!(params[:event])
+    @event = current_user.events.create!(event_params)
     track_activity!(@event)
 
     respond_to do |format|
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find(params[:id])
-    @event.update_attributes!(params[:event])
+    @event.update!(event_params)
     track_activity!(@event)
 
     respond_to do |format|
@@ -63,5 +63,9 @@ class EventsController < ApplicationController
 
   def contains_date_params?
     params[:start] && params[:end]
+  end
+
+  def event_params
+    params.require(:event).permit(:title, :description, :starts_at, :ends_at, :all_day, :approved, :kind)
   end
 end

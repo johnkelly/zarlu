@@ -20,12 +20,12 @@ describe SubscribersController do
 
   describe "#update" do
     context "http" do
-      before { put :update, id: subscriber.to_param, subscriber: { name: "Zarlu" }}
+      before { patch :update, id: subscriber.to_param, subscriber: { name: "Zarlu" }}
       it { should respond_with(204) }
     end
 
     context "database" do
-      before { put :update, id: subscriber.to_param, subscriber: { name: "Zarlu" }}
+      before { patch :update, id: subscriber.to_param, subscriber: { name: "Zarlu" }}
       subject { subscriber.reload }
       its(:name) { should == "Zarlu" }
     end
@@ -58,7 +58,7 @@ describe SubscribersController do
     before do
       ApplicationController.any_instance.should_receive(:track_activity!)
       User.any_instance.should_receive(:promote_to_manager!).and_return(true)
-      put :promote_to_manager, user_id: user.to_param
+      patch :promote_to_manager, user_id: user.to_param
     end
     it { assigns(:subscriber).should == subscriber }
     it { assigns(:users).should == subscriber.users }
@@ -72,7 +72,7 @@ describe SubscribersController do
       before do
         Subscriber.any_instance.should_receive(:managers).and_return([1])
         User.any_instance.should_not_receive(:demote_to_employee!)
-        put :demote_to_employee, user_id: user.to_param
+        patch :demote_to_employee, user_id: user.to_param
       end
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:users).should == subscriber.users }
@@ -85,7 +85,7 @@ describe SubscribersController do
       before do
         Subscriber.any_instance.should_receive(:managers).and_return([1,2])
         User.any_instance.should_receive(:demote_to_employee!)
-        put :demote_to_employee, user_id: user.to_param
+        patch :demote_to_employee, user_id: user.to_param
       end
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:users).should == subscriber.users }
@@ -97,7 +97,7 @@ describe SubscribersController do
   describe "#change_manager" do
     before do
       User.any_instance.should_receive(:change_manager!).with(manager.id)
-      put :change_manager, user_id: user.to_param, user: { manager_id: manager.to_param }
+      patch :change_manager, user_id: user.to_param, user: { manager_id: manager.to_param }
     end
     it { assigns(:subscriber).should == subscriber }
     it { assigns(:users).should == subscriber.users }

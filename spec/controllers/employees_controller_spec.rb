@@ -17,7 +17,7 @@ describe EmployeesController do
       before do
         ApplicationController.any_instance.should_receive(:track_activity!)
         Event.any_instance.should_receive(:approve!).and_return(true)
-        put :update, id: event.to_param, type: "approve"
+        patch :update, id: event.to_param, type: "approve"
       end
       it { assigns(:my_employees).should == manager.employees }
       it { assigns(:my_employee_pending_event).should == event }
@@ -29,7 +29,7 @@ describe EmployeesController do
       before do
         ApplicationController.any_instance.should_receive(:track_activity!)
         Event.any_instance.should_receive(:reject!).and_return(true)
-        put :update, id: event.to_param, type: "reject"
+        patch :update, id: event.to_param, type: "reject"
       end
       it { assigns(:my_employees).should == manager.employees }
       it { assigns(:my_employee_pending_event).should == event }

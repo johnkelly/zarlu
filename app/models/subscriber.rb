@@ -1,4 +1,6 @@
 class Subscriber < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   has_many :users, dependent: :destroy
   has_many :company_settings
   has_one :vacation_company_setting, class_name: "VacationCompanySetting", foreign_key: :subscriber_id
@@ -7,7 +9,6 @@ class Subscriber < ActiveRecord::Base
   has_one :personal_company_setting, class_name: "PersonalCompanySetting", foreign_key: :subscriber_id
   has_one :unpaid_company_setting, class_name: "UnpaidCompanySetting", foreign_key: :subscriber_id
   has_one :other_company_setting, class_name: "OtherCompanySetting", foreign_key: :subscriber_id
-  attr_accessible :plan, :name, :time_zone
 
   validates_inclusion_of :plan, in: %w(public_paid_plan), allow_blank: true
 

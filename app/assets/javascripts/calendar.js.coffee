@@ -12,7 +12,7 @@ user_calendar = ->
         url: '/events'
         color: '#0668C0'
         textColor: '#FFF'
-        ignoreTimezone: true
+        ignoreTimezone: false
       ]
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
       update_move_event(event)
@@ -38,7 +38,7 @@ manager_calendar = ->
         url: '/events/manager'
         color: '#0668C0'
         textColor: '#FFF'
-        ignoreTimezone: true
+        ignoreTimezone: false
       ]
 
 company_calendar = ->
@@ -55,7 +55,7 @@ company_calendar = ->
         url: '/events/company'
         color: '#0668C0'
         textColor: '#FFF'
-        ignoreTimezone: true
+        ignoreTimezone: false
       ]
 
 jQuery ->

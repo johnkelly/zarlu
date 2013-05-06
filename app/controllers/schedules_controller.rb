@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :authenticate_paid_account!
+  before_action :authenticate_user!
+  before_action :authenticate_paid_account!
 
   def show
     @events = current_user.events.lifo

@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :authenticate_paid_account!
+  before_action :authenticate_user!
+  before_action :authenticate_paid_account!
 
   def index
     @level_of_activity = params[:activity_type].presence || "user"

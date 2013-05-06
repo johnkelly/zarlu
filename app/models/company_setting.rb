@@ -1,7 +1,8 @@
 class CompanySetting < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   belongs_to :subscriber
 
-  attr_accessible :subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency, :start_accrual
   validates_presence_of :subscriber_id
   validates_numericality_of :default_accrual_rate, allow_nil: true, greater_than_or_equal_to: 0
 

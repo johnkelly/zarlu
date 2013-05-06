@@ -1,7 +1,7 @@
 class SubscribersController < ApplicationController
-  before_filter :authenticate_manager!
-  before_filter :authenticate_paid_account!
-  before_filter :shared_variables
+  before_action :authenticate_manager!
+  before_action :authenticate_paid_account!
+  before_action :shared_variables
 
   def show
     @user = User.new
@@ -13,12 +13,12 @@ class SubscribersController < ApplicationController
 
   def update
     @subscriber = current_user.subscriber
-    @subscriber.update_attributes!(params[:subscriber])
+    @subscriber.update!(subscriber_params)
     respond_with_bip(@subscriber)
   end
 
   def add_user
-    @user = @users.new(params[:user])
+    @user = @users.new(user_params)
     if @user.save
       charge_credit_card(@subscriber)
       track_activity!(@user)
@@ -53,6 +53,14 @@ class SubscribersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
+
+  def subscriber_params
+    params.require(:subscriber).permit(:plan, :name, :time_zone)
+  end
 
   def charge_credit_card(subscriber)
     if subscriber.users.count > 10

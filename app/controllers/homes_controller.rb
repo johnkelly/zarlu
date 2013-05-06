@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
-  before_filter :authenticate_user!, only: %w[show]
-  before_filter :authenticate_paid_account!, only: %w[show]
+  before_action :authenticate_user!, only: %w[show]
+  before_action :authenticate_paid_account!, only: %w[show]
 
   def index
   end
