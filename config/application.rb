@@ -24,6 +24,9 @@ module Zarlu
     #devise on heroku
     config.assets.initialize_on_precompile = false
 
+    #Sprockets-rails issue:https://github.com/rails/rails/issues/10133
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
     #remove Rails default field with errors
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       "#{html_tag}".html_safe
