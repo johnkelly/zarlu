@@ -119,7 +119,7 @@ GEM
     fullcalendar-rails (1.5.4.0)
     highline (1.6.18)
     hike (1.2.2)
-    hirefire-resource (0.0.2)
+    hirefire-resource (0.1.0)
     i18n (0.6.4)
     intercom-rails (0.2.18)
       activesupport (> 3.0)
@@ -212,10 +212,10 @@ GEM
       multi_json
       redis (>= 3.0)
       redis-namespace
-    sinatra (1.3.6)
-      rack (~> 1.4)
-      rack-protection (~> 1.3)
-      tilt (~> 1.3, >= 1.3.3)
+    sinatra (1.4.2)
+      rack (~> 1.5, >= 1.5.2)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
     slim (1.3.8)
       temple (~> 0.6.3)
       tilt (~> 1.3.3)
@@ -269,7 +269,7 @@ DEPENDENCIES
   devise!
   fixture_builder!
   fullcalendar-rails (~> 1.5.4.0)
-  hirefire-resource (~> 0.0.2)
+  hirefire-resource (~> 0.1.0)
   intercom-rails (~> 0.2.18)
   jquery-rails (~> 2.2.1)
   jquery-turbolinks (~> 1.0.0)
@@ -284,7 +284,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0.rc1)
   shoulda-matchers!
   sidekiq (~> 2.11.2)
-  sinatra (~> 1.3.5)
+  sinatra (~> 1.4.2)
   slim (~> 1.3.8)
   stripe (~> 1.8.3)
   turbolinks (~> 1.1.1)

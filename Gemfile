@@ -17,9 +17,9 @@ gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.8.3'
 gem 'newrelic_rpm', '~> 3.6.1.88'
 gem 'sidekiq', '~> 2.11.2'
-gem 'sinatra', '~> 1.3.5', require: false
+gem 'sinatra', '~> 1.4.2', require: false
 gem 'slim', '~> 1.3.8'
-gem 'hirefire-resource', '~> 0.0.2'
+gem 'hirefire-resource', '~> 0.1.0'
 gem 'memcachier', '~> 0.0.2'
 gem 'dalli', '~> 2.6.2'
 gem 'will_paginate', '~> 3.0.4'
