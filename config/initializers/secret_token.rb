@@ -9,13 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-if Rails.env.production?
-  # heroku set credentials from ENV hash
-  RAILS_SECRET_TOKEN = ENV['RAILS_SECRET_TOKEN']
-else
-  # get credentials from YML file
-  token_yaml_file = YAML.load_file Rails.root.join("config/secret_token.yml")
-  RAILS_SECRET_TOKEN = token_yaml_file["rails_secret_token"]
-end
 
-Zarlu::Application.config.secret_token = RAILS_SECRET_TOKEN
+Zarlu::Application.config.secret_token = ENV['RAILS_SECRET_TOKEN']
