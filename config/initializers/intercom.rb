@@ -24,7 +24,7 @@ IntercomRails.config do |config|
   # == User model class
   # The class which defines your user model
   #
-  # config.user.model = Proc.new { User }
+  config.user.model = Proc.new { User }
 
   # == User Custom Data
   # A hash of additional data you wish to send about your users.
@@ -41,14 +41,14 @@ IntercomRails.config do |config|
   # that the user belongs to.
   #
   # config.user.company_association = Proc.new { |user| user.companies.to_a }
-  # config.user.company_association = Proc.new { |user| [user.company] }
+  config.user.company_association = Proc.new { |user| [user.subscriber] }
 
   # == Current company name
   # The method/variable that contains the current company for the current user,
   # in your controllers. 'Companies' are generic groupings of users, so this
   # could be a company, app or group.
   #
-  # config.company.current = Proc.new { @app }
+  config.company.current = Proc.new { current_user.subscriber }
 
   # == Company Custom Data
   # A hash of additional data you wish to send about a company.
@@ -63,7 +63,7 @@ IntercomRails.config do |config|
   # This is the name of the plan a company is currently paying (or not paying) for.
   # e.g. Messaging, Free, Pro, etc.
   #
-  # config.company.plan = Proc.new { |current_company| current_company.plan.name }
+  config.company.plan = Proc.new { |current_company| current_company.plan }
 
   # == Company Monthly Spend
   # This is the amount the company spends each month on your app. If your company
