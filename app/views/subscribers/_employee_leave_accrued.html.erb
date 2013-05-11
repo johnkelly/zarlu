@@ -1,0 +1,44 @@
+<% cache employee do %>
+<% employee_events = @events.select { |event| event.user_id == employee.id } %>
+<% manager = @managers.detect{ |manager| manager.id == employee.manager_id } %>
+<tr>
+  <td><%= display_employee(employee) %></td>
+  <td>
+    <%= best_in_place employee, :manager_id, path: change_manager_subscribers_path(user_id: employee), type: :select,
+      collection: @manager_collection, nil: "None", activator: "#icon-edit-#{employee.id}" %>
+    <i id="icon-edit-<%= employee.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= best_in_place employee.vacation_leave, :accrued_hours, path: accrued_hour_path(employee.vacation_leave), activator: "#icon-edit-vacation-accrued-hours-#{employee.vacation_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-vacation-accrued-hours-<%= employee.vacation_leave.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= best_in_place employee.sick_leave, :accrued_hours, path: accrued_hour_path(employee.sick_leave), activator: "#icon-edit-sick-accrued-hours-#{employee.sick_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-sick-accrued-hours-<%= employee.sick_leave.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= best_in_place employee.holiday_leave, :accrued_hours, path: accrued_hour_path(employee.holiday_leave), activator: "#icon-edit-holiday-accrued-hours-#{employee.holiday_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-holiday-accrued-hours-<%= employee.holiday_leave.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= best_in_place employee.personal_leave, :accrued_hours, path: accrued_hour_path(employee.personal_leave), activator: "#icon-edit-personal-accrued-hours-#{employee.personal_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-personal-accrued-hours-<%= employee.personal_leave.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= best_in_place employee.unpaid_leave, :accrued_hours, path: accrued_hour_path(employee.unpaid_leave), activator: "#icon-edit-unpaid-accrued-hours-#{employee.unpaid_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-unpaid-accrued-hours-<%= employee.unpaid_leave.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= best_in_place employee.other_leave, :accrued_hours, path: accrued_hour_path(employee.other_leave), activator: "#icon-edit-other-accrued-hours-#{employee.other_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-other-accrued-hours-<%= employee.other_leave.id %>" class="icon-edit"></i>
+  </td>
+  <td>
+    <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
+    <% if employee.manager? %>
+      <%= link_to "Make Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right", data: { confirm: "Are you sure?" } %>
+    <% else %>
+      <%= link_to "Make Manager", promote_to_manager_subscribers_path(user_id: employee), method: :put, class: "btn btn-info btn-mini float_right" %>
+    <% end %>
+  </td>
+</tr>
+<% end %>

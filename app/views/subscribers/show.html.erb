@@ -13,11 +13,22 @@
     </div>
   </div>
   <h4>Employees & Managers</h4>
-  <table class="table table-striped">
+  <table class="table table-striped table-condensed">
     <thead>
       <tr>
-        <th colspan="2">&nbsp;</th>
-        <th colspan="6" style="text-align: center"><span>Time Off Used (hours)</span></th>
+        <th colspan="2">
+          <ul class="nav nav-pills">
+            <li class="<%=@time_off_view == 'time_off_used' ? 'active' : '' %>">
+            <%= link_to "Time Off Used", subscribers_path %>
+            </li>
+            <li class="<%=@time_off_view == 'time_off_accrued' ? 'active' : '' %>">
+            <%= link_to "Time Off Accrued", subscribers_path(time_off_view: "time_off_accrued") %>
+            </li>
+          </ul>
+        </th>
+        <th colspan="6" style="text-align: center">
+          Measured in Hours
+        </th>
         <th>&nbsp;</th>
       </tr>
       <tr>
@@ -33,8 +44,14 @@
       </tr>
     </thead>
     <tbody>
-      <% cache @employees do %>
-        <%= render partial: "employee", collection: @employees %>
+      <% if @time_off_view == "time_off_accrued" %>
+        <% cache @employees do %>
+          <%= render partial: "employee_leave_accrued", collection: @employees, as: :employee %>
+        <% end %>
+      <% else %>
+        <% cache @employees do %>
+          <%= render partial: "employee", collection: @employees %>
+        <% end %>
       <% end %>
     </tbody>
   </table>

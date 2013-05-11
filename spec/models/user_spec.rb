@@ -3,12 +3,25 @@ require 'spec_helper'
 describe User do
   let(:manager) { users(:manager_example_com) }
   let(:user) { users(:test_example_com) }
+  let(:subscriber) { subscribers(:subscribers_001) }
 
   describe "attributes" do
     it { should belong_to(:subscriber) }
     it { should have_many(:events).dependent(:destroy) }
     it { should have_many(:activities).dependent(:destroy) }
+    it { should have_many(:leaves).dependent(:destroy) }
     it { should validate_presence_of(:subscriber_id) }
+  end
+
+  describe "after_create" do
+    it "creates a vacation company setting record" do
+      -> { subscriber.users.create!(email: "t1@e.com", password: "password", password_confirmation: "password")}.should change(VacationLeave, :count).by(1)
+      -> { subscriber.users.create!(email: "t2@e.com", password: "password", password_confirmation: "password")}.should change(SickLeave, :count).by(1)
+      -> { subscriber.users.create!(email: "t3@e.com", password: "password", password_confirmation: "password")}.should change(HolidayLeave, :count).by(1)
+      -> { subscriber.users.create!(email: "t4@e.com", password: "password", password_confirmation: "password")}.should change(PersonalLeave, :count).by(1)
+      -> { subscriber.users.create!(email: "t5@e.com", password: "password", password_confirmation: "password")}.should change(UnpaidLeave, :count).by(1)
+      -> { subscriber.users.create!(email: "t6@e.com", password: "password", password_confirmation: "password")}.should change(OtherLeave, :count).by(1)
+    end
   end
 
   describe "promote to manager!" do

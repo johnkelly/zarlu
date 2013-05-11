@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130424044131) do
+ActiveRecord::Schema.define(version: 20130511061435) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20130424044131) do
     t.datetime "updated_at"
     t.decimal  "default_accrual_rate", default: 0.0
     t.integer  "accrual_frequency",    default: 0
-    t.date     "start_accrual"
+    t.date     "next_accrual"
   end
 
   create_table "events", force: true do |t|
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20130424044131) do
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "leaves", force: true do |t|
+    t.string   "type"
+    t.integer  "user_id"
+    t.decimal  "accrued_hours", default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "subscribers", force: true do |t|
     t.string   "plan"

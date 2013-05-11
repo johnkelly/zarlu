@@ -8,14 +8,29 @@ describe SubscribersController do
   before { sign_in(manager) }
 
   describe "#show" do
-    before { get :show }
-    it { should respond_with(:success) }
-    it { assigns(:subscriber).should == subscriber }
-    it { assigns(:users).should == subscriber.users }
-    it { assigns(:employees).should == subscriber.users.sort_by(&:display_name) }
-    it { assigns(:user).should be_present }
-    it { assigns(:managers).should == [manager] }
-    it { assigns(:events) }
+    context "no time off view" do
+      before { get :show, time_off_view: "time_off_used" }
+      it { should respond_with(:success) }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:users).should == subscriber.users }
+      it { assigns(:employees).should == subscriber.users.sort_by(&:display_name) }
+      it { assigns(:user).should be_present }
+      it { assigns(:managers).should == [manager] }
+      it { assigns(:events) }
+      it { assigns(:time_off_view).should == "time_off_used" }
+    end
+
+    context "time_off_view param" do
+      before { get :show, time_off_view: "time_off_accrued" }
+      it { should respond_with(:success) }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:users).should == subscriber.users }
+      it { assigns(:employees).should == subscriber.users.sort_by(&:display_name) }
+      it { assigns(:user).should be_present }
+      it { assigns(:managers).should == [manager] }
+      it { assigns(:events) }
+      it { assigns(:time_off_view).should == "time_off_accrued" }
+    end
   end
 
   describe "#update" do

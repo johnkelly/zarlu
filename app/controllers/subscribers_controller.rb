@@ -4,6 +4,7 @@ class SubscribersController < ApplicationController
   before_action :shared_variables
 
   def show
+    @time_off_view = params[:time_off_view].presence || "time_off_used"
     @user = User.new
     @employees = @users.sort_by(&:display_name)
     @events = Event.where(user_id: @subscriber.users)

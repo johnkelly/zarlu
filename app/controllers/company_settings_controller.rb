@@ -26,15 +26,15 @@ class CompanySettingsController < ApplicationController
   end
 
   def permitted_settings
-    setting_params.permit(:subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency, :start_accrual)
+    setting_params.permit(:subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency, :next_accrual)
   end
 
   def update_date_params
-    @company_setting.update!(start_accrual: Date.strptime(setting_params[:start_accrual], "%m/%d/%Y"))
+    @company_setting.update!(next_accrual: Date.strptime(setting_params[:next_accrual], "%m/%d/%Y"))
   end
 
   def has_date_param?
-    setting_params.keys.include?("start_accrual") && setting_params[:start_accrual].present?
+    setting_params.keys.include?("next_accrual") && setting_params[:next_accrual].present?
   end
 end
 
