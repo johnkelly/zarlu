@@ -86,9 +86,9 @@ describe CompanySetting do
 
   describe "set_next_accrual_date!" do
     it "updates the accrual date" do
-      old_accrual_date = Date.today
+      company_setting.update_attribute(:next_accrual, Date.today)
       company_setting.set_next_accrual_date!
-      company_setting.reload.next_accrual.should == old_accrual_date + 1.year
+      company_setting.reload.next_accrual.should == Date.today + 1.year
     end
   end
 end

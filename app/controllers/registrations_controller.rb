@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-
+ before_action :configure_permitted_parameters, only: :update
 
   def create
     self.resource = build_resource(sign_up_params)
@@ -24,6 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     welcome_path
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :name) }
   end
 
   private
