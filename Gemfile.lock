@@ -16,15 +16,15 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: d0e88e97b504ddb3b5abd315d9faf14a232c0f08
+  revision: e1ce776cebef5178c8de42be4e47731f5ac87c0e
   specs:
     rspec-core (2.13.1)
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 7483b2697d60e4d763b2d64352f1cb846b03bb7f
+  revision: 06782b199a35bacf0a3283fd2c47f61bd536bdb2
   specs:
-    rspec-rails (2.13.0)
+    rspec-rails (2.13.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -34,12 +34,11 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/shoulda-matchers.git
-  revision: de6c5963239eebf4dc6fead44499e6d1e91de892
+  revision: 7a6803c3fb5980f7ebc57351e84ba86cc24118d8
   branch: dp-rails-four
   specs:
-    shoulda-matchers (1.5.4)
+    shoulda-matchers (2.1.0)
       activesupport (>= 3.0.0)
-      bourne (~> 1.3)
 
 GEM
   remote: https://rubygems.org/
@@ -76,12 +75,10 @@ GEM
       rack-contrib
       rails
       rdiscount
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (2.3.1.1)
       sass (~> 3.2)
-    bourne (1.4.0)
-      mocha (~> 0.13.2)
     builder (3.1.4)
-    celluloid (0.13.0)
+    celluloid (0.14.0)
       timers (>= 1.0.0)
     classifier (1.3.3)
       fast-stemmer (>= 1.0.0)
@@ -96,9 +93,9 @@ GEM
     commander (4.1.3)
       highline (~> 1.6.11)
     connection_pool (1.0.0)
-    d3_rails (3.1.4)
+    d3_rails (3.1.6)
       railties (>= 3.1.0)
-    dalli (2.6.2)
+    dalli (2.6.3)
     devise (3.0.0.rc)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -117,7 +114,7 @@ GEM
     i18n (0.6.4)
     intercom-rails (0.2.20)
       activesupport (> 3.0)
-    jekyll (1.0.0)
+    jekyll (1.0.1)
       classifier (~> 1.3)
       colorator (~> 0.1)
       commander (~> 4.1.3)
@@ -146,13 +143,10 @@ GEM
     maruku (0.6.1)
       syntax (>= 1.0.0)
     memcachier (0.0.2)
-    metaclass (0.0.1)
     mime-types (1.23)
     minitest (4.7.4)
-    mocha (0.13.3)
-      metaclass (~> 0.0.1)
     multi_json (1.7.3)
-    newrelic_rpm (3.6.1.88)
+    newrelic_rpm (3.6.2.96)
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -184,7 +178,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
-    rdiscount (2.0.7.2)
+    rdiscount (2.0.7.3)
     redis (3.0.4)
     redis-namespace (1.3.0)
       redis (~> 3.0.0)
@@ -194,7 +188,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
     safe_yaml (0.7.1)
-    sass (3.2.8)
+    sass (3.2.9)
     sass-rails (4.0.0.rc1)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
@@ -238,7 +232,7 @@ GEM
     turbolinks (1.1.1)
       coffee-rails
     tzinfo (0.3.37)
-    uglifier (2.0.1)
+    uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
@@ -258,8 +252,8 @@ DEPENDENCIES
   bloggy (~> 0.2.1)
   bootstrap-sass (~> 2.3.1.0)
   coffee-rails (~> 4.0.0)
-  d3_rails (~> 3.1.4)
-  dalli (~> 2.6.2)
+  d3_rails (~> 3.1.6)
+  dalli (~> 2.6.3)
   devise (~> 3.0.0.rc)
   fixture_builder!
   fullcalendar-rails (~> 1.5.4.0)
@@ -269,7 +263,7 @@ DEPENDENCIES
   jquery-turbolinks (~> 1.0.0)
   jquery-ui-rails (~> 4.0.2)
   memcachier (~> 0.0.2)
-  newrelic_rpm (~> 3.6.1.88)
+  newrelic_rpm (~> 3.6.2.96)
   pg (~> 0.15.1)
   quiet_assets
   rails (~> 4.0.0.rc1)
@@ -282,6 +276,6 @@ DEPENDENCIES
   slim (~> 1.3.8)
   stripe (~> 1.8.3)
   turbolinks (~> 1.1.1)
-  uglifier (>= 2.0.1)
+  uglifier (>= 2.1.0)
   unicorn (~> 4.6.0)
   will_paginate (~> 3.0.4)
