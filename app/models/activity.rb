@@ -1,6 +1,4 @@
 class Activity < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
-
   belongs_to :user
   belongs_to :trackable, polymorphic: true
 

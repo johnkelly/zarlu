@@ -1,6 +1,4 @@
 class CompanySetting < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
-
   belongs_to :subscriber
 
   validates_presence_of :subscriber_id, :accrual_frequency, :next_accrual

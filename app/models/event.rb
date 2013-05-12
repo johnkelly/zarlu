@@ -1,6 +1,4 @@
 class Event < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
-
   belongs_to :user, touch: true
 
   validates_presence_of :user_id, :kind

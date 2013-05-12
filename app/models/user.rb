@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
-
   belongs_to :subscriber
   has_many :events, dependent: :destroy
   has_many :activities, dependent: :destroy

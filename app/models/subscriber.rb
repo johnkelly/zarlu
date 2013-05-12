@@ -1,6 +1,4 @@
 class Subscriber < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
-
   has_many :users, dependent: :destroy
   has_many :company_settings
   has_one :vacation_company_setting, class_name: "VacationCompanySetting", foreign_key: :subscriber_id
