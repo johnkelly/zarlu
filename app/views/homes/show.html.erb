@@ -31,6 +31,14 @@
         <label>Title:</label>
         <input id="title" class="field" type="text"></input>
         <%= select :event, :kind, @available_events %>
+        <dl>
+          <dt>Selected</dt>
+          <dd><span id="selected_hours">Sorry, please refresh.</span>&nbsp;<small>(A full day is 8 hours)</small></dd>
+          <dt>Pending</dt>
+          <dd><span id="pending_hours">Sorry, please refresh.</span></dd>
+          <dt>Available</dt>
+          <dd><span id="available_hours">Sorry, please refresh.</span></dd>
+        </dl>
       </div>
     </form>
   </div>

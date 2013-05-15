@@ -58,7 +58,7 @@ class Subscriber < ActiveRecord::Base
   end
 
   def available_events
-    company_settings.select(&:enabled?).map(&:kind)
+    company_settings.select(&:enabled?).map(&:kind).sort_by{ |a| a[1] }
   end
 
   private

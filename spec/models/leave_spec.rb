@@ -8,6 +8,8 @@ describe Leave do
     it { should belong_to(:user) }
     it { should validate_presence_of(:user_id) }
     it { should validate_numericality_of(:accrued_hours) }
+    it { should validate_numericality_of(:used_hours) }
+    it { should validate_numericality_of(:pending_hours) }
   end
 
   describe "self.update_accrued_hours" do

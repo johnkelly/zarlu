@@ -11,6 +11,9 @@ class Event < ActiveRecord::Base
   scope :lifo, -> { order("created_at desc") }
 
   after_create :approve!, if: Proc.new {|event| event.user.manager_id == nil }
+  after_create :increment_pending_leave!, unless: Proc.new { |event| event.approved? }
+  after_destroy :decrement_leave_usage!, if: Proc.new { |event| event.approved? }
+  after_destroy :decrement_pending_leave!, unless: Proc.new { |event| event.approved? }
 
   VACATION = 0
   SICK = 1
@@ -50,8 +53,10 @@ class Event < ActiveRecord::Base
   end
 
   def approve!
-    self.approved = true
-    self.save!
+    transaction do
+      update_users_leave
+      self.update!(approved: true)
+    end
   end
 
   def reject!
@@ -84,6 +89,10 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def kind_name
+    ::Event.kinds[kind].first
+  end
+
   private
 
   def self.format_date(date_time)
@@ -109,5 +118,31 @@ class Event < ActiveRecord::Base
     else
       hours_off
     end
+  end
+
+  def update_users_leave
+    increment_leave_usage!
+    decrement_pending_leave!
+  end
+
+  def increment_leave_usage!
+    event_user_leave.update!(used_hours: (event_user_leave.used_hours + self.duration))
+  end
+
+  def decrement_leave_usage!
+    event_user_leave.update!(used_hours: (event_user_leave.used_hours - self.duration))
+  end
+
+  def increment_pending_leave!
+    event_user_leave.update!(pending_hours: (event_user_leave.pending_hours + self.duration))
+  end
+
+  def decrement_pending_leave!
+    event_user_leave.update!(pending_hours: (event_user_leave.pending_hours - self.duration))
+  end
+
+  def event_user_leave
+    leave_klass = "#{kind_name}Leave".constantize
+    leave_klass.where(user_id: user_id).first
   end
 end

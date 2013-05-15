@@ -3,6 +3,8 @@ class Leave < ActiveRecord::Base
 
   validates_presence_of :user_id
   validates_numericality_of :accrued_hours, allow_nil: true, greater_than_or_equal_to: 0
+  validates_numericality_of :used_hours, allow_nil: true
+  validates_numericality_of :pending_hours, allow_nil: true
 
   def self.update_accrued_hours(users, accrual_rate, kind)
     leave_to_update = leave_klass(kind).where(user_id: users)

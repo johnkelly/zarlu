@@ -27,6 +27,7 @@ Zarlu::Application.routes.draw do
       get :company
     end
   end
+  resource :leaves, only: %w[show]
   resources :incoming_mails, only: %w[create]
   resources :employees, only: %w[index update show]
   resource :subscriptions, only: %w[update show]

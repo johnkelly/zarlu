@@ -58,10 +58,21 @@ company_calendar = ->
         ignoreTimezone: false
       ]
 
+show_available_hours_for_kind_of_time_off = ->
+  $('#event_kind').change( ->
+    get_available_hours(@value)
+  )
+
+get_default_available_hours = ->
+  default_value = $('#event_kind').val()
+  get_available_hours(default_value)
+
 jQuery ->
   if $('body.homes_show').length
     if $('#user_calendar').length
       user_calendar()
+      get_default_available_hours()
+      show_available_hours_for_kind_of_time_off()
     else if $('#manager_calendar').length
       manager_calendar()
     else if $('#company_calendar').length
@@ -71,7 +82,9 @@ show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
   $('#event_dialog').dialog(
     modal: true
     title: "New Event on #{format_dialog_title_date(startDate)}"
-    open: press_enter_to_save
+    open: ->
+      press_enter_to_save()
+      show_selected_hours_on_dialog(startDate, endDate, allDay)
     close: unbind_press_enter_to_save
     buttons:
       [
@@ -85,7 +98,9 @@ show_edit_event_dialog = (event, jsEvent, view) ->
   $('#event_dialog').dialog(
     modal: true
     title: "Edit Event on #{format_dialog_title_date(event.start)}"
-    open: press_enter_to_save
+    open: ->
+      press_enter_to_save()
+      show_selected_hours_on_dialog(event.start, event.end, event.allDay)
     close: unbind_press_enter_to_save
     buttons:
       [{
@@ -114,6 +129,7 @@ create_event = (title, startDate, endDate, allDay, jsEvent, view, kind) ->
         kind: kind
     success: ->
       close_dialog()
+      get_default_available_hours()
   )
 
 update_event = (event) ->
@@ -132,6 +148,7 @@ update_event = (event) ->
         kind: new_kind
     success: ->
       close_dialog()
+      get_default_available_hours()
   )
 
 update_move_event = (event) ->
@@ -156,6 +173,20 @@ delete_event = (event) ->
     success: ->
       close_dialog()
   )
+
+get_available_hours = (event_type) ->
+  $.ajax(
+    type: "GET"
+    url: "/leaves"
+    data:
+      kind: event_type
+    success: (leave) ->
+      $('#available_hours').text("#{available_hours(leave)} hours")
+      $('#pending_hours').text("#{leave.pending_hours} hours")
+  )
+
+show_selected_hours_on_dialog = (startDate, endDate, allDay) ->
+  $('#selected_hours').text("#{selected_hours(startDate, endDate, allDay)} hours")
 
 close_dialog = ->
   $('#event_dialog input#title').val("")
@@ -183,3 +214,12 @@ format_dialog_title_date = (event_date) ->
 
 todays_year = ->
   new Date().getFullYear()
+
+available_hours = (leave) ->
+  leave.accrued_hours - leave.used_hours
+
+selected_hours = (startDate, endDate, allDay) ->
+  if allDay
+    8.0
+  else
+    (endDate - startDate) / 3600000

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130511061435) do
+ActiveRecord::Schema.define(version: 20130514070143) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20130511061435) do
     t.decimal  "accrued_hours", default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "used_hours",    default: 0.0, null: false
+    t.decimal  "pending_hours", default: 0.0, null: false
   end
 
   create_table "subscribers", force: true do |t|
