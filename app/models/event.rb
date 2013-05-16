@@ -55,7 +55,7 @@ class Event < ActiveRecord::Base
 
   def approve!
     transaction do
-      update_users_leave
+      add_used_and_remove_pending_leave
       self.update!(approved: true)
     end
   end
@@ -63,6 +63,15 @@ class Event < ActiveRecord::Base
   def reject!
     self.rejected = true
     self.save!
+  end
+
+  def unapprove!
+    if approved
+      transaction do
+        remove_used_and_add_pending_leave
+        self.update!(approved: false)
+      end
+    end
   end
 
   def color
@@ -121,9 +130,14 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def update_users_leave
+  def add_used_and_remove_pending_leave
     increment_leave_usage!
     decrement_pending_leave!
+  end
+
+  def remove_used_and_add_pending_leave
+    decrement_leave_usage!
+    increment_pending_leave!
   end
 
   def increment_leave_usage!

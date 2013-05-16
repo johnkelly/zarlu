@@ -181,6 +181,42 @@ describe Event do
     end
   end
 
+  describe "unapprove!" do
+    context "approved" do
+      let(:approved_event) do
+        event.update!(approved: true)
+        event
+      end
+
+      it "should set approved to false" do
+        approved_event.unapprove!
+        approved_event.reload.approved.should be_false
+      end
+
+      it "subtracts the event duration from a users leave" do
+        vacation_leave.used_hours.should == 0.0
+        approved_event.unapprove!
+        vacation_leave.reload.used_hours.should == -event.duration
+      end
+
+      it "add the event duration to a users pending leave" do
+        vacation_leave.pending_hours.should == 0.0
+        approved_event.unapprove!
+        vacation_leave.reload.pending_hours.should == 1.98
+      end
+    end
+
+    context "not approved" do
+      it "does nothing" do
+        vacation_leave.used_hours.should == 0.0
+        vacation_leave.pending_hours.should == 0.0
+        event.unapprove!
+        vacation_leave.used_hours.should == 0.0
+        vacation_leave.pending_hours.should == 0.0
+      end
+    end
+  end
+
   describe "color" do
     subject { event }
 
