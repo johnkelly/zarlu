@@ -16,7 +16,7 @@ gem 'jquery-turbolinks', '~> 1.0.0'
 gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.8.3'
 gem 'newrelic_rpm', '~> 3.6.2.96'
-gem 'sidekiq', '~> 2.11.2'
+gem 'sidekiq', '~> 2.12.0'
 gem 'sinatra', '~> 1.4.2', require: false
 gem 'slim', '~> 1.3.8'
 gem 'hirefire-resource', '~> 0.1.0'
