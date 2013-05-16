@@ -1,5 +1,5 @@
 <div class="container paper">
-  <ul class="nav nav-pills">
+  <ul class="nav nav-pills mb3">
     <li class="<%= @calendar_type == 'user' ? 'active' : '' %>">
     <%= link_to "My Calendar", home_path %>
     </li>
@@ -10,7 +10,8 @@
     <%= link_to "My Company's Calendar", home_path(calendar_type: "company") %>
     </li>
   </ul>
-  <dl class="color_legend">
+  <p class="center mb3"><strong>Pending schedule events not yet approved by your manager are striped.</strong></p>
+  <dl class="color_legend mt3">
     <dt class="blue_box"></dt>
     <dd>Vacation</dd>
     <dt class="green_box"></dt>

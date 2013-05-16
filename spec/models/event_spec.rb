@@ -100,8 +100,7 @@ describe Event do
 
   describe "self.date_range" do
     it "returns dates after start date and before end_date" do
-      event.stub(:starts_at).and_return(30.minutes.ago)
-      event.stub(:ends_at).and_return(90.minutes.ago)
+      event.update!(starts_at: 90.minutes.ago, ends_at: 30.minutes.ago)
       Event.date_range(2.hours.ago, 2.hours.from_now).should include event
     end
   end
@@ -130,7 +129,8 @@ describe Event do
           end: event.ends_at,
           allDay: event.all_day,
           recurring: false,
-          color: event.color
+          color: event.color,
+          approved: event.approved
         }
         event.as_json(display: "email").should == event_json
       end
@@ -145,7 +145,8 @@ describe Event do
           end: event.ends_at,
           allDay: event.all_day,
           recurring: false,
-          color: event.color
+          color: event.color,
+          approved: event.approved
         }
         event.as_json.should == event_json
       end

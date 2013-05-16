@@ -22,6 +22,10 @@ user_calendar = ->
       show_edit_event_dialog(event, jsEvent, view)
     select: (startDate, endDate, allDay, jsEvent, view) ->
       show_add_event_dialog(startDate, endDate, allDay, jsEvent, view)
+    eventRender: (event, element) ->
+      unless event.approved
+        add_stripe_to_pending_event(element)
+      true
 
 
 manager_calendar = ->
@@ -223,3 +227,6 @@ selected_hours = (startDate, endDate, allDay) ->
     8.0
   else
     (endDate - startDate) / 3600000
+
+add_stripe_to_pending_event = (element) ->
+  element.find('.fc-event-inner').addClass("pending_event")

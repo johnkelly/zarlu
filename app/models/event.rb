@@ -48,7 +48,8 @@ class Event < ActiveRecord::Base
       end: ends_at,
       allDay: all_day,
       recurring: false,
-      color: color
+      color: color,
+      approved: approved
     }
   end
 
