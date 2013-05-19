@@ -224,9 +224,16 @@ available_hours = (leave) ->
 
 selected_hours = (startDate, endDate, allDay) ->
   if allDay
-    8.0
+    8.0 * number_of_days(startDate, endDate)
   else
-    (endDate - startDate) / 3600000
+    number_of_hours(startDate, endDate)
 
 add_stripe_to_pending_event = (element) ->
   element.find('.fc-event-inner').addClass("pending_event")
+
+number_of_days = (startDate, endDate) ->
+  ((endDate - startDate) / 86400000) + 1
+
+number_of_hours = (startDate, endDate) ->
+  (endDate - startDate) / 3600000
+
