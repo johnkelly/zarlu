@@ -14,6 +14,10 @@ class Subscriber < ActiveRecord::Base
 
   TRIAL_PERIOD = 30.days
 
+  def self.expired_yesterday_with_credit_card
+    select { |s| s.expired_yesterday? && s.has_credit_card? }
+  end
+
   def save_credit_card(user)
     if valid?
       if has_credit_card?
@@ -57,6 +61,10 @@ class Subscriber < ActiveRecord::Base
 
   def last_trial_day
     created_at + TRIAL_PERIOD
+  end
+
+  def expired_yesterday?
+    last_trial_day.to_date == 24.hours.ago.to_date
   end
 
   private

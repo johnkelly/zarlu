@@ -20,6 +20,14 @@ describe Subscriber do
     end
   end
 
+  describe "self.expired_yesterday_with_credit_card" do
+    it "returns an array of subscriber who have a credit card and their trial expired yesterday" do
+      paid_subscriber.has_credit_card?.should be_true
+      Subscriber.any_instance.stub(:expired_yesterday?).and_return(true)
+      Subscriber.expired_yesterday_with_credit_card.should == [paid_subscriber]
+    end
+  end
+
   describe "save_credit_card" do
     context "valid" do
       context "customer token nil" do
@@ -113,6 +121,19 @@ describe Subscriber do
   describe "last_trial_day" do
     it "returns 30 days from the time the account was created" do
       trial_subscriber.last_trial_day.should == trial_subscriber.created_at + 30.days
+    end
+  end
+
+  describe "expired_yeserday?" do
+    subject { trial_subscriber }
+
+    context "expired yesterday" do
+      before { trial_subscriber.stub(:created_at).and_return(31.days.ago) }
+      its(:expired_yesterday?) { should == true }
+    end
+
+    context "expires on a different day" do
+      its(:expired_yesterday?) { should == false }
     end
   end
 end
