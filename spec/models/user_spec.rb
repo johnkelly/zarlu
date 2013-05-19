@@ -24,6 +24,13 @@ describe User do
     end
   end
 
+  describe "after_destroy" do
+    it "calls ChargeCreditCardWorker" do
+      ChargeCreditCardWorker.should_receive(:perform_async).with(user.subscriber_id)
+      user.destroy!
+    end
+  end
+
   describe "promote to manager!" do
     it "sets the user's manager attribute to true" do
       user.manager.should be_false

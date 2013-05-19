@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   store :properties, accessors: [:complete_welcome_tour]
 
   before_create :create_leave
+  after_destroy :stop_charging_subscriber
 
   def promote_to_manager!
     self.manager = true
@@ -69,5 +70,9 @@ class User < ActiveRecord::Base
     build_personal_leave
     build_unpaid_leave
     build_other_leave
+  end
+
+  def stop_charging_subscriber
+    ChargeCreditCardWorker.perform_async(subscriber_id)
   end
 end
