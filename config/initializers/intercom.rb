@@ -63,7 +63,7 @@ IntercomRails.config do |config|
   # This is the name of the plan a company is currently paying (or not paying) for.
   # e.g. Messaging, Free, Pro, etc.
   #
-  config.company.plan = Proc.new { |current_company| current_company.plan }
+  #config.company.plan = Proc.new { |current_company| current_company.plan }
 
   # == Company Monthly Spend
   # This is the amount the company spends each month on your app. If your company

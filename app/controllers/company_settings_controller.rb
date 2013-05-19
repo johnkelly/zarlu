@@ -1,6 +1,6 @@
 class CompanySettingsController < ApplicationController
   before_action :authenticate_manager!
-  before_action :authenticate_paid_account!
+  before_action :check_if_trial_or_cc!
 
   def index
     @subscriber = current_user.subscriber

@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe AccruedHoursController do
   let(:manager) { users(:manager_example_com) }
-  let(:vacation_leave) { leaves(:leaves_001) }
-  let(:sick_leave) { leaves(:leaves_002) }
-  let(:holiday_leave) { leaves(:leaves_003) }
-  let(:personal_leave) { leaves(:leaves_004) }
-  let(:unpaid_leave) { leaves(:leaves_005) }
-  let(:other_leave) { leaves(:leaves_006) }
+  let(:vacation_leave) { leaves(:vacation_leave) }
+  let(:sick_leave) { leaves(:sick_leave) }
+  let(:holiday_leave) { leaves(:holiday_leave) }
+  let(:personal_leave) { leaves(:personal_leave) }
+  let(:unpaid_leave) { leaves(:unpaid_leave) }
+  let(:other_leave) { leaves(:other_leave) }
   before { sign_in(manager) }
 
   describe "#update" do

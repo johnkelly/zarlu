@@ -78,6 +78,12 @@ GEM
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.1.4)
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     celluloid (0.14.0)
       timers (>= 1.0.0)
     classifier (1.3.3)
@@ -148,6 +154,7 @@ GEM
     minitest (4.7.4)
     multi_json (1.7.3)
     newrelic_rpm (3.6.2.96)
+    nokogiri (1.5.9)
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -243,6 +250,8 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     will_paginate (3.0.4)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -252,6 +261,7 @@ DEPENDENCIES
   best_in_place!
   bloggy (~> 0.2.1)
   bootstrap-sass (= 2.3.1.0)
+  capybara
   coffee-rails (~> 4.0.0)
   d3_rails (~> 3.1.6)
   dalli (~> 2.6.3)

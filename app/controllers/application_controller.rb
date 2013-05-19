@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     raise ActiveRecord::RecordNotFound unless authenticate_user! && current_user.manager?
   end
 
-  def authenticate_paid_account!
-    if current_user.subscriber.paid_plan? && current_user.subscriber.customer_token.blank?
-      return redirect_to subscriptions_url, alert: "Paid accounts must have a credit card. Please add a credit card to use Zarlu or downgrade to a free account."
+  def check_if_trial_or_cc!
+    unless current_user.subscriber.has_credit_card? || current_user.subscriber.trial?
+      return redirect_to subscriptions_url, alert: "Your 30 day trial has expired. Please add your credit card to continue using Zarlu. Feel free to contact us with any questions you may have."
     end
   end
 

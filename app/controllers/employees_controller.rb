@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_manager!
-  before_action :authenticate_paid_account!
+  before_action :check_if_trial_or_cc!
 
   def index
     @my_employees = current_user.employees

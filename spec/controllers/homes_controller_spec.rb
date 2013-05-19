@@ -31,15 +31,6 @@ describe HomesController do
         it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
       end
     end
-
-    context "user on premium plan with no credit card" do
-      before do
-        sign_in users(:freeloader_example_com)
-        get :show
-      end
-      it { should redirect_to(subscriptions_url) }
-      it { should set_the_flash[:alert] }
-    end
   end
 
   describe "#pricing" do

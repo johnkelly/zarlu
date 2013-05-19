@@ -3,6 +3,6 @@ class ChargeCreditCardWorker
 
   def perform(subscriber_id)
     subscriber = Subscriber.find(subscriber_id)
-    subscriber.add_or_update_subscription
+    subscriber.update_subscription_users
   end
 end

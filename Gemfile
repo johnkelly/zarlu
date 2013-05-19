@@ -36,5 +36,6 @@ group :development, :test do
   gem 'rspec-core', git: 'git://github.com/rspec/rspec-core.git'
   gem "shoulda-matchers", git: 'git://github.com/thoughtbot/shoulda-matchers.git' , branch: 'dp-rails-four'
   gem 'fixture_builder', git: 'git://github.com/rdy/fixture_builder.git'
+  gem 'capybara'
   gem 'quiet_assets'
 end

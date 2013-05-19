@@ -8,7 +8,7 @@ describe SubscriptionsController do
   describe "#update" do
     context "success" do
       before do
-        Subscriber.any_instance.should_receive(:save_credit_card).and_return(true)
+        Subscriber.any_instance.should_receive(:save_credit_card).with(user).and_return(true)
         patch :update, subscriber: { card_token: "fake_token" }
       end
       it { should redirect_to subscriptions_url }
@@ -18,7 +18,7 @@ describe SubscriptionsController do
 
     context "failure stripe error with create customer" do
       before do
-        Subscriber.any_instance.should_receive(:save_credit_card).and_return(false)
+        Subscriber.any_instance.should_receive(:save_credit_card).with(user).and_return(false)
         patch :update, subscriber: { card_token: "fake_token" }
       end
       it { should render_template(:show) }

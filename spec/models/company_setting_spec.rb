@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CompanySetting do
-  let(:company_setting) { company_settings(:company_settings_001) }
+  let(:company_setting) { company_settings(:vacation_company_setting) }
 
   describe "attributes" do
     it { should belong_to(:subscriber) }

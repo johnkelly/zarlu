@@ -8,18 +8,18 @@ class Subscriber < ActiveRecord::Base
   has_one :unpaid_company_setting, class_name: "UnpaidCompanySetting", foreign_key: :subscriber_id
   has_one :other_company_setting, class_name: "OtherCompanySetting", foreign_key: :subscriber_id
 
-  validates_inclusion_of :plan, in: %w(public_paid_plan), allow_blank: true
-
   attr_accessor :card_token
 
   before_create :create_settings
 
-  def save_credit_card
+  TRIAL_PERIOD = 30.days
+
+  def save_credit_card(user)
     if valid?
       if has_credit_card?
         change_credit_card
       else
-        add_credit_card
+        add_credit_card(user)
       end
     else
       false
@@ -30,16 +30,8 @@ class Subscriber < ActiveRecord::Base
     false
   end
 
-  def under_user_limit_for_free_plan
-    users.count < 10
-  end
-
   def has_credit_card?
     customer_token.present?
-  end
-
-  def paid_plan?
-    plan.present?
   end
 
   def no_manager_assigned(users)
@@ -50,24 +42,51 @@ class Subscriber < ActiveRecord::Base
     users.select { |user| user.manager == true }
   end
 
-  def add_or_update_subscription
-    if users.count > 10
-      customer = Stripe::Customer.retrieve(customer_token)
-      customer.update_subscription(plan: "public_paid_plan", quantity: paid_subscription_quantity)
-    end
+  def update_subscription_users
+    customer = Stripe::Customer.retrieve(customer_token)
+    customer.update_subscription(plan: "public_paid_plan", quantity: users.count)
   end
 
   def available_events
     company_settings.select(&:enabled?).map(&:kind).sort_by{ |a| a[1] }
   end
 
+  def trial?
+    last_trial_day >= Time.now
+  end
+
+  def last_trial_day
+    created_at + TRIAL_PERIOD
+  end
+
   private
 
-  def add_credit_card
-    customer = Stripe::Customer.create(description: "Subscriber: #{id}", card: card_token)
+  def add_credit_card(user)
+    customer = create_customer(user)
     self.customer_token = customer.id
     store_card_info(customer.active_card)
     true
+  end
+
+  def create_customer(user)
+    trial? ? create_customer_with_trial(user) : create_customer_without_trial(user)
+  end
+
+  def create_customer_with_trial(user)
+    Stripe::Customer.create(email: user.email,
+                            description: "Subscriber: #{id}",
+                            card: card_token,
+                            plan: "public_paid_plan",
+                            trial_end: last_trial_day.to_i,
+                            quantity: users.count)
+  end
+
+  def create_customer_without_trial(user)
+    Stripe::Customer.create(email: user.email,
+                            description: "Subscriber: #{id}",
+                            card: card_token,
+                            plan: "public_paid_plan",
+                            quantity: users.count)
   end
 
   def change_credit_card
@@ -81,10 +100,6 @@ class Subscriber < ActiveRecord::Base
   def store_card_info(card)
     self.card_last4 = card.last4
     self.card_type = card.type
-  end
-
-  def paid_subscription_quantity
-    users.count - 10
   end
 
   def create_settings

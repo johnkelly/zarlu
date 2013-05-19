@@ -5,7 +5,7 @@ describe Event do
   let(:all_day_event) { events(:all_day) }
   let(:manager) { users(:manager_example_com) }
   let(:user) { users(:test_example_com) }
-  let(:vacation_leave) { leaves(:leaves_007) }
+  let(:vacation_leave) { user.vacation_leave }
 
   describe "associations" do
     it { should belong_to(:user) }
@@ -39,17 +39,17 @@ describe Event do
       describe "increment_pending_leave!" do
         context "not approved" do
           it "increments pending leave" do
-            vacation_leave.pending_hours.should == 0.0
+            vacation_leave.pending_hours.should == 9.98
             event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
-            vacation_leave.reload.pending_hours.should == 1.98
+            vacation_leave.reload.pending_hours.should == 11.96
           end
         end
 
         context "approved" do
           it "does not increment pending leave" do
-            vacation_leave.pending_hours.should == 0.0
+            vacation_leave.pending_hours.should == 9.98
             event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now, approved: true)
-            vacation_leave.reload.pending_hours.should == 0.0
+            vacation_leave.reload.pending_hours.should == 9.98
           end
         end
       end
@@ -200,19 +200,19 @@ describe Event do
       end
 
       it "add the event duration to a users pending leave" do
-        vacation_leave.pending_hours.should == 0.0
+        vacation_leave.pending_hours.should == 9.98
         approved_event.unapprove!
-        vacation_leave.reload.pending_hours.should == 1.98
+        vacation_leave.reload.pending_hours.should == 11.96
       end
     end
 
     context "not approved" do
       it "does nothing" do
         vacation_leave.used_hours.should == 0.0
-        vacation_leave.pending_hours.should == 0.0
+        vacation_leave.pending_hours.should == 9.98
         event.unapprove!
         vacation_leave.used_hours.should == 0.0
-        vacation_leave.pending_hours.should == 0.0
+        vacation_leave.pending_hours.should == 9.98
       end
     end
   end

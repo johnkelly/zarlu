@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
   before_action :authenticate_manager!
-  before_action :authenticate_paid_account!
+  before_action :check_if_trial_or_cc!
   before_action :shared_variables
 
   def show
@@ -60,13 +60,11 @@ class SubscribersController < ApplicationController
   end
 
   def subscriber_params
-    params.require(:subscriber).permit(:plan, :name, :time_zone)
+    params.require(:subscriber).permit(:name, :time_zone)
   end
 
   def charge_credit_card(subscriber)
-    if subscriber.users.count > 10
-      ChargeCreditCardWorker.perform_async(subscriber.id)
-    end
+    ChargeCreditCardWorker.perform_async(subscriber.id) unless subscriber.trial?
   end
 
   def shared_variables

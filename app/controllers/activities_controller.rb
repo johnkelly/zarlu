@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_paid_account!
+  before_action :check_if_trial_or_cc!
 
   def index
     @level_of_activity = params[:activity_type].presence || "user"

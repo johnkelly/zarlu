@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe LeavesController do
   let(:user) { users(:test_example_com) }
-  let(:vacation_leave) { leaves(:leaves_007) }
-  let(:sick_leave) { leaves(:leaves_008) }
-  let(:holiday_leave) { leaves(:leaves_009) }
-  let(:personal_leave) { leaves(:leaves_010) }
-  let(:unpaid_leave) { leaves(:leaves_011) }
-  let(:other_leave) { leaves(:leaves_012) }
+  let(:vacation_leave) { user.vacation_leave }
+  let(:sick_leave) { user.sick_leave }
+  let(:holiday_leave) { user.holiday_leave }
+  let(:personal_leave) { user.personal_leave }
+  let(:unpaid_leave) { user.unpaid_leave }
+  let(:other_leave) { user.other_leave }
 
   before { sign_in(user) }
 

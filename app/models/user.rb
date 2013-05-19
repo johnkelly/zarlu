@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :subscriber_id
-  validate :valid_number_of_users, on: :create
 
   store :properties, accessors: [:complete_welcome_tour]
 
@@ -58,13 +57,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def valid_number_of_users
-    unless subscriber.try(:under_user_limit_for_free_plan) || subscriber.try(:has_credit_card?)
-      errors.add(:base, %Q{You have reached the free plan limit of 10 employees / managers. Add your business' credit card by clicking on [Settings -> Change / View Billing Info] on the top navigation bar to upgrade your business to a paid plan.})
-      false
-    end
-  end
 
   def set_employee_manager_id_to_none
     employees.each { |employee| employee.change_manager!(-1) }

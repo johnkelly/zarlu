@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Leave do
   let(:user) { users(:manager_example_com) }
-  let(:vacation_leave) { leaves(:leaves_001) }
+  let(:vacation_leave) { leaves(:vacation_leave) }
 
   describe "attributes" do
     it { should belong_to(:user) }

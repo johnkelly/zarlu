@@ -15,8 +15,4 @@ jQuery ->
     user_slider()
 
 price = (users) ->
-  amount = (users - 10) * 2
-  if amount < 0
-    0
-  else
-    amount
+  users * 5

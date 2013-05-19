@@ -1,6 +1,6 @@
 class AccruedHoursController < ApplicationController
   before_action :authenticate_manager!
-  before_action :authenticate_paid_account!
+  before_action :check_if_trial_or_cc!
 
   def update
     @leave = Leave.where(user_id: current_user.subscriber.users).find(params[:id])

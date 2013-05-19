@@ -15,8 +15,8 @@ module WelcomeHelper
     check_box_tag "assign_employee_task", 'complete', at_least_one_assigned_employee?(user), disabled: true
   end
 
-  def display_add_paid_plan_task(user)
-    check_box_tag "add_paid_plan_task", 'complete', user.subscriber.paid_plan?, disabled: true
+  def display_add_credit_card_task(user)
+    check_box_tag "add_credit_card_task", 'complete', user.subscriber.has_credit_card?, disabled: true
   end
 
   private

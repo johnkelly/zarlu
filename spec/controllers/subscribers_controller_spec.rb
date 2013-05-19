@@ -51,7 +51,6 @@ describe SubscribersController do
       before do
         ApplicationController.any_instance.should_receive(:track_activity!)
         SubscribersController.any_instance.should_receive(:charge_credit_card).with(subscriber)
-        User.any_instance.stub(:valid_number_of_users).and_return(true)
         post :add_user, user: { email: "new@example.com" , password: "password" }
       end
       it { should redirect_to subscribers_url }

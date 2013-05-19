@@ -15,11 +15,7 @@ jQuery ->
     show_price()
 
 price = (users) ->
-  amount = (users - 10) * 2
-  if amount < 0
-    0
-  else
-    amount
+  users * 5
 
 user_amount = ->
   parseInt($('#user_amount').text().match(/\d+/)[0])
