@@ -10,8 +10,8 @@ class Event < ActiveRecord::Base
   scope :pending, -> { where(approved: false, rejected: false) }
   scope :lifo, -> { order("created_at desc") }
 
+  after_create :increment_pending_leave!
   after_create :approve!, if: Proc.new {|event| event.user.manager_id == nil }
-  after_create :increment_pending_leave!, unless: Proc.new { |event| event.approved? }
   after_destroy :decrement_leave_usage!, if: Proc.new { |event| event.approved? }
   after_destroy :decrement_pending_leave!, unless: Proc.new { |event| event.approved? }
 

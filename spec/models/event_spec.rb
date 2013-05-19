@@ -37,20 +37,10 @@ describe Event do
       end
 
       describe "increment_pending_leave!" do
-        context "not approved" do
-          it "increments pending leave" do
-            vacation_leave.pending_hours.should == 9.98
-            event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
-            vacation_leave.reload.pending_hours.should == 11.96
-          end
-        end
-
-        context "approved" do
-          it "does not increment pending leave" do
-            vacation_leave.pending_hours.should == 9.98
-            event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now, approved: true)
-            vacation_leave.reload.pending_hours.should == 9.98
-          end
+        it "increments pending leave" do
+          vacation_leave.pending_hours.should == 9.98
+          event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+          vacation_leave.reload.pending_hours.should == 11.96
         end
       end
     end

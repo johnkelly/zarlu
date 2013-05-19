@@ -12,7 +12,7 @@ module BuildModels
       paid_manager = paid_subscriber.users.create!(email: "paidmanager@example.com", password: "password", password_confirmation: "password", manager: true)
 
       event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
-      allday_event = user.events.create!(title: "All day", description: "From the lib file", starts_at: Date.today.midnight, ends_at: Date.today.midnight, all_day: true)
+      allday_event = user.events.create!(title: "All day", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
     end
   end
 end

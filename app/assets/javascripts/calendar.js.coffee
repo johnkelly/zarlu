@@ -83,6 +83,7 @@ jQuery ->
       company_calendar()
 
 show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
+  add_one_minute_to_endDate_for_allDay_events(endDate) if allDay
   $('#event_dialog').dialog(
     modal: true
     title: "New Event on #{format_dialog_title_date(startDate)}"
@@ -224,7 +225,7 @@ available_hours = (leave) ->
 
 selected_hours = (startDate, endDate, allDay) ->
   if allDay
-    8.0 * number_of_days(startDate, endDate)
+    Math.round(8.0 * number_of_days(startDate, endDate))
   else
     number_of_hours(startDate, endDate)
 
@@ -237,3 +238,5 @@ number_of_days = (startDate, endDate) ->
 number_of_hours = (startDate, endDate) ->
   (endDate - startDate) / 3600000
 
+add_one_minute_to_endDate_for_allDay_events = (endDate) ->
+  endDate.setTime(endDate.getTime() + 1000 * 60)
