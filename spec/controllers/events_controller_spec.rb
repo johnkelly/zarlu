@@ -96,7 +96,7 @@ describe EventsController do
 
     context "update database" do
       before do
-        Event.any_instance.should_receive(:unapprove!)
+        Event.any_instance.should_receive(:update_leave!).with(1.98)
         @starts_at = 12.hours.from_now
         @ends_at = 13.hours.from_now
         put :update, id: event.to_param, event: { starts_at: @starts_at, ends_at: @ends_at }, format: :json

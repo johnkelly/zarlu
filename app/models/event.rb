@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   scope :lifo, -> { order("created_at desc") }
 
   after_create :increment_pending_leave!
-  after_create :approve!, if: Proc.new {|event| event.user.manager_id == nil }
+  after_create :approve!, unless: Proc.new {|event| event.user.has_manager? }
   after_destroy :decrement_leave_usage!, if: Proc.new { |event| event.approved? }
   after_destroy :decrement_pending_leave!, unless: Proc.new { |event| event.approved? }
 
@@ -65,10 +65,10 @@ class Event < ActiveRecord::Base
     self.save!
   end
 
-  def unapprove!
-    if approved
+  def unapprove!(old_duration)
+    if approved?
       transaction do
-        remove_used_and_add_pending_leave
+        remove_used_and_add_pending_leave(old_duration)
         self.update!(approved: false)
       end
     end
@@ -103,6 +103,18 @@ class Event < ActiveRecord::Base
     ::Event.kinds[kind].first
   end
 
+  def update_leave!(old_duration)
+    if approved?
+      if user.has_manager?
+        unapprove!(old_duration)
+      else
+        change_used_leave_duration!(old_duration)
+      end
+    else
+      change_pending_leave_duration!(old_duration)
+    end
+  end
+
   private
 
   def self.format_date(date_time)
@@ -135,8 +147,8 @@ class Event < ActiveRecord::Base
     decrement_pending_leave!
   end
 
-  def remove_used_and_add_pending_leave
-    decrement_leave_usage!
+  def remove_used_and_add_pending_leave(old_duration)
+    decrement_leave_usage!(old_duration)
     increment_pending_leave!
   end
 
@@ -144,8 +156,8 @@ class Event < ActiveRecord::Base
     event_user_leave.update!(used_hours: (event_user_leave.used_hours + self.duration))
   end
 
-  def decrement_leave_usage!
-    event_user_leave.update!(used_hours: (event_user_leave.used_hours - self.duration))
+  def decrement_leave_usage!(old_duration = self.duration)
+    event_user_leave.update!(used_hours: (event_user_leave.used_hours - old_duration))
   end
 
   def increment_pending_leave!
@@ -154,6 +166,14 @@ class Event < ActiveRecord::Base
 
   def decrement_pending_leave!
     event_user_leave.update!(pending_hours: (event_user_leave.pending_hours - self.duration))
+  end
+
+  def change_used_leave_duration!(old_duration)
+    event_user_leave.update!(used_hours: (event_user_leave.used_hours - old_duration + self.duration))
+  end
+
+  def change_pending_leave_duration!(old_duration)
+    event_user_leave.update!(pending_hours: (event_user_leave.pending_hours - old_duration + self.duration))
   end
 
   def event_user_leave

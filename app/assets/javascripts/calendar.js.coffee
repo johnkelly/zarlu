@@ -169,6 +169,7 @@ update_move_event = (event) ->
         ends_at: event.end
     success: ->
       close_dialog()
+      get_default_available_hours()
   )
 
 delete_event = (event) ->
@@ -177,6 +178,7 @@ delete_event = (event) ->
     url: "/events/#{event.id}"
     success: ->
       close_dialog()
+      get_default_available_hours()
   )
 
 get_available_hours = (event_type) ->

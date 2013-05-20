@@ -44,8 +44,9 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find(params[:id])
+    old_duration = @event.duration
     @event.update!(event_params)
-    @event.unapprove!
+    @event.update_leave!(old_duration)
     track_activity!(@event)
 
     respond_to do |format|

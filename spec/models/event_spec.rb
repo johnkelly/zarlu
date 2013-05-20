@@ -179,19 +179,19 @@ describe Event do
       end
 
       it "should set approved to false" do
-        approved_event.unapprove!
+        approved_event.unapprove!(1)
         approved_event.reload.approved.should be_false
       end
 
-      it "subtracts the event duration from a users leave" do
+      it "subtracts the old event duration from a users leave" do
         vacation_leave.used_hours.should == 0.0
-        approved_event.unapprove!
-        vacation_leave.reload.used_hours.should == -event.duration
+        approved_event.unapprove!(1)
+        vacation_leave.reload.used_hours.should == -1
       end
 
       it "add the event duration to a users pending leave" do
         vacation_leave.pending_hours.should == 9.98
-        approved_event.unapprove!
+        approved_event.unapprove!(1)
         vacation_leave.reload.pending_hours.should == 11.96
       end
     end
@@ -200,7 +200,7 @@ describe Event do
       it "does nothing" do
         vacation_leave.used_hours.should == 0.0
         vacation_leave.pending_hours.should == 9.98
-        event.unapprove!
+        event.unapprove!(1)
         vacation_leave.used_hours.should == 0.0
         vacation_leave.pending_hours.should == 9.98
       end
@@ -303,6 +303,36 @@ describe Event do
     context "other" do
       before { event.stub(:kind).and_return(Event::OTHER) }
       its(:kind_name) { should == "Other" }
+    end
+  end
+
+  describe "update_leave!" do
+    context "appoved event and has a manager" do
+      it "unapproves the event" do
+        event.stub(:approved?).and_return(true)
+        event.user.stub(:has_manager?).and_return(true)
+        event.should_receive(:unapprove!).with(1)
+        event.update_leave!(1)
+      end
+    end
+
+    context "appoved event and has NO manager" do
+      it "subtracts the old event duration and adds the new duration to USED hours" do
+        event.approve!
+        event.user.stub(:has_manager?).and_return(false)
+        vacation_leave.used_hours.should == 1.98
+        event.update_leave!(1)
+        vacation_leave.reload.used_hours.should == 2.96
+      end
+    end
+
+    context "unapproved event" do
+      it "subtracts the old event duration and adds the new duration to PENDING hours" do
+        event.stub(:approved?).and_return(false)
+        vacation_leave.pending_hours.should == 9.98
+        event.update_leave!(1)
+        vacation_leave.reload.pending_hours.should == 10.96
+      end
     end
   end
 end
