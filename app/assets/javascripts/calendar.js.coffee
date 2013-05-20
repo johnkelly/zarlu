@@ -100,6 +100,7 @@ show_add_event_dialog = (startDate, endDate, allDay, jsEvent, view) ->
   )
 
 show_edit_event_dialog = (event, jsEvent, view) ->
+  display_correct_event_type_in_dropdown(event.color)
   $('#event_dialog').dialog(
     modal: true
     title: "Edit Event on #{format_dialog_title_date(event.start)}"
@@ -242,3 +243,15 @@ number_of_hours = (startDate, endDate) ->
 
 add_one_minute_to_endDate_for_allDay_events = (endDate) ->
   endDate.setTime(endDate.getTime() + 1000 * 60)
+
+display_correct_event_type_in_dropdown = (color) ->
+  $('#event_kind').val(event_type(color)).change()
+
+event_type = (color) ->
+  switch color
+    when "#0668C0" then "0"
+    when "green" then "1"
+    when "#FF5E00" then "2"
+    when "purple" then "3"
+    when "red" then "4"
+    when "black" then "5"
