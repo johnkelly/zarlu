@@ -131,4 +131,11 @@ describe User do
       end
     end
   end
+
+  describe "display_join_date" do
+    it "display the join date in the american date format" do
+      user.stub(:join_date).and_return(Date.new(2011,04,04))
+      user.display_join_date.should == "04/04/2011"
+    end
+  end
 end

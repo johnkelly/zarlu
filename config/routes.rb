@@ -35,5 +35,6 @@ Zarlu::Application.routes.draw do
   resources :welcomes, only: %w[create]
   resources :company_settings, only: %w[index update]
   resources :accrued_hours, only: %w[update]
+  resources :users, only: %w[update]
   mount Sidekiq::Web => '/sidekiq'
 end

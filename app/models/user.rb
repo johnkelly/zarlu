@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def display_join_date
+    join_date.strftime("%m/%d/%Y")
+  end
+
   private
 
   def set_employee_manager_id_to_none
