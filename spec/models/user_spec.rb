@@ -97,6 +97,20 @@ describe User do
     end
   end
 
+  describe "open_support_tool?" do
+    subject { user }
+
+    context "open_support_tool present" do
+      before { user.stub(:open_support_tool).and_return("true") }
+      its(:open_support_tool?) { should == true }
+    end
+
+    context "open_support_tool NOT present" do
+      its(:open_support_tool) { should be_blank }
+      its(:open_support_tool?) { should == false }
+    end
+  end
+
   describe "display_name" do
     context "name is present" do
       it "returns user's name" do

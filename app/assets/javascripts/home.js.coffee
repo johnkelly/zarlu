@@ -3,6 +3,7 @@ trigger_uservoice_popup = ->
     e.preventDefault()
     _gaq.push(['_trackPageview', '/vp/support/open'])
     UserVoice.showPopupWidget()
+    send_opened_support_tool()
   )
 
 disable_nav = ->
@@ -12,3 +13,16 @@ disable_nav = ->
 jQuery ->
   trigger_uservoice_popup()
   disable_nav()
+
+send_opened_support_tool = ->
+  if $('.welcomes_show').length
+    $.ajax(
+      type: "POST"
+      url: "/welcomes"
+      data:
+        support: "true"
+      success: ->
+        $('#contact_support_task').prop("disabled", false)
+        $('#contact_support_task').prop("checked", true)
+        $('#contact_support_task').prop("disabled", true)
+    )

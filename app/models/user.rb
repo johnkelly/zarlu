@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :subscriber_id
 
-  store :properties, accessors: [:complete_welcome_tour]
+  store :properties, accessors: [:complete_welcome_tour, :open_support_tool]
 
   before_create :create_leave
   after_destroy :stop_charging_subscriber
@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 
   def completed_welcome_tour?
     complete_welcome_tour.present?
+  end
+
+  def open_support_tool?
+    open_support_tool.present?
   end
 
   def display_name
