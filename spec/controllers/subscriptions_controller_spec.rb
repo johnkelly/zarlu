@@ -39,5 +39,6 @@ describe SubscriptionsController do
     before { get :show }
     it { should respond_with(:success) }
     it { assigns(:subscriber).should == subscriber }
+    it { assigns(:user_count).should == subscriber.users.count }
   end
 end

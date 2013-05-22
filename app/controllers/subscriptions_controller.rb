@@ -16,6 +16,8 @@ class SubscriptionsController < ApplicationController
 
   def show
     @subscriber = current_user.subscriber
+    @user_count = @subscriber.users.count
+    fresh_when([@subscriber, @user_count])
   end
 
   private
