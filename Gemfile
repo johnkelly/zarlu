@@ -30,6 +30,7 @@ gem 'sass-rails',   '~> 4.0.0.rc1'
 gem 'uglifier', '>= 2.1.0'
 gem 'bootstrap-sass', '2.3.1.0'
 gem 'd3_rails', '~> 3.1.6'
+gem 'asset_sync', '~> 0.5.4'
 
 group :development, :test do
   gem 'rspec-rails', git: 'git://github.com/rspec/rspec-rails.git'
