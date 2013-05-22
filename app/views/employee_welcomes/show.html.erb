@@ -1,0 +1,45 @@
+<div class="container paper">
+  <div class="row">
+    <div class="span4 welcome_images">
+      <%= link_to home_path do %>
+        <%= image_tag "welcome_calendar.png", width: 250, height: 250, alt: "Calendar" %>
+      <% end %>
+      <%= link_to activities_path do %>
+        <%= image_tag "welcome_activity_feed.png", width: 250, height: 250, alt: "Activity Feed" %>
+      <% end %>
+      <%= link_to subscriptions_path do %>
+        <%= image_tag "welcome_billing_info.png", width: 250, height: 250, alt: "Activity Feed" %>
+      <% end %>
+    </div>
+    <div class="span8">
+      <h2>Welcome, Let's Setup Your Account.</h2>
+      <p>Complete all the tasks below to learn about all the different features Zarlu provides employees. We want to provide the best possible experience for you, and have provide a green button on your navbar on each page which will give you a tour of a page's features.
+      <ul class="unstyled account_setup">
+        <li>
+        <%= display_welcome_tour_task(current_user) %>
+        <%= link_to "Learn how to use Zarlu with a 1 minute tour.", "", class: "tour" %>
+        </li>
+        <li>
+        <%= display_add_user_name_task(current_user) %>
+        <%= link_to "Add your name and/or picture to your account.", edit_user_registration_path %>
+        </li>
+        <li>
+        <%= display_user_add_time_off(current_user) %>
+        <%= link_to "Create your first time off request.", home_path %>
+        </li>
+        <li>
+        <%= display_add_three_activity_feed_items_task(current_user) %>
+        <%= link_to "Generate at least 3 events on your activity feed.", activities_path %>
+        </li>
+        <li>
+        <%= display_add_credit_card_task(current_user) %>
+        <%= link_to "Add your business' credit card.", subscriptions_path %>
+        </li>
+        <li>
+        <%= display_contact_support_task(current_user) %>
+        <%= link_to "Contact us! We are happy to answer any questions!", "", class: "support_link" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

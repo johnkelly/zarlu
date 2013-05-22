@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     join_date.strftime("%m/%d/%Y")
   end
 
+  def first_sign_in?
+    sign_in_count <= 1
+  end
+
   private
 
   def set_employee_manager_id_to_none

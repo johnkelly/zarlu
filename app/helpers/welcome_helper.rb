@@ -11,6 +11,10 @@ module WelcomeHelper
     check_box_tag "time_off_task", 'complete', at_least_one_time_off_request?(user), disabled: true
   end
 
+  def display_user_add_time_off(user)
+    check_box_tag "user_time_off_task", 'complete', user.events.limit(1).present?, disabled: true
+  end
+
   def display_assign_employee_task(user)
     check_box_tag "assign_employee_task", 'complete', at_least_one_assigned_employee?(user), disabled: true
   end

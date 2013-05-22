@@ -15,7 +15,7 @@ jQuery ->
   disable_nav()
 
 send_opened_support_tool = ->
-  if $('.welcomes_show').length
+  if $('.welcomes_show').length || $('.employee_welcomes_show').length
     $.ajax(
       type: "POST"
       url: "/welcomes"

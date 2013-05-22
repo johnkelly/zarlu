@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :redirect_root_to_www
 
   def after_sign_in_path_for(resource)
-    activities_path
+    current_user.first_sign_in? ? choose_welcome_path : activities_path
   end
 
   def authenticate_manager!
@@ -29,5 +29,9 @@ class ApplicationController < ActionController::Base
     if Rails.env.production? && request.subdomain.blank?
       redirect_to request.protocol + 'www.zarlu.com' + request.fullpath, status: 301
     end
+  end
+
+  def choose_welcome_path
+    current_user.manager? ? welcome_path : employee_welcome_path
   end
 end

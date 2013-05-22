@@ -9,6 +9,7 @@ Zarlu::Application.routes.draw do
   get '/home', to: 'homes#show'
   get '/privacy-policy', to: 'homes#privacy'
   get '/welcome', to: 'welcomes#show'
+  get '/employee-welcome', to: 'employee_welcomes#show', as: "employee_welcome"
   get '/employee-leave-management', to: 'articles#employee_leave_management'
   get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'
   get '/business-time-tracking', to: 'articles#business_time_tracking'

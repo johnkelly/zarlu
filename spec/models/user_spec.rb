@@ -152,4 +152,16 @@ describe User do
       user.display_join_date.should == "04/04/2011"
     end
   end
+
+  describe "first_sign_in?" do
+    subject { user }
+    context "only one sign in" do
+      before { user.stub(:sign_in_count).and_return(1) }
+      its(:first_sign_in?) { should be_true }
+    end
+    context "more than one sign in" do
+      before { user.stub(:sign_in_count).and_return(2) }
+      its(:first_sign_in?) { should be_false }
+    end
+  end
 end

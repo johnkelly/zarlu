@@ -3,7 +3,11 @@
     <ul class="pull-right nav">
       <% if user_signed_in? %>
         <li><div><%= link_to "Tour", "#", id: "start_tour", class: "hide btn btn-success" %></div></li>
-        <li id="navbar_welcome"><%= link_to "<i class='icon-home'></i>&nbsp;Welcome".html_safe, welcome_path if current_user.manager? %></li>
+        <% if current_user.manager? %>
+          <li id="navbar_welcome"><%= link_to "<i class='icon-home'></i>&nbsp;Welcome".html_safe, welcome_path %></li>
+        <% else %>
+          <li id="navbar_employee_welcome"><%= link_to "<i class='icon-home'></i>&nbsp;Welcome".html_safe, employee_welcome_path %></li>
+        <% end %>
         <li id="navbar_activity_feed"><%= link_to "<i class='icon-tasks'></i>&nbsp;Activity Feed".html_safe, activities_path %></li>
         <li id="navbar_calendar"><%= link_to "<i class='icon-calendar'></i>&nbsp;Calendar".html_safe, home_path %></li>
         <% if current_user.manager? %>

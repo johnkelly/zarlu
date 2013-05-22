@@ -33,3 +33,7 @@ jQuery ->
     $('#start_tour').removeClass('hide').text("Welcome Tour")
     welcome_tour = new WelcomeTour()
     start_tour_on_click(welcome_tour, "welcome")
+  else if $('body.employee_welcomes_show').length
+    $('#start_tour').removeClass('hide').text("Welcome Tour")
+    employee_welcome_tour = new EmployeeWelcomeTour()
+    start_tour_on_click(employee_welcome_tour, "welcome")
