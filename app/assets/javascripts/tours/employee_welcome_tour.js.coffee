@@ -74,6 +74,6 @@ class window.EmployeeWelcomeTour
       path: "/employee-welcome"
       element: "#navbar_employee_welcome"
       title: "Congratulations!"
-      content: "You have completed the welcome tour! You now know how to navigate Zarlu to find the features you need to manage employee time off. If you still have questions, do not hesitate to contact us."
+      content: "You have completed the welcome tour! You now know how to navigate Zarlu to find the features you need to submit time off. If you still have questions, do not hesitate to contact us."
       placement: "bottom"
     )
