@@ -1,34 +1,36 @@
-<div class="company_setting">
-  <div class="setting_header">
-    <h3>Sick Leave Settings</h3>
-  </div>
-  <div class="row">
-    <div class="span4 setting_label">Enabled</div>
-    <div class="offset1 span4">
-      <%= best_in_place sick, :enabled, path: company_setting_path(sick), type: :checkbox, activator: "#icon-edit-subscriber-sick-enabled" %>
-      <i id="icon-edit-subscriber-sick-enabled" class="icon-edit"></i>
+<% cache sick do %>
+  <div class="company_setting">
+    <div class="setting_header">
+      <h3>Sick Leave Settings</h3>
+    </div>
+    <div class="row">
+      <div class="span4 setting_label">Enabled</div>
+      <div class="offset1 span4">
+        <%= best_in_place sick, :enabled, path: company_setting_path(sick), type: :checkbox, activator: "#icon-edit-subscriber-sick-enabled" %>
+        <i id="icon-edit-subscriber-sick-enabled" class="icon-edit"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4 setting_label">Default Accrual Rate</div>
+      <div class="offset1 span4">
+        <%= best_in_place sick, :default_accrual_rate, path: company_setting_path(sick), activator: "#icon-edit-subscriber-sick-default-accrual" %>
+        Hours&nbsp;<i id="icon-edit-subscriber-sick-default-accrual" class="icon-edit"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4 setting_label">Accrual Frequency</div>
+      <div class="offset1 span4">
+        Every&nbsp;<%= best_in_place sick, :accrual_frequency, path: company_setting_path(sick), type: :select, collection: CompanySetting.accrual_frequencies,
+          activator: "#icon-edit-subscriber-sick-accrual-frequency" %>
+        <i id="icon-edit-subscriber-sick-accrual-frequency" class="icon-edit"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4 setting_label">Next Accrual Date</div>
+      <div class="offset1 span4">
+        <%= best_in_place sick, :next_accrual, path: company_setting_path(sick), type: :date, activator: "#icon-edit-subscriber-sick-start-accrual", display_as: :display_next_accrual %>
+        <i id="icon-edit-subscriber-sick-start-accrual" class="icon-edit"></i>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="span4 setting_label">Default Accrual Rate</div>
-    <div class="offset1 span4">
-      <%= best_in_place sick, :default_accrual_rate, path: company_setting_path(sick), activator: "#icon-edit-subscriber-sick-default-accrual" %>
-      Hours&nbsp;<i id="icon-edit-subscriber-sick-default-accrual" class="icon-edit"></i>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span4 setting_label">Accrual Frequency</div>
-    <div class="offset1 span4">
-      Every&nbsp;<%= best_in_place sick, :accrual_frequency, path: company_setting_path(sick), type: :select, collection: CompanySetting.accrual_frequencies,
- activator: "#icon-edit-subscriber-sick-accrual-frequency" %>
-      <i id="icon-edit-subscriber-sick-accrual-frequency" class="icon-edit"></i>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span4 setting_label">Next Accrual Date</div>
-    <div class="offset1 span4">
-      <%= best_in_place sick, :next_accrual, path: company_setting_path(sick), type: :date, activator: "#icon-edit-subscriber-sick-start-accrual", display_as: :display_next_accrual %>
-      <i id="icon-edit-subscriber-sick-start-accrual" class="icon-edit"></i>
-    </div>
-  </div>
-</div>
+<% end %>

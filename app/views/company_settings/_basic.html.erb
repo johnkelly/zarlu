@@ -1,19 +1,21 @@
-<div class="company_setting">
-  <div class="setting_header">
-    <h3>Company Information</h3>
-  </div>
-  <div class="row">
-    <div class="span4 setting_label">Company Name</div>
-    <div class="offset1 span4">
-      <%= best_in_place subscriber, :name, path: subscribers_path(subscriber), activator: "#icon-edit-subscriber-name" %>
-      <i id="icon-edit-subscriber-name" class="icon-edit"></i>
+<% cache subscriber do %>
+  <div class="company_setting">
+    <div class="setting_header">
+      <h3>Company Information</h3>
+    </div>
+    <div class="row">
+      <div class="span4 setting_label">Company Name</div>
+      <div class="offset1 span4">
+        <%= best_in_place subscriber, :name, path: subscribers_path(subscriber), activator: "#icon-edit-subscriber-name" %>
+        <i id="icon-edit-subscriber-name" class="icon-edit"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4 setting_label">Primary Time Zone</div>
+      <div class="offset1 span4">
+        <%= best_in_place subscriber, :time_zone, path: subscribers_path(subscriber), type: :select, collection: time_zones, activator: "#icon-edit-subscriber-time-zone" %>
+        <i id="icon-edit-subscriber-time-zone" class="icon-edit"></i>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="span4 setting_label">Primary Time Zone</div>
-    <div class="offset1 span4">
-      <%= best_in_place subscriber, :time_zone, path: subscribers_path(subscriber), type: :select, collection: time_zones, activator: "#icon-edit-subscriber-time-zone" %>
-      <i id="icon-edit-subscriber-time-zone" class="icon-edit"></i>
-    </div>
-  </div>
-</div>
+<% end %>

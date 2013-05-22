@@ -1,5 +1,5 @@
 class CompanySetting < ActiveRecord::Base
-  belongs_to :subscriber
+  belongs_to :subscriber, touch: true
 
   validates_presence_of :subscriber_id, :accrual_frequency, :next_accrual
   validates_numericality_of :default_accrual_rate, greater_than_or_equal_to: 0

@@ -6,6 +6,7 @@ class CompanySettingsController < ApplicationController
     @subscriber = current_user.subscriber
     @company_setting_service = CompanySettingService.new(@subscriber.company_settings)
     @time_zones = ActiveSupport::TimeZone.all.map{ |tz| [tz.name, tz.name] }
+    fresh_when(@subscriber)
   end
 
   def update
