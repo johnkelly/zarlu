@@ -1,6 +1,8 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
+  etag { current_user.try :id }
+
   def update
     @subscriber = current_user.subscriber
     @subscriber.card_token = card_token(params)

@@ -2,6 +2,8 @@ class CompanySettingsController < ApplicationController
   before_action :authenticate_manager!
   before_action :check_if_trial_or_cc!
 
+  etag { current_user.id }
+
   def index
     @subscriber = current_user.subscriber
     @company_setting_service = CompanySettingService.new(@subscriber.company_settings)
