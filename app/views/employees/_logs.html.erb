@@ -4,7 +4,9 @@
 </div>
 <div class="mt30">
   <% if @events.present? %>
-    <%= render partial: "log", collection: @events %>
+    <% cache [@events, @subscriber] do %>
+      <%= render partial: "log", collection: @events, locals: { subscriber: @subscriber } %>
+    <% end %>
   <% else %>
     <h4>No logs to show because this employee has not used any time off.</h4>
   <% end %>

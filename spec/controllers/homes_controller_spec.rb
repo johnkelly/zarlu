@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe HomesController do
+  let(:subscriber) { subscribers(:subscribers_001) }
 
   describe "#index" do
     it "returns success" do
@@ -17,6 +18,7 @@ describe HomesController do
           get :show
         end
         it { should respond_with(:success) }
+        it { assigns(:subscriber).should == subscriber }
         it { assigns(:calendar_type).should == "user" }
         it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
       end
@@ -27,6 +29,7 @@ describe HomesController do
           get :show, calendar_type: "manager"
         end
         it { should respond_with(:success) }
+        it { assigns(:subscriber).should == subscriber }
         it { assigns(:calendar_type).should == "manager" }
         it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
       end

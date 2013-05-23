@@ -1,47 +1,49 @@
-<%= image_tag gravatar_url(employee), width: 100, height: 100, alt: "avatar", class: "img-rounded" %>
-<h4><%= employee.display_name %></h4>
-<dl>
-  <dt>Employee Since</dt>
-  <dd>
-  <%= best_in_place employee, :join_date, type: :date, path: user_path(employee), activator: "#icon-edit-join-date", inner_class: "input-small", nil: "No Date Provided", display_as: :display_join_date %>
-  <i id="icon-edit-join-date" class="icon-edit"></i>
-  </dd>
-  <dt>Managed By</dt>
-  <dd><%= manager %></dd>
-  <dt>Used Vacation Leave</dt>
-  <dd><%= event_durations.vacation_hours %> Hours</dd>
-  <dt>Used Sick Leave</dt>
-  <dd><%= event_durations.sick_hours %> Hours</dd>
-  <dt>Used Unpaid & Other Leave</dt>
-  <dd><%= event_durations.unpaid_and_other_hours %> Hours</dd>
-  <dt>Available Vacation Leave</dt>
-  <dd>
-  <%= best_in_place employee.vacation_leave, :accrued_hours, path: accrued_hour_path(employee.vacation_leave), activator: "#icon-edit-vacation-accrued-hours-#{employee.vacation_leave.id}", inner_class: "input-mini" %>
-  <i id="icon-edit-vacation-accrued-hours-<%= employee.vacation_leave.id %>" class="icon-edit"></i>
-  </dd>
-  <dt>Available Sick Leave</dt>
-  <dd>
-  <%= best_in_place employee.sick_leave, :accrued_hours, path: accrued_hour_path(employee.sick_leave), activator: "#icon-edit-sick-accrued-hours-#{employee.sick_leave.id}", inner_class: "input-mini" %>
-  <i id="icon-edit-sick-accrued-hours-<%= employee.sick_leave.id %>" class="icon-edit"></i>
-  </dd>
-  <dt>Available Holiday Leave</dt>
-  <dd>
-  <%= best_in_place employee.holiday_leave, :accrued_hours, path: accrued_hour_path(employee.holiday_leave), activator: "#icon-edit-holiday-accrued-hours-#{employee.holiday_leave.id}", inner_class: "input-mini" %>
-  <i id="icon-edit-holiday-accrued-hours-<%= employee.holiday_leave.id %>" class="icon-edit"></i>
-  </dd>
-  <dt>Available Personal Leave</dt>
-  <dd>
-  <%= best_in_place employee.personal_leave, :accrued_hours, path: accrued_hour_path(employee.personal_leave), activator: "#icon-edit-personal-accrued-hours-#{employee.personal_leave.id}", inner_class: "input-mini" %>
-  <i id="icon-edit-personal-accrued-hours-<%= employee.personal_leave.id %>" class="icon-edit"></i>
-  </dd>
-  <dt>Available Unpaid Leave</dt>
-  <dd>
-  <%= best_in_place employee.unpaid_leave, :accrued_hours, path: accrued_hour_path(employee.unpaid_leave), activator: "#icon-edit-unpaid-accrued-hours-#{employee.unpaid_leave.id}", inner_class: "input-mini" %>
-  <i id="icon-edit-unpaid-accrued-hours-<%= employee.unpaid_leave.id %>" class="icon-edit"></i>
-  </dd>
-  <dt>Available Other Leave</dt>
-  <dd>
-  <%= best_in_place employee.other_leave, :accrued_hours, path: accrued_hour_path(employee.other_leave), activator: "#icon-edit-other-accrued-hours-#{employee.other_leave.id}", inner_class: "input-mini" %>
-  <i id="icon-edit-other-accrued-hours-<%= employee.other_leave.id %>" class="icon-edit"></i>
-  </dd>
-</dl>
+<% cache employee do %>
+  <%= image_tag gravatar_url(employee), width: 100, height: 100, alt: "avatar", class: "img-rounded" %>
+  <h4><%= employee.display_name %></h4>
+  <dl>
+    <dt>Employee Since</dt>
+    <dd>
+    <%= best_in_place employee, :join_date, type: :date, path: user_path(employee), activator: "#icon-edit-join-date", inner_class: "input-small", nil: "No Date Provided", display_as: :display_join_date %>
+    <i id="icon-edit-join-date" class="icon-edit"></i>
+    </dd>
+    <dt>Managed By</dt>
+    <dd><%= manager %></dd>
+    <dt>Used Vacation Leave</dt>
+    <dd><%= event_durations.vacation_hours %> Hours</dd>
+    <dt>Used Sick Leave</dt>
+    <dd><%= event_durations.sick_hours %> Hours</dd>
+    <dt>Used Unpaid & Other Leave</dt>
+    <dd><%= event_durations.unpaid_and_other_hours %> Hours</dd>
+    <dt>Available Vacation Leave</dt>
+    <dd>
+    <%= best_in_place employee.vacation_leave, :accrued_hours, path: accrued_hour_path(employee.vacation_leave), activator: "#icon-edit-vacation-accrued-hours-#{employee.vacation_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-vacation-accrued-hours-<%= employee.vacation_leave.id %>" class="icon-edit"></i>
+    </dd>
+    <dt>Available Sick Leave</dt>
+    <dd>
+    <%= best_in_place employee.sick_leave, :accrued_hours, path: accrued_hour_path(employee.sick_leave), activator: "#icon-edit-sick-accrued-hours-#{employee.sick_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-sick-accrued-hours-<%= employee.sick_leave.id %>" class="icon-edit"></i>
+    </dd>
+    <dt>Available Holiday Leave</dt>
+    <dd>
+    <%= best_in_place employee.holiday_leave, :accrued_hours, path: accrued_hour_path(employee.holiday_leave), activator: "#icon-edit-holiday-accrued-hours-#{employee.holiday_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-holiday-accrued-hours-<%= employee.holiday_leave.id %>" class="icon-edit"></i>
+    </dd>
+    <dt>Available Personal Leave</dt>
+    <dd>
+    <%= best_in_place employee.personal_leave, :accrued_hours, path: accrued_hour_path(employee.personal_leave), activator: "#icon-edit-personal-accrued-hours-#{employee.personal_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-personal-accrued-hours-<%= employee.personal_leave.id %>" class="icon-edit"></i>
+    </dd>
+    <dt>Available Unpaid Leave</dt>
+    <dd>
+    <%= best_in_place employee.unpaid_leave, :accrued_hours, path: accrued_hour_path(employee.unpaid_leave), activator: "#icon-edit-unpaid-accrued-hours-#{employee.unpaid_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-unpaid-accrued-hours-<%= employee.unpaid_leave.id %>" class="icon-edit"></i>
+    </dd>
+    <dt>Available Other Leave</dt>
+    <dd>
+    <%= best_in_place employee.other_leave, :accrued_hours, path: accrued_hour_path(employee.other_leave), activator: "#icon-edit-other-accrued-hours-#{employee.other_leave.id}", inner_class: "input-mini" %>
+    <i id="icon-edit-other-accrued-hours-<%= employee.other_leave.id %>" class="icon-edit"></i>
+    </dd>
+  </dl>
+<% end %>

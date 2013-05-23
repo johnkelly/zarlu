@@ -1,46 +1,48 @@
-<div class="container paper">
-  <ul class="nav nav-pills mb3">
-    <li class="<%= @calendar_type == 'user' ? 'active' : '' %>">
-    <%= link_to "My Calendar", home_path %>
-    </li>
-    <li class="<%= @calendar_type == 'manager' ? 'active' : '' %> <%= disable_pill(current_user) %>">
-    <%= link_to "My Employees' Calendar", home_path(calendar_type: "manager") %>
-    </li>
-    <li class="<%= @calendar_type == 'company' ? 'active' : '' %>">
-    <%= link_to "My Company's Calendar", home_path(calendar_type: "company") %>
-    </li>
-  </ul>
-  <p class="center mb3"><strong>Pending schedule events not yet approved by your manager are striped.</strong></p>
-  <dl class="color_legend mt3">
-    <dt class="blue_box"></dt>
-    <dd>Vacation</dd>
-    <dt class="green_box"></dt>
-    <dd>Sick</dd>
-    <dt class="orange_box"></dt>
-    <dd>Holiday</dd>
-    <dt class="purple_box"></dt>
-    <dd>Personal</dd>
-    <dt class="red_box"></dt>
-    <dd>Unpaid</dd>
-    <dt class="black_box"></dt>
-    <dd>Other</dd>
-  </dl>
-  <div class="calendar" id="<%= @calendar_type %>_calendar"></div>
-  <div id="event_dialog" class="dialog ui-helper-hidden">
-    <form id="dialog_form">
-      <div>
-        <label>Title:</label>
-        <input id="title" class="field" type="text"></input>
-        <%= select :event, :kind, @available_events %>
-        <dl>
-          <dt>Selected</dt>
-          <dd><span id="selected_hours">Sorry, please refresh.</span>&nbsp;<small>(A full day is 8 hours)</small></dd>
-          <dt>Pending</dt>
-          <dd><span id="pending_hours">Sorry, please refresh.</span></dd>
-          <dt>Available</dt>
-          <dd><span id="available_hours">Sorry, please refresh.</span></dd>
-        </dl>
-      </div>
-    </form>
+<% cache [current_user, @subscriber, @calendar_type] do %>
+  <div class="container paper">
+    <ul class="nav nav-pills mb3">
+      <li class="<%= @calendar_type == 'user' ? 'active' : '' %>">
+      <%= link_to "My Calendar", home_path %>
+      </li>
+      <li class="<%= @calendar_type == 'manager' ? 'active' : '' %> <%= disable_pill(current_user) %>">
+      <%= link_to "My Employees' Calendar", home_path(calendar_type: "manager") %>
+      </li>
+      <li class="<%= @calendar_type == 'company' ? 'active' : '' %>">
+      <%= link_to "My Company's Calendar", home_path(calendar_type: "company") %>
+      </li>
+    </ul>
+    <p class="center mb3"><strong>Pending schedule events not yet approved by your manager are striped.</strong></p>
+    <dl class="color_legend mt3">
+      <dt class="blue_box"></dt>
+      <dd>Vacation</dd>
+      <dt class="green_box"></dt>
+      <dd>Sick</dd>
+      <dt class="orange_box"></dt>
+      <dd>Holiday</dd>
+      <dt class="purple_box"></dt>
+      <dd>Personal</dd>
+      <dt class="red_box"></dt>
+      <dd>Unpaid</dd>
+      <dt class="black_box"></dt>
+      <dd>Other</dd>
+    </dl>
+    <div class="calendar" id="<%= @calendar_type %>_calendar"></div>
+    <div id="event_dialog" class="dialog ui-helper-hidden">
+      <form id="dialog_form">
+        <div>
+          <label>Title:</label>
+          <input id="title" class="field" type="text"></input>
+          <%= select :event, :kind, @available_events %>
+          <dl>
+            <dt>Selected</dt>
+            <dd><span id="selected_hours">Sorry, please refresh.</span>&nbsp;<small>(A full day is 8 hours)</small></dd>
+            <dt>Pending</dt>
+            <dd><span id="pending_hours">Sorry, please refresh.</span></dd>
+            <dt>Available</dt>
+            <dd><span id="available_hours">Sorry, please refresh.</span></dd>
+          </dl>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+<% end %>

@@ -3,13 +3,15 @@ class SubscribersController < ApplicationController
   before_action :check_if_trial_or_cc!
   before_action :shared_variables
 
+  etag { current_user.try :id }
+
   def show
     @time_off_view = params[:time_off_view].presence || "time_off_used"
     @user = User.new
-    @employees = @users.sort_by(&:display_name)
     @events = Event.where(user_id: @subscriber.users)
     @managers = @subscriber.managers(@users).sort_by(&:display_name)
     @manager_collection = manager_collection
+    fresh_when([@users, @time_off_view])
   end
 
   def update

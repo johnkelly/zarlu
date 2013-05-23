@@ -13,17 +13,8 @@
           <th>&nbsp;</th>
         </thead>
         <tbody>
-          <% @my_employee_pending_events.each do |pending_event| %>
-            <tr>
-              <td><%= pending_event.user.display_name %></td>
-              <td><%= pending_event.starts_at.strftime('%m-%d-%Y') %></td>
-              <td><%= pending_event.title %></td>
-              <td><%= pending_event.description %></td>
-              <td>
-                <%= link_to "Approve", employee_url(pending_event, type: "approve"), method: :put, class: "btn btn-success" %>
-                <%= link_to "Reject", employee_url(pending_event, type: "reject"), method: :put, class: "btn btn-danger" %>
-              </td>
-            </tr>
+          <% cache @my_employees do %>
+            <%= render partial: "pending_event", collection: @my_employee_pending_events %>
           <% end %>
         </tbody>
       </table>

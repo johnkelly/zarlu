@@ -1,26 +1,26 @@
 <% cache employee do %>
-<% employee_events = @events.select { |event| event.user_id == employee.id } %>
-<% manager = @managers.detect{ |manager| manager.id == employee.manager_id } %>
-<tr>
-  <td><%= display_employee(employee) %></td>
-  <td>
-    <%= best_in_place employee, :manager_id, path: change_manager_subscribers_path(user_id: employee), type: :select,
-      collection: @manager_collection, nil: "None", activator: "#icon-edit-#{employee.id}" %>
-    <i id="icon-edit-<%= employee.id %>" class="icon-edit"></i>
-  </td>
-  <td><%= employee_events.select{ |event| event.kind == Event::VACATION }.map(&:duration).reduce(0,:+) %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::SICK }.map(&:duration).reduce(0,:+) %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::HOLIDAY }.map(&:duration).reduce(0,:+) %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::PERSONAL }.map(&:duration).reduce(0,:+) %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::UNPAID }.map(&:duration).reduce(0,:+) %></td>
-  <td><%= employee_events.select{ |event| event.kind == Event::OTHER }.map(&:duration).reduce(0,:+) %></td>
-  <td>
-    <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
-    <% if employee.manager? %>
-      <%= link_to "Demote to Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right", data: { confirm: "Are you sure?" } %>
-    <% else %>
-      <%= link_to "Promote to Manager", promote_to_manager_subscribers_path(user_id: employee), method: :put, class: "btn btn-info btn-mini float_right" %>
-    <% end %>
-  </td>
-</tr>
+  <% employee_events = @events.select { |event| event.user_id == employee.id } %>
+  <% manager = @managers.detect{ |manager| manager.id == employee.manager_id } %>
+  <tr>
+    <td><%= display_employee(employee) %></td>
+    <td>
+      <%= best_in_place employee, :manager_id, path: change_manager_subscribers_path(user_id: employee), type: :select,
+        collection: @manager_collection, nil: "None", activator: "#icon-edit-#{employee.id}" %>
+      <i id="icon-edit-<%= employee.id %>" class="icon-edit"></i>
+    </td>
+    <td><%= employee_events.select{ |event| event.kind == Event::VACATION }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == Event::SICK }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == Event::HOLIDAY }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == Event::PERSONAL }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == Event::UNPAID }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == Event::OTHER }.map(&:duration).reduce(0,:+) %></td>
+    <td>
+      <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
+      <% if employee.manager? %>
+        <%= link_to "Demote to Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right", data: { confirm: "Are you sure?" } %>
+      <% else %>
+        <%= link_to "Promote to Manager", promote_to_manager_subscribers_path(user_id: employee), method: :put, class: "btn btn-info btn-mini float_right" %>
+      <% end %>
+    </td>
+  </tr>
 <% end %>

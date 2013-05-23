@@ -5,7 +5,11 @@
     </div>
     <div class="span9">
       <div class="center mt10">
-        <%= display_logs_or_charts(@display) %>
+        <% if display == "logs" %>
+          <%= render partial: "employees/logs" %>
+        <% else %>
+          <%= render partial: "employees/charts" %>
+        <% end %>
       </div>
     </div>
   </div>

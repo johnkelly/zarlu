@@ -13,7 +13,6 @@ describe SubscribersController do
       it { should respond_with(:success) }
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:users).should == subscriber.users }
-      it { assigns(:employees).should == subscriber.users.sort_by(&:display_name) }
       it { assigns(:user).should be_present }
       it { assigns(:managers).should == [manager] }
       it { assigns(:events) }
@@ -25,7 +24,6 @@ describe SubscribersController do
       it { should respond_with(:success) }
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:users).should == subscriber.users }
-      it { assigns(:employees).should == subscriber.users.sort_by(&:display_name) }
       it { assigns(:user).should be_present }
       it { assigns(:managers).should == [manager] }
       it { assigns(:events) }

@@ -2,9 +2,12 @@ class EmployeesController < ApplicationController
   before_action :authenticate_manager!
   before_action :check_if_trial_or_cc!
 
+  etag { current_user.try :id }
+
   def index
     @my_employees = current_user.employees
     @my_employee_pending_events = Event.where(user_id: @my_employees, approved: false, rejected: false)
+    fresh_when(@my_employees.order(:updated_at).last)
   end
 
   def update
@@ -30,5 +33,6 @@ class EmployeesController < ApplicationController
     @manager = @employee.has_manager? ? User.find(@employee.manager_id).display_name : "No Manager Assigned"
     @events = @employee.events.lifo
     @event_durations = EventDurationService.new(@events)
+    fresh_when([@employee, @manager, @subscriber, @display])
   end
 end

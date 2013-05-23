@@ -18,7 +18,7 @@ describe EventsController do
     context "no params" do
       before { get :index, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [] }
+      it { assigns(:events).should == Event.none }
     end
   end
 

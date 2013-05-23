@@ -45,12 +45,12 @@
     </thead>
     <tbody>
       <% if @time_off_view == "time_off_accrued" %>
-        <% cache @employees do %>
-          <%= render partial: "employee_leave_accrued", collection: @employees, as: :employee %>
+        <% cache [@users, "employee_leave_accrued"] do %>
+          <%= render partial: "employee_leave_accrued", collection: @users.sort_by(&:display_name), as: :employee %>
         <% end %>
       <% else %>
-        <% cache @employees do %>
-          <%= render partial: "employee", collection: @employees %>
+        <% cache [@users, "employee"] do %>
+          <%= render partial: "employee", collection: @users.sort_by(&:display_name)  %>
         <% end %>
       <% end %>
     </tbody>
