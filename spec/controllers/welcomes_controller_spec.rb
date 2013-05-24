@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe WelcomesController do
-  let(:user) { users(:test_example_com) }
+  let(:user) { users(:manager_example_com) }
   before { sign_in user }
 
   describe "#create" do
