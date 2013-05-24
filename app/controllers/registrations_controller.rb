@@ -26,6 +26,10 @@ class RegistrationsController < Devise::RegistrationsController
     welcome_path
   end
 
+  def after_update_path_for(resource)
+    resource.manager? ? welcome_path : employee_welcome_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :name) }
   end
