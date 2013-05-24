@@ -3,7 +3,7 @@ class SubscribersController < ApplicationController
   before_action :check_if_trial_or_cc!
   before_action :shared_variables
 
-  etag { current_user.try :id }
+  etag { [current_user.try(:id), flash] }
 
   def show
     @time_off_view = params[:time_off_view].presence || "time_off_used"
