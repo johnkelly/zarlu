@@ -2,7 +2,7 @@ class HomesController < ApplicationController
   before_action :authenticate_user!, only: %w[show]
   before_action :check_if_trial_or_cc!, only: %w[show]
 
-  etag { [current_user.try(:id), flash] }
+  etag { [current_user, flash] }
 
   def index
   end

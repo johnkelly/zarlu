@@ -1,7 +1,7 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
-  etag { [current_user.try(:id), flash] }
+  etag { [current_user, flash] }
 
   def update
     @subscriber = current_user.subscriber
