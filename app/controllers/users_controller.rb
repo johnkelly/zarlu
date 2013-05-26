@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user.subscriber.users.find(params[:id])
-    @user.update!(join_date: join_date)
+    @user.update(join_date: join_date)
     respond_with_bip(@user)
   end
 

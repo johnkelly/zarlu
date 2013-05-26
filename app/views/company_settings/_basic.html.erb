@@ -6,7 +6,7 @@
     <div class="row">
       <div class="span4 setting_label">Company Name</div>
       <div class="offset1 span4">
-        <%= best_in_place subscriber, :name, path: subscribers_path(subscriber), activator: "#icon-edit-subscriber-name" %>
+        <%= best_in_place subscriber, :name, path: subscribers_path(subscriber), activator: "#icon-edit-subscriber-name", html_attrs: { maxlength: 35 } %>
         <i id="icon-edit-subscriber-name" class="icon-edit"></i>
       </div>
     </div>

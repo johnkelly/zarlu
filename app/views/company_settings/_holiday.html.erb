@@ -13,7 +13,7 @@
     <div class="row">
       <div class="span4 setting_label">Default Accrual Rate</div>
       <div class="offset1 span4">
-        <%= best_in_place holiday, :default_accrual_rate, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-default-accrual" %>
+        <%= best_in_place holiday, :default_accrual_rate, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-default-accrual", html_attrs: { maxlength: 9 } %>
         Hours&nbsp;<i id="icon-edit-subscriber-holiday-default-accrual" class="icon-edit"></i>
       </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="row">
       <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place holiday, :accrual_limit, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-accrual-limit", nil: "None" %>
+        <%= best_in_place holiday, :accrual_limit, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-accrual-limit", nil: "None", html_attrs: { maxlength: 9 } %>
         <i id="icon-edit-subscriber-holiday-accrual-limit" class="icon-edit"></i>
       </div>
     </div>

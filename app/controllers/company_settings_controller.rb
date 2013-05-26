@@ -17,7 +17,7 @@ class CompanySettingsController < ApplicationController
     if has_date_param?
       update_date_params
     else
-    @company_setting.update!(permitted_settings)
+    @company_setting.update(permitted_settings)
     end
     respond_with_bip(@company_setting)
   end
@@ -33,7 +33,7 @@ class CompanySettingsController < ApplicationController
   end
 
   def update_date_params
-    @company_setting.update!(next_accrual: Date.strptime(setting_params[:next_accrual], "%m/%d/%Y"))
+    @company_setting.update(next_accrual: Date.strptime(setting_params[:next_accrual], "%m/%d/%Y"))
   end
 
   def has_date_param?

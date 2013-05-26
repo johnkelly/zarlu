@@ -16,7 +16,7 @@ class SubscribersController < ApplicationController
 
   def update
     @subscriber = current_user.subscriber
-    @subscriber.update!(subscriber_params)
+    @subscriber.update(subscriber_params)
     respond_with_bip(@subscriber)
   end
 

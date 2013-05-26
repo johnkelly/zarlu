@@ -4,7 +4,7 @@ class AccruedHoursController < ApplicationController
 
   def update
     @leave = Leave.where(user_id: current_user.subscriber.users).find(params[:id])
-    @leave.update!(setting_params.permit(:accrued_hours))
+    @leave.update(setting_params.permit(:accrued_hours))
     respond_with_bip(@leave)
   end
 
