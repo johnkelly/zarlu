@@ -8,16 +8,36 @@ class Leave < ActiveRecord::Base
 
   def self.update_accrued_hours(users, accrual_rate, kind)
     leave_to_update = leave_klass(kind).where(user_id: users)
-    leave_to_update.each { |leave| leave.increment_accrual_hours!(accrual_rate) }
+    leave_to_update.each { |leave| leave.increment_accrual_hours!(accrual_rate) unless leave.at_accrual_limit? }
   end
 
   def increment_accrual_hours!(accrual_rate)
-    update!(accrued_hours: (accrued_hours + accrual_rate))
+    if accrual_rate_will_go_over_limit?(accrual_rate)
+      update!(accrued_hours: accrual_limit)
+    else
+      update!(accrued_hours: (accrued_hours + accrual_rate))
+    end
+  end
+
+  def at_accrual_limit?
+    if accrual_limit.present?
+      accrual_limit <= available_hours
+    else
+      false
+    end
+  end
+
+  def available_hours
+    accrued_hours - used_hours
   end
 
   private
 
   def self.leave_klass(kind)
     (kind.titleize + "Leave").constantize
+  end
+
+  def accrual_rate_will_go_over_limit?(accrual_rate)
+    accrual_limit.present? && (accrual_rate + available_hours > accrual_limit)
   end
 end

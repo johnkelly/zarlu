@@ -3,6 +3,7 @@ class CompanySetting < ActiveRecord::Base
 
   validates_presence_of :subscriber_id, :accrual_frequency, :next_accrual
   validates_numericality_of :default_accrual_rate, greater_than_or_equal_to: 0
+  validates_numericality_of :accrual_limit, greater_than_or_equal_to: 0, allow_nil: true
 
   before_validation :set_default_accrual_date_and_frequency, on: :create
 

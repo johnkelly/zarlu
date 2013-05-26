@@ -7,6 +7,7 @@ describe CompanySetting do
     it { should belong_to(:subscriber) }
     it { should validate_presence_of(:subscriber_id) }
     it { should validate_numericality_of(:default_accrual_rate) }
+    it { should validate_numericality_of(:accrual_limit) }
   end
 
   describe "validation" do

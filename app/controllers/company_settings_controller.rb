@@ -29,7 +29,7 @@ class CompanySettingsController < ApplicationController
   end
 
   def permitted_settings
-    setting_params.permit(:subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency, :next_accrual)
+    setting_params.permit(:subscriber_id, :enabled, :default_accrual_rate, :accrual_frequency, :next_accrual, :accrual_limit)
   end
 
   def update_date_params

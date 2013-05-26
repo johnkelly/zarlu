@@ -32,5 +32,12 @@
         <i id="icon-edit-subscriber-holiday-start-accrual" class="icon-edit"></i>
       </div>
     </div>
+    <div class="row">
+      <div class="span4 setting_label">Accrual Limit</div>
+      <div class="offset1 span4">
+        <%= best_in_place holiday, :accrual_limit, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-accrual-limit", nil: "None" %>
+        <i id="icon-edit-subscriber-holiday-accrual-limit" class="icon-edit"></i>
+      </div>
+    </div>
   </div>
 <% end %>
