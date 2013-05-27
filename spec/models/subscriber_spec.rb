@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Subscriber do
   let(:trial_user) { users(:manager_example_com) }
-  let(:trial_subscriber) { subscribers(:subscribers_001) }
-  let(:paid_subscriber) { subscribers(:subscribers_003) }
+  let(:trial_subscriber) { subscribers(:trial) }
+  let(:paid_subscriber) { subscribers(:paid) }
 
   describe "attributes" do
     it { should have_many(:users) }

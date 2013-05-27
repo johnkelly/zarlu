@@ -3,11 +3,11 @@
     <h1 class="mb15 center">Company Settings</h1>
     <h5 class="center">All changes are auto saved for your convenience.</h5>
     <%= render partial: "company_settings/basic", locals: { subscriber: @subscriber, time_zones: @time_zones } %>
-    <%= render partial: "company_settings/vacation", locals: { vacation: @company_setting_service.vacation } %>
-    <%= render partial: "company_settings/sick", locals: { sick: @company_setting_service.sick } %>
-    <%= render partial: "company_settings/holiday", locals: { holiday: @company_setting_service.holiday } %>
-    <%= render partial: "company_settings/personal", locals: { personal: @company_setting_service.personal } %>
-    <%= render partial: "company_settings/unpaid", locals: { unpaid: @company_setting_service.unpaid } %>
-    <%= render partial: "company_settings/other", locals: { other: @company_setting_service.other } %>
+    <%= render partial: "company_settings/vacation", locals: { vacation: @company_setting_service.vacation, accruals: @accrual_service.vacation } %>
+    <%= render partial: "company_settings/sick", locals: { sick: @company_setting_service.sick, accruals: @accrual_service.sick } %>
+    <%= render partial: "company_settings/holiday", locals: { holiday: @company_setting_service.holiday, accruals: @accrual_service.holiday } %>
+    <%= render partial: "company_settings/personal", locals: { personal: @company_setting_service.personal, accruals: @accrual_service.personal } %>
+    <%= render partial: "company_settings/unpaid", locals: { unpaid: @company_setting_service.unpaid, accruals: @accrual_service.unpaid } %>
+    <%= render partial: "company_settings/other", locals: { other: @company_setting_service.other, accruals: @accrual_service.other } %>
   </div>
 <% end %>

@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe CompanySettingsController do
   let(:manager) { users(:manager_example_com) }
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:company_setting_service) { mock("CompanySettingService") }
+  let(:accrual_service) { mock("AccrualService") }
   let(:vacation) { subscriber.vacation_company_setting }
   let(:sick) { subscriber.sick_company_setting }
   let(:holiday) { subscriber.holiday_company_setting }
@@ -15,11 +16,13 @@ describe CompanySettingsController do
   describe "#index" do
     before do
       CompanySettingService.should_receive(:new).with(subscriber.company_settings).and_return(company_setting_service)
+      AccrualService.should_receive(:new).with(subscriber.accruals).and_return(accrual_service)
       get :index
     end
     it { should respond_with(:success) }
     it { assigns(:subscriber).should == subscriber }
     it { assigns(:company_setting_service).should == company_setting_service }
+    it { assigns(:accrual_service).should == accrual_service }
     it { assigns(:time_zones).should == ActiveSupport::TimeZone.all.map{ |tz| [tz.name, tz.name] }}
   end
 

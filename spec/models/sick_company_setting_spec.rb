@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SickCompanySetting do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:sick_company_setting) { subscriber.sick_company_setting }
 
   describe "attributes" do

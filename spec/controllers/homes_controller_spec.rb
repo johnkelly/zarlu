@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe HomesController do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
 
   describe "#index" do
     it "returns success" do

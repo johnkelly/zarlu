@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SubscribersController do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:user) { users(:test_example_com) }
   let(:manager) { users(:manager_example_com) }
 

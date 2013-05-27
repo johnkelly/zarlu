@@ -1,4 +1,4 @@
-<% cache holiday do %>
+<% cache [holiday, accruals] do %>
   <div class="company_setting">
     <div class="setting_header">
       <h3>Holiday Leave Settings</h3>
@@ -11,10 +11,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="span4 setting_label">Default Accrual Rate</div>
+      <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place holiday, :default_accrual_rate, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-default-accrual", html_attrs: { maxlength: 9 } %>
-        Hours&nbsp;<i id="icon-edit-subscriber-holiday-default-accrual" class="icon-edit"></i>
+        <%= best_in_place holiday, :accrual_limit, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-accrual-limit", nil: "None", html_attrs: { maxlength: 9 } %>
+        <i id="icon-edit-subscriber-holiday-accrual-limit" class="icon-edit"></i>
       </div>
     </div>
     <div class="row">
@@ -32,12 +32,6 @@
         <i id="icon-edit-subscriber-holiday-start-accrual" class="icon-edit"></i>
       </div>
     </div>
-    <div class="row">
-      <div class="span4 setting_label">Accrual Limit</div>
-      <div class="offset1 span4">
-        <%= best_in_place holiday, :accrual_limit, path: company_setting_path(holiday), activator: "#icon-edit-subscriber-holiday-accrual-limit", nil: "None", html_attrs: { maxlength: 9 } %>
-        <i id="icon-edit-subscriber-holiday-accrual-limit" class="icon-edit"></i>
-      </div>
-    </div>
+    <%= render partial: "accruals", locals: { accruals: accruals, new_accrual: HolidayAccrual.new, type: Event::HOLIDAY } %>
   </div>
 <% end %>

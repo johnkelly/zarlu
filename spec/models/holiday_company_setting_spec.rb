@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe HolidayCompanySetting do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:holiday_company_setting) { subscriber.holiday_company_setting }
 
   describe "attributes" do

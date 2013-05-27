@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe OtherCompanySetting do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:other_company_setting) { subscriber.other_company_setting }
 
   describe "attributes" do

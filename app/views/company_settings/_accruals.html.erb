@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="span9 setting_label">
+    Accrual Rate by years with company&nbsp;&nbsp;<small>(If your company has one accrual rate create a single accrual of 0-70 years.)</small>
+  </div>
+</div>
+<div class="row">
+  <div class="offset1 span2">From (years)</div>
+  <div class="span2">To (years)</div>
+  <div class="span2">Rate (hours)</div>
+  <div class="span2">&nbsp;</div>
+</div>
+<%= render partial: "new_accrual", locals: { accrual: new_accrual, type: type } %>
+<% cache accruals do %>
+  <%= render partial: "accrual", collection: accruals %>
+<% end %>

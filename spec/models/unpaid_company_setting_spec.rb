@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UnpaidCompanySetting do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:unpaid_company_setting) { subscriber.unpaid_company_setting }
 
   describe "attributes" do

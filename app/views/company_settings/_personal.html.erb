@@ -1,4 +1,4 @@
-<% cache personal do %>
+<% cache [personal, accruals] do %>
   <div class="company_setting">
     <div class="setting_header">
       <h3>Personal Leave Settings</h3>
@@ -11,10 +11,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="span4 setting_label">Default Accrual Rate</div>
+      <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place personal, :default_accrual_rate, path: company_setting_path(personal), activator: "#icon-edit-subscriber-personal-default-accrual", html_attrs: { maxlength: 9 } %>
-        Hours&nbsp;<i id="icon-edit-subscriber-personal-default-accrual" class="icon-edit"></i>
+        <%= best_in_place personal, :accrual_limit, path: company_setting_path(personal), activator: "#icon-edit-subscriber-personal-accrual-limit", nil: "None", html_attrs: { maxlength: 9 } %>
+        <i id="icon-edit-subscriber-personal-accrual-limit" class="icon-edit"></i>
       </div>
     </div>
     <div class="row">
@@ -32,12 +32,6 @@
         <i id="icon-edit-subscriber-personal-start-accrual" class="icon-edit"></i>
       </div>
     </div>
-    <div class="row">
-      <div class="span4 setting_label">Accrual Limit</div>
-      <div class="offset1 span4">
-        <%= best_in_place personal, :accrual_limit, path: company_setting_path(personal), activator: "#icon-edit-subscriber-personal-accrual-limit", nil: "None", html_attrs: { maxlength: 9 } %>
-        <i id="icon-edit-subscriber-personal-accrual-limit" class="icon-edit"></i>
-      </div>
-    </div>
+    <%= render partial: "accruals", locals: { accruals: accruals, new_accrual: PersonalAccrual.new, type: Event::PERSONAL } %>
   </div>
 <% end %>

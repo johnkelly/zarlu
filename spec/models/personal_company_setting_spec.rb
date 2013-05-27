@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PersonalCompanySetting do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:personal_company_setting) { subscriber.personal_company_setting }
   describe "attributes" do
     it { should belong_to(:subscriber) }

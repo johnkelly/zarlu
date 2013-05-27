@@ -1,0 +1,8 @@
+<% cache accrual do %>
+  <div class="row pl5">
+    <div class="offset1 span2"><%= accrual.start_year %> years</div>
+    <div class="span2"><%= accrual.end_year %> years</div>
+    <div class="span2"><%= accrual.rate.round(4) %> hours</div>
+    <div class="span2"><%= link_to "Remove", accrual_path(accrual), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-mini" %></div>
+  </div>
+<% end %>

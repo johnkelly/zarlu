@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CompanySettingService do
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   let(:vacation) { subscriber.vacation_company_setting }
   let(:sick) { subscriber.sick_company_setting }
   let(:holiday) { subscriber.holiday_company_setting }

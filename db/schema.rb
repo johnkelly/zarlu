@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130525202514) do
+ActiveRecord::Schema.define(version: 20130527005119) do
+
+  create_table "accruals", force: true do |t|
+    t.string  "type"
+    t.integer "subscriber_id"
+    t.integer "start_year"
+    t.integer "end_year"
+    t.decimal "rate"
+  end
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"

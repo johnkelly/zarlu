@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   let(:manager) { users(:manager_example_com) }
   let(:user) { users(:test_example_com) }
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
 
   describe "attributes" do
     it { should belong_to(:subscriber) }

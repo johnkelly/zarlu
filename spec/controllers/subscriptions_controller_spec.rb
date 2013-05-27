@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SubscriptionsController do
   let(:user) { users(:test_example_com) }
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   before { sign_in user }
 
   describe "#update" do

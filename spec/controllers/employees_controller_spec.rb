@@ -4,7 +4,7 @@ describe EmployeesController do
   let(:employee) { users(:test_example_com) }
   let(:manager) { users(:manager_example_com) }
   let(:event) { events(:build_model) }
-  let(:subscriber) { subscribers(:subscribers_001) }
+  let(:subscriber) { subscribers(:trial) }
   before { sign_in(manager) }
 
   describe '#index' do

@@ -1,0 +1,16 @@
+<%= form_for(accrual, url: accruals_url(accrual, type: type), html: { class: "accrual_form" }) do |f| %>
+  <div class="row">
+    <div class="offset1 span2">
+      <%= f.select :start_year, (0..70).to_a, {}, { class: "input-mini" } %>
+    </div>
+    <div class="span2">
+      <%= f.select :end_year, (0..70).to_a, {}, { class: "input-mini" } %>
+    </div>
+    <div class="span2">
+      <%= f.text_field :rate, class: "input-mini" %>
+    </div>
+    <div class="span2">
+      <%= f.submit "Add", class: "btn btn-success btn-small ml5", data: { disable_with: "Adding..." } %>
+    </div>
+  </div>
+<% end %>
