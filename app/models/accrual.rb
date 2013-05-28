@@ -8,6 +8,11 @@ class Accrual < ActiveRecord::Base
   before_save :start_year_less_than_end_year
   before_save :subscriber_accruals_cant_overlap
 
+  def self.find_rate(subscriber, type, year)
+    accrual = subscriber.accruals.where(type: type).detect { |a| a.has_year?(year) }
+    accrual.present? ? accrual.rate : 0.0
+  end
+
   def start_year_less_than_end_year
     unless start_year < end_year
       errors.add(:base, "Start year must be less than end year.")
@@ -26,6 +31,10 @@ class Accrual < ActiveRecord::Base
 
     errors.add(:base, "The date range you selected conflicts with an existing accrual.") unless no_overlap
     no_overlap
+  end
+
+  def has_year?(year)
+    (start_year...end_year).include?(year)
   end
 
   private

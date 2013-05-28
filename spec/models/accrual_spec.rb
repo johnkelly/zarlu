@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Accrual do
   let(:vacation) { accruals(:vacation_accrual) }
+  let(:sick) { accruals(:sick_accrual) }
+  let(:subscriber) { subscribers(:trial) }
 
   describe "attributes" do
     it { should belong_to(:subscriber) }
@@ -59,6 +61,48 @@ describe Accrual do
           accrual.save.should be_true
           accrual.errors.should be_blank
         end
+      end
+    end
+  end
+
+  describe "self.find_rate" do
+    context "subscriber has accrual" do
+      it "returns the accrual rate" do
+        sick.has_year?(7).should be_true
+        Accrual.find_rate(subscriber, "SickAccrual", 7).should == 13.04
+      end
+    end
+
+    context "no accrual" do
+      it "returns 0.0" do
+        sick.has_year?(85).should be_false
+        Accrual.find_rate(subscriber, "VacationAccrual", 85).should == 0.0
+      end
+    end
+  end
+
+  describe "has_year?" do
+    context "year inside range" do
+      it "returns true" do
+        vacation.has_year?(12).should be_true
+      end
+    end
+
+    context "year same as start_year" do
+      it "returns true" do
+        vacation.has_year?(10).should be_true
+      end
+    end
+
+    context "year same as end_year" do
+      it "returns true" do
+        vacation.has_year?(15).should be_false
+      end
+    end
+
+    context "year outside range" do
+      it "returns true" do
+        vacation.has_year?(22).should be_false
       end
     end
   end

@@ -15,18 +15,19 @@ describe Leave do
   describe "self.update_accrued_hours" do
     context "NOT at accrual limit" do
       it "only increments the users leave for the kind of leave specified" do
+        User.any_instance.stub(:accrual_rate).and_return(5.34)
         VacationLeave.any_instance.stub(:at_accrual_limit?).and_return(false)
-        VacationLeave.any_instance.should_receive(:increment_accrual_hours!).with(4.35).and_return(true)
-        SickLeave.any_instance.should_not_receive(:increment_accrual_hours!).with(4.35)
-        Leave.update_accrued_hours([user], 4.35, "Vacation")
+        VacationLeave.any_instance.should_receive(:increment_accrual_hours!).with(5.34).and_return(true)
+        SickLeave.any_instance.should_not_receive(:increment_accrual_hours!).with(5.34)
+        Leave.update_accrued_hours([user], "Vacation")
       end
     end
 
     context "At accrual limit" do
       it "does nothing" do
         VacationLeave.any_instance.stub(:at_accrual_limit?).and_return(true)
-        VacationLeave.any_instance.should_not_receive(:increment_accrual_hours!).with(4.35)
-        Leave.update_accrued_hours([user], 4.35, "Vacation")
+        VacationLeave.any_instance.should_not_receive(:increment_accrual_hours!)
+        Leave.update_accrued_hours([user], "Vacation")
       end
     end
   end

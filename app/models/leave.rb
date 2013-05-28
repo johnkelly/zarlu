@@ -6,9 +6,11 @@ class Leave < ActiveRecord::Base
   validates_numericality_of :used_hours, allow_nil: true
   validates_numericality_of :pending_hours, allow_nil: true
 
-  def self.update_accrued_hours(users, accrual_rate, kind)
+  delegate :accrual_rate, to: :user
+
+  def self.update_accrued_hours(users, kind)
     leave_to_update = leave_klass(kind).where(user_id: users)
-    leave_to_update.each { |leave| leave.increment_accrual_hours!(accrual_rate) unless leave.at_accrual_limit? }
+    leave_to_update.each { |leave| leave.increment_accrual_hours!(leave.accrual_rate(accrual_type(kind))) unless leave.at_accrual_limit? }
   end
 
   def increment_accrual_hours!(accrual_rate)
@@ -35,6 +37,10 @@ class Leave < ActiveRecord::Base
 
   def self.leave_klass(kind)
     (kind.titleize + "Leave").constantize
+  end
+
+  def self.accrual_type(kind)
+    (kind.titleize + "Accrual")
   end
 
   def accrual_rate_will_go_over_limit?(accrual_rate)

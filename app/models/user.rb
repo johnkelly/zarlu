@@ -69,6 +69,14 @@ class User < ActiveRecord::Base
     sign_in_count <= 1
   end
 
+  def years_at_company
+    ((Date.current - join_date).to_i / 365.0).round(1)
+  end
+
+  def accrual_rate(type)
+    Accrual.find_rate(subscriber, type, years_at_company)
+  end
+
   private
 
   def set_employee_manager_id_to_none

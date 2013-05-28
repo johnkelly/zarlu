@@ -164,4 +164,19 @@ describe User do
       its(:first_sign_in?) { should be_false }
     end
   end
+
+  describe "years at company" do
+    it "returns the number of years as decimal" do
+      user.stub(:join_date).and_return(6.months.ago.to_date)
+      user.years_at_company.should  == 0.5
+    end
+  end
+
+  describe "accrual_rate" do
+    it "calls Accrual.find_rate" do
+      user.stub(:join_date).and_return(6.months.ago.to_date)
+      Accrual.should_receive(:find_rate).with(subscriber, "VacationAccrual", 0.5)
+      user.accrual_rate("VacationAccrual")
+    end
+  end
 end

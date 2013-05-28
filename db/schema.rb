@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130527005119) do
+ActiveRecord::Schema.define(version: 20130528002818) do
 
   create_table "accruals", force: true do |t|
     t.string  "type"
@@ -36,11 +36,10 @@ ActiveRecord::Schema.define(version: 20130527005119) do
   create_table "company_settings", force: true do |t|
     t.string   "type"
     t.integer  "subscriber_id"
-    t.boolean  "enabled",              default: true, null: false
+    t.boolean  "enabled",           default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "default_accrual_rate", default: 0.0
-    t.integer  "accrual_frequency",    default: 0
+    t.integer  "accrual_frequency", default: 0
     t.date     "next_accrual"
     t.decimal  "accrual_limit"
   end
