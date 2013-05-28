@@ -4,76 +4,78 @@
 <% content_for :meta_description do %>
 Software for startups, small businesses, or large enterprises. Schedule and track employee attendance & time off with our scheduling and calendar software.
 <% end %>
-<div class="blue_paper mt50 height_55 pb20">
-  <div class="container">
-    <header>
-    <h1 class="center">Time Software for Small or Large Businesses</h1>
-    </header>
-  </div>
-</div>
-<div class="white_paper">
-  <div id="price_slider">
-  <div class="container">
-    <h2 class="center">
-      Your first 30 days are on us for free.
-      <br/>
-      Try Zarlu and rescue your business from attendance problems.
-    </h2>
-  </div>
+<% cache "homes_pricing" do %>
+  <div class="blue_paper mt50 height_55 pb20">
     <div class="container">
-      <h3 id="price" class="center">$50 / month</h3>
-      <div id="green_slider"></div>
-      <h3 id="user_amount" class="center">10 Employees / Managers</h3>
-      <div class="center">
-        <%= link_to "Create an Account. No credit card required.", new_user_registration_path, class: "btn btn-success btn-huge mt40" %>
+      <header>
+      <h1 class="center">Time Software for Small or Large Businesses</h1>
+      </header>
+    </div>
+  </div>
+  <div class="white_paper">
+    <div id="price_slider">
+      <div class="container">
+        <h2 class="center">
+          Your first 30 days are on us for free.
+          <br/>
+          Try Zarlu and rescue your business from attendance problems.
+        </h2>
+      </div>
+      <div class="container">
+        <h3 id="price" class="center">$50 / month</h3>
+        <div id="green_slider"></div>
+        <h3 id="user_amount" class="center">10 Employees / Managers</h3>
+        <div class="center">
+          <%= link_to "Create an Account. No credit card required.", new_user_registration_path, class: "btn btn-success btn-huge mt40" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="white_paper full_page_percent" id="pricing_questions">
-  <div class="container">
-  <section class="mt25">
-  <div class="row">
-    <div class="span6">
-      <h3>Which credit cards are accepted?</h3>
-      <p>We accept Visa, Mastercard, American Express, JCB, Discover, and Diners Club.</p>
-    </div>
-    <div class="span6">
-      <h3>Any hidden fees?</h3>
-      <p>Absolutely not. There are no setup, cancelation, support, usage, or any other fees.</p>
+  <div class="white_paper full_page_percent" id="pricing_questions">
+    <div class="container">
+      <section class="mt25">
+      <div class="row">
+        <div class="span6">
+          <h3>Which credit cards are accepted?</h3>
+          <p>We accept Visa, Mastercard, American Express, JCB, Discover, and Diners Club.</p>
+        </div>
+        <div class="span6">
+          <h3>Any hidden fees?</h3>
+          <p>Absolutely not. There are no setup, cancelation, support, usage, or any other fees.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <h3>Is my payment information secure?</h3>
+          <p>Our website is fully PCI compliant, and uses the same encryption that banks use. View our article about security practices to learn more: <%= link_to "How does Zarlu keep my data safe?", "/blog/how-does-zarlu-keep-my-data-safe", target: "_blank" %>.</p>
+        </div>
+        <div class="span6">
+          <h3>Do you have a money back guarentee?</h3>
+          <p>If you are not thrilled with Zarlu, we do not want your money. We will refund any payment made within the last thirty days if you are unsatisfied for any reason.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <h3>How does the 30 day trial work?</h3>
+          <p>The 30 day trial gives you access to our fully featured product with no limitations. When your trial expires, you will be prompted to add your credit card if you haven't already and your card will be charged for the next month's subscription.</p>
+        </div>
+        <div class="span6">
+          <h3>Does Zarlu offer enterprise plans?</h3>
+          <p>We have Enterprise plans availble for customers with more than 250 staffers. Click on the 'Contact Us' link above and send us a message to learn more.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <h3>Unanswered questions?</h3>
+          <p>Click on the above 'Contact Us' link to send any unanswered questions. We are happy to answer any questions you have!</p>
+        </div>
+        <div class="span6">
+          <h3>Do you have customer support?</h3>
+          <p>Our engineers do their best to answer all support requests within 24 hours. Click on 'Contact Us' to contact our engineers.</p>
+        </div>
+      </div>
+      </section>
     </div>
   </div>
-  <div class="row">
-    <div class="span6">
-      <h3>Is my payment information secure?</h3>
-      <p>Our website is fully PCI compliant, and uses the same encryption that banks use. View our article about security practices to learn more: <%= link_to "How does Zarlu keep my data safe?", "/blog/how-does-zarlu-keep-my-data-safe", target: "_blank" %>.</p>
-    </div>
-    <div class="span6">
-      <h3>Do you have a money back guarentee?</h3>
-      <p>If you are not thrilled with Zarlu, we do not want your money. We will refund any payment made within the last thirty days if you are unsatisfied for any reason.</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      <h3>How does the 30 day trial work?</h3>
-      <p>The 30 day trial gives you access to our fully featured product with no limitations. When your trial expires, you will be prompted to add your credit card if you haven't already and your card will be charged for the next month's subscription.</p>
-    </div>
-    <div class="span6">
-      <h3>Does Zarlu offer enterprise plans?</h3>
-      <p>We have Enterprise plans availble for customers with more than 250 staffers. Click on the 'Contact Us' link above and send us a message to learn more.</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span6">
-      <h3>Unanswered questions?</h3>
-      <p>Click on the above 'Contact Us' link to send any unanswered questions. We are happy to answer any questions you have!</p>
-    </div>
-    <div class="span6">
-      <h3>Do you have customer support?</h3>
-      <p>Our engineers do their best to answer all support requests within 24 hours. Click on 'Contact Us' to contact our engineers.</p>
-    </div>
-  </div>
-  </section>
-  </div>
-</div>
+<% end %>

@@ -1,70 +1,72 @@
-<div class="container paper">
-  <div class="row">
-    <div class="span4 welcome_images">
-      <%= link_to home_path do %>
-        <%= image_tag "welcome_calendar.png", width: 250, height: 250, alt: "Calendar" %>
-      <% end %>
-      <%= link_to employee_path(current_user, charts: true) do %>
-        <%= image_tag "welcome_chart.png", width: 250, height: 250, alt: "Charts & Graphs" %>
-      <% end %>
-      <%= link_to subscribers_path do %>
-        <%= image_tag "welcome_account.png", width: 250, height: 250, alt: "Account Management" %>
-      <% end %>
+<% cache current_user do %>
+  <div class="container paper">
+    <div class="row">
+      <div class="span4 welcome_images">
+        <%= link_to home_path do %>
+          <%= image_tag "welcome_calendar.png", width: 250, height: 250, alt: "Calendar" %>
+        <% end %>
+        <%= link_to employee_path(current_user, charts: true) do %>
+          <%= image_tag "welcome_chart.png", width: 250, height: 250, alt: "Charts & Graphs" %>
+        <% end %>
+        <%= link_to subscribers_path do %>
+          <%= image_tag "welcome_account.png", width: 250, height: 250, alt: "Account Management" %>
+        <% end %>
+      </div>
+      <div class="span8">
+        <h2>Welcome, Let's Setup Your Account.</h2>
+        <p>Complete all the tasks below and send a support request to let us know that you have completed all the tasks to receive <strong>an additional $5 off your first paid month!</strong></p>
+        <ul class="unstyled account_setup">
+          <li>
+          <%= display_welcome_tour_task(current_user) %>
+          <%= link_to "Learn how to use Zarlu with a 1 minute tour.", "", class: "tour" %>
+          </li>
+          <li>
+          <%= display_add_user_name_task(current_user) %>
+          <%= link_to "Add your name and/or picture to your account.", edit_user_registration_path %>
+          </li>
+          <li>
+          <%= display_add_company_name_task(current_user) %>
+          <%= link_to "Add your company name and time off rules.", company_settings_path %>
+          </li>
+          <li>
+          <%= display_add_co_worker_task(current_user) %>
+          <%= link_to "Add a coworker to your account.", subscribers_path %>
+          </li>
+          <li>
+          <%= display_assign_employee_task(current_user) %>
+          <%= link_to "Assign an employee to a manager.", subscribers_path %>
+          </li>
+          <li>
+          <%= display_add_time_off_task(current_user) %>
+          <%= link_to "Create your first time off request.", home_path %>
+          </li>
+          <li>
+          <%= display_add_three_activity_feed_items_task(current_user) %>
+          <%= link_to "Generate at least 3 events on your activity feed.", activities_path %>
+          </li>
+          <li>
+          <%= display_add_credit_card_task(current_user) %>
+          <%= link_to "Add your business' credit card.", subscriptions_path %>
+          </li>
+          <li>
+          <%= display_contact_support_task(current_user) %>
+          <%= link_to "Contact us! We are happy to answer any questions!", "", class: "support_link" %>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="span8">
-      <h2>Welcome, Let's Setup Your Account.</h2>
-      <p>Complete all the tasks below and send a support request to let us know that you have completed all the tasks to receive <strong>an additional $5 off your first paid month!</strong></p>
-      <ul class="unstyled account_setup">
-        <li>
-        <%= display_welcome_tour_task(current_user) %>
-        <%= link_to "Learn how to use Zarlu with a 1 minute tour.", "", class: "tour" %>
-        </li>
-        <li>
-        <%= display_add_user_name_task(current_user) %>
-        <%= link_to "Add your name and/or picture to your account.", edit_user_registration_path %>
-        </li>
-        <li>
-        <%= display_add_company_name_task(current_user) %>
-        <%= link_to "Add your company name and time off rules.", company_settings_path %>
-        </li>
-        <li>
-        <%= display_add_co_worker_task(current_user) %>
-        <%= link_to "Add a coworker to your account.", subscribers_path %>
-        </li>
-        <li>
-        <%= display_assign_employee_task(current_user) %>
-        <%= link_to "Assign an employee to a manager.", subscribers_path %>
-        </li>
-        <li>
-        <%= display_add_time_off_task(current_user) %>
-        <%= link_to "Create your first time off request.", home_path %>
-        </li>
-        <li>
-        <%= display_add_three_activity_feed_items_task(current_user) %>
-        <%= link_to "Generate at least 3 events on your activity feed.", activities_path %>
-        </li>
-        <li>
-        <%= display_add_credit_card_task(current_user) %>
-        <%= link_to "Add your business' credit card.", subscriptions_path %>
-        </li>
-        <li>
-        <%= display_contact_support_task(current_user) %>
-        <%= link_to "Contact us! We are happy to answer any questions!", "", class: "support_link" %>
-        </li>
-      </ul>
+    <div class="row">
+      <div class="span12 welcome_images">
+        <%= link_to company_settings_path do %>
+          <%= image_tag "welcome_company_settings.png", width: 250, height: 250, alt: "Company Settings" %>
+        <% end %>
+        <%= link_to activities_path, class: "pl60" do %>
+          <%= image_tag "welcome_activity_feed.png", width: 250, height: 250, alt: "Activity Feed" %>
+        <% end %>
+        <%= link_to subscriptions_path, class: "pl60" do %>
+          <%= image_tag "welcome_billing_info.png", width: 250, height: 250, alt: "Activity Feed" %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="span12 welcome_images">
-      <%= link_to company_settings_path do %>
-        <%= image_tag "welcome_company_settings.png", width: 250, height: 250, alt: "Company Settings" %>
-      <% end %>
-      <%= link_to activities_path, class: "pl60" do %>
-        <%= image_tag "welcome_activity_feed.png", width: 250, height: 250, alt: "Activity Feed" %>
-      <% end %>
-      <%= link_to subscriptions_path, class: "pl60" do %>
-        <%= image_tag "welcome_billing_info.png", width: 250, height: 250, alt: "Activity Feed" %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<% end %>

@@ -1,67 +1,69 @@
-<div class="image_wrap">
-  <div class="splash_image">
-    <div class="container">
-      <h1>Employee Time & Attendance Software</h1>
-      <h2>Revolutionize How Your Business Handles Employee Time</h2>
-      <%= image_tag "activity_feed_tablet.png", width: 252, height: 376, alt: "Software Pricing" %>
-      <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
-      <%= image_tag "software_chart_mobile.png", width: 196, height: 376, alt: "Attendance Analytics & Charts" %>
+<% cache "homes_index" do %>
+  <div class="image_wrap">
+    <div class="splash_image">
+      <div class="container">
+        <h1>Employee Time & Attendance Software</h1>
+        <h2>Revolutionize How Your Business Handles Employee Time</h2>
+        <%= image_tag "activity_feed_tablet.png", width: 252, height: 376, alt: "Software Pricing" %>
+        <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
+        <%= image_tag "software_chart_mobile.png", width: 196, height: 376, alt: "Attendance Analytics & Charts" %>
+      </div>
     </div>
   </div>
-</div>
-<div class="blue_paper pt8 pb8">
-  <div class="container row">
-    <div class="span9">
-      <h3 class="margin0">Take control of employee attendance today with Zarlu.</h3>
-    </div>
-    <div class="span3">
-      <%= link_to "Get Started Now!", new_user_registration_path, class: "btn btn-success btn-large" %>
-    </div>
-  </div>
-</div>
-<div class="container mt25">
-  <h3 class="center important">What people are saying about Zarlu:</h3>
-  <div class="row ml15 quotes">
-    <div class="span4">
-      <h4>"A visionary product that makes any business more efficient."</h4>
-    </div>
-    <div class="span4">
-      <h4>"Zarlu could do for attendance what Mint did for personal finance."</h4>
-    </div>
-    <div class="span4">
-      <h4>"It brings modern design and functionality to the business software world."</h4>
+  <div class="blue_paper pt8 pb8">
+    <div class="container row">
+      <div class="span9">
+        <h3 class="margin0">Take control of employee attendance today with Zarlu.</h3>
+      </div>
+      <div class="span3">
+        <%= link_to "Get Started Now!", new_user_registration_path, class: "btn btn-success btn-large" %>
+      </div>
     </div>
   </div>
-</div>
-<div class="dark_blue_background">
+  <div class="container mt25">
+    <h3 class="center important">What people are saying about Zarlu:</h3>
+    <div class="row ml15 quotes">
+      <div class="span4">
+        <h4>"A visionary product that makes any business more efficient."</h4>
+      </div>
+      <div class="span4">
+        <h4>"Zarlu could do for attendance what Mint did for personal finance."</h4>
+      </div>
+      <div class="span4">
+        <h4>"It brings modern design and functionality to the business software world."</h4>
+      </div>
+    </div>
+  </div>
+  <div class="dark_blue_background">
+    <div class="container mt25 center">
+      <h2 class="important">Brilliant Calendar</h2>
+      <%= image_tag "calendar_leave_types.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
+    </div>
+  </div>
   <div class="container mt25 center">
-    <h2 class="important">Brilliant Calendar</h2>
-    <%= image_tag "calendar_leave_types.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
+    <h2 class="important">Beautiful Employee & Company Feed</h2>
+    <%= image_tag "employee_company_feed.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
   </div>
-</div>
-<div class="container mt25 center">
-  <h2 class="important">Beautiful Employee & Company Feed</h2>
-  <%= image_tag "employee_company_feed.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
-</div>
-<div class="dark_blue_background">
-  <div class="container mt25 center">
-    <h2 class="important">Simple Employee Management</h2>
-    <%= image_tag "simple_employee_management.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
-  </div>
-</div>
-<div class="container center mt25">
-  <h2 class="important">Excellent Customer Service</h2>
-  <div class="row ml15">
-    <div class="span6">
-      <h4>Step by step tour of every feature.</h4>
-      <p class="big_paragraph">We have created a custom tour on each page, so that you and your co-workers are always just a click away from a walk through of a page's functions and uses.</p>
-    </div>
-    <div class="span6">
-      <h4>Every page has a link to contact us directly.</h4>
-      <p class="big_paragraph">Every page has a link to our support widget, which sends an email directly to our engineers so that we can answer any questions you have as quickly as possible.</p>
+  <div class="dark_blue_background">
+    <div class="container mt25 center">
+      <h2 class="important">Simple Employee Management</h2>
+      <%= image_tag "simple_employee_management.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
     </div>
   </div>
-</div>
-<div class="container mt25 pb20">
-  <%= link_to "I want to improve my company's time & attendance process!", new_user_registration_path, class: "btn btn-success btn-huge btn-block" %>
-</div>
+  <div class="container center mt25">
+    <h2 class="important">Excellent Customer Service</h2>
+    <div class="row ml15">
+      <div class="span6">
+        <h4>Step by step tour of every feature.</h4>
+        <p class="big_paragraph">We have created a custom tour on each page, so that you and your co-workers are always just a click away from a walk through of a page's functions and uses.</p>
+      </div>
+      <div class="span6">
+        <h4>Every page has a link to contact us directly.</h4>
+        <p class="big_paragraph">Every page has a link to our support widget, which sends an email directly to our engineers so that we can answer any questions you have as quickly as possible.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt25 pb20">
+    <%= link_to "I want to improve my company's time & attendance process!", new_user_registration_path, class: "btn btn-success btn-huge btn-block" %>
+  </div>
+<% end %>

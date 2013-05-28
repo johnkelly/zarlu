@@ -5,6 +5,7 @@ class HomesController < ApplicationController
   etag { [current_user, flash] }
 
   def index
+    fresh_when("homes_index")
   end
 
   def show
@@ -15,8 +16,10 @@ class HomesController < ApplicationController
   end
 
   def pricing
+    fresh_when("homes_pricing")
   end
 
   def privacy
+    fresh_when("homes_privacy")
   end
 end

@@ -31,7 +31,6 @@ gem 'uglifier', '>= 2.1.1'
 gem 'bootstrap-sass', '2.3.1.2'
 gem 'd3_rails', '~> 3.1.9'
 gem 'asset_sync', '~> 0.5.4'
-gem 'bust_rails_etags', '~> 0.0.5'
 gem 'heroku-api', '~> 0.3.11'
 
 group :development, :test do

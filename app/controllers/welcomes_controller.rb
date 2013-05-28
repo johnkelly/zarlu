@@ -9,7 +9,7 @@ class WelcomesController < ApplicationController
   end
 
   def show
-
+    fresh_when([current_user, flash])
   end
 
   private
