@@ -13,7 +13,7 @@
     <div class="row">
       <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place vacation, :accrual_limit, path: company_setting_path(vacation), activator: "#icon-edit-subscriber-vacation-accrual-limit", nil: "None", html_attrs: { maxlength: 9 }, inner_class: "input-small" %>
+        <%= best_in_place vacation, :accrual_limit, path: company_setting_path(vacation), activator: "#icon-edit-subscriber-vacation-accrual-limit", nil: "Unlimited", html_attrs: { maxlength: 9 }, inner_class: "input-small" %> hours
         <i id="icon-edit-subscriber-vacation-accrual-limit" class="icon-edit"></i>
       </div>
     </div>

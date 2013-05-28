@@ -13,7 +13,7 @@
     <div class="row">
       <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place unpaid, :accrual_limit, path: company_setting_path(unpaid), activator: "#icon-edit-subscriber-unpaid-accrual-limit", nil: "None", html_attrs: { maxlength: 9 } %>
+        <%= best_in_place unpaid, :accrual_limit, path: company_setting_path(unpaid), activator: "#icon-edit-subscriber-unpaid-accrual-limit", nil: "Unlimited", html_attrs: { maxlength: 9 } %> hours
         <i id="icon-edit-subscriber-unpaid-accrual-limit" class="icon-edit"></i>
       </div>
     </div>
