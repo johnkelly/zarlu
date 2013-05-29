@@ -32,6 +32,7 @@ gem 'bootstrap-sass', '2.3.1.2'
 gem 'd3_rails', '~> 3.1.9'
 gem 'asset_sync', '~> 0.5.4'
 gem 'heroku-api', '~> 0.3.11'
+gem 'rack-cache', '~> 1.2'
 
 group :development, :test do
   gem 'rspec-rails', git: 'git://github.com/rspec/rspec-rails.git'
