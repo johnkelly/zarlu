@@ -5,6 +5,16 @@
 Zarlu is an employee leave managment web based software appplication. Manage employee time & attendnace with our easy to use business software.
 <% end %>
 <% cache "articles_employee_leave_managment" do %>
+  <div class="sign_up_banner">
+    <div class="container row">
+      <div class="span9">
+        <h3 class="margin0">Take control of employee attendance today with Zarlu.</h3>
+      </div>
+      <div class="span3">
+        <%= link_to "Get Started Now!", new_user_registration_path, class: "btn btn-success btn-large" %>
+      </div>
+    </div>
+  </div>
   <div class="blog">
     <h1 class="center">Employee Leave Management</h1>
     <p>

@@ -12,6 +12,22 @@ div.blue_paper {
   background: linear-gradient(top, #53b7f9 0%, #028ed1 100%);
 }
 
+div.sign_up_banner {
+  width: 100%;
+  color: #FFF;
+  background: -moz-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+  background: -webkit-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+  background: linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+  z-index: 10;
+  display: none;
+  font-size: 22px;
+  left: 0;
+  position: fixed;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: -15px;
+}
+
 div.dark_blue_paper {
   background: #373F4A;
   color: #FFF;
