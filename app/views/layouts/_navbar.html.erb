@@ -28,7 +28,7 @@
               <li><%= link_to "<i class='icon-list-alt'></i>&nbsp;Change Company Settings".html_safe, company_settings_path %></li>
             <% end %>
             <li><%= link_to "<i class='icon-edit'></i>&nbsp;Change Email / Pass Phrase".html_safe, edit_user_registration_path %></li>
-            <li><%= link_to "<i class='icon-off'></i>&nbsp;Sign Out".html_safe, destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "<i class='icon-off'></i>&nbsp;Sign Out".html_safe, destroy_user_session_path, method: :delete, data: { "no-turbolink" => true } %></li>
           </ul>
         </li>
       <% else %>
