@@ -10,10 +10,8 @@ class Event < ActiveRecord::Base
   scope :pending, -> { where(approved: false, rejected: false) }
   scope :lifo, -> { order("created_at desc") }
 
-  after_create :increment_pending_leave!
-  after_create :approve!, unless: Proc.new {|event| event.user.has_manager? }
-  after_destroy :decrement_leave_usage!, if: Proc.new { |event| event.approved? }
-  after_destroy :decrement_pending_leave!, unless: Proc.new { |event| event.approved? }
+  after_create :increment_leave_and_approve_no_manager_leave!
+  after_destroy :decrement_leave!
 
   def self.date_range(start_date, end_date)
     range = self.after(start_date.to_i - 1.day.to_i)
@@ -119,6 +117,19 @@ class Event < ActiveRecord::Base
   def remove_used_and_add_pending_leave(old_duration)
     decrement_leave_usage!(old_duration)
     increment_pending_leave!
+  end
+
+  def decrement_leave!
+    if approved?
+      decrement_leave_usage!
+    else
+      decrement_pending_leave!
+    end
+  end
+
+  def increment_leave_and_approve_no_manager_leave!
+    increment_pending_leave!
+    approve! unless user.has_manager?
   end
 
   def increment_leave_usage!
