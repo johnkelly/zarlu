@@ -14,11 +14,11 @@ class ActivitiesController < ApplicationController
   def users
     case @level_of_activity
     when "user"
-      current_user.id
+      current_user
     when "manager"
-      current_user.employees.map(&:id)
+      current_user.employees
     when "company"
-      @subscriber.users.map(&:id)
+      @subscriber.users
     end
   end
 end
