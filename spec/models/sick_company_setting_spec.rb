@@ -12,7 +12,7 @@ describe SickCompanySetting do
 
   describe "kind" do
     it "returns an array of sick and event sick id" do
-      sick_company_setting.kind.should == ["Sick", Event::SICK]
+      sick_company_setting.kind.should == ["Sick", TimeOffValue::SICK]
     end
   end
 end

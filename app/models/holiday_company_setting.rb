@@ -3,6 +3,6 @@ class HolidayCompanySetting < CompanySetting
   validates_presence_of :type
 
   def kind
-    ["Holiday", Event::HOLIDAY]
+    ["Holiday", TimeOffValue::HOLIDAY]
   end
 end

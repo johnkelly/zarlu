@@ -3,6 +3,6 @@ class UnpaidCompanySetting < CompanySetting
   validates_presence_of :type
 
   def kind
-    ["Unpaid", Event::UNPAID]
+    ["Unpaid", TimeOffValue::UNPAID]
   end
 end

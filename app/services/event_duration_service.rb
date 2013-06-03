@@ -3,12 +3,12 @@ class EventDurationService
 
   def initialize(events)
     @events = events
-    @vacation_hours = sum_durations(@events, Event::VACATION)
-    @sick_hours = sum_durations(@events, Event::SICK)
-    @holiday_hours = sum_durations(@events, Event::HOLIDAY)
-    @personal_hours = sum_durations(@events, Event::PERSONAL)
-    @unpaid_hours = sum_durations(@events, Event::UNPAID)
-    @other_hours = sum_durations(@events, Event::OTHER)
+    @vacation_hours = sum_durations(@events, TimeOffValue::VACATION)
+    @sick_hours = sum_durations(@events, TimeOffValue::SICK)
+    @holiday_hours = sum_durations(@events, TimeOffValue::HOLIDAY)
+    @personal_hours = sum_durations(@events, TimeOffValue::PERSONAL)
+    @unpaid_hours = sum_durations(@events, TimeOffValue::UNPAID)
+    @other_hours = sum_durations(@events, TimeOffValue::OTHER)
   end
 
   def unpaid_and_other_hours

@@ -11,7 +11,7 @@ describe PersonalCompanySetting do
 
   describe "kind" do
     it "returns an array of personal and event personal id" do
-      personal_company_setting.kind.should == ["Personal", Event::PERSONAL]
+      personal_company_setting.kind.should == ["Personal", TimeOffValue::PERSONAL]
     end
   end
 end

@@ -32,17 +32,17 @@ class AccrualsController < ApplicationController
 
   def accrual_klass
     case params[:type].to_i
-    when Event::VACATION
+    when TimeOffValue::VACATION
       VacationAccrual
-    when Event::SICK
+    when TimeOffValue::SICK
       SickAccrual
-    when Event::HOLIDAY
+    when TimeOffValue::HOLIDAY
       HolidayAccrual
-    when Event::PERSONAL
+    when TimeOffValue::PERSONAL
       PersonalAccrual
-    when Event::UNPAID
+    when TimeOffValue::UNPAID
       UnpaidAccrual
-    when Event::OTHER
+    when TimeOffValue::OTHER
       OtherAccrual
     end
   end

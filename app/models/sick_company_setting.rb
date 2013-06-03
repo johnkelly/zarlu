@@ -3,6 +3,6 @@ class SickCompanySetting < CompanySetting
   validates_presence_of :type
 
   def kind
-    ["Sick", Event::SICK]
+    ["Sick", TimeOffValue::SICK]
   end
 end

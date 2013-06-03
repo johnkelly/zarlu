@@ -8,12 +8,12 @@
         collection: @manager_collection, nil: "None", activator: "#icon-edit-#{employee.id}" %>
       <i id="icon-edit-<%= employee.id %>" class="icon-edit"></i>
     </td>
-    <td><%= employee_events.select{ |event| event.kind == Event::VACATION }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == Event::SICK }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == Event::HOLIDAY }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == Event::PERSONAL }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == Event::UNPAID }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == Event::OTHER }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::VACATION }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::SICK }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::HOLIDAY }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::PERSONAL }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::UNPAID }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::OTHER }.map(&:duration).reduce(0,:+) %></td>
     <td>
       <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
       <% if employee.manager? %>

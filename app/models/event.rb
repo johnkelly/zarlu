@@ -15,28 +15,10 @@ class Event < ActiveRecord::Base
   after_destroy :decrement_leave_usage!, if: Proc.new { |event| event.approved? }
   after_destroy :decrement_pending_leave!, unless: Proc.new { |event| event.approved? }
 
-  VACATION = 0
-  SICK = 1
-  HOLIDAY = 2
-  PERSONAL = 3
-  UNPAID = 4
-  OTHER = 5
-
   def self.date_range(start_date, end_date)
     range = self.after(start_date.to_i - 1.day.to_i)
     range << before(end_date.to_i + 1.day.to_i)
     range.uniq
-  end
-
-  def self.kinds
-    [
-      ["Vacation", VACATION],
-      ["Sick", SICK],
-      ["Holiday", HOLIDAY],
-      ["Personal", PERSONAL],
-      ["Unpaid", UNPAID],
-      ["Other", OTHER]
-    ]
   end
 
   def as_json(options = {})
@@ -75,20 +57,7 @@ class Event < ActiveRecord::Base
   end
 
   def color
-    case kind
-    when VACATION
-      "#0668C0"
-    when SICK
-      "green"
-    when HOLIDAY
-      "#FF5E00"
-    when PERSONAL
-      "purple"
-    when UNPAID
-      "red"
-    when OTHER
-      "black"
-    end
+    TimeOffValue.color(kind)
   end
 
   def duration
@@ -100,7 +69,7 @@ class Event < ActiveRecord::Base
   end
 
   def kind_name
-    ::Event.kinds[kind].first
+    TimeOffValue.kinds[kind].first
   end
 
   def update_leave!(old_duration)

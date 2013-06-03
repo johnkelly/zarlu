@@ -10,12 +10,12 @@ class LeavesController < ApplicationController
 
   private
 
-  def event_kind
-    Event.kinds[(params[:kind].to_i)].first
+  def time_off_kind
+    TimeOffValue.kinds[(params[:kind].to_i)].first
   end
 
   def leave_klass
-    (event_kind + "Leave").constantize
+    (time_off_kind + "Leave").constantize
   end
 end
 

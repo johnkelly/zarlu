@@ -95,19 +95,6 @@ describe Event do
     end
   end
 
-  describe "self.kinds" do
-    it "returns an array with kind text and value" do
-      Event.kinds.should == [
-        ["Vacation", Event::VACATION],
-        ["Sick", Event::SICK],
-        ["Holiday", Event::HOLIDAY],
-        ["Personal", Event::PERSONAL],
-        ["Unpaid", Event::UNPAID],
-        ["Other", Event::OTHER]
-      ]
-    end
-  end
-
   describe "as_json" do
     context "option passed" do
       it "returns event as json in correct order" do
@@ -211,32 +198,32 @@ describe Event do
     subject { event }
 
     context "vacation" do
-      before { event.stub(:kind).and_return(Event::VACATION) }
+      before { event.stub(:kind).and_return(TimeOffValue::VACATION) }
       its(:color) { should == "#0668C0" }
     end
 
     context "sick" do
-      before { event.stub(:kind).and_return(Event::SICK) }
+      before { event.stub(:kind).and_return(TimeOffValue::SICK) }
       its(:color) { should == "green" }
     end
 
     context "holiday" do
-      before { event.stub(:kind).and_return(Event::HOLIDAY) }
+      before { event.stub(:kind).and_return(TimeOffValue::HOLIDAY) }
       its(:color) { should == "#FF5E00" }
     end
 
     context "Personal" do
-      before { event.stub(:kind).and_return(Event::PERSONAL) }
+      before { event.stub(:kind).and_return(TimeOffValue::PERSONAL) }
       its(:color) { should == "purple" }
     end
 
     context "Unpaid" do
-      before { event.stub(:kind).and_return(Event::UNPAID) }
+      before { event.stub(:kind).and_return(TimeOffValue::UNPAID) }
       its(:color) { should == "red" }
     end
 
     context "Other" do
-      before { event.stub(:kind).and_return(Event::OTHER) }
+      before { event.stub(:kind).and_return(TimeOffValue::OTHER) }
       its(:color) { should == "black" }
     end
   end
@@ -276,32 +263,32 @@ describe Event do
     subject { event }
 
     context "vacation" do
-      before { event.stub(:kind).and_return(Event::VACATION) }
+      before { event.stub(:kind).and_return(TimeOffValue::VACATION) }
       its(:kind_name) { should == "Vacation" }
     end
 
     context "sick" do
-      before { event.stub(:kind).and_return(Event::SICK) }
+      before { event.stub(:kind).and_return(TimeOffValue::SICK) }
       its(:kind_name) { should == "Sick" }
     end
 
     context "holiday" do
-      before { event.stub(:kind).and_return(Event::HOLIDAY) }
+      before { event.stub(:kind).and_return(TimeOffValue::HOLIDAY) }
       its(:kind_name) { should == "Holiday" }
     end
 
     context "personal" do
-      before { event.stub(:kind).and_return(Event::PERSONAL) }
+      before { event.stub(:kind).and_return(TimeOffValue::PERSONAL) }
       its(:kind_name) { should == "Personal" }
     end
 
     context "unpaid" do
-      before { event.stub(:kind).and_return(Event::UNPAID) }
+      before { event.stub(:kind).and_return(TimeOffValue::UNPAID) }
       its(:kind_name) { should == "Unpaid" }
     end
 
     context "other" do
-      before { event.stub(:kind).and_return(Event::OTHER) }
+      before { event.stub(:kind).and_return(TimeOffValue::OTHER) }
       its(:kind_name) { should == "Other" }
     end
   end

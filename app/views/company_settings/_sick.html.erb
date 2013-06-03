@@ -32,6 +32,6 @@
         <i id="icon-edit-subscriber-sick-start-accrual" class="icon-edit"></i>
       </div>
     </div>
-    <%= render partial: "accruals", locals: { accruals: accruals, new_accrual: SickAccrual.new, type: Event::SICK } %>
+    <%= render partial: "accruals", locals: { accruals: accruals, new_accrual: SickAccrual.new, type: TimeOffValue::SICK } %>
   </div>
 <% end %>

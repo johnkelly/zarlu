@@ -3,6 +3,6 @@ class PersonalCompanySetting < CompanySetting
   validates_presence_of :type
 
   def kind
-    ["Personal", Event::PERSONAL]
+    ["Personal", TimeOffValue::PERSONAL]
   end
 end

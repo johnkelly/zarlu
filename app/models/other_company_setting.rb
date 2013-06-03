@@ -3,6 +3,6 @@ class OtherCompanySetting < CompanySetting
   validates_presence_of :type
 
   def kind
-    ["Other", Event::OTHER]
+    ["Other", TimeOffValue::OTHER]
   end
 end

@@ -12,7 +12,7 @@ describe OtherCompanySetting do
 
   describe "kind" do
     it "returns an array of other and event other id" do
-      other_company_setting.kind.should == ["Other", Event::OTHER]
+      other_company_setting.kind.should == ["Other", TimeOffValue::OTHER]
     end
   end
 end

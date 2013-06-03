@@ -2,7 +2,7 @@
   <h3><%= log.starts_at.in_time_zone(subscriber.time_zone).strftime('%b %d %Y') %></h3>
   <dl>
     <dt>Event Type</dt>
-    <dd><%= Event.kinds[log.kind].first %></dd>
+    <dd><%= TimeOffValue.kinds[log.kind].first %></dd>
     <dt>Duration</dt>
     <dd><%= log.duration %> hours</dd>
   </dl>

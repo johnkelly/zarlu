@@ -25,37 +25,37 @@ describe AccrualsController do
     context "database" do
       context "vacation" do
         it "creates a new vacation accrual" do
-          -> { post :create, vacation_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: Event::VACATION }.should change(VacationAccrual, :count).by(1)
+          -> { post :create, vacation_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::VACATION }.should change(VacationAccrual, :count).by(1)
         end
       end
 
       context "sick" do
         it "creates a new sick accrual" do
-          -> { post :create, sick_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: Event::SICK }.should change(SickAccrual, :count).by(1)
+          -> { post :create, sick_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::SICK }.should change(SickAccrual, :count).by(1)
         end
       end
 
       context "holiday" do
         it "creates a new holiday accrual" do
-          -> { post :create, holiday_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: Event::HOLIDAY }.should change(HolidayAccrual, :count).by(1)
+          -> { post :create, holiday_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::HOLIDAY }.should change(HolidayAccrual, :count).by(1)
         end
       end
 
       context "personal" do
         it "creates a new personal accrual" do
-          -> { post :create, personal_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: Event::PERSONAL }.should change(PersonalAccrual, :count).by(1)
+          -> { post :create, personal_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::PERSONAL }.should change(PersonalAccrual, :count).by(1)
         end
       end
 
       context "unpaid" do
         it "creates a new unpaid accrual" do
-          -> { post :create, unpaid_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: Event::UNPAID }.should change(UnpaidAccrual, :count).by(1)
+          -> { post :create, unpaid_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::UNPAID }.should change(UnpaidAccrual, :count).by(1)
         end
       end
 
       context "other" do
         it "creates a new other accrual" do
-          -> { post :create, other_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: Event::OTHER }.should change(OtherAccrual, :count).by(1)
+          -> { post :create, other_accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::OTHER }.should change(OtherAccrual, :count).by(1)
         end
       end
     end

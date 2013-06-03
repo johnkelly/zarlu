@@ -12,7 +12,7 @@ describe HolidayCompanySetting do
 
   describe "kind" do
     it "returns an array of holiday and event holiday" do
-      holiday_company_setting.kind.should == ["Holiday", Event::HOLIDAY]
+      holiday_company_setting.kind.should == ["Holiday", TimeOffValue::HOLIDAY]
     end
   end
 end

@@ -12,7 +12,7 @@ describe VacationCompanySetting do
 
   describe "kind" do
     it "returns an array of vacation and event vacation id" do
-      vacation_company_setting.kind.should == ["Vacation", Event::VACATION]
+      vacation_company_setting.kind.should == ["Vacation", TimeOffValue::VACATION]
     end
   end
 end

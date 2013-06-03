@@ -12,7 +12,7 @@ describe UnpaidCompanySetting do
 
   describe "kind" do
     it "returns an array of unpaid and event unpaid id" do
-      unpaid_company_setting.kind.should == ["Unpaid", Event::UNPAID]
+      unpaid_company_setting.kind.should == ["Unpaid", TimeOffValue::UNPAID]
     end
   end
 end

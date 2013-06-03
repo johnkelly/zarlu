@@ -98,7 +98,7 @@ describe Subscriber do
 
   describe "available_events" do
     it "returns an array of enabled event types" do
-      paid_subscriber.available_events.should == Event.kinds
+      paid_subscriber.available_events.should == TimeOffValue.kinds
     end
   end
 

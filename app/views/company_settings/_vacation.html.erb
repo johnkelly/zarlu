@@ -32,6 +32,6 @@
         <i id="icon-edit-subscriber-vacation-start-accrual" class="icon-edit"></i>
       </div>
     </div>
-    <%= render partial: "accruals", locals: { accruals: accruals, new_accrual: VacationAccrual.new, type: Event::VACATION } %>
+    <%= render partial: "accruals", locals: { accruals: accruals, new_accrual: VacationAccrual.new, type: TimeOffValue::VACATION } %>
   </div>
 <% end %>
