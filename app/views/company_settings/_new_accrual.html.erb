@@ -1,4 +1,4 @@
-<%= form_for(accrual, url: accruals_url(accrual, type: type), html: { class: "accrual_form" }) do |f| %>
+<%= form_for(accrual, url: accruals_url(accrual, type: type), as: :accrual, html: { class: "accrual_form" }) do |f| %>
   <div class="row">
     <div class="offset1 span2">
       <%= f.select :start_year, (0..70).to_a, {}, { class: "input-mini" } %>

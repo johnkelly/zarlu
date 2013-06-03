@@ -1,12 +1,12 @@
 <div class="container paper">
   <ul class="nav nav-pills">
-    <li class="<%=@level_of_activity == 'user' ? 'active' : '' %>">
+    <li class="<%=@level == 'user' ? 'active' : '' %>">
     <%= link_to "My Activity", activities_path %>
     </li>
-    <li class="<%= @level_of_activity == 'manager' ? 'active' : '' %> <%= disable_pill(current_user) %>">
+    <li class="<%= @level == 'manager' ? 'active' : '' %> <%= disable_pill(current_user) %>">
     <%= link_to "My Employees' Activity", activities_path(activity_type: "manager") %>
     </li>
-    <li class="<%=@level_of_activity == 'company' ? 'active' : '' %>">
+    <li class="<%=@level == 'company' ? 'active' : '' %>">
     <%= link_to "My Company's Activity", activities_path(activity_type: "company") %>
     </li>
   </ul>

@@ -22,12 +22,8 @@ class AccrualsController < ApplicationController
 
   private
 
-  def accrual_params
-    params[:vacation_accrual].presence || params[:sick_accrual].presence || params[:holiday_accrual].presence || params[:personal_accrual].presence || params[:unpaid_accrual].presence || params[:other_accrual].presence
-  end
-
   def permitted_accruals
-    accrual_params.permit(:start_year, :end_year, :rate).merge(subscriber_id: @subscriber.id)
+    params[:accrual].permit(:start_year, :end_year, :rate).merge(subscriber_id: @subscriber.id)
   end
 
   def accrual_klass
