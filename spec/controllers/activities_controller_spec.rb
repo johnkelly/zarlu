@@ -11,7 +11,7 @@ describe ActivitiesController do
       it { should respond_with(:success) }
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:level_of_activity).should == "user" }
-      it { assigns(:activities).should == user.activities.order("created_at desc").paginate(page: 1, per_page: 30) }
+      it { assigns(:activities).should == Activity.where(user_id: user).lifo.includes(:user).paginate(page: 1, per_page: 30) }
     end
 
     context "manager" do
@@ -19,7 +19,7 @@ describe ActivitiesController do
       it { should respond_with(:success) }
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:level_of_activity).should == "manager" }
-      it { assigns(:activities).should == Activity.order("created_at desc").where(user_id: []).paginate(page: 1, per_page: 30) }
+      it { assigns(:activities).should == Activity.where(user_id: []).lifo.includes(:user).paginate(page: 1, per_page: 30) }
     end
 
     context "company" do
@@ -27,7 +27,7 @@ describe ActivitiesController do
       it { should respond_with(:success) }
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:level_of_activity).should == "company" }
-      it { assigns(:activities).should == Activity.order("created_at desc").where(user_id: [user.subscriber.users.collect(&:id)]).paginate(page: 1, per_page: 30) }
+      it { assigns(:activities).should == Activity.where(user_id: [user.subscriber.users.collect(&:id)]).lifo.includes(:user).paginate(page: 1, per_page: 30) }
     end
   end
 end
