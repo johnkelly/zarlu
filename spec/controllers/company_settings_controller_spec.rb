@@ -28,7 +28,7 @@ describe CompanySettingsController do
 
   describe "#update" do
     context "http" do
-      before { patch :update, id: vacation.to_param, vacation_company_setting: { enabled: "true" }}
+      before { patch :update, id: vacation.to_param, company_setting: { enabled: "true" }}
       it { should respond_with(204) }
     end
 
@@ -36,7 +36,7 @@ describe CompanySettingsController do
       context "vacation" do
         before do
           subscriber.vacation_company_setting.enabled.should be_true
-          patch :update, id: vacation.to_param, vacation_company_setting: { enabled: "false" }
+          patch :update, id: vacation.to_param, company_setting: { enabled: "false" }
         end
         subject { subscriber.vacation_company_setting.reload }
         its(:enabled) { should be_false }
@@ -45,7 +45,7 @@ describe CompanySettingsController do
       context "sick" do
         before do
           subscriber.sick_company_setting.enabled.should be_true
-          patch :update, id: sick.to_param, sick_company_setting: { enabled: "false" }
+          patch :update, id: sick.to_param, company_setting: { enabled: "false" }
         end
         subject { subscriber.sick_company_setting.reload }
         its(:enabled) { should be_false }
@@ -54,7 +54,7 @@ describe CompanySettingsController do
       context "holiday" do
         before do
           subscriber.holiday_company_setting.enabled.should be_true
-          patch :update, id: holiday.to_param, holiday_company_setting: { enabled: "false" }
+          patch :update, id: holiday.to_param, company_setting: { enabled: "false" }
         end
         subject { subscriber.holiday_company_setting.reload }
         its(:enabled) { should be_false }
@@ -63,7 +63,7 @@ describe CompanySettingsController do
       context "personal" do
         before do
           subscriber.personal_company_setting.enabled.should be_true
-          patch :update, id: personal.to_param, personal_company_setting: { enabled: "false" }
+          patch :update, id: personal.to_param, company_setting: { enabled: "false" }
         end
         subject { subscriber.personal_company_setting.reload }
         its(:enabled) { should be_false }
@@ -72,7 +72,7 @@ describe CompanySettingsController do
       context "unpaid" do
         before do
           subscriber.unpaid_company_setting.enabled.should be_true
-          patch :update, id: unpaid.to_param, unpaid_company_setting: { enabled: "false" }
+          patch :update, id: unpaid.to_param, company_setting: { enabled: "false" }
         end
         subject { subscriber.unpaid_company_setting.reload }
         its(:enabled) { should be_false }
@@ -81,7 +81,7 @@ describe CompanySettingsController do
       context "other" do
         before do
           subscriber.other_company_setting.enabled.should be_true
-          patch :update, id: other.to_param, other_company_setting: { enabled: "false" }
+          patch :update, id: other.to_param, company_setting: { enabled: "false" }
         end
         subject { subscriber.other_company_setting.reload }
         its(:enabled) { should be_false }
@@ -90,7 +90,7 @@ describe CompanySettingsController do
       context "update date" do
         before do
           subscriber.other_company_setting.next_accrual.should be_present
-          patch :update, id: other.to_param, other_company_setting: { next_accrual: "10/01/1987" }
+          patch :update, id: other.to_param, company_setting: { next_accrual: "10/01/1987" }
         end
         subject { subscriber.other_company_setting.reload }
         its(:next_accrual) { should ==  Date.strptime("10/01/1987", "%m/%d/%Y") }

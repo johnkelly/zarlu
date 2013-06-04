@@ -6,14 +6,14 @@
     <div class="row">
       <div class="span4 setting_label">Enabled</div>
       <div class="offset1 span4">
-        <%= best_in_place vacation, :enabled, path: company_setting_path(vacation), type: :checkbox, activator: "#icon-edit-subscriber-vacation-enabled" %>
+        <%= best_in_place vacation, :enabled, path: company_setting_path(vacation), type: :checkbox, activator: "#icon-edit-subscriber-vacation-enabled", object_name: :company_setting %>
         <i id="icon-edit-subscriber-vacation-enabled" class="icon-edit"></i>
       </div>
     </div>
     <div class="row">
       <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place vacation, :accrual_limit, path: company_setting_path(vacation), activator: "#icon-edit-subscriber-vacation-accrual-limit", nil: "Unlimited", html_attrs: { maxlength: 9 }, inner_class: "input-small" %> hours
+        <%= best_in_place vacation, :accrual_limit, path: company_setting_path(vacation), activator: "#icon-edit-subscriber-vacation-accrual-limit", nil: "Unlimited", html_attrs: { maxlength: 9 }, inner_class: "input-small", object_name: :company_setting %> hours
         <i id="icon-edit-subscriber-vacation-accrual-limit" class="icon-edit"></i>
       </div>
     </div>
@@ -21,14 +21,14 @@
       <div class="span4 setting_label">Accrual Frequency</div>
       <div class="offset1 span4">
         Every&nbsp;<%= best_in_place vacation, :accrual_frequency, path: company_setting_path(vacation), type: :select, collection: CompanySetting.accrual_frequencies,
-          activator: "#icon-edit-subscriber-vacation-accrual-frequency" %>
+          activator: "#icon-edit-subscriber-vacation-accrual-frequency", object_name: :company_setting %>
         <i id="icon-edit-subscriber-vacation-accrual-frequency" class="icon-edit"></i>
       </div>
     </div>
     <div class="row">
       <div class="span4 setting_label">Next Accrual Date</div>
       <div class="offset1 span4">
-        <%= best_in_place vacation, :next_accrual, path: company_setting_path(vacation), type: :date, activator: "#icon-edit-subscriber-vacation-start-accrual", display_as: :display_next_accrual %>
+        <%= best_in_place vacation, :next_accrual, path: company_setting_path(vacation), type: :date, activator: "#icon-edit-subscriber-vacation-start-accrual", display_as: :display_next_accrual, object_name: :company_setting %>
         <i id="icon-edit-subscriber-vacation-start-accrual" class="icon-edit"></i>
       </div>
     </div>

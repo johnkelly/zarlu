@@ -6,14 +6,14 @@
     <div class="row">
       <div class="span4 setting_label">Enabled</div>
       <div class="offset1 span4">
-        <%= best_in_place personal, :enabled, path: company_setting_path(personal), type: :checkbox, activator: "#icon-edit-subscriber-personal-enabled" %>
+        <%= best_in_place personal, :enabled, path: company_setting_path(personal), type: :checkbox, activator: "#icon-edit-subscriber-personal-enabled", object_name: :company_setting %>
         <i id="icon-edit-subscriber-personal-enabled" class="icon-edit"></i>
       </div>
     </div>
     <div class="row">
       <div class="span4 setting_label">Accrual Limit</div>
       <div class="offset1 span4">
-        <%= best_in_place personal, :accrual_limit, path: company_setting_path(personal), activator: "#icon-edit-subscriber-personal-accrual-limit", nil: "Unlimited", html_attrs: { maxlength: 9 } %> hours
+        <%= best_in_place personal, :accrual_limit, path: company_setting_path(personal), activator: "#icon-edit-subscriber-personal-accrual-limit", nil: "Unlimited", html_attrs: { maxlength: 9 }, object_name: :company_setting %> hours
         <i id="icon-edit-subscriber-personal-accrual-limit" class="icon-edit"></i>
       </div>
     </div>
@@ -21,14 +21,14 @@
       <div class="span4 setting_label">Accrual Frequency</div>
       <div class="offset1 span4">
         Every&nbsp;<%= best_in_place personal, :accrual_frequency, path: company_setting_path(personal), type: :select, collection: CompanySetting.accrual_frequencies,
-          activator: "#icon-edit-subscriber-personal-accrual-frequency" %>
+          activator: "#icon-edit-subscriber-personal-accrual-frequency", object_name: :company_setting %>
         <i id="icon-edit-subscriber-personal-accrual-frequency" class="icon-edit"></i>
       </div>
     </div>
     <div class="row">
       <div class="span4 setting_label">Next Accrual Date</div>
       <div class="offset1 span4">
-        <%= best_in_place personal, :next_accrual, path: company_setting_path(personal), type: :date, activator: "#icon-edit-subscriber-personal-start-accrual", display_as: :display_next_accrual %>
+        <%= best_in_place personal, :next_accrual, path: company_setting_path(personal), type: :date, activator: "#icon-edit-subscriber-personal-start-accrual", display_as: :display_next_accrual, object_name: :company_setting %>
         <i id="icon-edit-subscriber-personal-start-accrual" class="icon-edit"></i>
       </div>
     </div>

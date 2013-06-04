@@ -18,19 +18,15 @@ class CompanySettingsController < ApplicationController
     if has_date_param?
       update_date_params
     else
-    @company_setting.update(permitted_settings)
+    @company_setting.update(setting_params)
     end
-    respond_with_bip(@company_setting)
+    respond_with_bip(@company_setting, { param_key: :company_setting })
   end
 
   private
 
   def setting_params
-    params[:vacation_company_setting].presence || params[:sick_company_setting].presence || params[:holiday_company_setting].presence || params[:personal_company_setting].presence || params[:unpaid_company_setting].presence || params[:other_company_setting].presence
-  end
-
-  def permitted_settings
-    setting_params.permit(:subscriber_id, :enabled, :accrual_frequency, :next_accrual, :accrual_limit)
+    params.require(:company_setting).permit(:subscriber_id, :enabled, :accrual_frequency, :next_accrual, :accrual_limit)
   end
 
   def update_date_params
