@@ -16,10 +16,18 @@ class UsersController < ApplicationController
 
   def join_date
     if user_params[:join_date].include?("/")
-      split = user_params[:join_date].split("/").map(&:to_i)
-      Date.new(split[2], split[0], split[1])
+      formatted_date
     else
       user_params[:join_date]
     end
+  end
+
+  def split_slash_date
+    user_params[:join_date].split("/").map(&:to_i)
+  end
+
+  def formatted_date
+    split = split_slash_date
+    Date.new(split[2], split[0], split[1])
   end
 end
