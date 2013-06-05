@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_one :other_leave, dependent: :destroy, class_name: "OtherLeave", foreign_key: :user_id
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :async
 
   validates_presence_of :subscriber_id
 
