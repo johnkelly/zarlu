@@ -37,12 +37,16 @@ class Event < ActiveRecord::Base
     transaction do
       add_used_and_remove_pending_leave
       self.update!(approved: true)
+      ApprovedEventEmailWorker.perform_async(user_id)
     end
   end
 
   def reject!
-    self.rejected = true
-    self.save!
+    transaction do
+      decrement_pending_leave!
+      self.update!(rejected: true)
+      RejectEventEmailWorker.perform_async(user_id)
+    end
   end
 
   def unapprove!(old_duration)
@@ -129,7 +133,15 @@ class Event < ActiveRecord::Base
 
   def increment_leave_and_approve_no_manager_leave!
     increment_pending_leave!
-    approve! unless user.has_manager?
+    send_email_or_approve!
+  end
+
+  def send_email_or_approve!
+    if user.has_manager?
+      PendingEventEmailWorker.perform_async(user_id)
+    else
+      approve!
+    end
   end
 
   def increment_leave_usage!

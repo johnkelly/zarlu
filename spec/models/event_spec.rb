@@ -18,29 +18,41 @@ describe Event do
 
   describe "callbacks" do
     describe "after_create" do
-      describe "approve!" do
-        context "manager_id nil" do
-          it "approves the event" do
-            manager.manager_id.should be_nil
-            event = manager.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
-            event.approved.should be_true
-          end
-        end
-
-        context "manager_id nil" do
-          it "approves the event" do
-            user.manager_id.should be_present
+      describe "increment_leave_and_approve_no_manager_leave" do
+        describe "increment_pending_leave!" do
+          it "increments pending leave" do
+            vacation_leave.pending_hours.should == 9.98
             event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
-            event.approved.should be_false
+            vacation_leave.reload.pending_hours.should == 11.96
           end
         end
-      end
 
-      describe "increment_pending_leave!" do
-        it "increments pending leave" do
-          vacation_leave.pending_hours.should == 9.98
-          event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
-          vacation_leave.reload.pending_hours.should == 11.96
+        describe "send_email_or_approve" do
+          context "no manager" do
+            it "approves the event" do
+              manager.manager_id.should be_nil
+              event = manager.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+              event.approved.should be_true
+            end
+
+            it "does NOT send a pending event email" do
+              PendingEventEmailWorker.should_not_receive(:perform_async)
+              event = manager.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+            end
+          end
+
+          context "has manager" do
+            it "does NOT approve the event" do
+              user.manager_id.should be_present
+              event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+              event.approved.should be_false
+            end
+
+            it "sends a pending event email" do
+              PendingEventEmailWorker.should_receive(:perform_async).with(user.id)
+              event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+            end
+          end
         end
       end
     end
@@ -131,6 +143,8 @@ describe Event do
   end
 
   describe "approve!" do
+    before { ApprovedEventEmailWorker.should_receive(:perform_async).with(user.id) }
+
     it "should set approved to true" do
       event.approved.should be_false
       event.approve!
@@ -151,10 +165,18 @@ describe Event do
   end
 
   describe "reject!" do
-    it "should set rejected to true" do
+    before { RejectEventEmailWorker.should_receive(:perform_async).with(user.id) }
+
+    it "sets rejected to true" do
       event.rejected.should be_false
       event.reject!
       event.reload.rejected.should be_true
+    end
+
+    it "subtracts the event's time from pending" do
+      vacation_leave.reload.pending_hours.should == 9.98
+      event.reject!
+      vacation_leave.reload.pending_hours.should == 8
     end
   end
 
