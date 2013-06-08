@@ -15,7 +15,7 @@ gem 'turbolinks', '~> 1.2.0'
 gem 'jquery-turbolinks', '~> 1.0.0'
 gem 'bloggy', '~> 0.2.1'
 gem 'stripe', '~> 1.8.3'
-gem 'newrelic_rpm', '~> 3.6.3.104'
+gem 'newrelic_rpm', '~> 3.6.3.111'
 gem 'sidekiq', '~> 2.12.1'
 gem 'sinatra', '~> 1.4.2', require: false
 gem 'slim', '~> 2.0.0'
@@ -42,4 +42,5 @@ group :development, :test do
   gem 'fixture_builder', git: 'git://github.com/rdy/fixture_builder.git'
   gem 'capybara'
   gem 'quiet_assets'
+  gem 'gemnasium', '~> 2.0'
 end

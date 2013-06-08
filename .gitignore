@@ -30,3 +30,4 @@ routes.txt
 .DS_Store
 /public/uploads
 .env
+config/gemnasium.yml
