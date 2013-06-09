@@ -10,8 +10,11 @@ class Subscriber::UsersController < ApplicationController
 
   def destroy
     @user = current_user.subscriber.users.find(params[:id])
-    @user.destroy
-    redirect_to subscribers_url, notice: "#{@user.display_name} was deleted from your account."
+    if @user.destroy
+      redirect_to subscribers_url, notice: "#{@user.display_name} was deleted from your account."
+    else
+      redirect_to subscribers_url, alert: "#{@user.errors.full_messages.first}"
+    end
   end
 
   private

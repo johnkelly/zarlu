@@ -28,16 +28,25 @@ describe Subscriber::UsersController do
   end
 
   describe "#destroy" do
-    before { User.any_instance.should_receive(:stop_charging_subscriber) }
-
     context "http" do
-      before { delete :destroy, id: user.to_param }
-      it { should redirect_to subscribers_url }
-      it { should set_the_flash[:notice] }
-      it { assigns(:user).should == user }
+      context "can destroy" do
+        before { User.any_instance.should_receive(:stop_charging_subscriber) }
+        before { delete :destroy, id: user.to_param }
+        it { should redirect_to subscribers_url }
+        it { should set_the_flash[:notice] }
+        it { assigns(:user).should == user }
+      end
+
+      context "can't destroy" do
+        before { delete :destroy, id: manager.to_param }
+        it { should redirect_to subscribers_url }
+        it { should set_the_flash[:alert] }
+        it { assigns(:user).should == manager }
+      end
     end
 
     context "update database" do
+      before { User.any_instance.should_receive(:stop_charging_subscriber) }
       it "deletes the user" do
         expect { delete :destroy, id: user.to_param}.to change(User, :count).by(-1)
       end

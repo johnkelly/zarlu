@@ -25,13 +25,42 @@ describe User do
   end
 
   describe "before_destroy" do
-    before { User.any_instance.should_receive(:stop_charging_subscriber) }
-
     context "manager" do
-      it "calls demote to employee" do
-        manager.manager.should be_true
-        manager.should_receive(:demote_to_employee!)
-        manager.destroy!
+      context "more than one manager" do
+        before do
+          subscriber.users.create!(email: "manager2@example.com", password: "password", password_confirmation: "password", manager: true)
+          User.any_instance.should_receive(:stop_charging_subscriber)
+        end
+
+        it "calls demote to employee" do
+          manager.manager.should be_true
+          manager.should_receive(:demote_to_employee!)
+          manager.destroy!
+        end
+      end
+
+      context "only one manager" do
+        context "no employees" do
+          before do
+            user.stub(:stop_charging_subscriber)
+            user.destroy!
+            manager.should_receive(:stop_charging_subscriber)
+          end
+
+          it "calls demote to employee" do
+            manager.manager.should be_true
+            manager.should_receive(:demote_to_employee!)
+            manager.destroy!
+          end
+        end
+
+        context "with employees" do
+          it "returns false with errors" do
+            manager.manager.should be_true
+            manager.destroy.should be_false
+            manager.errors.should be_present
+          end
+        end
       end
     end
 
@@ -39,6 +68,7 @@ describe User do
       it "does nothing" do
         user.manager.should be_false
         user.should_not_receive(:demote_to_employee!)
+        user.should_receive(:stop_charging_subscriber)
         user.destroy!
       end
     end

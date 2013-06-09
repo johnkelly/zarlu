@@ -18,18 +18,16 @@ class User < ActiveRecord::Base
   store :properties, accessors: [:complete_welcome_tour, :open_support_tool]
 
   before_create :create_leave
-  before_destroy :demote_to_employee!, if: Proc.new {|user| user.manager? }
+  before_destroy :check_deletion_and_demote_to_employee!, if: Proc.new {|user| user.manager? }
   after_destroy :stop_charging_subscriber
 
   def promote_to_manager!
-    self.manager = true
-    self.save!
+    self.update!(manager: true)
   end
 
   def demote_to_employee!
     set_employee_manager_id_to_none
-    self.manager = false
-    self.save!
+    self.update!(manager: false)
   end
 
   def employees
@@ -95,5 +93,27 @@ class User < ActiveRecord::Base
 
   def stop_charging_subscriber
     ChargeCreditCardWorker.perform_async(subscriber_id)
+  end
+
+  def check_deletion_and_demote_to_employee!
+    if delete_manager?
+      demote_to_employee!
+      true
+    else
+      errors.add(:base, "You must delete all non managers or promote a new manager before removing your last manager account.")
+      false
+    end
+  end
+
+  def delete_manager?
+    more_than_one_manager? || no_employees?
+  end
+
+  def more_than_one_manager?
+    subscriber.users.where(manager: true).count > 1
+  end
+
+  def no_employees?
+    subscriber.users.where(manager: false).count == 0
   end
 end
