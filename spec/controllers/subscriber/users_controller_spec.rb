@@ -3,7 +3,30 @@ require 'spec_helper'
 describe Subscriber::UsersController do
   let(:manager) { users(:manager_example_com) }
   let(:user) { users(:test_example_com) }
+  let(:subscriber) { subscribers(:trial) }
   before { sign_in(manager) }
+
+  describe "#create" do
+    context "success" do
+      before do
+        ApplicationController.any_instance.should_receive(:track_activity!)
+        Subscriber::UsersController.any_instance.should_receive(:charge_credit_card).with(subscriber)
+        post :create, user: { email: "new@example.com" , password: "password" }
+      end
+      it { should redirect_to subscribers_url }
+      it { should set_the_flash[:notice] }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:user) }
+    end
+
+    context "error" do
+      before { post :create, user: { email: "", password: "" }}
+      it { should redirect_to subscribers_url }
+      it { should set_the_flash[:alert] }
+      it { assigns(:subscriber).should == subscriber }
+      it { assigns(:user) }
+    end
+  end
 
   describe "#update" do
     context "http" do

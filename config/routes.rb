@@ -15,7 +15,6 @@ Zarlu::Application.routes.draw do
   get '/business-time-tracking', to: 'articles#business_time_tracking'
   devise_for :users, controllers: { registrations: 'registrations' }
   resource :subscribers, only: %w[update show] do
-    collection { post :add_user }
     member do
       put :change_manager
       put :promote_to_manager
@@ -36,8 +35,8 @@ Zarlu::Application.routes.draw do
   resources :company_settings, only: %w[index update]
   resources :accruals, only: %w[create destroy]
   resources :accrued_hours, only: %w[update]
-  namespace 'subscriber' do
-    resources :users, only: %w[update destroy]
+  namespace :subscriber do
+    resources :users, only: %w[create update destroy]
   end
   mount Sidekiq::Web => '/sidekiq'
 end

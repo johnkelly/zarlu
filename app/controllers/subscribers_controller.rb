@@ -9,6 +9,7 @@ class SubscribersController < ApplicationController
     @time_off_view = params[:time_off_view].presence || "time_off_used"
     @user = User.new
     @events = Event.where(user_id: @subscriber.users)
+    @leaves = Leave.where(user_id: @subscriber.users)
     @managers = @subscriber.managers(@users).sort_by(&:display_name)
     @manager_collection = manager_collection
     fresh_when([@users, @time_off_view])
@@ -18,17 +19,6 @@ class SubscribersController < ApplicationController
     @subscriber = current_user.subscriber
     @subscriber.update(subscriber_params)
     respond_with_bip(@subscriber)
-  end
-
-  def add_user
-    @user = @users.new(user_params)
-    if @user.save
-      charge_credit_card(@subscriber)
-      track_activity!(@user)
-      redirect_to subscribers_url, notice: %Q{Successfully created new user.}
-    else
-      redirect_to subscribers_url, alert: @user.errors.full_messages.first
-    end
   end
 
   def promote_to_manager
@@ -57,17 +47,10 @@ class SubscribersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :password)
-  end
-
   def subscriber_params
     params.require(:subscriber).permit(:name, :time_zone)
   end
 
-  def charge_credit_card(subscriber)
-    ChargeCreditCardWorker.perform_async(subscriber.id) unless subscriber.trial?
-  end
 
   def shared_variables
     @subscriber = current_user.subscriber

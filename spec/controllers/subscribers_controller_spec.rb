@@ -44,28 +44,6 @@ describe SubscribersController do
     end
   end
 
-  describe "#add_user" do
-    context "success" do
-      before do
-        ApplicationController.any_instance.should_receive(:track_activity!)
-        SubscribersController.any_instance.should_receive(:charge_credit_card).with(subscriber)
-        post :add_user, user: { email: "new@example.com" , password: "password" }
-      end
-      it { should redirect_to subscribers_url }
-      it { should set_the_flash[:notice] }
-      it { assigns(:subscriber).should == subscriber }
-      it { assigns(:user) }
-    end
-
-    context "error" do
-      before { post :add_user, user: { email: "", password: "" }}
-      it { should redirect_to subscribers_url }
-      it { should set_the_flash[:alert] }
-      it { assigns(:subscriber).should == subscriber }
-      it { assigns(:user) }
-    end
-  end
-
   describe "#promote_to_manager" do
     before do
       ApplicationController.any_instance.should_receive(:track_activity!)

@@ -2,6 +2,18 @@ class Subscriber::UsersController < ApplicationController
   before_action :authenticate_manager!
   before_action :check_if_trial_or_cc!
 
+  def create
+    @subscriber = current_user.subscriber
+    @user = @subscriber.users.new(user_params)
+    if @user.save
+      charge_credit_card(@subscriber)
+      track_activity!(@user)
+      redirect_to subscribers_url, notice: %Q{Successfully created new user.}
+    else
+      redirect_to subscribers_url, alert: @user.errors.full_messages.first
+    end
+  end
+
   def update
     @user = current_user.subscriber.users.find(params[:id])
     @user.update(join_date: join_date)
@@ -19,8 +31,12 @@ class Subscriber::UsersController < ApplicationController
 
   private
 
+  def charge_credit_card(subscriber)
+    ChargeCreditCardWorker.perform_async(subscriber.id) unless subscriber.trial?
+  end
+
   def user_params
-    params.require(:user).permit(:join_date)
+    params.require(:user).permit(:email, :password, :join_date)
   end
 
   def join_date

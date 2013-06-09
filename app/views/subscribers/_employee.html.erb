@@ -1,5 +1,5 @@
 <% cache employee do %>
-  <% employee_events = @events.select { |event| event.user_id == employee.id } %>
+  <% employee_leaves = @leaves.select { |leave| leave.user_id == employee.id } %>
   <% manager = @managers.detect{ |manager| manager.id == employee.manager_id } %>
   <tr>
     <td><%= display_employee(employee) %></td>
@@ -8,12 +8,12 @@
         collection: @manager_collection, nil: "None", activator: "#icon-edit-#{employee.id}" %>
       <i id="icon-edit-<%= employee.id %>" class="icon-edit"></i>
     </td>
-    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::VACATION }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::SICK }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::HOLIDAY }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::PERSONAL }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::UNPAID }.map(&:duration).reduce(0,:+) %></td>
-    <td><%= employee_events.select{ |event| event.kind == TimeOffValue::OTHER }.map(&:duration).reduce(0,:+) %></td>
+    <td><%= employee_leaves.select{ |leave| leave.type == "VacationLeave" }.map(&:available_hours).first %></td>
+    <td><%= employee_leaves.select{ |leave| leave.type == "SickLeave" }.map(&:available_hours).first %></td>
+    <td><%= employee_leaves.select{ |leave| leave.type == "HolidayLeave" }.map(&:available_hours).first %></td>
+    <td><%= employee_leaves.select{ |leave| leave.type == "PersonalLeave" }.map(&:available_hours).first %></td>
+    <td><%= employee_leaves.select{ |leave| leave.type == "UnpaidLeave" }.map(&:available_hours).first %></td>
+    <td><%= employee_leaves.select{ |leave| leave.type == "OtherLeave" }.map(&:available_hours).first %></td>
     <td>
       <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
       <% if employee.manager? %>

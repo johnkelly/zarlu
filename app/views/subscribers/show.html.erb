@@ -3,7 +3,7 @@
   <small>Employees will be able to change their passwords after first sign in.</small>
   <div class="row">
     <div class="span8">
-      <%= form_for @user, url: add_user_subscribers_url, html: { class: "form-inline" }, method: :post do |form| %>
+      <%= form_for @user, url: subscriber_users_url, html: { class: "form-inline" }, method: :post do |form| %>
         <%= form.label :email %>
         <%= form.email_field :email, class: "input-medium" %>
         <%= form.label :password %>
@@ -19,7 +19,7 @@
         <th colspan="2">
           <ul class="nav nav-pills">
             <li class="<%=@time_off_view == 'time_off_used' ? 'active' : '' %>">
-            <%= link_to "Time Off Used", subscribers_path %>
+            <%= link_to "Time Off Balance", subscribers_path %>
             </li>
             <li class="<%=@time_off_view == 'time_off_accrued' ? 'active' : '' %>">
             <%= link_to "Time Off Accrued", subscribers_path(time_off_view: "time_off_accrued") %>
