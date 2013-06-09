@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   store :properties, accessors: [:complete_welcome_tour, :open_support_tool]
 
   before_create :create_leave
+  before_destroy :demote_to_employee!, if: Proc.new {|user| user.manager? }
   after_destroy :stop_charging_subscriber
 
   def promote_to_manager!
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def employees
-    User.where(manager_id: self.id)
+    User.where(manager_id: id)
   end
 
   def has_manager?

@@ -24,6 +24,26 @@ describe User do
     end
   end
 
+  describe "before_destroy" do
+    before { User.any_instance.should_receive(:stop_charging_subscriber) }
+
+    context "manager" do
+      it "calls demote to employee" do
+        manager.manager.should be_true
+        manager.should_receive(:demote_to_employee!)
+        manager.destroy!
+      end
+    end
+
+    context "not manager" do
+      it "does nothing" do
+        user.manager.should be_false
+        user.should_not_receive(:demote_to_employee!)
+        user.destroy!
+      end
+    end
+  end
+
   describe "after_destroy" do
     it "calls ChargeCreditCardWorker" do
       ChargeCreditCardWorker.should_receive(:perform_async).with(user.subscriber_id)

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Subscriber::UsersController < ApplicationController
   before_action :authenticate_manager!
   before_action :check_if_trial_or_cc!
 
@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     @user = current_user.subscriber.users.find(params[:id])
     @user.update(join_date: join_date)
     respond_with_bip(@user)
+  end
+
+  def destroy
+    @user = current_user.subscriber.users.find(params[:id])
+    @user.destroy
+    redirect_to subscribers_url, notice: "#{@user.display_name} was deleted from your account."
   end
 
   private

@@ -4,7 +4,7 @@
   <dl>
     <dt>Hired On</dt>
     <dd>
-    <%= best_in_place employee, :join_date, type: :date, path: user_path(employee), activator: "#icon-edit-join-date", inner_class: "input-small", nil: "No Date Provided", display_as: :display_join_date %>
+    <%= best_in_place employee, :join_date, type: :date, path: subscriber_user_path(employee), activator: "#icon-edit-join-date", inner_class: "input-small", nil: "No Date Provided", display_as: :display_join_date %>
     <i id="icon-edit-join-date" class="icon-edit"></i>
     </dd>
     <dt>Managed By</dt>
@@ -45,5 +45,7 @@
     <%= best_in_place employee.other_leave, :accrued_hours, path: accrued_hour_path(employee.other_leave), activator: "#icon-edit-other-accrued-hours-#{employee.other_leave.id}", inner_class: "input-mini", object_name: :leave %>
     <i id="icon-edit-other-accrued-hours-<%= employee.other_leave.id %>" class="icon-edit"></i>
     </dd>
+    <dt>Delete Account</dt>
+    <dd><%= link_to "Delete", subscriber_user_path, class: "btn btn-small btn-danger", method: :delete, data: { confirm: "Are you sure?" } %></dd>
   </dl>
 <% end %>
