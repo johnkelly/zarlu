@@ -3,8 +3,8 @@ require 'spec_helper'
 describe CompanySettingsController do
   let(:manager) { users(:manager_example_com) }
   let(:subscriber) { subscribers(:trial) }
-  let(:company_setting_service) { mock("CompanySettingService") }
-  let(:accrual_service) { mock("AccrualService") }
+  let(:company_setting_service) { double("CompanySettingService") }
+  let(:accrual_service) { double("AccrualService") }
   let(:vacation) { subscriber.vacation_company_setting }
   let(:sick) { subscriber.sick_company_setting }
   let(:holiday) { subscriber.holiday_company_setting }

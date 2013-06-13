@@ -48,7 +48,7 @@ describe Subscriber do
 
       context "Stripe Error" do
         it "returns false" do
-          error_message = stub(message: "Stripe had an issue")
+          error_message = double(message: "Stripe had an issue")
           trial_subscriber.stub(:customer_token).and_return("fake_token")
           trial_subscriber.should_receive(:change_credit_card).and_raise(Stripe::StripeError.new(error_message))
           trial_subscriber.save_credit_card(trial_user).should == false
@@ -89,7 +89,7 @@ describe Subscriber do
   describe "update_subscription_users" do
     it "calls Stripe update subscription" do
       Subscriber.any_instance.stub(:users).and_return((1..14).to_a)
-      stripe = mock("Stripe")
+      stripe = double("Stripe")
       Stripe::Customer.should_receive(:retrieve).with(paid_subscriber.customer_token).and_return(stripe)
       stripe.should_receive(:update_subscription).with(plan: "public_paid_plan", quantity: 14)
       paid_subscriber.update_subscription_users
