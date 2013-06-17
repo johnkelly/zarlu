@@ -1,9 +1,9 @@
 ---
 layout: post
 published: true
-title: 10 countries with the most employee time off
+title: 10 Countries with the Most Employee Time Off
 ---
-#10 countries with the most employee time off# {: .center}
+#10 Countries with the Most Employee Time Off# {: .center}
 ***
 Every country has its own set of labor laws governing how many days an employee is minimally guaranteed to use for time off. The United States does not have a minimum set at the federal level for time off, but many state and local governments have their own minimums amounts.
 
@@ -23,4 +23,4 @@ Most US employees who do receive time off have about 8 national holidays and 10 
 
 [Source](http://money.cnn.com/2007/06/12/pf/vacation_days_worldwide/#table)
 
-Finland leads the list with an average of 44 days of employee time off for employees with at least 10 years of tenure. A huge difference from the United States which averages 25 days of employee time off. This total is the average vacation days for employee in the country specified including national holidays.
+Finland leads the list with an average of 44 days of employee time off for employees with at least 10 years of tenure. This is a huge difference from the United States which averages 25 days of employee time off per year. This total is the average number of vacation days for an employee in the country specified including national holidays.

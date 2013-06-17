@@ -9,7 +9,7 @@ One of the most important things that a business owner needs to know is whether 
 
 ####Employee Time Attendance Business Software?#### {: .center}
 
-While it is more expensive than just having employees write down their hours worked, time attendance business software is much more effective and reliable. Employers need to have computer terminals where employees can sign in, or they need to provide a method of identification and an electronic timeclock where employees can "punch in" to record their hours worked. Many businesses print ID badges for their employees which they can then swipe through the time clock, recording when they left and when they came back. The result is an automatic record that can be compiled with the push of a button to show exactly when employees showed up and on what days.
+While it is more expensive than just having employees write down their hours worked, time attendance business software is much more effective and reliable. Employers need to have computer terminals where employees can sign in, or they need to provide a method of identification and an electronic timeclock where employees can "punch in" to record their hours worked. Many businesses print ID badges for their employees which they can then swipe through the time clock, recording when they left and when they returned. The result is an automatic record that can be compiled with the push of a button to show exactly when employees worked and on what days.
 
 ####The Benefits#### {: .center}
 

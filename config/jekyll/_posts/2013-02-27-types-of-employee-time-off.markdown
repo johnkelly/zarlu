@@ -1,13 +1,13 @@
 ---
 layout: post
 published: true
-title: Types Of Employee Time Off
+title: Types of Employee Time Off
 ---
-#Types of employee time off# {: .center}
+#Types of Employee Time Off# {: .center}
 ***
 In this diverse society we live in, more employees are requesting, and often receiving, additional time off work. A typical worker may want to schedule time off for a variety of personal reasons. Some companies are turning to tracking software to schedule time requested off by each employee to avoid calendar confusion and complications.
 
-The most common time requested off involves traditional holidays. New Year's, Martin Luther King Day, Presidents Day, Memorial Day, Independence Day, Labor Day, Columbus Day, Thanksgiving, and Christmas are the most common calendar days when employees expect not to work and yet be paid. Not every business will pay for holidays like Martin Luther King Day, Presidents Day, and Columbus Day, however, as those have more of a historical or political connotation.
+The most common time requested off involves traditional holidays. New Year's Day, Martin Luther King Day, Presidents Day, Memorial Day, Independence Day, Labor Day, Columbus Day, Thanksgiving, Yom Kippur, and Christmas are the most common calendar days when employees expect not to work and yet be paid. Not every business will pay for all of these holidays.
 
 Some workers request time off as sick days. These are usually counted against an attendance record. A business might count two hours of work a person takes off for a doctor's visit as part of a sick day. Tracking partial days can be tricky, which is why a software program can be so helpful in monitoring attendance. Taking whole or partial days off for a sick spouse or child is usually counted as the employed person's sick day.
 
