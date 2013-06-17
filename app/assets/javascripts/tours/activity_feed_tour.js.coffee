@@ -44,6 +44,6 @@ class window.ActivityFeedTour
       path: "/activities"
       element: "#activity_feed"
       title: "Activity Feed Tour Completed!"
-      content: "Congratulations! You now have the information to use the activity feed to make your business' time off request process more transparent and efficient."
+      content: "Congratulations! You now have the information to use the activity feed to make your business's time off request process more transparent and efficient."
       placement: "bottom"
     )

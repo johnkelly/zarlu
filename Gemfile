@@ -14,6 +14,7 @@ gem 'turbolinks', '~> 1.2.0'
 
 gem 'jquery-turbolinks', '~> 1.0.0'
 gem 'bloggy', '~> 0.2.1'
+gem 'jekyll', '~> 0.12.0'
 gem 'stripe', '~> 1.8.3'
 gem 'newrelic_rpm', '~> 3.6.3.111'
 gem 'sidekiq', '~> 2.12.4'
