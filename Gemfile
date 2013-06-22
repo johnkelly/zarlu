@@ -27,7 +27,7 @@ gem 'will_paginate', '~> 3.0.4'
 gem 'intercom-rails', '~> 0.2.21'
 gem 'best_in_place', git: 'git://github.com/bernat/best_in_place.git'
 
-gem 'sass-rails',   '~> 4.0.0.rc1'
+gem 'sass-rails',   '~> 4.0.0.rc2'
 gem 'uglifier', '>= 2.1.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'd3_rails', '~> 3.1.10'
@@ -35,6 +35,7 @@ gem 'asset_sync', '~> 0.5.4'
 gem 'heroku-api', '~> 0.3.12'
 gem 'rack-cache', '~> 1.2'
 gem 'devise-async', '~> 0.7.0'
+gem 'font-awesome-rails', '~> 3.2.1.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0.rc1'
