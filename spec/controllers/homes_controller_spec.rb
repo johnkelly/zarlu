@@ -37,16 +37,17 @@ describe HomesController do
   end
 
   describe "#pricing" do
-    it "returns success" do
-      get :pricing
-      response.should be_success
-    end
+    before { get :pricing }
+    it { should respond_with(:success) }
   end
 
   describe "#privacy" do
-    it "returns success" do
-      get :privacy
-      response.should be_success
-    end
+    before { get :privacy }
+    it { should respond_with(:success) }
+  end
+
+  describe "#features" do
+    before { get :features }
+    it { should respond_with(:success) }
   end
 end

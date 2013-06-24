@@ -80,6 +80,10 @@ div.paper {
   margin-bottom: -50px;
 }
 
+.mt0 {
+  margin-top: 0px !important;
+}
+
 .mt3 {
   margin-top: 3px;
 }
@@ -90,6 +94,10 @@ div.paper {
 
 .mt10 {
   margin-top: 10px;
+}
+
+.mt60 {
+  margin-top: 60px !important;
 }
 
 .mt25 {
@@ -105,7 +113,7 @@ div.paper {
 }
 
 .mt50 {
-  margin-top: 50px;
+  margin-top: 50px !important;
 }
 
 //Padding
@@ -131,6 +139,10 @@ div.paper {
 
 .pt40 {
   padding-top: 40px;
+}
+
+.pt180 {
+  padding-top: 180px !important;
 }
 
 .ptb5 {
@@ -255,4 +267,12 @@ div.paper {
 .accrual_form {
   height: 40px;
   margin: 0px;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.o98 {
+  opacity: .98;
 }

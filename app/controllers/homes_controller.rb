@@ -22,4 +22,8 @@ class HomesController < ApplicationController
   def privacy
     fresh_when("homes_privacy")
   end
+
+  def features
+    fresh_when("homes_features")
+  end
 end

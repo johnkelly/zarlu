@@ -279,3 +279,29 @@ h3.important {
   font-size: 18px;
   line-height: 25px;
 }
+
+section.features_select {
+  div.scroll_link {
+    opacity: .75;
+  }
+
+  div.scroll_link:hover {
+    opacity: 1;
+  }
+}
+
+body.homes_features {
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  .feature_toolbar {
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
