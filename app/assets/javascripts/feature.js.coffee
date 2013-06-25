@@ -7,9 +7,13 @@ scroll_to_header = ->
       1000
     )
 
+select_attendance_on_load = ->
+    $('#attendance').css("color", "#0668C0")
+
 jQuery ->
   if $('body.homes_features').length
     scroll_to_header()
+    select_attendance_on_load()
 
 set_color_and_clear_others = (div, type) ->
     $('.scroll_link').css("color", "#000")
