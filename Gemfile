@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '~> 4.0.0.rc2'
+gem 'rails', '~> 4.0.0'
 gem 'pg', '~> 0.15.1'
 gem 'unicorn', '~> 4.6.3'
 gem 'jquery-rails', '~> 3.0.1'
@@ -26,7 +26,7 @@ gem 'will_paginate', '~> 3.0.4'
 gem 'intercom-rails', '~> 0.2.23'
 gem 'best_in_place', git: 'git://github.com/bernat/best_in_place.git'
 
-gem 'sass-rails',   '~> 4.0.0.rc2'
+gem 'sass-rails',   '~> 4.0.0'
 gem 'uglifier', '>= 2.1.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'd3_rails', '~> 3.2.1'
