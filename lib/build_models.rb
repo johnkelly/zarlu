@@ -11,7 +11,7 @@ module BuildModels
       expired_manager = expired_subscriber.users.create!(email: "expiredmanager@example.com", password: "password", password_confirmation: "password", manager: true)
       paid_manager = paid_subscriber.users.create!(email: "paidmanager@example.com", password: "password", password_confirmation: "password", manager: true)
 
-      event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+      event = user.events.create!(title: "Build Model", description: "From the lib filed", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
       allday_event = user.events.create!(title: "All day", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
 
       vacation_accrual = trial_subscriber.vacation_accruals.create!(start_year: 10, end_year: 15, rate: 8.78)
