@@ -11,8 +11,14 @@ module BuildModels
       expired_manager = expired_subscriber.users.create!(email: "expiredmanager@example.com", password: "password", password_confirmation: "password", manager: true)
       paid_manager = paid_subscriber.users.create!(email: "paidmanager@example.com", password: "password", password_confirmation: "password", manager: true)
 
-      event = user.events.create!(title: "Build Model", description: "From the lib filed", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
+      event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
       allday_event = user.events.create!(title: "All day", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
+
+      canceled_event = user.events.create!(title: "Canceled", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
+      canceled_event.cancel!
+
+      rejected_event = user.events.create!(title: "Rejected", description: "From the lib filed", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
+      rejected_event.reject!
 
       vacation_accrual = trial_subscriber.vacation_accruals.create!(start_year: 10, end_year: 15, rate: 8.78)
       sick_accrual = trial_subscriber.sick_accruals.create!(start_year: 5, end_year: 8, rate: 13.04)

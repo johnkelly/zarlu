@@ -47,7 +47,7 @@ describe EmployeesController do
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:employee).should == employee }
       it { assigns(:manager).should == "Manager@example.com" }
-      it { assigns(:events).should == employee.events.lifo }
+      it { assigns(:events).should == employee.events.scheduled.lifo }
     end
 
     context "display charts" do
@@ -57,7 +57,7 @@ describe EmployeesController do
       it { assigns(:subscriber).should == subscriber }
       it { assigns(:employee).should == manager }
       it { assigns(:manager).should == "No Manager Assigned" }
-      it { assigns(:events).should == manager.events.lifo }
+      it { assigns(:events).should == manager.events.scheduled.lifo }
     end
   end
 end

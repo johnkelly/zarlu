@@ -5,13 +5,13 @@ class Event < ActiveRecord::Base
 
   scope :before, ->(end_time) { where("ends_at < ?", Event.format_date(end_time)) }
   scope :after, ->(start_time) { where("starts_at > ?", Event.format_date(start_time)) }
-  scope :not_rejected, -> { where(rejected: false) }
   scope :rejected, -> { where(rejected: true) }
   scope :pending, -> { where(approved: false, rejected: false) }
   scope :lifo, -> { order("created_at desc") }
+  scope :scheduled, -> { where(canceled: false, rejected: false) }
+  scope :canceled, -> { where(canceled: true) }
 
   after_create :increment_leave_and_approve_no_manager_leave!
-  after_destroy :decrement_leave!
 
   def self.date_range(start_date, end_date)
     range = self.after(start_date.to_i - 1.day.to_i)
@@ -58,6 +58,13 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def cancel!
+    transaction do
+      decrement_leave!
+      self.update!(canceled: true)
+    end
+  end
+
   def color
     TimeOffValue.color(kind)
   end
@@ -83,6 +90,14 @@ class Event < ActiveRecord::Base
       end
     else
       change_pending_leave_duration!(old_duration)
+    end
+  end
+
+  def decrement_leave!
+    if approved?
+      decrement_leave_usage!
+    else
+      decrement_pending_leave!
     end
   end
 
@@ -121,14 +136,6 @@ class Event < ActiveRecord::Base
   def remove_used_and_add_pending_leave(old_duration)
     decrement_leave_usage!(old_duration)
     increment_pending_leave!
-  end
-
-  def decrement_leave!
-    if approved?
-      decrement_leave_usage!
-    else
-      decrement_pending_leave!
-    end
   end
 
   def increment_leave_and_approve_no_manager_leave!

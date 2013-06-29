@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = contains_date_params? ? current_user.events.not_rejected.date_range(params[:start], params[:end]) : Event.none
+    @events = contains_date_params? ? current_user.events.scheduled.date_range(params[:start], params[:end]) : Event.none
 
     respond_to do |format|
       format.json { render json: @events }
@@ -11,9 +11,9 @@ class EventsController < ApplicationController
 
   def manager
     if current_user.employees.present? && contains_date_params?
-      @events = Event.where(user_id: current_user.employees).not_rejected.date_range(params[:start], params[:end])
+      @events = Event.where(user_id: current_user.employees).scheduled.date_range(params[:start], params[:end])
     else
-      @events = []
+      @events = Event.none
     end
 
     respond_to do |format|
@@ -23,9 +23,9 @@ class EventsController < ApplicationController
 
   def company
     if current_user.subscriber && contains_date_params?
-      @events = Event.where(user_id: current_user.subscriber.users).not_rejected.date_range(params[:start], params[:end])
+      @events = Event.where(user_id: current_user.subscriber.users).scheduled.date_range(params[:start], params[:end])
     else
-      @events = []
+      @events = Event.none
     end
 
     respond_to do |format|
@@ -56,8 +56,8 @@ class EventsController < ApplicationController
 
   def destroy
     @event = current_user.events.find(params[:id])
-    @event.destroy
-
+    @event.cancel!
+    track_activity!(@event)
     head :ok
   end
 

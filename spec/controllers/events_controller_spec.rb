@@ -3,6 +3,8 @@ require 'spec_helper'
 describe EventsController do
   let(:event) { events(:build_model) }
   let(:all_day_event) { events(:all_day) }
+  let(:cancel_event) { events(:canceled) }
+  let(:rejected_event) { events(:rejected) }
   let(:user) { users(:test_example_com) }
   let(:manager) { users(:manager_example_com) }
 
@@ -13,6 +15,8 @@ describe EventsController do
       before { get :index, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
       it { assigns(:events).should include(event) }
+      it { assigns(:events).should_not include(cancel_event) }
+      it { assigns(:events).should_not include(rejected_event) }
     end
 
     context "no params" do
@@ -34,6 +38,8 @@ describe EventsController do
         manager.employees.should include(user)
       end
       it { assigns(:events).should include(event) }
+      it { assigns(:events).should_not include(cancel_event) }
+      it { assigns(:events).should_not include(rejected_event) }
     end
 
     context "No employees & with start and end params" do
@@ -42,13 +48,13 @@ describe EventsController do
       it "user has no employees" do
         user.employees.should be_blank
       end
-      it { assigns(:events).should == [] }
+      it { assigns(:events).should == Event.none }
     end
 
     context "no params" do
       before { get :manager, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [] }
+      it { assigns(:events).should == Event.none }
     end
   end
 
@@ -57,12 +63,14 @@ describe EventsController do
       before { get :company, start: event.starts_at, end: event.ends_at, format: :json }
       it { should respond_with(:success) }
       it { assigns(:events).should include(event) }
+      it { assigns(:events).should_not include(cancel_event) }
+      it { assigns(:events).should_not include(rejected_event) }
     end
 
     context "no params" do
       before { get :company, format: :json }
       it { should respond_with(:success) }
-      it { assigns(:events).should == [] }
+      it { assigns(:events).should == Event.none }
     end
   end
 
@@ -113,6 +121,11 @@ describe EventsController do
   end
 
   describe "#destroy" do
+    before do
+      ApplicationController.any_instance.should_receive(:track_activity!)
+      Event.any_instance.should_receive(:cancel!)
+    end
+
     context "http" do
       before { delete :destroy, id: event.to_param, format: :json }
       it { should respond_with(:success) }
@@ -120,8 +133,8 @@ describe EventsController do
     end
 
     context "database" do
-      it "deletes the record" do
-        -> { delete :destroy, id: event.to_param, format: :json }.should change(Event, :count).by(-1)
+      it "does NOT delete the record" do
+        -> { delete :destroy, id: event.to_param, format: :json }.should_not change(Event, :count)
       end
     end
   end

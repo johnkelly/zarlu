@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130528002818) do
+ActiveRecord::Schema.define(version: 20130629045738) do
 
   create_table "accruals", force: true do |t|
     t.string  "type"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130528002818) do
     t.boolean  "approved",    default: false, null: false
     t.boolean  "rejected",    default: false, null: false
     t.integer  "kind",        default: 0,     null: false
+    t.boolean  "canceled",    default: false, null: false
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree

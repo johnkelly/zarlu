@@ -31,7 +31,7 @@ class EmployeesController < ApplicationController
     @employee = current_user.subscriber.users.find(params[:id])
     @subscriber = @employee.subscriber
     @manager = @employee.has_manager? ? User.find(@employee.manager_id).display_name : "No Manager Assigned"
-    @events = @employee.events.lifo
+    @events = @employee.events.scheduled.lifo
     @event_durations = EventDurationService.new(@events)
     fresh_when([@employee, @manager, @subscriber, @display])
   end

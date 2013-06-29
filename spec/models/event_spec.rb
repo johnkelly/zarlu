@@ -56,48 +56,6 @@ describe Event do
         end
       end
     end
-
-    describe "after_destroy" do
-      describe "decrement_leave usage" do
-        context "approved event" do
-          it "decrements used leave" do
-            event.approve!
-            vacation_leave.used_hours.should == 1.98
-            event.destroy!
-            vacation_leave.reload.used_hours.should == 0.0
-          end
-        end
-
-        context "unapproved event" do
-          it "does nothing" do
-            event.approved?.should be_false
-            vacation_leave.stub(:used_hours).and_return(1.98)
-            event.destroy!
-            vacation_leave.reload.used_hours.should == 1.98
-          end
-        end
-      end
-    end
-
-    describe "decrement pending usage" do
-      context "approved event" do
-        it "does nothing" do
-          event.approve!
-          vacation_leave.stub(:pending_hours).and_return(1.98)
-          event.destroy!
-          vacation_leave.reload.pending_hours.should == 1.98
-        end
-      end
-
-      context "unapproved event" do
-        it "decrement pending leave" do
-          event.approved?.should be_false
-          vacation_leave.update(pending_hours: 1.98)
-          event.destroy!
-          vacation_leave.reload.pending_hours.should == 0
-        end
-      end
-    end
   end
 
   describe "self.date_range" do
@@ -213,6 +171,15 @@ describe Event do
         vacation_leave.used_hours.should == 0.0
         vacation_leave.pending_hours.should == 9.98
       end
+    end
+  end
+
+  describe "cancel!" do
+    before { event.should_receive(:decrement_leave!) }
+
+    it "sets the event to canceled" do
+      event.cancel!
+      event.reload.canceled.should be_true
     end
   end
 
@@ -341,6 +308,48 @@ describe Event do
         vacation_leave.pending_hours.should == 9.98
         event.update_leave!(1)
         vacation_leave.reload.pending_hours.should == 10.96
+      end
+    end
+  end
+
+  describe "decrement_leave!" do
+    describe "decrement_leave usage" do
+      context "approved event" do
+        it "decrements used leave" do
+          event.approve!
+          vacation_leave.used_hours.should == 1.98
+          event.decrement_leave!
+          vacation_leave.reload.used_hours.should == 0.0
+        end
+      end
+
+      context "unapproved event" do
+        it "does nothing" do
+          event.approved?.should be_false
+          vacation_leave.stub(:used_hours).and_return(1.98)
+          event.decrement_leave!
+          vacation_leave.reload.used_hours.should == 1.98
+        end
+      end
+    end
+
+    describe "decrement pending usage" do
+      context "approved event" do
+        it "does nothing" do
+          event.approve!
+          vacation_leave.stub(:pending_hours).and_return(1.98)
+          event.decrement_leave!
+          vacation_leave.reload.pending_hours.should == 1.98
+        end
+      end
+
+      context "unapproved event" do
+        it "decrement pending leave" do
+          event.approved?.should be_false
+          vacation_leave.update(pending_hours: 1.98)
+          event.decrement_leave!
+          vacation_leave.reload.pending_hours.should == 0
+        end
       end
     end
   end
