@@ -35,6 +35,7 @@ gem 'heroku-api', '~> 0.3.13'
 gem 'rack-cache', '~> 1.2'
 gem 'devise-async', '~> 0.7.0'
 gem 'font-awesome-rails', '~> 3.2.1.1'
+gem 'rack-timeout', '~> 0.0.4'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0.rc1'
