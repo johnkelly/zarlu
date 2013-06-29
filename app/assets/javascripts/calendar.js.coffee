@@ -44,6 +44,10 @@ manager_calendar = ->
         textColor: '#FFF'
         ignoreTimezone: false
       ]
+    eventRender: (event, element) ->
+      unless event.approved
+        add_stripe_to_pending_event(element)
+      true
 
 company_calendar = ->
   $('#company_calendar').fullCalendar
@@ -61,6 +65,10 @@ company_calendar = ->
         textColor: '#FFF'
         ignoreTimezone: false
       ]
+    eventRender: (event, element) ->
+      unless event.approved
+        add_stripe_to_pending_event(element)
+      true
 
 show_available_hours_for_kind_of_time_off = ->
   $('#event_kind').change( ->
