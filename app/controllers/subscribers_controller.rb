@@ -25,7 +25,7 @@ class SubscribersController < ApplicationController
     @user = @users.find(params[:user_id])
     @user.promote_to_manager!
     track_activity!(@user)
-    redirect_to subscribers_url, notice: %Q{Promoted #{@user.display_name} to manager.}
+    redirect_to subscribers_url, notice: %Q{Gave #{@user.display_name} manager permissions.}
   end
 
   def demote_to_employee
@@ -34,7 +34,7 @@ class SubscribersController < ApplicationController
       flash[:alert] = "Zarlu requires customers to have at least one manager so that someone in your company can view administrative pages."
     else
       @user.demote_to_employee!
-      flash[:notice] = %Q{Demoted #{@user.display_name} to employee.}
+      flash[:notice] = %Q{Removed manager permissions for #{@user.display_name}.}
     end
     redirect_to subscribers_url
   end

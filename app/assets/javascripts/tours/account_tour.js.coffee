@@ -54,18 +54,18 @@ class window.AccountTour
   step5: ->
     @tour.addStep(
       path: "/subscribers"
-      element: ".btn-mini:contains('Promote'):first"
+      element: ".btn-mini:contains('Make Manager'):first"
       title: "Make Employee a Manager"
-      content: "When you click on promote to manager, you will make the employee a manager who can oversee other employees' time off requests."
+      content: "When you click on make manager, you will make the employee a manager who can oversee other employees' time off requests."
       placement: "right"
     )
 
   step6: ->
     @tour.addStep(
       path: "/subscribers"
-      element: ".btn-mini:contains('Demote'):first"
+      element: ".btn-mini:contains('Make Employee'):first"
       title: "Make Manager an Employee"
-      content: "If an employee's responsibilities have changed, you can demote them back to an employee level account by clicking on the demote to employee button."
+      content: "If an employee's responsibilities have changed, you can remove manager permissions by clicking on the make employee button."
       placement: "right"
     )
 

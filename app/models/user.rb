@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
       demote_to_employee!
       true
     else
-      errors.add(:base, "You must delete all non managers or promote a new manager before removing your last manager account.")
+      errors.add(:base, "You must delete all non managers or add a new manager before removing your last manager account.")
       false
     end
   end
