@@ -50,4 +50,9 @@ describe HomesController do
     before { get :features }
     it { should respond_with(:success) }
   end
+
+  describe "#tos" do
+    before { get :terms_of_service }
+    it { should respond_with(:success) }
+  end
 end

@@ -26,4 +26,8 @@ class HomesController < ApplicationController
   def features
     fresh_when("homes_features")
   end
+
+  def terms_of_service
+    fresh_when("homes_terms_of_service")
+  end
 end

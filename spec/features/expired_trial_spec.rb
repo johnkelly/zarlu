@@ -77,10 +77,5 @@ describe "user with expired trial" do
       click_link 'Zarlu'
       page.should have_content 'Employee Time & Attendance Software'
     end
-
-    it "renders pricing" do
-      click_link 'Pricing'
-      page.should have_selector '#price'
-    end
   end
 end
