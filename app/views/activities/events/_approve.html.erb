@@ -1,10 +1,11 @@
 <% cache activity do %>
   <% user = activity.trackable.user %>
   <% manager = @managers.detect{|m| m.id == user.manager_id} %>
+  <% manager_name = manager.try(:display_name).presence || "Deleted Account" %>
   <li>
   <span class="activity_date"><%= activity.created_at.in_time_zone(@subscriber.time_zone).strftime('%b %d') %></span>
   <span class="activity_gravatar"><%= image_tag gravatar_url(manager), class: "img-circle", width: 50, height: 50 %></span>
-  <strong class="label label-success">Approved</strong>&nbsp;<%= manager.display_name %> has approved <%= user.display_name %>'s time off request.
+  <strong class="label label-success">Approved</strong>&nbsp;<%= manager_name %> has approved <%= user.display_name %>'s time off request.
   <hr/>
   </li>
 <% end %>

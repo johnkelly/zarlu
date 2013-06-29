@@ -7,7 +7,7 @@ class Subscriber::UsersController < ApplicationController
     @user = @subscriber.users.new(user_params)
     if @user.save
       charge_credit_card(@subscriber)
-      track_activity!(@user)
+      track_activity!(@user, "add_user")
       redirect_to subscribers_url, notice: %Q{Successfully created new user.}
     else
       redirect_to subscribers_url, alert: @user.errors.full_messages.first
