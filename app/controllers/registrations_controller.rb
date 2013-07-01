@@ -54,7 +54,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_success(resource)
     set_flash_message :notice, :signed_up if is_navigational_format?
-    flash[:analytics] = "/vp/create_account"
     sign_up(resource_name, resource)
     track_activity!(resource)
     respond_with resource, location: after_sign_up_path_for(resource)

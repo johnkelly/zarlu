@@ -23,7 +23,6 @@ gem 'hirefire-resource', '~> 0.1.2'
 gem 'memcachier', '~> 0.0.2'
 gem 'dalli', '~> 2.6.4'
 gem 'will_paginate', '~> 3.0.4'
-gem 'intercom-rails', '~> 0.2.23'
 gem 'best_in_place', git: 'git://github.com/bernat/best_in_place.git'
 
 gem 'sass-rails',   '~> 4.0.0'

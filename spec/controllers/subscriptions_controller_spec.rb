@@ -12,7 +12,6 @@ describe SubscriptionsController do
         patch :update, subscriber: { card_token: "fake_token" }
       end
       it { should redirect_to subscriptions_url }
-      it { should set_the_flash[:analytics].to("/vp/add_credit_card") }
       it { assigns(:subscriber).should == subscriber }
     end
 

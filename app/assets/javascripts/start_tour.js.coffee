@@ -1,7 +1,7 @@
 start_tour_on_click = (tour, type) ->
   $('#start_tour, .tour').click (e) ->
     e.preventDefault()
-    _gaq.push(['_trackPageview', "/vp/tour/#{type}"])
+    track_tour(type)
     tour.restart()
     tour.start()
     send_started_welcome_tour() if type is "welcome"
@@ -15,6 +15,9 @@ send_started_welcome_tour = ->
       $('#welcome_tour_task').prop("checked", true)
       $('#welcome_tour_task').prop("disabled", true)
   )
+
+track_tour = (type) ->
+  analytics.track("Start Tour #{type}",{})
 
 jQuery ->
   if $('body.homes_show').length

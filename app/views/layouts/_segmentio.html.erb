@@ -1,0 +1,3 @@
+<%= subscriber = current_user.subscriber %>
+<div id="segment_io_user_data" data-id="<%= current_user.id %>" data-email="<%= current_user.email %>" data-name="<%= current_user.name %>"></div>
+<div id="segment_io_subscriber_data" data-id="<%= subscriber.try(:id) %>" data-name="<%= subscriber.try(:name) %>" data-trial="<%= subscriber.try(:trial?) %>" data-card="<%= subscriber.try(:has_credit_card?) %>" data-users="<%= subscriber.try(:users).try(:count) %>"></div>

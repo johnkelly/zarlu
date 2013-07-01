@@ -22,9 +22,10 @@
 //= require best_in_place
 //= require best_in_place.purr
 //= require fullcalendar
+//= require segmentio
+//= require tracking
 //= require uservoice
 //= require bootstrap-tour
 //= require_tree ./tours
 //= require_tree .
 //= require turbolinks
-//= require google_analytics
