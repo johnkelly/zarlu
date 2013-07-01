@@ -17,9 +17,9 @@
     <td>
       <%= link_to "Details", employee_path(employee), class: "btn btn-primary btn-mini" %>
       <% if employee.manager? %>
-        <%= link_to "Make Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right", data: { confirm: "Are you sure?" } %>
+        <%= link_to "Make Employee", demote_to_employee_subscribers_path(user_id: employee), method: :put, class: "btn btn-danger btn-mini float_right js_make_employee", data: { confirm: "Are you sure?" } %>
       <% else %>
-        <%= link_to "Make Manager", promote_to_manager_subscribers_path(user_id: employee), method: :put, class: "btn btn-info btn-mini float_right" %>
+        <%= link_to "Make Manager", promote_to_manager_subscribers_path(user_id: employee), method: :put, class: "btn btn-info btn-mini float_right js_make_manager" %>
       <% end %>
     </td>
   </tr>

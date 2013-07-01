@@ -46,6 +46,6 @@
     <i id="icon-edit-other-accrued-hours-<%= employee.other_leave.id %>" class="icon-edit"></i>
     </dd>
     <dt>Delete Account</dt>
-    <dd><%= link_to "Delete", subscriber_user_path, class: "btn btn-small btn-danger", method: :delete, data: { confirm: "Are you sure?" } %></dd>
+    <dd><%= link_to "Delete", subscriber_user_path, class: "btn btn-small btn-danger js_delete_user", method: :delete, data: { confirm: "Are you sure?" } %></dd>
   </dl>
 <% end %>

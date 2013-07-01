@@ -21,6 +21,7 @@ subscription =
     if status == 200
       $('#subscriber_card_token').val(response.id)
       $('form.edit_subscriber')[0].submit()
+      track_add_credit_card()
     else
       $('#stripe_error').removeClass('hide')
       $('#stripe_error').text(response.error.message)
@@ -30,3 +31,8 @@ jQuery ->
   if $('.subscriptions_show').length || $('.subscriptions_create').length
     Stripe.setPublishableKey($('meta[data-name="stripe-key"]').attr('data-value'))
     subscription.setupForm()
+
+track_add_credit_card = ->
+  if $('.subscriptions_show').length
+    form = $('.edit_subscriber')
+    analytics.track('Add / Update Credit Card', {})

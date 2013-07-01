@@ -144,6 +144,7 @@ create_event = (title, startDate, endDate, allDay, jsEvent, view, kind) ->
     success: ->
       close_dialog()
       get_default_available_hours()
+      track_create_event()
   )
 
 update_event = (event) ->
@@ -163,6 +164,7 @@ update_event = (event) ->
     success: ->
       close_dialog()
       get_default_available_hours()
+      track_update_event()
   )
 
 update_move_event = (event) ->
@@ -179,6 +181,7 @@ update_move_event = (event) ->
     success: ->
       close_dialog()
       get_default_available_hours()
+      track_move_event()
   )
 
 delete_event = (event) ->
@@ -188,6 +191,7 @@ delete_event = (event) ->
     success: ->
       close_dialog()
       get_default_available_hours()
+      track_delete_event()
   )
 
 get_available_hours = (event_type) ->
@@ -263,3 +267,16 @@ event_type = (color) ->
     when "purple" then "3"
     when "red" then "4"
     when "black" then "5"
+
+track_create_event = ->
+  analytics.track('Create Time Off Request', {})
+
+track_update_event = ->
+  analytics.track('Update Time Off Request', {})
+
+track_move_event = ->
+  analytics.track('Move Time Off Request', {})
+
+track_delete_event = ->
+  analytics.track('Delete Time Off Request', {})
+
