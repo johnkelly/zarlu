@@ -1,11 +1,12 @@
-<footer id="footer">
-<div class="container center">
-  <div class="row ml15">
-    <div class="span2 left">
-      <h2>Company</h2>
-      <ul class="unstyled">
-        <li><%= link_to "Contact Us", "#", class: "support_link" %></li>
-        <li><%= link_to "Status", "https://zarlu.statuspage.io/", target: "_blank" %>
+<% cache "footer" do %>
+  <footer id="footer">
+  <div class="container center">
+    <div class="row ml15">
+      <div class="span2 left">
+        <h2>Company</h2>
+        <ul class="unstyled">
+          <li><%= link_to "Contact Us", "#", class: "support_link" %></li>
+          <li><%= link_to "Status", "https://zarlu.statuspage.io/", target: "_blank" %>
         <li><%= link_to "Security", "/blog/how-does-zarlu-keep-my-data-safe" %></li>
         <li><%= link_to "Privacy Policy", "/privacy-policy", data: { "no-turbolink" => true } %></li>
         <li><%= link_to "Service Terms", "/terms-of-service" %></li>
@@ -45,3 +46,4 @@
   </div>
 </div>
 </footer>
+<% end %>
