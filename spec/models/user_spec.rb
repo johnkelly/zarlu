@@ -216,9 +216,18 @@ describe User do
   end
 
   describe "years at company" do
-    it "returns the number of years as decimal" do
-      user.stub(:join_date).and_return(6.months.ago.to_date)
-      user.years_at_company.should  == 0.5
+    context "has join date" do
+      it "returns the number of years as decimal" do
+        user.stub(:join_date).and_return(6.months.ago.to_date)
+        user.years_at_company.should  == 0.5
+      end
+    end
+
+    context "no join date" do
+      it "returns 0 years" do
+        user.stub(:join_date).and_return(nil)
+        user.years_at_company.should  == 0.0
+      end
     end
   end
 

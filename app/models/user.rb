@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def years_at_company
-    ((Date.current - join_date).to_i / 365.0).round(1)
+    (days_at_company / 365.0).round(1)
   end
 
   def accrual_rate(type)
@@ -115,5 +115,13 @@ class User < ActiveRecord::Base
 
   def no_employees?
     subscriber.users.where(manager: false).count == 0
+  end
+
+  def days_at_company
+    if join_date.present?
+      Date.current - join_date
+    else
+      0
+    end
   end
 end
