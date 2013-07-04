@@ -1,69 +1,42 @@
 <% cache "homes_index" do %>
   <div class="image_wrap">
     <div class="splash_image">
-      <div class="container">
+      <div class="container pt120">
         <h1>Employee Time & Attendance Software</h1>
-        <h2>Revolutionize How Your Business Handles Employee Time</h2>
-        <%= image_tag "activity_feed_tablet.png", width: 252, height: 376, alt: "Software Pricing" %>
-        <%= image_tag "time_calendar.png", width: 500, height: 376, alt: "Employee Attendance Calendar" %>
-        <%= image_tag "software_chart_mobile.png", width: 196, height: 376, alt: "Attendance Analytics & Charts" %>
-      </div>
-    </div>
-  </div>
-  <div class="blue_paper pt8 pb8">
-    <div class="container row">
-      <div class="span9">
-        <h3 class="margin0">Take control of employee attendance today with Zarlu.</h3>
-      </div>
-      <div class="span3">
-        <%= link_to "Get Started Now!", new_user_registration_path, class: "btn btn-success btn-large" %>
+        <h2>Take control of employee attendance today with Zarlu.</h2>
+        <div class="mt40">
+          <%= link_to "<i class='icon-magic icon-large'></i>&nbsp;&nbsp;Features".html_safe, features_path, class: "btn btn-success  btn-huge" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "<i class='icon-plus-sign icon-large'></i>&nbsp;&nbsp;Free Trial".html_safe, new_user_registration_path, class: "btn btn-primary btn-huge" %>
+        </div>
       </div>
     </div>
   </div>
   <div class="container mt25">
-    <h3 class="center important">What people are saying about Zarlu:</h3>
-    <div class="row ml15 quotes">
-      <div class="span4">
-        <h4>"A visionary product that makes any business more efficient."</h4>
-      </div>
-      <div class="span4">
-        <h4>"Zarlu could do for attendance what Mint did for personal finance."</h4>
-      </div>
-      <div class="span4">
-        <h4>"It brings modern design and functionality to the business software world."</h4>
-      </div>
-    </div>
-  </div>
-  <div class="dark_blue_background">
-    <div class="container mt25 center">
-      <h2 class="important">Brilliant Calendar</h2>
-      <%= image_tag "calendar_leave_types.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
-    </div>
-  </div>
-  <div class="container mt25 center">
-    <h2 class="important">Beautiful Employee & Company Feed</h2>
-    <%= image_tag "employee_company_feed.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
-  </div>
-  <div class="dark_blue_background">
-    <div class="container mt25 center">
-      <h2 class="important">Simple Employee Management</h2>
-      <%= image_tag "simple_employee_management.png", width: 841, height: 377, alt: "Calendar Leave Types" %>
-    </div>
-  </div>
-  <div class="container center mt25">
-    <h2 class="important">Excellent Customer Service</h2>
-    <div class="row ml15">
-      <div class="span6">
-        <h4>Step by step tour of every feature.</h4>
-        <p class="big_paragraph">We have created a custom tour on each page, so that you and your co-workers are always just a click away from a walk through of a page's functions and uses.</p>
-      </div>
-      <div class="span6">
-        <h4>Every page has a link to contact us directly.</h4>
-        <p class="big_paragraph">Every page has a link to our support widget, which sends an email directly to our engineers so that we can answer any questions you have as quickly as possible.</p>
-      </div>
-    </div>
-  </div>
-  <div class="container mt25 pb20">
-    <%= link_to "I want to improve my company's time & attendance process!", new_user_registration_path, class: "btn btn-success btn-huge btn-block" %>
+        <h2 class="center large_h2 important">Manage attendance with our software.</h2>
+        <div class="row center mt40">
+          <div class="span3 selected_video" id="play_time_off">
+            <p><i class="icon-calendar icon-4x"></i></p>
+            <h4>Submit Time Off</h4>
+          </div>
+          <div class="span3" id="play_approve">
+            <p><i class="icon-group icon-4x"></i></p>
+            <h4>Manage Time Off</h4>
+          </div>
+          <div class="span3" id="play_chart">
+            <p><i class="icon-bar-chart icon-4x"></i></p>
+            <h4>View Attendance Data</h4>
+          </div>
+          <div class="span3" id="play_settings">
+            <p><i class="icon-cogs icon-4x"></i></p>
+            <h4>Add Attendance Rules</h4>
+          </div>
+        </div>
+        <div class="center mt40 mb60 demo_video">
+          <%= video_tag ["timeoff.mp4", "timeoff.webm", "timeoff.theora.ogv"], size: "828x445", autoplay: true, id: "time_off_video" %>
+          <%= video_tag ["approve.mp4", "approve.webm", "approve.theora.ogv"], size: "828x445", preload: "auto", id: "approve_video", style: "display: none;" %>
+          <%= video_tag ["chart.mp4", "chart.webm", "chart.theora.ogv"], size: "828x445", preload: "auto", id: "chart_video", style: "display: none;" %>
+          <%= video_tag ["settings.mp4", "settings.webm", "settings.theora.ogv"], size: "828x445", preload: "auto", id: "settings_video", style: "display: none;" %>
+        </div>
   </div>
 <% end %>

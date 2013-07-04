@@ -154,11 +154,19 @@ header {
 .splash_image {
   background: image-url("midtown.png") no-repeat;
   background-color: #FFF;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   margin-top: 50px;
   height: 540px;
   width: 100%;
   text-align: center;
   color: #FFF;
+
+  h1 {
+    font-size: 50px;
+  }
 
   h1, h2 {
     margin-top: 20px;
@@ -168,6 +176,7 @@ header {
   h2 {
     font-weight: 400;
     text-shadow: #000 3px 3px;
+    line-height: 2.5
   }
 
   img {
@@ -258,7 +267,7 @@ dl.color_legend {
 
 .quotes {
   h4 {
-    color: #91979e;
+    color: #FFFFFF;
     padding: 15px 20px 15px 20px;
     font-size: 21px;
     line-height: 30px;
@@ -304,4 +313,26 @@ body.homes_features {
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   }
+}
+
+.large_h2 {
+  font-size: 45px !important;
+}
+
+.demo_video {
+  background-size: 900px 516px;
+  background-repeat:no-repeat;
+  background-image: image-url("demo_screen.png");
+  width: 900px;
+  height: 516px;
+  margin-left: auto;
+  margin-right: auto;
+
+  video {
+    margin-top: 35px;
+  }
+}
+
+.selected_video {
+  color: #0047CC;
 }
