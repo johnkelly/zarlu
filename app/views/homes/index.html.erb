@@ -34,9 +34,13 @@
         </div>
         <div class="center mt40 mb60 demo_video">
           <%= video_tag ["timeoff.mp4", "timeoff.webm", "timeoff.theora.ogv"], size: "828x445", autoplay: true, id: "time_off_video" %>
-          <%= video_tag ["approve.mp4", "approve.webm", "approve.theora.ogv"], size: "828x445", preload: "auto", id: "approve_video", style: "display: none;" %>
-          <%= video_tag ["chart.mp4", "chart.webm", "chart.theora.ogv"], size: "828x445", preload: "auto", id: "chart_video", style: "display: none;" %>
-          <%= video_tag ["settings.mp4", "settings.webm", "settings.theora.ogv"], size: "828x445", preload: "auto", id: "settings_video", style: "display: none;" %>
+          <%= video_tag ["approve.mp4", "approve.webm", "approve.theora.ogv"], size: "828x445", preload: "auto", id: "approve_video", style: "display: none;", poster: "approve.png" %>
+          <%= video_tag ["chart.mp4", "chart.webm", "chart.theora.ogv"], size: "828x445", preload: "auto", id: "chart_video", style: "display: none;", poster: "chart.png" %>
+          <%= video_tag ["settings.mp4", "settings.webm", "settings.theora.ogv"], size: "828x445", preload: "auto", id: "settings_video", style: "display: none;", poster: "settings.png" %>
+          <%= image_tag "timeoff.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "time_off_backup" %>
+          <%= image_tag "approve.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "approve_backup" %>
+          <%= image_tag "chart.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "chart_backup" %>
+          <%= image_tag "settings.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "settings_backup" %>
         </div>
   </div>
 <% end %>
