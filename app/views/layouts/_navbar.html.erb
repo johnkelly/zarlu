@@ -49,7 +49,7 @@
           <li><div><%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %></div></li>
         <% end %>
       </ul>
-      <%= link_to "Zarlu", root_path, id: "logo" %>
+      <%= link_to "Zarlu", root_path, id: "logo", data: { "no-turbolink" => true } %>
     </div>
   </div>
 <% end %>
