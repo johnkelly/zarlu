@@ -1,58 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The change you wanted was rejected (422)</title>
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-  }
+  <head>
+    <title>Zarlu - Request Rejected</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url("retina_wood_static.png");
+        font-family: "proximanova-semibold","Helvetica Neue",Helvetica,Arial,sans-serif;
+      }
 
-  div.dialog {
-    width: 25em;
-    margin: 4em auto 0 auto;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 4em 0 4em;
-  }
+      div.paper {
+        background: #FFF;
+        margin-top: 65px;
+        padding: 10px 25px 50px 25px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.2em;
+        line-height: 1.60em;
+        font-weight: 300;
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 25px 80px 40px 80px;
+        background-color: #FFF;
+        margin-top: 65px;
+        margin-bottom: 20px;
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+      }
 
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+      h1 {
+        text-align: center;
+        font-size: 60px;
 
-  body > p {
-    width: 33em;
-    margin: 0 auto 1em;
-    padding: 1em 0;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+      }
 
-<body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <h1>The change you wanted was rejected.</h1>
-    <p>Maybe you tried to change something you didn't have access to.</p>
-  </div>
-  <p>If you are the application owner check the logs for more information.</p>
-</body>
+      a {
+        text-decoration: none;
+        color: #005CCC;
+      }
+
+      a:visited {
+        color: #005CCC;
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 36px;
+      }
+
+      h5 {
+        text-align: center;
+        color: red;
+      }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//status-page-production.s3.amazonaws.com/se.js"></script>
+    <script type="text/javascript">
+      window.fetchStatusPage({
+        pageId: 'rhyq836nmr78',
+        renderTo: '#status',
+      });
+    </script>
+  </head>
+  <body>
+    <div class="paper">
+      <h1><a href="/">Zarlu</a></h1>
+      <hr/>
+      <h3>422: Request Rejected</h3>
+      <p>This error occurs when there is an issue with the HTTP request. Please contact support if the problem persists. Customer insight can be helpful when debugging this issue for valid HTTP requests.</p>
+
+      <h3>Official System Status</h3>
+      <h5 id="status"></h5>
+      If our status page shows no downtime or messages, please contact support so we can troubleshoot the problem you are experiencing.
+    </div>
+  </body>
 </html>
