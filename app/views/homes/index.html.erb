@@ -13,34 +13,45 @@
     </div>
   </div>
   <div class="container mt25">
-        <h2 class="center large_h2 important">Manage attendance with our software.</h2>
-        <div class="row center mt40">
-          <div class="span3 selected_video" id="play_time_off">
-            <p><i class="icon-calendar icon-4x"></i></p>
-            <h4>Submit Time Off</h4>
-          </div>
-          <div class="span3" id="play_approve">
-            <p><i class="icon-group icon-4x"></i></p>
-            <h4>Manage Time Off</h4>
-          </div>
-          <div class="span3" id="play_chart">
-            <p><i class="icon-bar-chart icon-4x"></i></p>
-            <h4>View Attendance Data</h4>
-          </div>
-          <div class="span3" id="play_settings">
-            <p><i class="icon-cogs icon-4x"></i></p>
-            <h4>Add Attendance Rules</h4>
-          </div>
-        </div>
-        <div class="center mt40 mb60 demo_video">
-          <%= video_tag ["timeoff.mp4", "timeoff.webm", "timeoff.theora.ogv"], size: "828x445", autoplay: true, id: "time_off_video" %>
-          <%= video_tag ["approve.mp4", "approve.webm", "approve.theora.ogv"], size: "828x445", preload: "auto", id: "approve_video", style: "display: none;", poster: "approve.png" %>
-          <%= video_tag ["chart.mp4", "chart.webm", "chart.theora.ogv"], size: "828x445", preload: "auto", id: "chart_video", style: "display: none;", poster: "chart.png" %>
-          <%= video_tag ["settings.mp4", "settings.webm", "settings.theora.ogv"], size: "828x445", preload: "auto", id: "settings_video", style: "display: none;", poster: "settings.png" %>
-          <%= image_tag "timeoff.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "time_off_backup" %>
-          <%= image_tag "approve.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "approve_backup" %>
-          <%= image_tag "chart.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "chart_backup" %>
-          <%= image_tag "settings.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "settings_backup" %>
-        </div>
+    <h2 class="center large_h2 important">Manage attendance with our software.</h2>
+    <div class="row center mt40">
+      <div class="span3 selected_video" id="play_time_off">
+        <p><i class="icon-calendar icon-4x"></i></p>
+        <h4>Submit Time Off</h4>
+      </div>
+      <div class="span3" id="play_approve">
+        <p><i class="icon-group icon-4x"></i></p>
+        <h4>Manage Time Off</h4>
+      </div>
+      <div class="span3" id="play_chart">
+        <p><i class="icon-bar-chart icon-4x"></i></p>
+        <h4>View Attendance Data</h4>
+      </div>
+      <div class="span3" id="play_settings">
+        <p><i class="icon-cogs icon-4x"></i></p>
+        <h4>Add Attendance Rules</h4>
+      </div>
+    </div>
+    <div class="center mt40 mb60 demo_video">
+      <%= video_tag ["timeoff.mp4", "timeoff.webm", "timeoff.theora.ogv"], size: "828x445", autoplay: true, id: "time_off_video" %>
+      <%= video_tag ["approve.mp4", "approve.webm", "approve.theora.ogv"], size: "828x445", preload: "auto", id: "approve_video", style: "display: none;", poster: "approve.png" %>
+      <%= video_tag ["chart.mp4", "chart.webm", "chart.theora.ogv"], size: "828x445", preload: "auto", id: "chart_video", style: "display: none;", poster: "chart.png" %>
+      <%= video_tag ["settings.mp4", "settings.webm", "settings.theora.ogv"], size: "828x445", preload: "auto", id: "settings_video", style: "display: none;", poster: "settings.png" %>
+      <%= image_tag "timeoff.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "time_off_backup" %>
+      <%= image_tag "approve.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "approve_backup" %>
+      <%= image_tag "chart.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "chart_backup" %>
+      <%= image_tag "settings.png", width: "828", height: 445, alt: "Time Off", class: "hide image_backup", id: "settings_backup" %>
+    </div>
+  </div>
+  <div class="container row">
+    <div class="p30 center">
+      <h2>Are you ready to improve your business's attendance?</h2>
+      <h3 class="light_weight">
+        Start your 30-day free trial today. No Credit Card Required.
+      </h3>
+      <div>
+        <%= link_to "<i class='icon-plus-sign icon-large'></i>&nbsp;&nbsp;Try Zarlu Free Today".html_safe, new_user_registration_path, class: "btn btn-primary btn-large" %>
+      </div>
+    </div>
   </div>
 <% end %>
