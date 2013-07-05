@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130629045738) do
+ActiveRecord::Schema.define(version: 20130702061701) do
 
   create_table "accruals", force: true do |t|
     t.string  "type"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20130629045738) do
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
+  create_table "holidays", force: true do |t|
+    t.integer "subscriber_id"
+    t.string  "name"
+    t.date    "date"
+  end
+
+  add_index "holidays", ["subscriber_id"], name: "index_holidays_on_subscriber_id", using: :btree
+
   create_table "leaves", force: true do |t|
     t.string   "type"
     t.integer  "user_id"
@@ -100,6 +108,7 @@ ActiveRecord::Schema.define(version: 20130629045738) do
     t.text     "properties"
     t.string   "name"
     t.date     "join_date"
+    t.boolean  "canceled",               default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -6,7 +6,6 @@ describe TimeOffValue do
       TimeOffValue.kinds.should == [
         ["Vacation", TimeOffValue::VACATION],
         ["Sick", TimeOffValue::SICK],
-        ["Holiday", TimeOffValue::HOLIDAY],
         ["Personal", TimeOffValue::PERSONAL],
         ["Unpaid", TimeOffValue::UNPAID],
         ["Other", TimeOffValue::OTHER]
@@ -23,11 +22,6 @@ describe TimeOffValue do
     context "sick" do
       subject { TimeOffValue.color(TimeOffValue::SICK) }
       it { should == "green" }
-    end
-
-    context "holiday" do
-      subject { TimeOffValue.color(TimeOffValue::HOLIDAY) }
-      it { should == "#FF5E00" }
     end
 
     context "Personal" do

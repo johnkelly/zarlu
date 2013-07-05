@@ -10,7 +10,6 @@
     </td>
     <td><%= employee_leaves.select{ |leave| leave.type == "VacationLeave" }.map(&:available_hours).first %></td>
     <td><%= employee_leaves.select{ |leave| leave.type == "SickLeave" }.map(&:available_hours).first %></td>
-    <td><%= employee_leaves.select{ |leave| leave.type == "HolidayLeave" }.map(&:available_hours).first %></td>
     <td><%= employee_leaves.select{ |leave| leave.type == "PersonalLeave" }.map(&:available_hours).first %></td>
     <td><%= employee_leaves.select{ |leave| leave.type == "UnpaidLeave" }.map(&:available_hours).first %></td>
     <td><%= employee_leaves.select{ |leave| leave.type == "OtherLeave" }.map(&:available_hours).first %></td>

@@ -51,15 +51,6 @@ describe CompanySettingsController do
         its(:enabled) { should be_false }
       end
 
-      context "holiday" do
-        before do
-          subscriber.holiday_company_setting.enabled.should be_true
-          patch :update, id: holiday.to_param, company_setting: { enabled: "false" }
-        end
-        subject { subscriber.holiday_company_setting.reload }
-        its(:enabled) { should be_false }
-      end
-
       context "personal" do
         before do
           subscriber.personal_company_setting.enabled.should be_true

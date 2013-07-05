@@ -4,13 +4,12 @@ class Subscriber < ActiveRecord::Base
   has_many :accruals, dependent: :destroy
   has_many :vacation_accruals, class_name: "VacationAccrual", foreign_key: :subscriber_id
   has_many :sick_accruals, class_name: "SickAccrual", foreign_key: :subscriber_id
-  has_many :holiday_accruals, class_name: "HolidayAccrual", foreign_key: :subscriber_id
   has_many :personal_accruals, class_name: "PersonalAccrual", foreign_key: :subscriber_id
   has_many :unpaid_accruals, class_name: "UnpaidAccrual", foreign_key: :subscriber_id
   has_many :other_accruals, class_name: "OtherAccrual", foreign_key: :subscriber_id
+  has_many :holidays, dependent: :destroy
   has_one :vacation_company_setting, class_name: "VacationCompanySetting", foreign_key: :subscriber_id
   has_one :sick_company_setting, class_name: "SickCompanySetting", foreign_key: :subscriber_id
-  has_one :holiday_company_setting, class_name: "HolidayCompanySetting", foreign_key: :subscriber_id
   has_one :personal_company_setting, class_name: "PersonalCompanySetting", foreign_key: :subscriber_id
   has_one :unpaid_company_setting, class_name: "UnpaidCompanySetting", foreign_key: :subscriber_id
   has_one :other_company_setting, class_name: "OtherCompanySetting", foreign_key: :subscriber_id
@@ -120,7 +119,6 @@ class Subscriber < ActiveRecord::Base
   def create_settings
     build_vacation_company_setting
     build_sick_company_setting
-    build_holiday_company_setting
     build_personal_company_setting
     build_unpaid_company_setting
     build_other_company_setting

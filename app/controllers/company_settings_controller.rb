@@ -9,6 +9,8 @@ class CompanySettingsController < ApplicationController
     @company_setting_service = CompanySettingService.new(@subscriber.company_settings)
     @accrual_service = AccrualService.new(@subscriber.accruals)
     @time_zones = ActiveSupport::TimeZone.all.map{ |tz| [tz.name, tz.name] }
+    @holidays = @subscriber.holidays.chronological.select(&:persisted?)
+    @holiday = @subscriber.holidays.new
     fresh_when(@subscriber)
   end
 

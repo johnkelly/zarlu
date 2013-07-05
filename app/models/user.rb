@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_many :leaves, dependent: :destroy
   has_one :vacation_leave, dependent: :destroy, class_name: "VacationLeave", foreign_key: :user_id
   has_one :sick_leave, dependent: :destroy, class_name: "SickLeave", foreign_key: :user_id
-  has_one :holiday_leave, dependent: :destroy, class_name: "HolidayLeave", foreign_key: :user_id
   has_one :personal_leave, dependent: :destroy, class_name: "PersonalLeave", foreign_key: :user_id
   has_one :unpaid_leave, dependent: :destroy, class_name: "UnpaidLeave", foreign_key: :user_id
   has_one :other_leave, dependent: :destroy, class_name: "OtherLeave", foreign_key: :user_id
@@ -85,7 +84,6 @@ class User < ActiveRecord::Base
   def create_leave
     build_vacation_leave
     build_sick_leave
-    build_holiday_leave
     build_personal_leave
     build_unpaid_leave
     build_other_leave

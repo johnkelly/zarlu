@@ -36,6 +36,7 @@ Zarlu::Application.routes.draw do
   resources :welcomes, only: %w[create]
   resources :company_settings, only: %w[index update]
   resources :accruals, only: %w[create destroy]
+  resources :holidays, only: %w[index create destroy]
   resources :accrued_hours, only: %w[update]
   namespace :subscriber do
     resources :users, only: %w[create update destroy]

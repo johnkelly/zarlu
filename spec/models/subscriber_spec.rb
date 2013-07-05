@@ -6,14 +6,16 @@ describe Subscriber do
   let(:paid_subscriber) { subscribers(:paid) }
 
   describe "attributes" do
-    it { should have_many(:users) }
+    it { should have_many(:users).dependent(:destroy) }
+    it { should have_many(:company_settings).dependent(:destroy) }
+    it { should have_many(:accruals).dependent(:destroy) }
+    it { should have_many(:holidays).dependent(:destroy) }
   end
 
   describe "after_create" do
     it "creates a vacation company setting record" do
       -> { Subscriber.create! }.should change(VacationCompanySetting, :count).by(1)
       -> { Subscriber.create! }.should change(SickCompanySetting, :count).by(1)
-      -> { Subscriber.create! }.should change(HolidayCompanySetting, :count).by(1)
       -> { Subscriber.create! }.should change(PersonalCompanySetting, :count).by(1)
       -> { Subscriber.create! }.should change(UnpaidCompanySetting, :count).by(1)
       -> { Subscriber.create! }.should change(OtherCompanySetting, :count).by(1)

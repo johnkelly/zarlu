@@ -3,7 +3,7 @@ time_off_used_by_category = ->
   width = 640
   height = 480
   radius = Math.min(width, height) / 2
-  colors = d3.scale.ordinal().range(["#0668C0", "green", "#FF5E00", "purple", "red", "black"])
+  colors = d3.scale.ordinal().range(["#0668C0", "green", "purple", "red", "black"])
   pie = d3.layout.pie().sort(null).value((d) -> d.hours)
   arc = d3.svg.arc().innerRadius(radius * .6).outerRadius(radius)
   svg = d3.select("#pie_chart").append("svg").attr("width", width).attr("height", height).append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
@@ -24,9 +24,8 @@ pie_chart_json = ->
   [
     {"kind": "Vacation", "hours": durations[0]},
     {"kind": "Sick", "hours": durations[1]},
-    {"kind": "Holiday", "hours": durations[2]},
-    {"kind": "Personal", "hours": durations[3]},
-    {"kind": "Unpaid", "hours": durations[4]},
-    {"kind": "Other", "hours": durations[5]},
+    {"kind": "Personal", "hours": durations[2]},
+    {"kind": "Unpaid", "hours": durations[3]},
+    {"kind": "Other", "hours": durations[4]},
   ]
 

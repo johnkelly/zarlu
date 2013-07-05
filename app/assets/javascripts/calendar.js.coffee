@@ -9,17 +9,27 @@ user_calendar = ->
     slotMinutes: 15
     eventSources:
       [
-        url: '/events'
-        color: '#0668C0'
-        textColor: '#FFF'
-        ignoreTimezone: false
+        {
+          url: '/events'
+          color: '#0668C0'
+          textColor: '#FFF'
+          ignoreTimezone: false
+        },
+        {
+          url: '/holidays'
+          color: '#0668C0'
+          textColor: '#FFF'
+          ignoreTimezone: false
+          editable: false
+        }
       ]
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
       update_move_event(event)
     eventResize: (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) ->
       update_move_event(event)
     eventClick: (event, jsEvent, view) ->
-      show_edit_event_dialog(event, jsEvent, view)
+      unless is_holiday(event)
+        show_edit_event_dialog(event, jsEvent, view)
     select: (startDate, endDate, allDay, jsEvent, view) ->
       show_add_event_dialog(startDate, endDate, allDay, jsEvent, view)
     eventRender: (event, element) ->
@@ -39,10 +49,19 @@ manager_calendar = ->
     slotMinutes: 15
     eventSources:
       [
-        url: '/events/manager'
-        color: '#0668C0'
-        textColor: '#FFF'
-        ignoreTimezone: false
+        {
+          url: '/events/manager'
+          color: '#0668C0'
+          textColor: '#FFF'
+          ignoreTimezone: false
+        },
+        {
+          url: '/holidays'
+          color: '#0668C0'
+          textColor: '#FFF'
+          ignoreTimezone: false
+          editable: false
+        }
       ]
     eventRender: (event, element) ->
       unless event.approved
@@ -60,10 +79,19 @@ company_calendar = ->
     slotMinutes: 15
     eventSources:
       [
-        url: '/events/company'
-        color: '#0668C0'
-        textColor: '#FFF'
-        ignoreTimezone: false
+        {
+          url: '/events/company'
+          color: '#0668C0'
+          textColor: '#FFF'
+          ignoreTimezone: false
+        },
+        {
+          url: '/holidays'
+          color: '#0668C0'
+          textColor: '#FFF'
+          ignoreTimezone: false
+          editable: false
+        }
       ]
     eventRender: (event, element) ->
       unless event.approved
@@ -267,6 +295,9 @@ event_type = (color) ->
     when "purple" then "3"
     when "red" then "4"
     when "black" then "5"
+
+is_holiday = (event) ->
+  event.color == "#FF5E00"
 
 track_create_event = ->
   analytics.track('Create Time Off Request', {})

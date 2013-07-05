@@ -32,8 +32,6 @@ class AccrualsController < ApplicationController
       VacationAccrual
     when TimeOffValue::SICK
       SickAccrual
-    when TimeOffValue::HOLIDAY
-      HolidayAccrual
     when TimeOffValue::PERSONAL
       PersonalAccrual
     when TimeOffValue::UNPAID

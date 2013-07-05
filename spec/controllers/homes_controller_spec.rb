@@ -20,7 +20,7 @@ describe HomesController do
         it { should respond_with(:success) }
         it { assigns(:subscriber).should == subscriber }
         it { assigns(:calendar_type).should == "user" }
-        it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
+        it { assigns(:available_events).should == [["Vacation", TimeOffValue::VACATION], ["Sick", TimeOffValue::SICK], ["Personal", TimeOffValue::PERSONAL], ["Unpaid", TimeOffValue::UNPAID], ["Other", TimeOffValue::OTHER]] }
       end
 
       context "calendar type param" do
@@ -31,7 +31,7 @@ describe HomesController do
         it { should respond_with(:success) }
         it { assigns(:subscriber).should == subscriber }
         it { assigns(:calendar_type).should == "manager" }
-        it { assigns(:available_events).should == [["Vacation", 0], ["Sick", 1], ["Holiday", 2], ["Personal", 3], ["Unpaid", 4], ["Other", 5]] }
+        it { assigns(:available_events).should == [["Vacation", TimeOffValue::VACATION], ["Sick", TimeOffValue::SICK], ["Personal", TimeOffValue::PERSONAL], ["Unpaid", TimeOffValue::UNPAID], ["Other", TimeOffValue::OTHER]] }
       end
     end
   end

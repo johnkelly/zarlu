@@ -17,7 +17,6 @@ describe User do
     it "creates a vacation company setting record" do
       -> { subscriber.users.create!(email: "t1@e.com", password: "password", password_confirmation: "password")}.should change(VacationLeave, :count).by(1)
       -> { subscriber.users.create!(email: "t2@e.com", password: "password", password_confirmation: "password")}.should change(SickLeave, :count).by(1)
-      -> { subscriber.users.create!(email: "t3@e.com", password: "password", password_confirmation: "password")}.should change(HolidayLeave, :count).by(1)
       -> { subscriber.users.create!(email: "t4@e.com", password: "password", password_confirmation: "password")}.should change(PersonalLeave, :count).by(1)
       -> { subscriber.users.create!(email: "t5@e.com", password: "password", password_confirmation: "password")}.should change(UnpaidLeave, :count).by(1)
       -> { subscriber.users.create!(email: "t6@e.com", password: "password", password_confirmation: "password")}.should change(OtherLeave, :count).by(1)

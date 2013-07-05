@@ -1,16 +1,14 @@
 class TimeOffValue
   VACATION = 0
   SICK = 1
-  HOLIDAY = 2
-  PERSONAL = 3
-  UNPAID = 4
-  OTHER = 5
+  PERSONAL = 2
+  UNPAID = 3
+  OTHER = 4
 
   def self.kinds
     [
       ["Vacation", VACATION],
       ["Sick", SICK],
-      ["Holiday", HOLIDAY],
       ["Personal", PERSONAL],
       ["Unpaid", UNPAID],
       ["Other", OTHER]
@@ -23,8 +21,6 @@ class TimeOffValue
       "#0668C0"
     when SICK
       "green"
-    when HOLIDAY
-      "#FF5E00"
     when PERSONAL
       "purple"
     when UNPAID

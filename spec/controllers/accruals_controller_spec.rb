@@ -35,12 +35,6 @@ describe AccrualsController do
         end
       end
 
-      context "holiday" do
-        it "creates a new holiday accrual" do
-          -> { post :create, accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::HOLIDAY }.should change(HolidayAccrual, :count).by(1)
-        end
-      end
-
       context "personal" do
         it "creates a new personal accrual" do
           -> { post :create, accrual: { start_year: "0", end_year: "2", rate: "5.67" }, type: TimeOffValue::PERSONAL }.should change(PersonalAccrual, :count).by(1)

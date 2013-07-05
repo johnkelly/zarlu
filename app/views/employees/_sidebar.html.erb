@@ -25,11 +25,6 @@
     <%= best_in_place employee.sick_leave, :accrued_hours, path: accrued_hour_path(employee.sick_leave), activator: "#icon-edit-sick-accrued-hours-#{employee.sick_leave.id}", inner_class: "input-mini", object_name: :leave %>
     <i id="icon-edit-sick-accrued-hours-<%= employee.sick_leave.id %>" class="icon-edit"></i>
     </dd>
-    <dt>Accrued Holiday Leave</dt>
-    <dd>
-    <%= best_in_place employee.holiday_leave, :accrued_hours, path: accrued_hour_path(employee.holiday_leave), activator: "#icon-edit-holiday-accrued-hours-#{employee.holiday_leave.id}", inner_class: "input-mini", object_name: :leave %>
-    <i id="icon-edit-holiday-accrued-hours-<%= employee.holiday_leave.id %>" class="icon-edit"></i>
-    </dd>
     <dt>Accrued Personal Leave</dt>
     <dd>
     <%= best_in_place employee.personal_leave, :accrued_hours, path: accrued_hour_path(employee.personal_leave), activator: "#icon-edit-personal-accrued-hours-#{employee.personal_leave.id}", inner_class: "input-mini", object_name: :leave %>

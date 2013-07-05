@@ -1,0 +1,7 @@
+<div class="row pl5">
+  <div class="offset1 span4"><%= holiday.name %></div>
+  <div class="span2"><%= holiday.date.strftime('%b %d %Y') %></div>
+  <div class="span2">
+    <%= link_to "Remove", holiday_path(holiday), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-mini js_remove_accrual" %>
+  </div>
+</div>

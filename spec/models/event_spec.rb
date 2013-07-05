@@ -196,11 +196,6 @@ describe Event do
       its(:color) { should == "green" }
     end
 
-    context "holiday" do
-      before { event.stub(:kind).and_return(TimeOffValue::HOLIDAY) }
-      its(:color) { should == "#FF5E00" }
-    end
-
     context "Personal" do
       before { event.stub(:kind).and_return(TimeOffValue::PERSONAL) }
       its(:color) { should == "purple" }
@@ -259,11 +254,6 @@ describe Event do
     context "sick" do
       before { event.stub(:kind).and_return(TimeOffValue::SICK) }
       its(:kind_name) { should == "Sick" }
-    end
-
-    context "holiday" do
-      before { event.stub(:kind).and_return(TimeOffValue::HOLIDAY) }
-      its(:kind_name) { should == "Holiday" }
     end
 
     context "personal" do

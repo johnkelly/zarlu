@@ -1,0 +1,12 @@
+<div class="company_setting">
+  <div class="setting_header">
+    <h3>Company Holidays for <%= Date.current.year %></h3>
+  </div>
+  <div class="row">
+    <div class="offset1 span4 setting_label">Holiday</div>
+    <div class="span2 setting_label">Date</div>
+    <div class="span2 setting_label"></div>
+  </div>
+  <%= render partial: "holidays/new_holiday", locals: { holiday: holiday } %>
+  <%= render partial: "holidays/holiday", collection: holidays %>
+</div>

@@ -4,7 +4,6 @@ describe AccruedHoursController do
   let(:manager) { users(:manager_example_com) }
   let(:vacation_leave) { leaves(:vacation_leave) }
   let(:sick_leave) { leaves(:sick_leave) }
-  let(:holiday_leave) { leaves(:holiday_leave) }
   let(:personal_leave) { leaves(:personal_leave) }
   let(:unpaid_leave) { leaves(:unpaid_leave) }
   let(:other_leave) { leaves(:other_leave) }
@@ -27,12 +26,6 @@ describe AccruedHoursController do
         before { put :update, id: sick_leave.to_param, leave: { accrued_hours: "5.6" }}
         subject { sick_leave.reload }
         its(:accrued_hours) { should == 5.6 }
-      end
-
-      context "holiday" do
-        before { put :update, id: holiday_leave.to_param, leave: { accrued_hours: "3.6" }}
-        subject { holiday_leave.reload }
-        its(:accrued_hours) { should == 3.6 }
       end
 
       context "personal" do

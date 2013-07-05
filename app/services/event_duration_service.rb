@@ -1,11 +1,10 @@
 class EventDurationService
-  attr_reader :vacation_hours, :sick_hours, :holiday_hours, :personal_hours, :unpaid_hours, :other_hours
+  attr_reader :vacation_hours, :sick_hours, :personal_hours, :unpaid_hours, :other_hours
 
   def initialize(events)
     @events = events
     @vacation_hours = sum_durations(@events, TimeOffValue::VACATION)
     @sick_hours = sum_durations(@events, TimeOffValue::SICK)
-    @holiday_hours = sum_durations(@events, TimeOffValue::HOLIDAY)
     @personal_hours = sum_durations(@events, TimeOffValue::PERSONAL)
     @unpaid_hours = sum_durations(@events, TimeOffValue::UNPAID)
     @other_hours = sum_durations(@events, TimeOffValue::OTHER)
@@ -16,11 +15,11 @@ class EventDurationService
   end
 
   def pie_chart_data
-    [vacation_hours, sick_hours, holiday_hours, personal_hours, unpaid_hours, other_hours]
+    [vacation_hours, sick_hours, personal_hours, unpaid_hours, other_hours]
   end
 
   def any?
-    vacation_hours > 0 || sick_hours > 0 || holiday_hours > 0 || personal_hours > 0 || unpaid_hours > 0 || other_hours > 0
+    vacation_hours > 0 || sick_hours > 0 || personal_hours > 0 || unpaid_hours > 0 || other_hours > 0
   end
 
   private

@@ -8,7 +8,6 @@ describe EventDurationService do
       subject { EventDurationService.new([]) }
       its(:vacation_hours) { should == 0 }
       its(:sick_hours) { should == 0 }
-      its(:holiday_hours) { should == 0 }
       its(:personal_hours) { should == 0 }
       its(:unpaid_hours) { should == 0 }
       its(:other_hours) { should == 0 }
@@ -32,7 +31,7 @@ describe EventDurationService do
   describe "pie_chart_data" do
     it "returns an array the event types" do
       event_durations = EventDurationService.new([event])
-      event_durations.pie_chart_data.should == [1.98, 0, 0, 0, 0, 0]
+      event_durations.pie_chart_data.should == [1.98, 0, 0, 0, 0]
     end
   end
 
