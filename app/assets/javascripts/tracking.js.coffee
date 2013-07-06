@@ -34,23 +34,23 @@ track_add_user = ->
 
 track_make_manager = ->
   if $('.subscribers_show').length
-    link = $('.js_make_manager')
-    analytics.trackLink(link, 'Make employee a manager', {})
+    $('.js_make_manager').click ->
+      analytics.track('Make employee a manager', {})
 
 track_make_employee = ->
   if $('.subscribers_show').length
-    link = $('.js_make_employee')
-    analytics.trackLink(link, 'Make manager an employee', {})
+    $('js_make_employee').click ->
+      analytics.track('Make manager an employee', {})
 
 track_approve_time_off = ->
   if $('.employees_index').length
-    link = $('.js_approve')
-    analytics.trackLink(link, 'Approve Time Off', {})
+    $('.js_approve').click ->
+      analytics.track('Approve Time Off', {})
 
 track_reject_time_off = ->
   if $('.employees_index').length
-    link = $('.js_reject')
-    analytics.trackLink(link, 'Reject Time Off', {})
+    $('.js_reject').click ->
+      analytics.track('Reject Time Off', {})
 
 track_add_accrual_range = ->
   if $('.company_settings_index').length
@@ -59,13 +59,23 @@ track_add_accrual_range = ->
 
 track_remove_accrual_range = ->
   if $('.company_settings_index').length
-    link = $('.js_remove_accrual')
-    analytics.trackLink(link, 'Delete Accrual Range', {})
+    $('.js_remove_accrual').click ->
+      analytics.track('Delete Accrual Range', {})
 
 track_delete_user = ->
   if $('.employees_show').length || $('.registrations_edit').length
-    link = $('.js_delete_user')
-    analytics.trackLink(link, 'Delete User', {})
+    $('.js_delete_user').click ->
+      analytics.track('Delete User', {})
+
+track_add_holiday = ->
+  if $('.company_settings_index').length
+    form = $('.new_holiday')
+    analytics.trackForm(form, 'Add Holiday', {})
+
+track_delete_holiday = ->
+  if $('.company_settings_index').length
+    $('.js_remove_holiday').click ->
+      analytics.track('Delete Holiday', {})
 
 jQuery ->
   track_page_view()
@@ -80,3 +90,5 @@ jQuery ->
   track_add_accrual_range()
   track_remove_accrual_range()
   track_delete_user()
+  track_add_holiday()
+  track_delete_holiday()
