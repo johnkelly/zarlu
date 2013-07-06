@@ -10,6 +10,7 @@ describe Subscriber::UsersController do
     context "success" do
       before do
         ApplicationController.any_instance.should_receive(:track_activity!)
+        InviteEmailWorker.should_receive(:perform_async)
         Subscriber::UsersController.any_instance.should_receive(:charge_credit_card).with(subscriber)
         post :create, user: { email: "new@example.com" , password: "password" }
       end

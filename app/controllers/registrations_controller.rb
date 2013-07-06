@@ -56,6 +56,7 @@ class RegistrationsController < Devise::RegistrationsController
     set_flash_message :notice, :signed_up if is_navigational_format?
     sign_up(resource_name, resource)
     track_activity!(resource)
+    NewAccountEmailWorker.perform_in(30.minutes, resource.id)
     respond_with resource, location: after_sign_up_path_for(resource)
   end
 

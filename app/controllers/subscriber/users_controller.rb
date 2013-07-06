@@ -8,6 +8,7 @@ class Subscriber::UsersController < ApplicationController
     if @user.save
       charge_credit_card(@subscriber)
       track_activity!(@user, "add_user")
+      InviteEmailWorker.perform_async(current_user.id, @user.id)
       redirect_to subscribers_url, notice: %Q{Successfully created new user.}
     else
       redirect_to subscribers_url, alert: @user.errors.full_messages.first
