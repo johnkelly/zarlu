@@ -24,7 +24,6 @@
 //= require fullcalendar
 //= require segmentio
 //= require tracking
-//= require uservoice
 //= require bootstrap-tour
 //= require_tree ./tours
 //= require_tree .
