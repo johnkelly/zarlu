@@ -10,22 +10,25 @@ describe Subscriber::UsersController do
     context "success" do
       before do
         ApplicationController.any_instance.should_receive(:track_activity!)
-        InviteEmailWorker.should_receive(:perform_async)
         Subscriber::UsersController.any_instance.should_receive(:charge_credit_card).with(subscriber)
-        post :create, user: { email: "new@example.com" , password: "password" }
+        post :create, user: { email: "new@example.com" }
       end
       it { should redirect_to subscribers_url }
       it { should set_the_flash[:notice] }
       it { assigns(:subscriber).should == subscriber }
-      it { assigns(:user) }
+      it { assigns(:user).should be_present }
     end
 
     context "error" do
-      before { post :create, user: { email: "", password: "" }}
+      before do
+        ApplicationController.any_instance.should_not_receive(:track_activity!)
+        Subscriber::UsersController.any_instance.should_not_receive(:charge_credit_card).with(subscriber)
+        post :create, user: { email: "" }
+      end
       it { should redirect_to subscribers_url }
       it { should set_the_flash[:alert] }
       it { assigns(:subscriber).should == subscriber }
-      it { assigns(:user) }
+      it { assigns(:user).should be_present }
     end
   end
 

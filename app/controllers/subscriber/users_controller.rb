@@ -4,12 +4,12 @@ class Subscriber::UsersController < ApplicationController
 
   def create
     @subscriber = current_user.subscriber
-    @user = @subscriber.users.new(user_params)
-    if @user.save
+    @user = User.invite!(invite_params, current_user)
+
+    if @user.errors.empty?
       charge_credit_card(@subscriber)
       track_activity!(@user, "add_user")
-      InviteEmailWorker.perform_async(current_user.id, @user.id)
-      redirect_to subscribers_url, notice: %Q{Successfully created new user.}
+      redirect_to subscribers_url, notice: %Q{User created and invite email sent with link to set user password.}
     else
       redirect_to subscribers_url, alert: @user.errors.full_messages.first
     end
@@ -34,6 +34,10 @@ class Subscriber::UsersController < ApplicationController
 
   def charge_credit_card(subscriber)
     ChargeCreditCardWorker.perform_async(subscriber.id) unless subscriber.trial?
+  end
+
+  def invite_params
+    user_params.merge(manager_id: current_user.id, subscriber_id: @subscriber.id)
   end
 
   def user_params

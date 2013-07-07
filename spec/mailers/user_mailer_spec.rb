@@ -18,19 +18,4 @@ describe UserMailer do
       end
     end
   end
-
-  describe "invite" do
-    context "correct email settings" do
-      subject { UserMailer.invite(manager.id, user.id).deliver }
-      its(:from) { should == ["john@zarlu.com"] }
-      its(:to) { should == [user.email] }
-      its(:subject) { should == "#{manager.display_name} has invitied you to join Zarlu" }
-    end
-
-    context "email is sent" do
-      it "ActionMailer receives the email for delivery" do
-        expect { UserMailer.invite(manager.id, user.id).deliver }.to change(ActionMailer::Base.deliveries, :count).by(1)
-      end
-    end
-  end
 end

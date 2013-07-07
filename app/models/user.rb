@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   has_one :unpaid_leave, dependent: :destroy, class_name: "UnpaidLeave", foreign_key: :user_id
   has_one :other_leave, dependent: :destroy, class_name: "OtherLeave", foreign_key: :user_id
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :async
+  devise :invitable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :async, :invitable
 
   validates_presence_of :subscriber_id
 

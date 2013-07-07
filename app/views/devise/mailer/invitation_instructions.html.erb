@@ -1,0 +1,5 @@
+<p>Hello <%= @resource.display_name %>,</p>
+
+<p><%= @resource.invited_by.display_name %> has invited you to join Zarlu to manage your schedule, attendance, and time off requests. Click on the link below to accept the request and create a password for your account.</p>
+
+<p><%= link_to 'Accept Invitation', accept_invitation_url(@resource, invitation_token: @resource.invitation_token) %></p>

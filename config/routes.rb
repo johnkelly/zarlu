@@ -15,7 +15,12 @@ Zarlu::Application.routes.draw do
   get '/employee-leave-management', to: 'articles#employee_leave_management'
   get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'
   get '/business-time-tracking', to: 'articles#business_time_tracking'
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations' }, skip: 'invitation'
+  devise_scope :user do
+    get "/users/invitation/accept", :to => "devise/invitations#edit",   :as => 'accept_user_invitation'
+    put "/users/invitation/:id",        :to => "devise/invitations#update", :as => nil
+    patch "/users/invitation/:id",        :to => "devise/invitations#update", :as => nil
+  end
   resource :subscribers, only: %w[update show] do
     member do
       put :change_manager
