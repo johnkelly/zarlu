@@ -27,10 +27,12 @@ Create a free Zarlu account for your business and enjoy the best employee time &
     </div>
     <div>
       <%= f.label :password, class: "devise_label" %>
-      <%= f.password_field :password, class: "input-xlarge" %></div>
+      <%= f.password_field :password, pattern: ".{6,}", title: "Password must be at least 6 characters.", class: "input-xlarge" %>
+    </div>
     <div>
       <%= f.label :password_confirmation, class: "devise_label" %>
-      <%= f.password_field :password_confirmation, class: "input-xlarge" %></div>
+      <%= f.password_field :password_confirmation, pattern: ".{6,}", title: "Password must be at least 6 characters.", class: "input-xlarge" %>
+    </div>
     <div><%= f.submit "Sign Up", class: "btn btn-success btn-large", data: { disable_with: "Creating..." } %></div>
   <% end %>
 </div>

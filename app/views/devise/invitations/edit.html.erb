@@ -11,12 +11,12 @@
     <%= devise_error_messages! %>
     <%= f.hidden_field :invitation_token %>
     <div>
-      <%= f.label :password, class: "devise_label"%>
-      <%= f.password_field :password, class: "input-xlarge" %>
+      <%= f.label :password, class: "devise_label" %>
+      <%= f.password_field :password, pattern: ".{6,}", title: "Password must be at least 6 characters.", class: "input-xlarge" %>
     </div>
     <div>
-      <%= f.label :password_confirmation, class: "devise_label"%>
-      <%= f.password_field :password_confirmation, class: "input-xlarge" %>
+      <%= f.label :password_confirmation, class: "devise_label" %>
+      <%= f.password_field :password_confirmation, pattern: ".{6,}", title: "Password must be at least 6 characters.", class: "input-xlarge" %>
     </div>
     <div><%= f.submit "Join Zarlu", class: "btn btn-success btn-large", data: { disable_with: "Joining..." } %></div>
   <% end %>
