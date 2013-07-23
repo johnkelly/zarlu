@@ -21,7 +21,7 @@ gem 'newrelic_rpm', '~> 3.6.5.130'
 gem 'sidekiq', '~> 2.13.0'
 gem 'sinatra', '~> 1.4.2', require: false
 gem 'slim', '~> 2.0.0'
-gem 'hirefire-resource', '~> 0.1.2'
+gem "hirefire-resource", git: 'git@github.com:meskyanichi/hirefire-resource.git', branch: 'schedule_and_retry_fix'
 gem 'memcachier', '~> 0.0.2'
 gem 'dalli', '~> 2.6.4'
 gem 'will_paginate', '~> 3.0.4'
