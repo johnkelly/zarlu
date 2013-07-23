@@ -5,11 +5,11 @@
       <div class="span2 left">
         <h2>Company</h2>
         <ul class="unstyled">
-          <li><%= link_to "Contact Us", "#", class: "support_link" %></li>
-          <li><%= link_to "Status", "http://status.zarlu.com", target: "_blank" %>
-        <li><%= link_to "Security", "/blog/how-does-zarlu-keep-my-data-safe" %></li>
-        <li><%= link_to "Privacy Policy", "/privacy-policy", data: { "no-turbolink" => true } %></li>
-        <li><%= link_to "Service Terms", "/terms-of-service" %></li>
+          <li><%= link_to "<i class='icon-question-sign icon-large'></i>&nbsp;&nbsp;Contact Us".html_safe, "#", class: "support_link" %></li>
+          <li><%= link_to "<i class='icon-user-md icon-large'></i>&nbsp;&nbsp;Status".html_safe, "http://status.zarlu.com", target: "_blank" %>
+          <li><%= link_to "<i class='icon-lock icon-large'></i>&nbsp;&nbsp;&nbsp;Security".html_safe, "/blog/how-does-zarlu-keep-my-data-safe" %></li>
+          <li><%= link_to "<i class='icon-eye-open icon-large'></i>&nbsp;Privacy".html_safe, "/privacy-policy", data: { "no-turbolink" => true } %></li>
+          <li><%= link_to "<i class='icon-legal icon-large'></i>&nbsp;Terms".html_safe, "/terms-of-service" %></li>
       </ul>
     </div>
     <div class="offset1 span6">
@@ -23,22 +23,22 @@
       <ul class="unstyled">
         <li>
         <%= link_to blog_path do %>
-          <%= image_tag "blogger.png", width: 25, height: 25, alt: "Blog Icon" %>&nbsp;Blog
+          <i class='icon-rss icon-large'></i>&nbsp;&nbsp;Blog
         <% end %>
         </li>
         <li>
         <%= link_to "https://twitter.com/zarlusoftware", target: "_blank" do %>
-          <%= image_tag "twitter.png", width: 25, height: 25, alt: "Twitter Icon" %>&nbsp;Twitter
+          <i class='icon-twitter icon-large'></i>&nbsp;Twitter
         <% end %>
         </li>
         <li>
         <%= link_to "https://www.facebook.com/pages/Zarlu/553117844722452", target: "_blank" do %>
-          <%= image_tag "facebook.png", width: 25, height: 25, alt: "Facebook Icon" %>&nbsp;Facebook
+          <i class='icon-facebook icon-large'></i>&nbsp;&nbsp;&nbsp;Facebook
         <% end %>
         </li>
         <li>
         <%= link_to "https://plus.google.com/107268300619396695863", target: "_blank" do %>
-          <%= image_tag "google_plus.png", width: 25, height: 25, alt: "Google Plus Icon" %>&nbsp;Google Plus
+          <i class='icon-google-plus icon-large'></i>&nbsp;Google
         <% end %>
         </li>
       </ul>

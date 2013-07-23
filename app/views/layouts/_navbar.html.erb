@@ -15,8 +15,8 @@
             <li class="dropdown" id="navbar_manage_dropdown">
             <%= link_to "<i class='icon-suitcase icon-large'></i>&nbsp;Manage <b class='caret'></b>".html_safe, "#", class: "dropdown-toggle", data: { toggle: "dropdown" } %>
             <ul class="dropdown-menu">
-              <li id="navbar_employees"><%= link_to "<i class='icon-time icon-large'></i>&nbsp;Time Off Requests".html_safe, employees_path %></li>
-              <li id="navbar_account"><%= link_to "<i class='icon-group icon-large'></i>&nbsp;Employees".html_safe, subscribers_path %></li>
+              <li id="navbar_employees"><%= link_to "<i class='icon-time icon-large'></i>&nbsp;&nbsp;&nbsp;&nbsp;Time Off Requests".html_safe, employees_path %></li>
+              <li id="navbar_account"><%= link_to "<i class='icon-group icon-large'></i>&nbsp;&nbsp;&nbsp;Employees".html_safe, subscribers_path %></li>
             </ul>
             </li>
           <% end %>
@@ -24,32 +24,32 @@
           <li class="dropdown" id="navbar_settings_dropdown">
           <%= link_to "<i class='icon-cogs icon-large'></i>&nbsp;Settings <b class='caret'></b>".html_safe, "#", class: "dropdown-toggle", data: { toggle: "dropdown" } %>
           <ul class="dropdown-menu">
-            <li><%= link_to "<i class='icon-credit-card icon-large'></i>&nbsp;Change / View Billing Info".html_safe, subscriptions_path %></li>
+            <li><%= link_to "<i class='icon-credit-card icon-large'></i>&nbsp;&nbsp;Billing Information".html_safe, subscriptions_path %></li>
             <% if current_user.manager? %>
-              <li><%= link_to "<i class='icon-list-alt icon-large'></i>&nbsp;Change Company Settings".html_safe, company_settings_path %></li>
+              <li><%= link_to "<i class='icon-building icon-large'></i>&nbsp;&nbsp;&nbsp;Company Settings".html_safe, company_settings_path %></li>
             <% end %>
-            <li><%= link_to "<i class='icon-edit icon-large'></i>&nbsp;Change Email / Pass Phrase".html_safe, edit_user_registration_path %></li>
-            <li><%= link_to "<i class='icon-signout icon-large'></i>&nbsp;Sign Out".html_safe, destroy_user_session_path, method: :delete, data: { "no-turbolink" => true } %></li>
+            <li><%= link_to "<i class='icon-male icon-large'></i>&nbsp;&nbsp;&nbsp;&nbsp;My Settings".html_safe, edit_user_registration_path %></li>
+            <li><%= link_to "<i class='icon-signout icon-large'></i>&nbsp;&nbsp;Sign Out".html_safe, destroy_user_session_path, method: :delete, data: { "no-turbolink" => true } %></li>
           </ul>
           </li>
         <% else %>
           <li><%= link_to "<i class='icon-magic icon-large'></i>&nbsp;Features".html_safe, features_path %></li>
           <li><%= link_to "<i class='icon-money icon-large'></i>&nbsp;Pricing".html_safe, pricing_path %></li>
           <li class="dropdown" id="navbar_features_dropdown">
-          <%= link_to "<i class='icon-smile icon-large'></i>&nbsp;About&nbsp;<b class='caret'></b>".html_safe, "#", class: "dropdown-toggle", data: { toggle: "dropdown" } %>
+          <%= link_to "<i class='icon-info icon-large'></i>&nbsp;About&nbsp;<b class='caret'></b>".html_safe, "#", class: "dropdown-toggle", data: { toggle: "dropdown" } %>
           <ul class="dropdown-menu">
             <li><%= link_to "Employee Leave Management", "/employee-leave-management" %></li>
             <li><%= link_to "Employee Attendance Calendar", "/employee-attendance-calendar" %></li>
             <li><%= link_to "Business Time Tracking", "/business-time-tracking" %></li>
           </ul>
           </li>
-          <li><%= link_to "<i class='icon-bullhorn icon-large'></i>&nbsp;Blog".html_safe, blog_path %></li>
+          <li><%= link_to "<i class='icon-rss icon-large'></i>&nbsp;Blog".html_safe, blog_path %></li>
           <li><%= link_to "<i class='icon-question-sign icon-large'></i>&nbsp;Contact Us".html_safe, "#", class: "support_link" %></li>
           <li><div><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success mr15" %></div></li>
           <li><div><%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %></div></li>
         <% end %>
       </ul>
-      <%= link_to "Zarlu", root_path, id: "logo", data: { "no-turbolink" => true } %>
+      <%= link_to "<i class='icon-calendar'></i>&nbsp;Zarlu".html_safe, root_path, id: "logo", data: { "no-turbolink" => true } %>
     </div>
   </div>
 <% end %>

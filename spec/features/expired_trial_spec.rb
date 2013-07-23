@@ -57,14 +57,14 @@ describe "user with expired trial" do
     end
 
     it "redirects from company settings" do
-      click_link 'Change Company Settings'
+      click_link 'Company Settings'
       page.should have_selector '#card_number'
     end
   end
 
   describe "can access user account, sign out, and public pages" do
     it "renders user account" do
-      click_link 'Change Email / Pass Phrase'
+      click_link 'My Settings'
       page.should have_content 'Cancel my account'
     end
 

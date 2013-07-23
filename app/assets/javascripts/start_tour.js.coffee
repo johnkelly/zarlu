@@ -29,7 +29,7 @@ jQuery ->
     account_tour = new AccountTour()
     start_tour_on_click(account_tour, "account")
   else if $('body.activities_index').length
-    $('#start_tour').removeClass('hide').text("Tour Activity Feed")
+    $('#start_tour').removeClass('hide').text("Tour Activities")
     account_tour = new ActivityFeedTour()
     start_tour_on_click(account_tour, "activity_feed")
   else if $('body.welcomes_show').length
