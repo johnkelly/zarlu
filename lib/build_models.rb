@@ -17,7 +17,7 @@ module BuildModels
       canceled_event = user.events.create!(title: "Canceled", description: "From the lib filed", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
       canceled_event.cancel!
 
-      rejected_event = user.events.create!(title: "Rejected", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
+      rejected_event = user.events.create!(title: "Rejected", description: "From the lib filed", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
       rejected_event.reject!
 
       vacation_accrual = trial_subscriber.vacation_accruals.create!(start_year: 10, end_year: 15, rate: 8.78)
