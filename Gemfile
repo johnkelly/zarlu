@@ -9,7 +9,7 @@ gem 'jquery-ui-rails', '~> 4.0.4'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise', '~> 3.0.2'
 gem 'devise-async', '~> 0.7.0'
-gem 'devise_invitable', git: 'git://github.com/scambra/devise_invitable.git', branch: 'rails4'
+gem 'devise_invitable', git: 'git://github.com/scambra/devise_invitable.git'
 gem 'fullcalendar-rails', '~> 1.6.1.0'
 
 gem 'turbolinks', '~> 1.3.0'
