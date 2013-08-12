@@ -8,6 +8,7 @@ class Subscriber < ActiveRecord::Base
   has_many :unpaid_accruals, class_name: "UnpaidAccrual", foreign_key: :subscriber_id
   has_many :other_accruals, class_name: "OtherAccrual", foreign_key: :subscriber_id
   has_many :holidays, dependent: :destroy
+  has_many :attendance_csvs, dependent: :destroy
   has_one :vacation_company_setting, class_name: "VacationCompanySetting", foreign_key: :subscriber_id
   has_one :sick_company_setting, class_name: "SickCompanySetting", foreign_key: :subscriber_id
   has_one :personal_company_setting, class_name: "PersonalCompanySetting", foreign_key: :subscriber_id

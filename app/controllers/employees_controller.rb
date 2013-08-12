@@ -10,6 +10,17 @@ class EmployeesController < ApplicationController
     fresh_when(@my_employees.order(:updated_at).last)
   end
 
+  def new
+  end
+
+  def create
+    @subscriber = current_user.subscriber
+    @invitation = Invitation.new(params[:employee][:emails], current_user)
+    @invitation.mass_send
+    charge_credit_card(@subscriber)
+    redirect_to manager_setup_data_path
+  end
+
   def update
     @my_employees = current_user.employees
     @my_employee_pending_event = Event.where(user_id: @my_employees, approved: false, rejected: false).find(params[:id])

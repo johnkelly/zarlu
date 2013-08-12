@@ -5,11 +5,28 @@ describe EmployeesController do
   let(:manager) { users(:manager_example_com) }
   let(:event) { events(:build_model) }
   let(:subscriber) { subscribers(:trial) }
+  let(:invitation) { double("Invitation") }
   before { sign_in(manager) }
 
   describe '#index' do
     before { get :index }
     it { should respond_with(:success) }
+  end
+
+  describe "#new" do
+    before { get :new }
+    it { should respond_with(:success) }
+  end
+
+  describe 'create' do
+    before do
+      Invitation.should_receive(:new).with(["invite1@example.com, invite2@example.com"], manager).and_return(invitation)
+      invitation.should_receive(:mass_send)
+      EmployeesController.any_instance.should_receive(:charge_credit_card).with(subscriber)
+      post :create, employee: { emails: ["invite1@example.com, invite2@example.com"] }
+    end
+    it { should redirect_to manager_setup_data_path }
+    it { assigns(:subscriber).should == subscriber }
   end
 
   describe '#update' do

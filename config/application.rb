@@ -31,5 +31,8 @@ module Zarlu
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       "#{html_tag}".html_safe
     }
+
+    #filepicker.io
+    config.filepicker_rails.api_key = ENV['FILEPICKER_API_KEY']
   end
 end

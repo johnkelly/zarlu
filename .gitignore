@@ -31,3 +31,5 @@ routes.txt
 /public/uploads
 .env
 config/gemnasium.yml
+tags
+lib/ca-bundle.crt

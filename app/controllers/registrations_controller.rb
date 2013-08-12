@@ -33,11 +33,11 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    welcome_path
+    manager_setup_employees_path
   end
 
   def after_update_path_for(resource)
-    resource.manager? ? welcome_path : employee_welcome_path
+    resource.manager? ? manager_setup_complete_path : employee_welcome_path
   end
 
   def configure_permitted_parameters

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130706210139) do
+ActiveRecord::Schema.define(version: 20130811234406) do
 
   create_table "accruals", force: true do |t|
     t.string  "type"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20130706210139) do
 
   add_index "activities", ["trackable_id"], name: "index_activities_on_trackable_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
+
+  create_table "attendance_csvs", force: true do |t|
+    t.integer  "subscriber_id"
+    t.string   "csv"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "processed",     default: false, null: false
+  end
+
+  add_index "attendance_csvs", ["subscriber_id"], name: "index_attendance_csvs_on_subscriber_id", using: :btree
 
   create_table "company_settings", force: true do |t|
     t.string   "type"

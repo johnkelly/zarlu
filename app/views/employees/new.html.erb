@@ -1,0 +1,17 @@
+<div class="container paper center">
+  <%= render partial: "layouts/setup_header", locals: { complete_1: false, complete_2: false, complete_3: false } %>
+
+  <div class="row">
+      <h3>Your Account is Lonely. Add Your Co-Workers.&nbsp;&nbsp;<i class="icon-group icon-2x"></i></h3>
+  </div>
+  <div class="row">
+    <h5>Enter the email addresses of co-workers you wish to add to your company's account. Use <strong class="red underline">Commas</strong> to seperate emails.</h5>
+    <%= form_for :employee, url: employees_path do |form| %>
+    <div><%= form.text_area :emails, rows: 10, class: "w750", placeholder: "Example: sally@zarlu.com, mike@zarlu.com, steve@zarlu.com, etc..." %></div>
+    <div>
+      <%= form.submit "Add Co-Workers", class: "btn btn-huge span4 btn-primary" %>
+      <%= link_to "Skip Step", manager_setup_data_path, class: "btn btn-huge btn-link", data: { confirm: "Are you sure you want to skip account setup?" } %>
+    </div>
+    <% end %>
+  </div>
+</div>

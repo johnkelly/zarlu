@@ -10,11 +10,13 @@ Zarlu::Application.routes.draw do
   get '/privacy-policy', to: 'homes#privacy'
   get '/features', to: 'homes#features'
   get '/terms-of-service', to: 'homes#terms_of_service'
-  get '/welcome', to: 'welcomes#show'
   get '/employee-welcome', to: 'employee_welcomes#show', as: "employee_welcome"
   get '/employee-leave-management', to: 'articles#employee_leave_management'
   get '/employee-attendance-calendar', to: 'articles#employee_attendance_calendar'
   get '/business-time-tracking', to: 'articles#business_time_tracking'
+  get '/manager/setup-employees', to: 'employees#new', as: 'manager_setup_employees'
+  get '/manager/setup-data', to: 'import_attendance#new', as: 'manager_setup_data'
+  get '/manager/setup-complete', to: 'welcomes#show', as: 'manager_setup_complete'
   devise_for :users, controllers: { registrations: 'registrations' }, skip: 'invitation'
   devise_scope :user do
     get "/users/invitation/accept", :to => "devise/invitations#edit",   :as => 'accept_user_invitation'
@@ -35,7 +37,7 @@ Zarlu::Application.routes.draw do
     end
   end
   resource :leaves, only: %w[show]
-  resources :employees, only: %w[index update show]
+  resources :employees, only: %w[index create update show]
   resource :subscriptions, only: %w[update show]
   resources :activities, only: %w[index]
   resources :welcomes, only: %w[create]
@@ -43,6 +45,7 @@ Zarlu::Application.routes.draw do
   resources :accruals, only: %w[create destroy]
   resources :holidays, only: %w[index create destroy]
   resources :accrued_hours, only: %w[update]
+  resources :import_attendance, only: %w[create]
   namespace :subscriber do
     resources :users, only: %w[create update destroy]
   end

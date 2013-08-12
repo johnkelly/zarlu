@@ -1,0 +1,71 @@
+<div class="row mt25 mb30 setup_row">
+  <h1>Zarlu Account Setup</h1>
+  <div class="span2 complete">
+    <i class="icon-check-sign icon-4x"></i>
+    <h5>Create Account</h5>
+  </div>
+  <div class="span1 complete">
+    <i class="icon-long-arrow-right icon-4x"></i>
+  </div>
+  <% if complete_1 %>
+    <%= link_to manager_setup_employees_path do %>
+      <div class="span2 complete">
+        <i class="icon-check-sign icon-4x"></i>
+        <h5>Add Co-Workers</h5>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="span2 complete">
+      <i class="icon-spinner icon-spin icon-4x"></i>
+      <h5>Add Co-Workers</h5>
+    </div>
+  <% end %>
+  <% if complete_2 && complete_3 %>
+    <div class="span1 complete">
+      <i class="icon-long-arrow-right icon-4x"></i>
+    </div>
+    <%= link_to manager_setup_data_path do %>
+    <div class="span2 complete">
+      <i class="icon-check-sign icon-4x"></i>
+      <h5>Import Data</h5>
+    </div>
+  <% end %>
+    <div class="span1 complete">
+      <i class="icon-long-arrow-right icon-4x"></i>
+    </div>
+    <div class="span2 complete">
+      <i class="icon-check-sign icon-4x"></i>
+      <h5>Setup Complete</h5>
+    </div>
+  <% elsif complete_2 && !complete_3 %>
+    <div class="span1 complete">
+      <i class="icon-long-arrow-right icon-4x"></i>
+    </div>
+    <div class="span2 complete">
+      <i class="icon-spinner icon-spin icon-4x"></i>
+      <h5>Import Data</h5>
+    </div>
+    <div class="span1 incomplete">
+      <i class="icon-long-arrow-right icon-4x"></i>
+    </div>
+    <div class="span2 incomplete">
+      <i class="icon-check-empty icon-4x"></i>
+      <h5>Setup Complete</h5>
+    </div>
+  <% else %>
+    <div class="span1 incomplete">
+      <i class="icon-long-arrow-right icon-4x"></i>
+    </div>
+    <div class="span2 incomplete">
+      <i class="icon-check-empty icon-4x"></i>
+      <h5>Import Data</h5>
+    </div>
+    <div class="span1 incomplete">
+      <i class="icon-long-arrow-right icon-4x"></i>
+    </div>
+    <div class="span2 incomplete">
+      <i class="icon-check-empty icon-4x"></i>
+      <h5>Setup Complete</h5>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,54 @@
+<div class="container paper center">
+  <%= render partial: "layouts/setup_header", locals: { complete_1: true, complete_2: true, complete_3: false } %>
+  <div class="row">
+      <h3>Your Account has No Data. Import Existing Attendance Data.&nbsp;&nbsp;<i class="icon-bar-chart icon-2x"></i></h3>
+  </div>
+  <div class="row">
+    <h5>If you have existing attendance data, you may wish to upload the data using a CSV instead of manually entering attendance data. Upload a CSV in the below format with your attendance data. Make sure to export your data as a <strong class="red underline">CSV</strong> if you are using Excel.</h5>
+    <p><strong class="red underline">All labels and data must be in the order shown below! Leave a field blank if your company doesn't use that type of time off. Do not omit the field.</strong></p>
+    <table class="table table-bordered">
+        <tr class="grey_background">
+          <td>Employee Email</td>
+          <td>Hire Date</td>
+          <td>Vacation Balance</td>
+          <td>Sick Balance</td>
+          <td>Personal Balance</td>
+          <td>Unpaid Balance</td>
+          <td>Other Balance</td>
+        </tr>
+        <tr>
+          <td>example@zarlu.com</td>
+          <td>4/4/2011</td>
+          <td>45.8</td>
+          <td>20</td>
+          <td>8</td>
+          <td>0</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>example2@zarlu.com</td>
+          <td>7/29/2002</td>
+          <td>12</td>
+          <td>80</td>
+          <td>2</td>
+          <td>8</td>
+          <td>0</td>
+        </tr>
+    </table>
+    <%= form_for @attendance_csv, url: import_attendance_index_path do |form| %>
+      <div class="row">
+        <div class="offset4 span7">
+          <%= form.filepicker_field :csv, name: "attendance_csv[csv]", button_text: "Select CSV File", button_class: "btn span4 btn-large btn-success", extension: ".csv" %>
+        </div>
+      </div>
+      <div class="row mt30">
+        <div class="offset2 span8">
+          <%= form.submit "Upload", class: "btn btn-large span4 btn-primary ml20" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>OR</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Skip Data Import", manager_setup_complete_path, class: "btn btn-large btn-link", data: { confirm: "Are you sure you want to skip data import?" } %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
     ActivityWorker.perform_async(current_user.id, action, trackable.class.to_s, trackable.id)
   end
 
+  def charge_credit_card(subscriber)
+    ChargeCreditCardWorker.perform_async(subscriber.id) unless subscriber.trial?
+  end
+
   private
 
   def redirect_root_to_www
@@ -32,6 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def choose_welcome_path
-    current_user.manager? ? welcome_path : employee_welcome_path
+    current_user.manager? ? manager_setup_complete_path : employee_welcome_path
   end
 end

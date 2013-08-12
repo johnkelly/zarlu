@@ -60,8 +60,16 @@ div.paper {
   margin-bottom: 60px;
 }
 
+.mb70 {
+  margin-bottom: 70px;
+}
+
 .mr15 {
   margin-right: 15px;
+}
+
+.ml20 {
+  margin-left: 20px !important;
 }
 
 .ml5 {
@@ -206,6 +214,10 @@ div.paper {
   height: 25px;
 }
 
+.height_35 {
+  height: 35px !important;
+}
+
 .height_55 {
   height: 55px;
 }
@@ -232,6 +244,10 @@ div.paper {
   margin-top: 15px;
 }
 
+.w750 {
+  width: 750px;
+}
+
 //Font Styles
 .underline {
   text-decoration: underline;
@@ -243,6 +259,10 @@ div.paper {
 
 .white {
   color: #FFF;
+}
+
+.red {
+  color: red;
 }
 
 //Misc- Move later
@@ -299,4 +319,36 @@ div.paper {
 
 .background_white {
   background: #FFF;
+}
+
+body.employees_new, body.import_attendance_new, body.welcomes_show {
+  .complete {
+    color: #FFF;
+  }
+
+  .incomplete {
+    color: #0072A7;
+  }
+
+  .setup_row {
+    padding: 15px 15px;
+    margin-top: -10px;
+    width: 1000px;
+    margin-left: -25px;
+    background: -moz-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+    background: -webkit-linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+    background: linear-gradient(top, #53b7f9 0%, #028ed1 100%);
+    h1 {
+      color: #FFF;
+      padding-bottom: 10px;
+    }
+  }
+
+  .grey_background {
+    background-color: #F9F9F9;
+  }
+}
+
+.account_setup {
+  list-style: none;
 }

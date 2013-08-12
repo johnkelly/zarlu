@@ -10,6 +10,7 @@ describe Subscriber do
     it { should have_many(:company_settings).dependent(:destroy) }
     it { should have_many(:accruals).dependent(:destroy) }
     it { should have_many(:holidays).dependent(:destroy) }
+    it { should have_many(:attendance_csvs).dependent(:destroy) }
   end
 
   describe "after_create" do

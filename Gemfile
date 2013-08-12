@@ -36,6 +36,7 @@ gem 'heroku-api', '~> 0.3.14'
 gem 'rack-cache', '~> 1.2'
 gem 'font-awesome-rails', '~> 3.2.1.2'
 gem 'rack-timeout', '~> 0.0.4'
+gem 'filepicker-rails', '0.1.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'

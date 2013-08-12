@@ -32,10 +32,6 @@ class Subscriber::UsersController < ApplicationController
 
   private
 
-  def charge_credit_card(subscriber)
-    ChargeCreditCardWorker.perform_async(subscriber.id) unless subscriber.trial?
-  end
-
   def invite_params
     user_params.merge(manager_id: current_user.id, subscriber_id: @subscriber.id)
   end

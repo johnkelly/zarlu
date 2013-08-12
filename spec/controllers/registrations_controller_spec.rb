@@ -19,7 +19,7 @@ describe RegistrationsController do
         sign_in(manager)
         put :update, user: { name: "John", current_password: "password" }
       end
-      it { should redirect_to welcome_path }
+      it { should redirect_to manager_setup_complete_path }
     end
 
     context "employee" do

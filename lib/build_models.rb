@@ -14,7 +14,7 @@ module BuildModels
       event = user.events.create!(title: "Build Model", description: "From the lib file", starts_at: 1.minute.from_now, ends_at: 2.hours.from_now)
       allday_event = user.events.create!(title: "All day", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
 
-      canceled_event = user.events.create!(title: "Canceled", description: "From the lib filed", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
+      canceled_event = user.events.create!(title: "Canceled", description: "From the lib file", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
       canceled_event.cancel!
 
       rejected_event = user.events.create!(title: "Rejected", description: "From the lib filed", starts_at: Date.current.midnight, ends_at: (Date.current.midnight + 1.minute), all_day: true)
@@ -28,6 +28,9 @@ module BuildModels
 
       holiday = trial_subscriber.holidays.create!(name: "Independence Day", date: Date.new(Date.current.year, 7, 4))
       christmas = trial_subscriber.holidays.create!(name: "Christmas Day", date: Date.new(Date.current.year, 12, 25))
+
+      attendance_csv = trial_subscriber.attendance_csvs.create!(csv: "https://www.zarlu.com")
+      attendance_csv_2 = trial_subscriber.attendance_csvs.create!(csv: "https://www.favoriteplate.com")
     end
   end
 end
