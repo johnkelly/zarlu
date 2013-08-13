@@ -11,7 +11,8 @@ class ImportAttendanceController < ApplicationController
     @subscriber = current_user.subscriber
     @attendance_csv = @subscriber.attendance_csvs.new(attendance_params)
     if @attendance_csv.save
-      redirect_to manager_setup_complete_path, notice: "Your data was successfully uploaded and may take a few minutes to process."
+      ProcessAttendanceCsvWorker.perform_in(1.minutes, @attendance_csv.id)
+      redirect_to manager_setup_complete_path, notice: "Your data was successfully uploaded and may take a 1-2 minutes to process."
     else
       redirect_to manager_setup_data_path, alert: @attendance_csv.errors.full_messages.first
     end

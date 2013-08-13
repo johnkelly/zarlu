@@ -5,12 +5,6 @@ class AttendanceCsv < ActiveRecord::Base
 
   validates_presence_of :subscriber_id, :csv
 
-  def self.process_csvs
-    where(processed: false).each do |attendance_csv|
-      ProcessAttendanceCsvWorker.perform_async(attendance_csv.id)
-    end
-  end
-
   def process_csv
     rows = read_csv_file
     valid_rows = rows.select(&:valid?)

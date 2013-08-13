@@ -16,7 +16,10 @@ describe ImportAttendanceController do
   describe "#create" do
     context "http" do
       context "success" do
-        before { post :create, attendance_csv: { csv: csv_url }}
+        before do
+          AttendanceCsv.any_instance.should_receive(:process_csv)
+          post :create, attendance_csv: { csv: csv_url }
+        end
         it { should redirect_to manager_setup_complete_path }
         it { assigns(:subscriber).should == subscriber }
         it { assigns(:attendance_csv).should be_a AttendanceCsv }
@@ -29,6 +32,7 @@ describe ImportAttendanceController do
     end
 
     context "database" do
+      before { AttendanceCsv.any_instance.should_receive(:process_csv) }
       it "creates an attendance csv" do
         -> { post :create, attendance_csv: { csv: csv_url }}.should change(AttendanceCsv, :count).by(1)
       end

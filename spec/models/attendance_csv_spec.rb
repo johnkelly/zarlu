@@ -11,10 +11,6 @@ describe AttendanceCsv do
     it { should validate_presence_of(:csv) }
   end
 
-  describe "self.process_csv" do
-    pending "Sidekiq making this difficult"
-  end
-
   describe "process_csv" do
     before { attendance_csv_1.stub(:csv_data).and_return(csv_data) }
 
