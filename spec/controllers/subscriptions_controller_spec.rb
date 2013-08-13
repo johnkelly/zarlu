@@ -7,17 +7,28 @@ describe SubscriptionsController do
 
   describe "#update" do
     context "success" do
-      before do
-        Subscriber.any_instance.should_receive(:save_credit_card).with(user).and_return(true)
-        patch :update, subscriber: { card_token: "fake_token" }
+      context "no coupon" do
+        before do
+          Subscriber.any_instance.should_receive(:save_credit_card).with(user, "").and_return(true)
+          patch :update, subscriber: { card_token: "fake_token", coupon: "" }
+        end
+        it { should redirect_to subscriptions_url }
+        it { assigns(:subscriber).should == subscriber }
       end
-      it { should redirect_to subscriptions_url }
-      it { assigns(:subscriber).should == subscriber }
+
+      context "coupon" do
+        before do
+          Subscriber.any_instance.should_receive(:save_credit_card).with(user, "ERLIBIRD").and_return(true)
+          patch :update, subscriber: { card_token: "fake_token", coupon: "ERLIBIRD" }
+        end
+        it { should redirect_to subscriptions_url }
+        it { assigns(:subscriber).should == subscriber }
+      end
     end
 
     context "failure stripe error with create customer" do
       before do
-        Subscriber.any_instance.should_receive(:save_credit_card).with(user).and_return(false)
+        Subscriber.any_instance.should_receive(:save_credit_card).with(user, nil).and_return(false)
         patch :update, subscriber: { card_token: "fake_token" }
       end
       it { should render_template(:show) }

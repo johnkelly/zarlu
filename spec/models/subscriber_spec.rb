@@ -37,7 +37,7 @@ describe Subscriber do
         it "calls add_credit_card" do
           trial_subscriber.stub(:customer_token).and_return(nil)
           trial_subscriber.should_receive(:add_credit_card).and_return(true)
-          trial_subscriber.save_credit_card(trial_user).should == true
+          trial_subscriber.save_credit_card(trial_user, "").should == true
         end
       end
 
@@ -45,7 +45,7 @@ describe Subscriber do
         it "calls change_credit_card" do
           trial_subscriber.stub(:customer_token).and_return("fake_token")
           trial_subscriber.should_receive(:change_credit_card).and_return(true)
-          trial_subscriber.save_credit_card(trial_user).should == true
+          trial_subscriber.save_credit_card(trial_user, "").should == true
         end
       end
 
@@ -54,7 +54,7 @@ describe Subscriber do
           error_message = double(message: "Stripe had an issue")
           trial_subscriber.stub(:customer_token).and_return("fake_token")
           trial_subscriber.should_receive(:change_credit_card).and_raise(Stripe::StripeError.new(error_message))
-          trial_subscriber.save_credit_card(trial_user).should == false
+          trial_subscriber.save_credit_card(trial_user, "").should == false
         end
       end
     end
@@ -62,7 +62,7 @@ describe Subscriber do
     context "invalid subscriber data" do
       it "returns false" do
         trial_subscriber.stub(:valid?).and_return(false)
-        trial_subscriber.save_credit_card(trial_user).should == false
+        trial_subscriber.save_credit_card(trial_user, "").should == false
       end
     end
   end

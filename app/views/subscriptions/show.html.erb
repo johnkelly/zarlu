@@ -23,6 +23,9 @@
         <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+15 }, { name: nil, id: "card_year", class: "span2" } %>
         <%= form_for @subscriber, url: subscriptions_url, method: :put do |form| %>
           <%= form.hidden_field :card_token %>
+          <h5>Promo Code (optional)</h5>
+          <%= text_field_tag :coupon, nil, name: "subscriber[coupon]", placeholder: "Promo Code", class: "span2" %>
+          <br/>
           <%= form.submit "Save", class: "btn btn-success btn-large span4 mt25" %>
         <% end %>
       </div>

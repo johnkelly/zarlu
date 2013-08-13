@@ -25,12 +25,12 @@ class Subscriber < ActiveRecord::Base
     select { |s| s.expired_yesterday? && s.has_credit_card? }
   end
 
-  def save_credit_card(user)
+  def save_credit_card(user, coupon)
     if valid?
       if has_credit_card?
-        change_credit_card
+        change_credit_card(coupon)
       else
-        add_credit_card(user)
+        add_credit_card(user, coupon)
       end
     else
       false
@@ -76,37 +76,42 @@ class Subscriber < ActiveRecord::Base
 
   private
 
-  def add_credit_card(user)
-    customer = create_customer(user)
+  def add_credit_card(user, coupon)
+    customer = create_customer(user, coupon)
     self.customer_token = customer.id
     store_card_info(customer.active_card)
     true
   end
 
-  def create_customer(user)
-    trial? ? create_customer_with_trial(user) : create_customer_without_trial(user)
+  def create_customer(user, coupon)
+    trial? ? create_customer_with_trial(user, coupon) : create_customer_without_trial(user, coupon)
   end
 
-  def create_customer_with_trial(user)
-    Stripe::Customer.create(email: user.email,
-                            description: "Subscriber: #{id}",
-                            card: card_token,
-                            plan: "public_paid_plan",
-                            trial_end: last_trial_day.to_i,
-                            quantity: users.count)
+  def create_customer_with_trial(user, coupon)
+    customer = Stripe::Customer.create(email: user.email,
+                                       description: "Subscriber: #{id}",
+                                       card: card_token,
+                                       plan: "public_paid_plan",
+                                       trial_end: last_trial_day.to_i,
+                                       quantity: users.count)
+    customer.coupon = coupon if coupon.present?
+    customer.save
   end
 
-  def create_customer_without_trial(user)
-    Stripe::Customer.create(email: user.email,
-                            description: "Subscriber: #{id}",
-                            card: card_token,
-                            plan: "public_paid_plan",
-                            quantity: users.count)
+  def create_customer_without_trial(user, coupon)
+    customer = Stripe::Customer.create(email: user.email,
+                                       description: "Subscriber: #{id}",
+                                       card: card_token,
+                                       plan: "public_paid_plan",
+                                       quantity: users.count)
+    customer.coupon = coupon if coupon.present?
+    customer.save
   end
 
-  def change_credit_card
+  def change_credit_card(coupon)
     customer = Stripe::Customer.retrieve(customer_token)
     customer.card = card_token
+    customer.coupon = coupon if coupon.present?
     customer.save
     store_card_info(customer.active_card)
     true
