@@ -45,8 +45,8 @@
           </li>
           <li><%= link_to "<i class='icon-rss icon-large'></i>&nbsp;Blog".html_safe, blog_path %></li>
           <li><%= link_to "<i class='icon-question-sign icon-large'></i>&nbsp;Contact Us".html_safe, "#", class: "support_link" %></li>
-          <li><div><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success mr15" %></div></li>
-          <li><div><%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %></div></li>
+          <li><div><%= link_to "Sign In", new_user_session_path, class: "btn btn-primary mr15" %></div></li>
+          <li><div><%= link_to "<i class='icon-plus-sign icon-large'></i>&nbsp;&nbsp;Free 30 Day Trial".html_safe, new_user_registration_path, class: "btn btn-success" %></div></li>
         <% end %>
       </ul>
       <%= link_to "<i class='icon-calendar'></i>&nbsp;Zarlu".html_safe, root_path, id: "logo", data: { "no-turbolink" => true } %>

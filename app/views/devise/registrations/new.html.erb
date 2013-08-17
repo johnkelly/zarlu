@@ -7,7 +7,7 @@ Create a free Zarlu account for your business and enjoy the best employee time &
 <div class="blue_paper mt50 height_55 pb20">
   <div class="container">
     <header>
-    <h1 class="center">Create an Account to Start</h1>
+    <h1 class="center">Start Your Free 30 Day Trial</h1>
     </header>
   </div>
 </div>
@@ -16,7 +16,7 @@ Create a free Zarlu account for your business and enjoy the best employee time &
     <ul class="nav nav-pills">
       <li><%= link_to "Sign In", new_user_session_path %></li>
       <li><%= link_to "Reset Password", new_user_password_path %></li>
-      <li class="active"><%= link_to "Sign Up", new_user_registration_path %></li>
+      <li class="active"><%= link_to "Start Trial", new_user_registration_path %></li>
     </ul>
   </div>
   <h4 class="center green">Provide your email and confirm your password.</h4>
@@ -33,6 +33,6 @@ Create a free Zarlu account for your business and enjoy the best employee time &
       <%= f.label :password_confirmation, class: "devise_label" %>
       <%= f.password_field :password_confirmation, pattern: ".{6,}", title: "Password must be at least 6 characters.", class: "input-xlarge" %>
     </div>
-    <div><%= f.submit "Sign Up", class: "btn btn-success btn-large", data: { disable_with: "Creating..." } %></div>
+    <div><%= f.submit "Create Account", class: "btn btn-success btn-large", data: { disable_with: "Creating..." } %></div>
   <% end %>
 </div>
