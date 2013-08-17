@@ -14,7 +14,10 @@ describe EmployeesController do
   end
 
   describe "#new" do
-    before { get :new }
+    before do
+      User.any_instance.should_receive(:first_sign_in?)
+      get :new
+    end
     it { should respond_with(:success) }
   end
 

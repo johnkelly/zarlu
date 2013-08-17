@@ -11,6 +11,7 @@ class EmployeesController < ApplicationController
   end
 
   def new
+    @signed_up = current_user.first_sign_in?
   end
 
   def create
