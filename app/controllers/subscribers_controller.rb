@@ -32,11 +32,12 @@ class SubscribersController < ApplicationController
     @user = @users.find(params[:user_id])
     if @subscriber.managers(@users).count == 1
       flash[:alert] = "Zarlu requires customers to have at least one manager so that someone in your company can view administrative pages."
+      redirect_to subscribers_url
     else
       @user.demote_to_employee!
       flash[:notice] = %Q{Removed manager permissions for #{@user.display_name}.}
+      redirect_to home_url
     end
-    redirect_to subscribers_url
   end
 
   def change_manager
