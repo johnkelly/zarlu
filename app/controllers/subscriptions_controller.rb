@@ -37,7 +37,7 @@ class SubscriptionsController < ApplicationController
 
   def display_success_message
     if coupon.present?
-      "ERLIBIRD discount applied for $50 off your subscription for 3 months. A $150 value!"
+      "ERLIBIRD discount applied for $10 off your subscription for 1 year. A $120 value! Your discount will be reflected on your monthly invoice."
     else
       "Successfully updated your company's credit card."
     end
