@@ -2,4 +2,3 @@ java_script:
   enabled: true
 ruby:
   enabled: true
-  config_file: config/.rubocop.yml
