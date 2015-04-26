@@ -8,7 +8,12 @@ class AccrualsController < ApplicationController
     if @accrual.save
       redirect_to company_settings_url, :notice => "Accrual rate added."
     else
-      redirect_to company_settings_url, :alert => @accrual.errors.full_messages.first
+      redirect_to      company_settings_url, :alert => @accrual.errors.full_messages.first
+
+
+
+
+
     end
   end
 
