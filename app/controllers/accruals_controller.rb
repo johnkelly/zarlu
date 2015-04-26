@@ -6,9 +6,14 @@ class AccrualsController < ApplicationController
     @subscriber = current_user.subscriber
     @accrual = accrual_klass.new(permitted_accruals)
     if @accrual.save
-      redirect_to company_settings_url, notice: "Accrual rate added."
+      redirect_to company_settings_url, :notice => "Accrual rate added."
     else
-      redirect_to company_settings_url, alert: @accrual.errors.full_messages.first
+      redirect_to      company_settings_url, :alert => @accrual.errors.full_messages.first
+
+
+
+
+
     end
   end
 
